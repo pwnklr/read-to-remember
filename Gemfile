@@ -27,6 +27,8 @@ gem 'redis', '~> 4.0'
 gem 'faker'
 gem 'cloudinary', '~> 1.12.0'
 
+gem 'acts-as-taggable-on', '~> 6.0'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
