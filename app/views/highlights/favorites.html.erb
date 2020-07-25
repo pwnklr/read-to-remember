@@ -1,0 +1,7 @@
+<h1>Favorites (<%= @highlights.count %>)</h1>
+<% @highlights.each do |h| %>
+  <h3><%= h.source.author.name %></h3>
+  <p><%= h.source.title %></p>
+  <p><%= h.content %></p>
+  <p>page <%= h.page %></p>
+<% end %>
