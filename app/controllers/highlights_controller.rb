@@ -70,7 +70,7 @@ class HighlightsController < ApplicationController
     elsif @highlights.count <= 7
       @flashcards = @highlights
     else
-      # run this every 24 hours or smtng like that
+      # run this every 24 hours or smtng like that => gem whenever => https://github.com/javan/whenever ?
       while @flashcards.length < 7 do
         @flashcards <<  @highlights.sample
         @flashcards.uniq!
@@ -97,7 +97,7 @@ class HighlightsController < ApplicationController
     params.require(:highlight).permit(:content, :page, :favorite, :source_id, :user_id, :tag_list)
   end
 
-  def fav_tag_param
+  def tag_param
     params.require(:highlight).permit(:tag_list)
   end
 end
