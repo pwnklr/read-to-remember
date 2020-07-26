@@ -1,3 +1,4 @@
+<p><%= link_to "All highlights", highlights_path %></p>
 <h1>flashcards (<%= @flashcards.count %>)</h1>
 <% @flashcards.each do |f| %>
   <h3><%= f.source.author.name %></h3>

@@ -7,6 +7,12 @@ Rails.application.routes.draw do
       get :flashcards
       get :favorites
     end
+    member do
+      get :fav
+      put :fav
+      get :unfav
+      put :unfav
+    end
   end
   resources :users, only: [:show]
 end
