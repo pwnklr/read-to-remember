@@ -1,0 +1,8 @@
+<%= render 'sources/navigation' %>
+<h1>My Articles(<%= @articles.count %>)</h1>
+<% @articles.each do |article| %>
+  <p><%= link_to article.title, source_path(article) %></p>
+  <p><%= article.author.name %></p>
+  <%= cl_image_tag article.photo.key, height: 100, width: 100, crop: :fill %>
+  <p><%= pluralize article.highlights.count, "highlight" %></p>
+<% end %>

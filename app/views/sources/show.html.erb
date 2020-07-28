@@ -1,0 +1,7 @@
+<h1><%= @source.author.name %>: <%= @source.title %></h1>
+<%= cl_image_tag @source.photo.key, height: 300, width: 300, crop: :fill %>
+<p><%= pluralize @source.highlights.count, "highlight" %></p>
+<% @source.highlights.each do |h| %>
+  <p><%= h.content %></p>
+  <small>page <%= h.page %></small>
+<% end %>

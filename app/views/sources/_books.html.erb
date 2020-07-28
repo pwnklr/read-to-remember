@@ -1,0 +1,7 @@
+<h1>My Books(<%= books.count %>)</h1>
+<% books.each do |book| %>
+  <p><%= link_to book.title, source_path(book) %></p>
+  <p><%= book.author.name %></p>
+  <%= cl_image_tag book.photo.key, height: 100, width: 100, crop: :fill %>
+  <p><%= pluralize book.highlights.count, "highlight" %></p>
+<% end %>

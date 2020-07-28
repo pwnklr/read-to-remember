@@ -7,8 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+require "open-uri"
 
 User.destroy_all
+Author.destroy_all
 puts "user + highlight destroyed"
 
 puts "starting seeds"
@@ -21,21 +23,21 @@ puts "starting seeds"
     # image = URI.open("https://avatars1.githubusercontent.com/u/15158574?s=400&u=323d8c6b203f88a8e1ea6fdf359977e1d7aa79c5&v=4")
     # new_user.photo.attach(io: image, filename: "#{new_user.name}", content_type: 'image/png')
     # new_user.save!
-  puts "added user with photo!"
+  #puts "added user with photo!"
 
 # books
 # 1 book
-  author_1 = Author.create!(name: "Yuval Noah Harari")
-  new_book = Source.new(
-      title: "21 Lessons for the 21st Century",
+  author_1 = Author.create!(name: "Ernest Hemingway")
+  new_book_1 = Source.new(
+      title: "88 poems",
       publishing_year: "2018",
       category: "book")
-      image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595532075/1_hh6viq.jpg")
-      new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
+      image_1 = URI.open("https://images-na.ssl-images-amazon.com/images/I/517tqzzYcXL._AC_.jpg")
+      new_book_1.photo.attach(io: image_1, filename: "#{new_book_1.title}", content_type: 'image/png')
 
-  new_book.author = author_1
-  puts new_book.author.id
-  new_book.save!
+  new_book_1.author = author_1
+  puts new_book_1.author.id
+  new_book_1.save!
 
 # 2 book
   author_2 = Author.create!(name: "Matthew Walker")
@@ -269,11 +271,15 @@ puts "starting seeds"
 #highlights
 # 1 highlight
   highlight_1 = Highlight.new(
-    content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    content: "For we have thought the longer thoughts
+And gone the shorter way.
+And we have danced to devils' tunes, Shivering home to pray;
+To serve one master in the night,
+Another in the day.",
     page: "20")
 
-    highlight_1.tag_list ="politics"
-    highlight_1.source = Source.all.sample
+    highlight_1.tag_list ="poetry"
+    highlight_1.source = new_book_1
     highlight_1.user = new_user
     highlight_1.save!
 
@@ -372,9 +378,9 @@ highlight_4 = Highlight.new(
 #   has_one_attached :photo
 #  end
 
-new_user.favorite(highlight_3)
+new_user.favorite(highlight_1)
 new_user.favorite(highlight_6)
 new_user.favorite(highlight_10)
-new_user.save
+new_user.save!
 
 puts "Done!"
