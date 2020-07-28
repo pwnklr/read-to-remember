@@ -5,4 +5,5 @@ class Highlight < ApplicationRecord
   validates :content, presence: true
   validates :page, presence: true
   acts_as_taggable_on :tags
+  acts_as_favoritable
 end

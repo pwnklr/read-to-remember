@@ -6,6 +6,5 @@
 <small><%= @highlight.content %></small>
 <%= simple_form_for(@highlight) do |f| %>
   <%= f.input :tag_list %>
-  <%= f.input :favorite, as: :boolean, checked_value: true, unchecked_value: false %>
   <%= f.submit %>
 <% end %>

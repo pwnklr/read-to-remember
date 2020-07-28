@@ -1,9 +1,10 @@
 class HighlightsController < ApplicationController
-  before_action :set_highlight, only: [:show, :edit, :update, :destroy]
+  before_action :set_highlight, only: [:show, :edit, :update, :destroy, :fav_h, :fav, :unfav_h, :unfav]
   before_action :set_source, only: [:new, :create]
 
   def index
     @highlights = Highlight.all.order(created_at: :desc)
+    @user = current_user
   end
 
   # i think we don't need this one
@@ -28,9 +29,9 @@ class HighlightsController < ApplicationController
   def edit
   end
 
-  def update
-    # just favorite & tags # wip
-    @highlight.update(fav_tag_param)
+  def update # change this
+    # just tags # wip
+    @highlight.update(tag_param)
     if @highlight.save
       redirect_to highlights_path
     else
@@ -43,17 +44,43 @@ class HighlightsController < ApplicationController
     redirect_to highlights_path, notice: "Highlight was succsesfully removed!"
   end
 
+  def fav_h
+  end
+
+  def fav
+    @user = current_user
+    @user.favorite(@highlight)
+    redirect_to highlights_path
+  end
+
+  def unfav_h
+  end
+
+  def unfav
+    @user = current_user
+    @user.unfavorite(@highlight)
+    redirect_to highlights_path
+  end
+
   def flashcards
     @highlights = Highlight.all
     @flashcards = []
-    while @flashcards.length < 7 do
-      @flashcards <<  @highlights.sample
-      @flashcards.uniq!
+    if @highlights.empty?
+      @msg = "You have no highlights!"
+    elsif @highlights.count <= 7
+      @flashcards = @highlights
+    else
+      # run this every 24 hours or smtng like that => gem whenever => https://github.com/javan/whenever ?
+      while @flashcards.length < 7 do
+        @flashcards <<  @highlights.sample
+        @flashcards.uniq!
+      end
     end
   end
 
   def favorites
-    @highlights = Highlight.where(favorite: true)
+    @user = current_user
+    @highlights = @user.all_favorited
   end
 
   private
@@ -70,7 +97,7 @@ class HighlightsController < ApplicationController
     params.require(:highlight).permit(:content, :page, :favorite, :source_id, :user_id, :tag_list)
   end
 
-  def fav_tag_param
-    params.require(:highlight).permit(:favorite, :tag_list)
+  def tag_param
+    params.require(:highlight).permit(:tag_list)
   end
 end
