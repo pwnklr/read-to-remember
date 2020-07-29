@@ -1,5 +1,8 @@
+<!-- links for navigation atm -->
 <p><%= link_to "My favorites", favorites_highlights_path %></p>
 <p><%= link_to "My flashcards", flashcards_highlights_path %></p>
+<p><%= link_to "My library", library_sources_path %></p>
+
 <h1>All highlights (<%= @highlights.count %>)</h1>
 <% @highlights.each do |h| %>
   <h3><%= h.source.author.name %></h3>

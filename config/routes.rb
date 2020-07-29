@@ -14,5 +14,12 @@ Rails.application.routes.draw do
       put :unfav
     end
   end
-  resources :users, only: [:show]
+  resources :users, only: :show
+  resources :sources, only: [:show, :create] do
+    collection do
+      get :books
+      get :articles
+      get :library
+    end
+  end
 end
