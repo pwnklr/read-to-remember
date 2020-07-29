@@ -1,5 +1,9 @@
+<!-- links for navigation atm -->
+<p><%= link_to "My favorites", favorites_highlights_path %></p>
+<p><%= link_to "My flashcards", flashcards_highlights_path %></p>
+<p><%= link_to "My library", library_sources_path %></p>
+
 <div class="container">
-  <p><%#= link_to "All highlights", highlights_path %></p>
     <div class="row"> 
       <% @highlights.each do |h| %>
       <div class="card">
@@ -25,3 +29,4 @@
         <% end %>
     </div>
 </div>
+
