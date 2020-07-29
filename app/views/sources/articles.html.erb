@@ -1,8 +1,18 @@
+<div class="container">
 <%= render 'sources/navigation' %>
-<h1>My Articles(<%= @articles.count %>)</h1>
+<small>My Articles(<%= @articles.count %>)</small>
 <% @articles.each do |article| %>
-  <p><%= link_to article.title, source_path(article) %></p>
-  <p><%= article.author.name %></p>
-  <%= cl_image_tag article.photo.key, height: 100, width: 100, crop: :fill %>
-  <p><%= pluralize article.highlights.count, "highlight" %></p>
+  <div class="card-source">
+    <div>
+      <%= link_to source_path(article) do %>
+        <%= cl_image_tag article.photo.key, height: 128, width: 100, crop: :fill, class: "cover" %>
+      <% end %>
+    </div>
+    <div class="text">
+      <strong><%= link_to article.author.name %></strong> <!-- build this path? Patrik? -->
+      <h6><em><%= link_to article.title, source_path(article) %></em></h6>
+      <p><%= pluralize article.highlights.count, "highlight" %></p>
+    </div>
+  </div>
 <% end %>
+</div>

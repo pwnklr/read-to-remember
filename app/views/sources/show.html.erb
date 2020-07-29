@@ -1,7 +1,19 @@
-<h1><%= @source.author.name %>: <%= @source.title %></h1>
-<%= cl_image_tag @source.photo.key, height: 300, width: 300, crop: :fill %>
-<p><%= pluralize @source.highlights.count, "highlight" %></p>
-<% @source.highlights.each do |h| %>
-  <p><%= h.content %></p>
-  <small>page <%= h.page %></small>
-<% end %>
+<div class="container">
+  <%= link_to "Back", library_sources_path, class: "link-library" %>
+  <div class="card-source">
+    <div>
+  <%= cl_image_tag @source.photo.key, height: 300, width: 300, crop: :fill, class: "cover" %>
+</div>
+<div class="text">
+  <h1><%= @source.author.name %></h1> <!-- build this path? Patrik? -->
+  <h2><%= @source.title %></h2>
+  <p><%= pluralize @source.highlights.count, "highlight" %></p>
+</div>
+  </div>
+  <% @source.highlights.order(page: :asc).each do |h| %>
+    <div> <!-- card-highlight -->
+      <small>page <%= h.page %></small>
+      <p><%= h.content %></p>
+    </div>
+  <% end %>
+</div>

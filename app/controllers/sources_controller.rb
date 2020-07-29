@@ -5,10 +5,9 @@ class SourcesController < ApplicationController
   end
 
   def new
-    @source = Source.new
   end
 
-  def create
+  def create # wip
     @source = Source.create!(source_params)
   end
 
@@ -30,6 +29,6 @@ class SourcesController < ApplicationController
   end
 
   def source_params
-    params.require(:source).permit(:title, :publishing_year, :category, :photo)
+    params.require(:source).permit(:title, :publishing_year, :category, :author_id, :photo)
   end
 end
