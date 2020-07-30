@@ -31,7 +31,8 @@ class HighlightsController < ApplicationController
 
   def update # change this
     # just tags # wip
-    @highlight.update(tag_param)
+    @highlight.update(note_tag_param)
+    #@highlight.tag_list = @highlight.set_tags
     if @highlight.save
       redirect_to highlights_path
     else
@@ -97,7 +98,7 @@ class HighlightsController < ApplicationController
     params.require(:highlight).permit(:content, :page, :favorite, :source_id, :user_id, :tag_list)
   end
 
-  def tag_param
-    params.require(:highlight).permit(:tag_list)
+  def note_tag_param
+    params.require(:highlight).permit(:my_note, :tag_list)
   end
 end

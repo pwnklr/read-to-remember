@@ -4,7 +4,7 @@
 <p><%= link_to "My library", library_sources_path %></p>
 
 <div class="container">
-    <div class="row"> 
+    <div class="row">
       <% @highlights.each do |h| %>
       <div class="card">
         <h3><%= h.source.title %> by</h3>
@@ -26,7 +26,17 @@
           </div>
         </div>
       </div>
+
+      <% if h.my_note %>
+        <p style="color:white;"><%= h.my_note %></p>
+        <% if h.tag_list %>
+        <p style="color:white;"><%= h.tag_list %></p>
         <% end %>
+        <p><%= link_to "edit note", edit_highlight_path(h) %></p>
+      <% else %>
+        <p><%= link_to "add note", edit_highlight_path(h) %></p>
+      <% end %> -->
+      <% end %>
     </div>
 </div>
 

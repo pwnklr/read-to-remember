@@ -5,6 +5,6 @@
 <br>
 <small><%= @highlight.content %></small>
 <%= simple_form_for(@highlight) do |f| %>
-  <%= f.input :tag_list %>
-  <%= f.submit %>
+  <%= f.input :my_note %>
+  <%= f.submit "Add note" %>
 <% end %>
