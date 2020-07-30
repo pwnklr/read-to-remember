@@ -4,26 +4,14 @@ class Highlight < ApplicationRecord
   has_one :note, dependent: :destroy
   validates :content, presence: true
   validates :page, presence: true
+  validates :my_note, length: { in: 1..1000 }
   acts_as_taggable_on :tags
   acts_as_favoritable
   before_save :set_note
-  #before_save :set_tags
-
-   def set_tags
-    tags = []
-    reg = /^#.+/
-    note = self.my_note.split(" ")
-    note.each do |w|
-      tags << w if w.match(reg)
-    end
-    tags.uniq!
-    tags.join(" ")
-    #self.tag_list.add(tags)
-  end
 
   private
 
-  def set_note
+  def set_note #wip
     note = self.my_note.split(" ")
     tags = []
     reg = /^#.+/
@@ -34,10 +22,7 @@ class Highlight < ApplicationRecord
       end
     end
     tags.uniq!
-
     self.my_note = note.join(" ")
-    self.tag_list = tags.join(" ")
+    self.tag_list.add(tags.join(" "))
   end
-
-
 end

@@ -1,6 +1,7 @@
 class HighlightsController < ApplicationController
   before_action :set_highlight, only: [:show, :edit, :update, :destroy, :fav_h, :fav, :unfav_h, :unfav]
   before_action :set_source, only: [:new, :create]
+  before_action :set_tag, only: [:tags_h, :tags]
 
   def index
     @highlights = Highlight.all.order(created_at: :desc)
@@ -29,10 +30,8 @@ class HighlightsController < ApplicationController
   def edit
   end
 
-  def update # change this
-    # just tags # wip
+  def update # still wip
     @highlight.update(note_tag_param)
-    #@highlight.tag_list = @highlight.set_tags
     if @highlight.save
       redirect_to highlights_path
     else
@@ -84,6 +83,13 @@ class HighlightsController < ApplicationController
     @highlights = @user.all_favorited
   end
 
+  def tags_h
+  end
+
+  def tags
+    @tagged_highlights = Highlight.tagged_with(["#{@tag}"], :any => true)
+  end
+
   private
 
   def set_highlight
@@ -92,6 +98,10 @@ class HighlightsController < ApplicationController
 
   def set_source
     @source = Source.find(params[:source_id])
+  end
+
+  def set_tag
+    @tag = params[:format]
   end
 
   def highlight_params

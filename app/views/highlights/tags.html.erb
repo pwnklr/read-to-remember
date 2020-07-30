@@ -1,11 +1,8 @@
-<!-- links for navigation atm -->
-<p><%= link_to "My favorites", favorites_highlights_path, style: "color:white;"  %></p>
-<p><%= link_to "My flashcards", flashcards_highlights_path, style: "color:white;"  %></p>
-<p><%= link_to "My library", library_sources_path, style: "color:white;"  %></p>
-
 <div class="container">
+  <p><%= link_to "All highlights", highlights_path, style: "color:white;" %></p>
+  <h1 style="color:white;"><%= @tag %></h1>
     <div class="row">
-      <% @highlights.each do |h| %>
+      <% @tagged_highlights.each do |h| %>
       <div class="card">
         <h3><%= h.source.title %> by</h3>
         <h5><%= h.source.author.name %></h5>
@@ -13,7 +10,7 @@
         <p class="page">Page <%= h.page %></p>
         <div class="icons">
           <div class="sent">
-            <% if @user.favorited?(h) %>
+            <% if current_user.favorited?(h) %>
               <p>
                 <%= link_to unfav_highlight_path(h) do %>
                   <i class="fas fa-heart"></i>
@@ -26,7 +23,7 @@
                 <% end %>
               </p>
             <% end %>
-            <% if h.my_note.nil? || h.my_note == "" && h.tag_list.blank? %>
+            <% if h.my_note.nil? %>
             <p>
               <%= link_to edit_highlight_path(h) do %>
                 <i class="fas fa-pen"></i>
@@ -34,7 +31,7 @@
             </p>
             <% end %>
             <p>
-              <%= link_to unfav_highlight_path(h) do %> <!-- build this one :export -->
+              <%= link_to unfav_highlight_path(h) do %> <!-- build this one -->
                 <i class="fas fa-paper-plane"></i>
               <% end %>
             </p>
@@ -43,11 +40,11 @@
             <p><%= link_to '', h, method: :delete, data: {confirm: "Are you sure?"} %><i class="far fa-trash-alt"></i></p>
           </div>
         </div>
-        <% if h.my_note != "" || h.tag_list %> <!-- nešto zjb, maknuti prazni string.. -->
+        <% if h.my_note %>
           <div class="card">
             <p><%= h.my_note %></p>
             <% h.tag_list.each do |t| %>
-              <p><%= link_to "#{t}", tags_highlights_path(t) %></p> <!-- display in one line -->
+              <p><%= link_to "#{t}", tags_highlights_path(t) %></p>
             <% end %>
             <br>
             <p>
@@ -55,11 +52,9 @@
                 <i class="fas fa-pen"></i>
               <% end %>
             </p>
-            <!-- delete note + tags -->
           </div>
         <% end %>
       </div>
       <% end %>
     </div>
 </div>
-
