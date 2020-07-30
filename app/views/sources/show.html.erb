@@ -1,19 +1,41 @@
 <div class="container">
   <%= link_to "Back", library_sources_path, class: "link-library" %>
-  <div class="card-source">
-    <div>
-  <%= cl_image_tag @source.photo.key, height: 300, width: 300, crop: :fill, class: "cover" %>
-</div>
-<div class="text">
-  <h1><%= @source.author.name %></h1> <!-- build this path? Patrik? -->
-  <h2><%= @source.title %></h2>
-  <p><%= pluralize @source.highlights.count, "highlight" %></p>
-</div>
-  </div>
-  <% @source.highlights.order(page: :asc).each do |h| %>
-    <div> <!-- card-highlight -->
-      <small>page <%= h.page %></small>
-      <p><%= h.content %></p>
+
+  <div class="row">
+    <div class="card-source">
+      <div>
+        <%= cl_image_tag @source.photo.key, height: 300, width: 300, crop: :fill, class: "cover" %>
+      </div>
+      <div class="text">
+        <h1><%= @source.author.name %></h1> <!-- build this path? Patrik? -->
+        <h2><%= @source.title %></h2>
+        <p><%= pluralize @source.highlights.count, "highlight" %></p>
+      </div>
     </div>
+  </div>
+
+  <div class="row">
+  <% @source.highlights.order(page: :asc).each do |h| %>
+  <div class="card">
+        <h3><%= h.source.title %> by</h3>
+        <h5><%= h.source.author.name %></h5>
+        <p><%= h.content %></p>
+        <p class="page">Page <%= h.page %></p>
+        <div class="icons">
+          <div class="sent">
+            <% if current_user.favorited?(h) %>
+            <p><%= link_to '', unfav_highlight_path(h) %><i class="fas fa-heart"></i></p>
+            <% else %>
+            <p><%= link_to '', fav_highlight_path(h)  %><i class="far fa-heart"></i></p>
+            <% end %>
+            <p><%= link_to '', unfav_highlight_path(h) %><i class="fas fa-pen"></i></p>
+            <p><%= link_to '', unfav_highlight_path(h) %><i class="fas fa-paper-plane"></i></p>
+          </div>
+          <div class="delete">
+            <p><%= link_to '', h, method: :delete, data: {confirm: "Are you sure?"} %><i class="far fa-trash-alt"></i></p>
+          </div>
+        </div>
+      </div>
   <% end %>
+</div>
 </div>

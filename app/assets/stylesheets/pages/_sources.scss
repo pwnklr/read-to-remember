@@ -1,17 +1,19 @@
 .card-source {
   display: flex;
   justify-content: flex-start;
-  padding: 24px;
-  border-radius: 16px;
-  box-shadow: 0px 0px 3px 3px #ececec;
+  padding: 32px;
+  border-radius: 20px;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
   margin: 24px;
   background-color: #fff;
   .cover {
-    border-radius: 8px;
+    border-radius: 20px;
     box-shadow: 0px 0px 1px 2px #ececec;
   }
   .text {
-    padding: 0 16px;
+    padding: 0 24px;
   }
 }
 
