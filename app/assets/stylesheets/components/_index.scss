@@ -2,3 +2,73 @@
 @import "alert";
 @import "avatar";
 @import "navbar";
+@import "card";
+
+body {
+  background: rgb(37,38,91);
+  background: linear-gradient(90deg, rgba(37,38,91,1) 0%, rgba(64,19,162,1) 35%, rgba(126,68,255,1) 100%);
+  color: #242543;
+}
+
+h5 {
+  font-family: 'Spartan', sans-serif;
+  font-size: 14px;
+  letter-spacing: -1px;
+  font-style: normal;
+}
+
+h3 {
+  font-family: 'Spartan', sans-serif;
+  font-size: 15px;
+  letter-spacing: -1px;
+  font-weight: 900;
+  font-style: normal;
+}
+
+p {
+  font-family: 'Spartan', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  line-height: 22px;
+  color: #898AA6;
+}
+
+.page {
+  display: flex;
+  justify-content: flex-end;
+  font-style: oblique;
+  color: #242543;
+  font-size: 12px;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0px 0px;
+  color: rgba(0,0,0,0.3);
+  align-items: center;
+  background: #fff;
+}
+
+.sent {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sent p {
+  padding: 0px 8px;
+}
+
+.fas, .far {
+  font-size: 20px;
+  color: #13154E;
+}

@@ -3,19 +3,30 @@
 <p><%= link_to "My flashcards", flashcards_highlights_path %></p>
 <p><%= link_to "My library", library_sources_path %></p>
 
-<h1>All highlights (<%= @highlights.count %>)</h1>
-<% @highlights.each do |h| %>
-  <h3><%= h.source.author.name %></h3>
-  <p><%= h.source.title %></p>
-  <p><%= h.content %></p>
-  <p>page <%= h.page %></p>
-  <!-- make partial file for all links and render it -->
-  <div style="display:flex; flex-direction: row;">
-    <% if @user.favorited?(h) %>
-      <p><%= link_to '💙', unfav_highlight_path(h) %></p>
-    <% else %>
-      <p><%= link_to '💔', fav_highlight_path(h)  %></p>
-    <% end %>
-    <p><%= link_to '🗑️', h, method: :delete, data: {confirm: "Are you sure?"} %></p>
-  </div>
-<% end %>
+<div class="container">
+    <div class="row"> 
+      <% @highlights.each do |h| %>
+      <div class="card">
+        <h3><%= h.source.title %> by</h3>
+        <h5><%= h.source.author.name %></h5>
+        <p><%= h.content %></p>
+        <p class="page">Page <%= h.page %></p>
+        <div class="icons">
+          <div class="sent">
+            <% if @user.favorited?(h) %>
+            <p><%= link_to '', unfav_highlight_path(h) %><i class="fas fa-heart"></i></p>
+            <% else %>
+            <p><%= link_to '', fav_highlight_path(h)  %><i class="far fa-heart"></i></p>
+            <% end %>
+            <p><%= link_to '', unfav_highlight_path(h) %><i class="fas fa-pen"></i></p>
+            <p><%= link_to '', unfav_highlight_path(h) %><i class="fas fa-paper-plane"></i></p>
+          </div>
+          <div class="delete">
+            <p><%= link_to '', h, method: :delete, data: {confirm: "Are you sure?"} %><i class="far fa-trash-alt"></i></p>
+          </div>
+        </div>
+      </div>
+        <% end %>
+    </div>
+</div>
+
