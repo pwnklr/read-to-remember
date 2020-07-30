@@ -26,12 +26,12 @@
                 <% end %>
               </p>
             <% end %>
-            <% if h.my_note.nil? || h.my_note == "" && h.tag_list.blank? %>
-            <p>
-              <%= link_to edit_highlight_path(h) do %>
-                <i class="fas fa-pen"></i>
-              <% end %>
-            </p>
+            <% if h.my_note.nil? %> <!-- render form -->
+              <p>
+                <%= link_to edit_highlight_path(h) do %>
+                  <i class="fas fa-pen"></i>
+                <% end %>
+              </p>
             <% end %>
             <p>
               <%= link_to unfav_highlight_path(h) do %> <!-- build this one :export -->
@@ -43,9 +43,10 @@
             <p><%= link_to '', h, method: :delete, data: {confirm: "Are you sure?"} %><i class="far fa-trash-alt"></i></p>
           </div>
         </div>
-        <% if h.my_note != "" || h.tag_list %> <!-- nešto zjb, maknuti prazni string.. -->
+
+        <% if h.my_note %> <!-- wtf -->
           <div class="card">
-            <p><%= h.my_note %></p>
+            <p><%= h.h_note %></p>
             <% h.tag_list.each do |t| %>
               <p><%= link_to "#{t}", tags_highlights_path(t) %></p> <!-- display in one line -->
             <% end %>
@@ -55,9 +56,9 @@
                 <i class="fas fa-pen"></i>
               <% end %>
             </p>
-            <!-- delete note + tags -->
           </div>
         <% end %>
+
       </div>
     <% end %>
   </div>

@@ -23,7 +23,7 @@
                 <% end %>
               </p>
             <% end %>
-            <% if h.my_note.nil? %>
+            <% if h.h_note.nil? || h.tag_list.blank? %>
             <p>
               <%= link_to edit_highlight_path(h) do %>
                 <i class="fas fa-pen"></i>
@@ -42,7 +42,7 @@
         </div>
         <% if h.my_note %>
           <div class="card">
-            <p><%= h.my_note %></p>
+            <p><%= h.h_note %></p>
             <% h.tag_list.each do |t| %>
               <p><%= link_to "#{t}", tags_highlights_path(t) %></p>
             <% end %>

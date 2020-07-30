@@ -109,6 +109,6 @@ class HighlightsController < ApplicationController
   end
 
   def note_tag_param
-    params.require(:highlight).permit(:my_note, :tag_list)
+    params.require(:highlight).permit(:h_note, :my_note, :tag_list)
   end
 end
