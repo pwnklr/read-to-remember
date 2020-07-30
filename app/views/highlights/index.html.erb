@@ -4,8 +4,8 @@
 <p><%= link_to "My library", library_sources_path, style: "color:white;"  %></p>
 
 <div class="container">
-    <div class="row">
-      <% @highlights.each do |h| %>
+  <div class="row">
+    <% @highlights.each do |h| %>
       <div class="card">
         <h3><%= h.source.title %> by</h3>
         <h5><%= h.source.author.name %></h5>
@@ -59,7 +59,6 @@
           </div>
         <% end %>
       </div>
-      <% end %>
-    </div>
+    <% end %>
+  </div>
 </div>
-
