@@ -5,7 +5,6 @@ class HighlightsController < ApplicationController
 
   def index
     @highlights = Highlight.all.order(created_at: :desc)
-    @user = current_user
   end
 
   # i think we don't need this one
@@ -33,7 +32,7 @@ class HighlightsController < ApplicationController
   def update # still wip
     @highlight.update(note_tag_param)
     if @highlight.save
-      redirect_to highlights_path
+      redirect_to highlights_path # do smtng here
     else
       render :edit
     end
@@ -48,18 +47,16 @@ class HighlightsController < ApplicationController
   end
 
   def fav
-    @user = current_user
-    @user.favorite(@highlight)
-    redirect_to highlights_path
+    current_user.favorite(@highlight)
+    redirect_to highlights_path # do smtng here
   end
 
   def unfav_h
   end
 
   def unfav
-    @user = current_user
-    @user.unfavorite(@highlight)
-    redirect_to highlights_path
+    current_user.unfavorite(@highlight)
+    redirect_to highlights_path # do smtng here
   end
 
   def flashcards
@@ -79,8 +76,7 @@ class HighlightsController < ApplicationController
   end
 
   def favorites
-    @user = current_user
-    @highlights = @user.all_favorited
+    @highlights = current_user.all_favorited
   end
 
   def tags_h

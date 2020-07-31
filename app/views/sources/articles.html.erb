@@ -1,6 +1,10 @@
 <div class="container">
 <%= render 'sources/navigation' %>
+<!--
+<%#= select_tag(:sources, options_for_select([["Sort by date", 1], ["Sort by author", 2], ["Sort by title", 3]])) %>
+-->
 <small style="color:white;">My Articles(<%= @articles.count %>)</small>
+
 <% @articles.each do |article| %>
   <div class="card-source">
     <div>
