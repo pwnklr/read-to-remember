@@ -26,6 +26,7 @@ gem 'redis', '~> 4.0'
 # gem 'image_processing', '~> 1.2'
 gem 'faker'
 gem 'cloudinary', '~> 1.12.0'
+gem 'kindle-highlights'
 
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'acts_as_favoritor'

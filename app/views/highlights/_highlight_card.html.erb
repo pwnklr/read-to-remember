@@ -6,17 +6,16 @@
         <h5><%= h.source.author.name %></h5>
         <p><%= h.content %></p>
         <p class="page">Page <%= h.page %></p>
-
         <% if h.my_note != "" %>
           <div class="card">
             <p><%= h.h_note %></p>
-            <% h.tag_list.each do |t| %>
-              <p><%= link_to "#{t}", tags_highlights_path(t) %></p> <!-- display in one line -->
-            <% end %>
-            <br>
+            <div style="display:flex;flex-wrap: wrap;">
+              <% h.tag_list.each do |t| %>
+                <p style="padding-left: .5vw;"><%= link_to "#{t}", tags_highlights_path(t) %></p>
+              <% end %>
+            </div>
           </div>
         <% end %>
-
         <div class="icons">
           <div class="sent">
             <% if current_user.favorited?(h) %>

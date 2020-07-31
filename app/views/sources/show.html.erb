@@ -4,11 +4,11 @@
   <div class="row">
     <div class="card-source">
       <div>
-        <%= cl_image_tag @source.photo.key, height: 300, width: 300, crop: :fill, class: "cover" %>
+        <%= cl_image_tag @source.photo.key, height: 220, width: 180, crop: :fill, class: "cover" %>
       </div>
       <div class="text">
-        <h1><%= @source.author.name %></h1> <!-- build this path? Patrik? -->
-        <h2><%= @source.title %></h2>
+        <strong><%= @source.author.name %></strong> <!-- build this path? Patrik? -->
+        <h6><em><%= @source.title %></em></h6>
         <p><%= pluralize @source.highlights.count, "highlight" %></p>
       </div>
     </div>

@@ -1,9 +1,10 @@
 <small style="color:white;">My Books(<%= books.count %>)</small>
+<div class="row">
   <% books.each do |book| %>
     <div class="card-source">
       <div>
         <%= link_to source_path(book) do %>
-          <%= cl_image_tag book.photo.key, height: 128, width: 100, crop: :fill, class: "cover" %>
+          <%= cl_image_tag book.photo.key, height: 140, width: 120, crop: :fill, class: "cover" %>
         <% end %>
       </div>
       <div class="text">
@@ -12,4 +13,5 @@
         <p><%= pluralize book.highlights.count, "highlight" %></p>
       </div>
     </div>
-<% end %>
+  <% end %>
+</div>

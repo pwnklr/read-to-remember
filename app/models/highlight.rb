@@ -10,7 +10,7 @@ class Highlight < ApplicationRecord
 
   private
 
-  def set_note_and_tags #wip - upcase tags?! :/
+  def set_note_and_tags
     note = self.my_note.split(" ")
     tags = []
     my_n = self.my_note.split(" ")
