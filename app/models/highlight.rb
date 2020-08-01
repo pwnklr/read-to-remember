@@ -11,18 +11,20 @@ class Highlight < ApplicationRecord
   private
 
   def set_note_and_tags
-    note = self.my_note.split(" ")
-    tags = []
-    my_n = self.my_note.split(" ")
-    reg = /^#.+/
-    note.each do |w|
-      if w.match(reg)
-        my_n.delete(w)
-        tags << w
+    if my_note
+      note = self.my_note.split(" ")
+      tags = []
+      my_n = self.my_note.split(" ")
+      reg = /^#.+/
+      note.each do |w|
+        if w.match(reg)
+          my_n.delete(w)
+          tags << w
+        end
       end
+      tags.uniq!
+      self.h_note = my_n.join(" ")
+      self.tag_list = "#{tags.join(", ")}"
     end
-    tags.uniq!
-    self.h_note = my_n.join(" ")
-    self.tag_list = "#{tags.join(", ")}"
   end
 end

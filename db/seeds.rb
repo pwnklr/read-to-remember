@@ -278,7 +278,7 @@ To serve one master in the night,
 Another in the day.",
     page: 20)
 
-    highlight_1.tag_list ="poetry"
+   # highlight_1.tag_list ="poetry"
     highlight_1.source = new_book_1
     highlight_1.user = new_user
     highlight_1.save!
@@ -288,7 +288,7 @@ Another in the day.",
     content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     page: 210)
 
-    highlight_2.tag_list ="feminism"
+   # highlight_2.tag_list ="feminism"
     highlight_2.source = new_book_1
     highlight_2.user = new_user
     highlight_2.save!
@@ -298,7 +298,7 @@ highlight_3 = Highlight.new(
   content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
   page: 89)
 
-  highlight_3.tag_list ="politics"
+ # highlight_3.tag_list ="politics"
   highlight_3.source = new_book_1
   highlight_3.user = new_user
   highlight_3.save!
@@ -308,7 +308,7 @@ highlight_4 = Highlight.new(
   content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
   page: 2)
 
-  highlight_4.tag_list ="biography"
+  #highlight_4.tag_list ="biography"
   highlight_4.source = Source.all.sample
   highlight_4.user = new_user
   highlight_4.save!
@@ -318,7 +318,7 @@ highlight_4 = Highlight.new(
     content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     page: 210)
 
-    highlight_5.tag_list ="race"
+   # highlight_5.tag_list ="race"
     highlight_5.source = Source.all.sample
     highlight_5.user = new_user
     highlight_5.save!
@@ -328,7 +328,7 @@ highlight_4 = Highlight.new(
     content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     page: 14)
 
-    highlight_6.tag_list ="climat"
+   # highlight_6.tag_list ="climat"
     highlight_6.source = Source.all.sample
     highlight_6.user = new_user
     highlight_6.save!
@@ -338,7 +338,7 @@ highlight_4 = Highlight.new(
     content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     page: 165)
 
-    highlight_7.tag_list ="science"
+   # highlight_7.tag_list ="science"
     highlight_7.source = Source.all.sample
     highlight_7.user = new_user
     highlight_7.save!
@@ -348,7 +348,7 @@ highlight_4 = Highlight.new(
     content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     page: 1)
 
-    highlight_8.tag_list ="politics"
+    #highlight_8.tag_list ="politics"
     highlight_8.source = Source.all.sample
     highlight_8.user = new_user
     highlight_8.save!
@@ -358,7 +358,7 @@ highlight_4 = Highlight.new(
     content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
     page: 4)
 
-    highlight_9.tag_list ="psychology"
+    #highlight_9.tag_list ="#psychology"
     highlight_9.source = Source.all.sample
     highlight_9.user = new_user
     highlight_9.save!
@@ -366,9 +366,9 @@ highlight_4 = Highlight.new(
 # 10 highlight
   highlight_10 = Highlight.new(
     content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-    page: 10)
+    page: 10, my_note: "My note #sociology")
 
-    highlight_10.tag_list ="sociology"
+    #highlight_10.tag_list ="#sociology"
     highlight_10.source = Source.all.sample
     highlight_10.user = new_user
     highlight_10.save!
