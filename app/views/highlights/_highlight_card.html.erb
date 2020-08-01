@@ -6,7 +6,8 @@
         <h5><%= h.source.author.name %></h5>
         <p><%= h.content %></p>
         <p class="page">Page <%= h.page %></p>
-        <% if h.my_note != "" %>
+        <!-- -->
+        <% if h.my_note %>
           <div class="card">
             <p><%= h.h_note %></p>
             <div style="display:flex;flex-wrap: wrap;">
