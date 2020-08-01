@@ -1,10 +1,14 @@
-<!-- wip -->
-<small><%= @highlight.source.author.name %></small>
+<!-- wip - render this form -->
+<div class="container">
+<p><%= link_to "All highlights", highlights_path, style: "color:white;" %></p>
+<small style="color:white;"><%= @highlight.source.author.name %></small>
 <br>
-<small><%= @highlight.source.title %></small>
+<small style="color:white;"><%= @highlight.source.title %></small>
 <br>
-<small><%= @highlight.content %></small>
+<small style="color:white;"><%= @highlight.content %></small>
+
 <%= simple_form_for(@highlight) do |f| %>
-  <%= f.input :tag_list %>
-  <%= f.submit %>
+  <%= f.input :my_note %>
+  <%= f.submit "Save" %>
 <% end %>
+</div>

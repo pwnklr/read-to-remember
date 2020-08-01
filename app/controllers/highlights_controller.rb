@@ -1,10 +1,10 @@
 class HighlightsController < ApplicationController
   before_action :set_highlight, only: [:show, :edit, :update, :destroy, :fav_h, :fav, :unfav_h, :unfav]
   before_action :set_source, only: [:new, :create]
+  before_action :set_tag, only: [:tags_h, :tags]
 
   def index
     @highlights = Highlight.all.order(created_at: :desc)
-    @user = current_user
   end
 
   # i think we don't need this one
@@ -29,11 +29,10 @@ class HighlightsController < ApplicationController
   def edit
   end
 
-  def update # change this
-    # just tags # wip
-    @highlight.update(tag_param)
+  def update # still wip
+    @highlight.update(note_tag_param)
     if @highlight.save
-      redirect_to highlights_path
+      redirect_to highlights_path # do smtng here
     else
       render :edit
     end
@@ -48,18 +47,16 @@ class HighlightsController < ApplicationController
   end
 
   def fav
-    @user = current_user
-    @user.favorite(@highlight)
-    redirect_to highlights_path
+    current_user.favorite(@highlight)
+    redirect_to highlights_path # do smtng here
   end
 
   def unfav_h
   end
 
   def unfav
-    @user = current_user
-    @user.unfavorite(@highlight)
-    redirect_to highlights_path
+    current_user.unfavorite(@highlight)
+    redirect_to highlights_path # do smtng here
   end
 
   def flashcards
@@ -79,8 +76,14 @@ class HighlightsController < ApplicationController
   end
 
   def favorites
-    @user = current_user
-    @highlights = @user.all_favorited
+    @highlights = current_user.all_favorited
+  end
+
+  def tags_h
+  end
+
+  def tags
+    @tagged_highlights = Highlight.tagged_with(["#{@tag}"], :any => true)
   end
 
   private
@@ -93,11 +96,15 @@ class HighlightsController < ApplicationController
     @source = Source.find(params[:source_id])
   end
 
+  def set_tag
+    @tag = params[:format]
+  end
+
   def highlight_params
     params.require(:highlight).permit(:content, :page, :favorite, :source_id, :user_id, :tag_list)
   end
 
-  def tag_param
-    params.require(:highlight).permit(:tag_list)
+  def note_tag_param
+    params.require(:highlight).permit(:h_note, :my_note, :tag_list)
   end
 end

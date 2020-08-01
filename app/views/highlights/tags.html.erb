@@ -1,0 +1,5 @@
+<div class="container">
+  <p><%= link_to "All highlights", highlights_path, style: "color:white;" %></p>
+  <h1 style="color:white;"><%= @tag %> (<%= @tagged_highlights.count %>)</h1>
+</div>
+<%= render 'highlights/highlight_card', highlights: @tagged_highlights %>

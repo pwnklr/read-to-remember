@@ -1,16 +1,17 @@
 <small style="color:white;">My Books(<%= books.count %>)</small>
-<% books.each do |book| %>
-  <div class="card-source">
-    <div>
-      <%= link_to source_path(book) do %>
-        <%= cl_image_tag book.photo.key, height: 128, width: 100, crop: :fill, class: "cover" %>
-      <% end %>
+<div class="row">
+  <% books.each do |book| %>
+    <div class="card-source">
+      <div>
+        <%= link_to source_path(book) do %>
+          <%= cl_image_tag book.photo.key, height: 140, width: 120, crop: :fill, class: "cover" %>
+        <% end %>
+      </div>
+      <div class="text">
+        <strong><%= link_to book.author.name %></strong> <!-- build this path? Patrik? -->
+        <h6><em><%= link_to book.title, source_path(book) %></em></h6>
+        <p><%= pluralize book.highlights.count, "highlight" %></p>
+      </div>
     </div>
-    <div class="text">
-      <strong><%= link_to book.author.name %></strong> <!-- build this path? Patrik? -->
-      <h6><em><%= link_to book.title, source_path(book) %></em></h6>
-      <p><%= pluralize book.highlights.count, "highlight" %></p>
-    </div>
-  </div>
-<% end %>
-
+  <% end %>
+</div>
