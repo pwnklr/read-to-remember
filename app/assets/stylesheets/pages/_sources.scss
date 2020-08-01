@@ -1,40 +1,49 @@
 .card-source {
   position: relative;
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-  padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  width: 319px;
+  height: 130px;
+  left: 18px;
+  top: 0px;
+  padding: 5px;
   min-width: 0px;
   border-radius: 20px;
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  margin: 24px;
+  margin: 10px;
   background-color: #fff;
-  .cover {
-    border-radius: 20px;
-    box-shadow: 0px 0px 1px 2px #ececec;
-  }
-  .text {
-    padding: 0 40px;
-    strong, h6, p {
-      font-size: 2.3vw;
-      line-spacing: 2vh;
-    }
+}
+
+.text {
+  margin-left: -10px;
+  margin-top: 0px;
+  strong, h6, p {
+    font-size: 2.3vw;
+    line-height: 2vh;
   }
 }
 
+.cover {
+  margin: auto;
+  padding-bottom: 0px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 1px 2px #ececec;
+}
+
 .link-library {
-  padding: 4px 16px;
+  padding: 5px 24px;
   background-color: #ccc;
   border-radius: 40px;
-  margin: 8px;
+  margin: 11px;
   background-color: #6d6d8a;
   color: white;
   text-decoration: none;
   font-weight: 500;
+
   &:hover {
-    color: white;
+    color: black;
     text-decoration: none;
     font-weight: bold;
     opacity: .6;
@@ -50,3 +59,12 @@ a:hover {
   color: #6d6d8a;
 }
 
+.export {
+  position: absolute;
+  bottom: 15px;
+}
+
+.export-main {
+  display: flex;
+  justify-content: flex-end;
+}
