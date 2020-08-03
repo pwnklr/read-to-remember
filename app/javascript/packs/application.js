@@ -27,8 +27,13 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { initFlickity } from '../channels/init_flickity';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  const carousel = document.querySelector('.carousel');
+  if (carousel) {
+    initFlickity();
+  }
 });
