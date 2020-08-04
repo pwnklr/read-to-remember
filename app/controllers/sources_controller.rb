@@ -12,14 +12,31 @@ class SourcesController < ApplicationController
   end
 
   def library
-    @books = current_user.sources.where(category: 'book').order(created_at: :desc)
-  end
-
-  def books
+    if params[:select]
+      if params[:select] == '2' # author
+        @books = current_user.sources.where(category: 'book').includes(:author).joins(:author).order(name: :asc)
+      elsif params[:select] == '3' # title
+        @books = current_user.sources.where(category: 'book').includes(:author).order(title: :asc)
+      else
+        @books = current_user.sources.where(category: 'book').includes(:author).order(created_at: :desc)
+      end
+    else
+      @books = current_user.sources.where(category: 'book').includes(:author).order(created_at: :desc)
+    end
   end
 
   def articles
-    @articles = current_user.sources.where(category: 'article').order(created_at: :desc)
+    if params[:select_a]
+      if params[:select_a] == '2' # author
+        @articles =  current_user.sources.where(category: 'article').includes(:author).joins(:author).order(name: :asc)
+      elsif params[:select_a] == '3' # title
+        @articles = current_user.sources.where(category: 'article').includes(:author).order(title: :asc)
+      else
+        @articles = current_user.sources.where(category: 'article').includes(:author).order(created_at: :desc)
+      end
+    else
+      @articles = current_user.sources.where(category: 'article').includes(:author).order(created_at: :desc)
+    end
   end
 
   private

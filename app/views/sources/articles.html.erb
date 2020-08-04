@@ -1,30 +1,32 @@
-<div class="container">
 <%= render 'sources/navigation' %>
-<!--
-<%#= select_tag(:sources, options_for_select([["Sort by date", 1], ["Sort by author", 2], ["Sort by title", 3]])) %>
--->
-<small style="color:white;">My Articles(<%= @articles.count %>)</small>
-
-<div class="row">
+<div class="nav-filter"> <!-- articles -->
+  <%= form_tag articles_sources_path, :method => "get" do %>
+    <%= select_tag(:select_a, options_for_select([["Sort by date", 1], ["Sort by author", 2], ["Sort by title", 3]]), {class: 'filter-input'}) %>
+    <%= submit_tag "👁", :name => nil, class: "btn btn-outline-success my-2 my-sm-0 ml-2" %>
+  <% end %>
+</div>
+<div class="container">
+<div class="row justify-content-sm-center">
   <% @articles.each do |article| %>
     <div class="card-source">
-      <% if article.photo.present? %>
-      <div>
-        <%= link_to source_path(article) do %>
-          <%= cl_image_tag article.photo.key, height: 100, width: 80, crop: :fill, class: "cover" %>
+      <div style="display:flex; justify-content: space-between; width: 314px;">
+        <% if article.photo.present? %>
+          <div>
+            <%= link_to source_path(article) do %>
+              <%= cl_image_tag article.photo.key, height: 100, width: 80, crop: :fill, class: "cover" %>
+            <% end %>
+          </div>
         <% end %>
-      </div>
-      <% end %>
-      <div class="text">
-        <strong><%= link_to article.author.name %></strong> <!-- build this path? Patrik? -->
-        <h6><em><%= link_to article.title, source_path(article) %></em></h6>
-        <p><%= pluralize article.highlights.count, "highlight" %></p>
-        <div class="export-main">
-          <p class="export"><i class="fas fa-file-export"></i></p>
+        <div class="text">
+          <strong><%= link_to article.author.name %></strong> <!-- build this path? Patrik? -->
+          <h6><em><%= link_to article.title, source_path(article) %></em></h6>
+          <p><%= pluralize article.highlights.count, "highlight" %></p>
+          <div class="export-main">
+            <p class="export"><i class="fas fa-file-export"></i></p>
+          </div>
         </div>
       </div>
     </div>
   <% end %>
 </div>
-
 </div>

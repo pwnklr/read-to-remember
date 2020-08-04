@@ -1,17 +1,19 @@
 <div class="container">
   <%= link_to "Back", library_sources_path, class: "link-library" %>
 
-  <div class="row">
+  <div class="row ustify-content-sm-center">
     <div class="card-source">
-      <% if @source.photo.present? %>
-      <div>
-        <%= cl_image_tag @source.photo.key, height: 100, width: 80, crop: :fill, class: "cover" %>
-      </div>
-      <% end %>
-      <div class="text">
-        <strong><%= @source.author.name %></strong> <!-- build this path? Patrik? -->
-        <h6><em><%= @source.title %></em></h6>
-        <p><%= pluralize @source.highlights.count, "highlight" %></p>
+      <div style="display:flex; justify-content: space-between; width: 314px;">
+        <% if @source.photo.present? %>
+          <div>
+            <%= cl_image_tag @source.photo.key, height: 100, width: 80, crop: :fill, class: "cover" %>
+          </div>
+        <% end %>
+        <div class="text">
+          <strong><%= @source.author.name %></strong> <!-- build this path? Patrik? -->
+          <h6><em><%= @source.title %></em></h6>
+          <p><%= pluralize @source.highlights.count, "highlight" %></p>
+        </div>
       </div>
     </div>
   </div>
