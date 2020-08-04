@@ -26,9 +26,10 @@ gem 'redis', '~> 4.0'
 # gem 'image_processing', '~> 1.2'
 gem 'faker'
 gem 'cloudinary', '~> 1.12.0'
-
+gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'acts_as_favoritor'
+gem 'whenever', require: false
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

@@ -1,0 +1,23 @@
+<h2>READ TO REMEMBER</h2>
+
+<p>Here are your daily highlights. If you prefer to do review them within the app, go to <%= link_to XXX%></p>
+
+
+
+
+<% @user.flashcard.each do |flashcard| %>
+
+<h3><%= flashcard.source.title %></h3>
+<p color="grey"><%= flashcard.source.author.name %></p>
+<p><%= flashcard.content %></p>
+<p><%= link_to "See in Read to Remember", URL PATH%> | <%= link_to "Share this quote", URL PATH%></p>
+<br>
+<br>
+-----------------------------------------
+<% end %>
+
+-----------------------------------------
+
+<p>Thanks for stopping by - have a great day.</p>
+
+
