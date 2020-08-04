@@ -2,6 +2,6 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-    UserMailer.welcome_email.deliver_now!(current_user)
+    UserMailer.daily_highlights(current_user).deliver_now!
   end
 end

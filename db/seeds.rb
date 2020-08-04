@@ -17,7 +17,7 @@ puts "starting seeds"
 
 # user
   new_user = User.new(
-    email: "readtoremember@gmail.com",
+    email: "readtorememberrrr@gmail.com",
     password: "readtoremember")
   puts "user not saved"
     # image = URI.open("https://avatars1.githubusercontent.com/u/15158574?s=400&u=323d8c6b203f88a8e1ea6fdf359977e1d7aa79c5&v=4")
