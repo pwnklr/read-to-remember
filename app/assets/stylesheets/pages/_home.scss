@@ -1,1 +1,128 @@
-// Specific CSS for your home-page
+.background-image {
+  background-image: url("bookworm1.png");
+  object-fit: cover;
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+  margin-top: -24px;
+  padding-bottom: 16px;
+}
+
+.background-color {
+  background: linear-gradient(-180deg, rgba(1,254,161,100) 0%, rgba(37,38,91,1) 35%, rgba(64,19,162,1) 100%);
+}
+
+.header {
+  padding: 24px;
+  margin: 16px 16px 16px 16px;
+  text-align: center;
+  padding-bottom: 250px;
+}
+
+.background-image img {
+  margin: 48px 24px;
+  width: 60px;
+  align-items: left;
+}
+
+#title{
+  color: white;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 24px;
+  color: #13154E;
+}
+
+#description {
+  padding-top: 24px;
+  color: white;
+}
+
+h2 {
+  font-size: 18px;
+  color: white;
+  padding: 36px 24px 16px 16px;
+  text-align: center;
+
+}
+
+p {
+  font-size: 14px;
+  color: #13154E;
+}
+
+.functions {
+  text-align: center;
+
+}
+
+#function-1 {
+  padding: 24px;
+  margin-right: 16px;
+  background: white;
+  border-radius: 20px;
+  margin: 16px 16px 16px 16px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+#function-2 {
+  padding: 24px;
+  margin-right: 16px;
+  background: white;
+  border-radius: 20px;
+  margin: 16px 16px 16px 16px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+#function-3 {
+  padding: 24px;
+  margin-right: 16px;
+  background: white;
+  border-radius: 20px;
+  margin: 16px 16px 16px 16px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.reviews {
+  padding-bottom: 60px;
+}
+
+#review-1 {
+  padding: 24px;
+  margin-right: 16px;
+  background: white;
+  border-radius: 20px;
+  margin: 16px 16px 16px 16px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+#review-2 {
+  padding: 24px;
+  margin-right: 16px;
+  background: white;
+  border-radius: 20px;
+  margin: 16px 16px 16px 16px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.button-homepage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.name {
+  font-size: 12px;
+  text-align: right;
+  font-style: italic;
+  padding-left: 8px;
+}
+
+.name-tag {
+  display: flex;
+  align-items: center;
+}

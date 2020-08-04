@@ -12,7 +12,9 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
+    <% unless request.fullpath == "/" %>
+      <%= render 'shared/navbar' %>
+    <% end %>
     <%= render 'shared/flashes' %>
 
     <%= yield %>

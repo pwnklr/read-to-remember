@@ -1,2 +1,45 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div>
+  <div class="background-image">
+    <%= image_tag "logo.png" %>
+    <div class="header">
+
+    <h1 id="title">Read to remember</h1>
+    <p id="description">Your one stop place to collect, review and learn from your ebook and article highlights.</p>
+    </div>
+
+    <div class="button-homepage">
+    <%= link_to "Sign up with Amazon Kindle", "#", class: "big-button" %>
+    </div>
+
+    <div class="button-homepage">
+    <%= link_to "Sign up", "#", class: "big-button" %>
+    </div>
+
+  </div>
+  <div class="background-color">
+    <h2>Why you need Read to remember?</h2>
+    <div class="functions">
+    <p id="function-1"><strong>Revise</strong> your highlights from Kindle using our flashcard function</p>
+    <p id="function-2">Store all your highlights from Kindle so you <strong>never forget</strong> anything again</p>
+    <p id="function-3"><strong>Favorite and share</strong> your highlights on Twiter and Instagram</p>
+    </div>
+
+    <h2>Reviews</h2>
+    <div class="reviews">
+      <div id="review-1">
+        <p>"Using this app the past few months! I can't imagine my life without it"</p>
+        <div class="name-tag">
+          <%= image_tag "kal-visuals-b1Hg7QI-zcc-unsplash.jpg", class: "avatar", alt: "avatar" %>
+          <p class="name">Alexis Stylianou</p>
+        </div>
+      </div>
+      <div id="review-2">
+        <p>"This app has changed the way I revise my notes!"</p>
+          <div class="name-tag">
+            <%= image_tag "christian-buehner-DItYlc26zVI-unsplash.jpg", class: "avatar", alt: "avatar" %>
+            <p class="name">Patrik Winkler</p>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
