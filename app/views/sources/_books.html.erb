@@ -2,11 +2,14 @@
 <div class="row">
   <% books.each do |book| %>
     <div class="card-source">
+      <% if book.photo.present? %>
+
       <div>
         <%= link_to source_path(book) do %>
           <%= cl_image_tag book.photo.key, height: 100, width: 80, crop: :fill, class: "cover" %>
         <% end %>
       </div>
+      <% end %>
       <div class="text">
         <strong><%= link_to book.author.name %></strong> <!-- build this path? Patrik? -->
         <h6><em><%= link_to book.title, source_path(book) %></em></h6>

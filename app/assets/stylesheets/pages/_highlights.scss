@@ -35,3 +35,12 @@
   background: white;
 }
 */
+
+.tags {
+  color: white;
+  opacity: .7;
+  font-size: 16px;
+  &:hover {
+    opacity: 1;
+  }
+}

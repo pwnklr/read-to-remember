@@ -8,11 +8,13 @@
 <div class="row">
   <% @articles.each do |article| %>
     <div class="card-source">
+      <% if article.photo.present? %>
       <div>
         <%= link_to source_path(article) do %>
           <%= cl_image_tag article.photo.key, height: 100, width: 80, crop: :fill, class: "cover" %>
         <% end %>
       </div>
+      <% end %>
       <div class="text">
         <strong><%= link_to article.author.name %></strong> <!-- build this path? Patrik? -->
         <h6><em><%= link_to article.title, source_path(article) %></em></h6>

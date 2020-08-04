@@ -1,0 +1,8 @@
+<div class="container">
+  <h1 style="color: white;">My tags</h1>
+  <div style="display:flex;flex-wrap: wrap;">
+  <% @all_tags.each do |t| %>
+    <p style="padding-left: .7vw;"><%= link_to t.name, tags_highlights_path(t.name), class: "tags", style: "color: white;" %></p>
+  <% end %>
+</div>
+</div>

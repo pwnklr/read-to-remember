@@ -3,6 +3,8 @@
 <p><%= link_to "My favorites", favorites_highlights_path, style: "color:white;"  %></p>
 <p><%= link_to "My flashcards", flashcards_highlights_path, style: "color:white;"  %></p>
 <p><%= link_to "My library", library_sources_path, style: "color:white;"  %></p>
+<p><%= link_to "My tags", all_tags_highlights_path, style: "color:white;"  %></p>
+
 </div>
 
 <%= render 'highlights/highlight_card', highlights: @highlights %>

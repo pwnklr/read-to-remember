@@ -12,14 +12,14 @@ class SourcesController < ApplicationController
   end
 
   def library
-    @books = Source.where(category: 'book').order(created_at: :desc)
+    @books = current_user.sources.where(category: 'book').order(created_at: :desc)
   end
 
   def books
   end
 
   def articles
-    @articles = Source.where(category: 'article').order(created_at: :desc)
+    @articles = current_user.sources.where(category: 'article').order(created_at: :desc)
   end
 
   private

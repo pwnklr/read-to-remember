@@ -36,6 +36,7 @@ puts "starting seeds"
       new_book_1.photo.attach(io: image_1, filename: "#{new_book_1.title}", content_type: 'image/png')
 
   new_book_1.author = author_1
+  new_book_1.user = new_user
   puts new_book_1.author.id
   new_book_1.save!
 
@@ -49,6 +50,7 @@ puts "starting seeds"
     new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
 
   new_book.author = author_2
+  new_book.user = new_user
   new_book.save!
 
 # 3 book
@@ -61,6 +63,7 @@ puts "starting seeds"
     new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
 
   new_book.author = author_3
+  new_book.user = new_user
   new_book.save!
 
 # 4 book
@@ -73,6 +76,7 @@ puts "starting seeds"
     new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
 
   new_book.author = author_4
+  new_book.user = new_user
   new_book.save!
 
 # 5 book
@@ -85,6 +89,7 @@ puts "starting seeds"
     new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
 
   new_book.author = author_5
+  new_book.user = new_user
   new_book.save!
 
 # 6 book
@@ -97,6 +102,7 @@ puts "starting seeds"
     new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
 
   new_book.author = author_6
+  new_book.user = new_user
   new_book.save!
 
 # 7 book
@@ -109,6 +115,7 @@ puts "starting seeds"
     new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
 
   new_book.author = author_7
+  new_book.user = new_user
   new_book.save!
 
 # 8 book
@@ -121,6 +128,7 @@ puts "starting seeds"
     new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
 
   new_book.author = author_8
+  new_book.user = new_user
   new_book.save!
 
 # 9 book
@@ -133,6 +141,7 @@ puts "starting seeds"
     new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
 
   new_book.author = author_9
+  new_book.user = new_user
   new_book.save!
 
 # 10 book
@@ -145,6 +154,7 @@ puts "starting seeds"
     new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
 
   new_book.author = author_10
+  new_book.user = new_user
   new_book.save!
 
 # articles
@@ -158,6 +168,7 @@ puts "starting seeds"
       new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
   new_article.author = author_1
+  new_article.user = new_user
   new_article.save!
 
   # 2 article
@@ -170,6 +181,7 @@ puts "starting seeds"
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
     new_article.author = author_2
+    new_article.user = new_user
     new_article.save!
 
   # 3 article
@@ -182,6 +194,7 @@ puts "starting seeds"
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
     new_article.author = author_3
+    new_article.user = new_user
     new_article.save!
 
   # 4 article
@@ -194,6 +207,7 @@ puts "starting seeds"
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
     new_article.author = author_4
+    new_article.user = new_user
     new_article.save!
 
   # 5 article
@@ -218,6 +232,7 @@ puts "starting seeds"
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
     new_article.author = author_6
+    new_article.user = new_user
     new_article.save!
 
   # 7 article
@@ -230,6 +245,7 @@ puts "starting seeds"
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
     new_article.author = author_7
+    new_article.user = new_user
     new_article.save!
 
   # 8 article
@@ -242,6 +258,7 @@ puts "starting seeds"
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
     new_article.author = author_8
+    new_article.user = new_user
     new_article.save!
 
   # 9 article
@@ -254,6 +271,7 @@ puts "starting seeds"
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
     new_article.author = author_9
+    new_article.user = new_user
     new_article.save!
 
   # 10 article
@@ -266,6 +284,7 @@ puts "starting seeds"
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
     new_article.author = author_10
+    new_article.user = new_user
     new_article.save!
 
 #highlights
