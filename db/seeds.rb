@@ -220,6 +220,7 @@ puts "starting seeds"
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
     new_article.author = author_5
+    new_article.user = new_user
     new_article.save!
 
   # 6 article
