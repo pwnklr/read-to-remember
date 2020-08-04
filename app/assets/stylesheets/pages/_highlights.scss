@@ -8,19 +8,21 @@
   width: 95%;
   margin-right: 1px;
   counter-increment: carousel-cell;
+  max-height: calc(100vh - 200px);
+  overflow-y: scroll;
 }
 
 .carousel-cell:before {
   display: block;
   text-align: right;
   content: counter(carousel-cell);
-  font-size: 3vw;
-  color: #000;
+  font-size: 4vw;
+  color: #898AA6;
 }
 
-// .flickity-page-dots {
-//   top: -2vw;
-// }
+.flickity-page-dots {
+  bottom: -5px !important;
+}
 
 .flickity-page-dots .dot {
   width: 12px;
@@ -41,4 +43,8 @@
   &:hover {
     opacity: 1;
   }
+}
+
+.flickity-button {
+  opacity: .75;
 }
