@@ -1,4 +1,10 @@
-<small style="color:white;">My Books(<%= books.count %>)</small>
+<div class="nav-filter"> <!-- books -->
+  <%= form_tag library_sources_path, :method => "get" do %>
+    <%= select_tag(:select, options_for_select([["Sort by date", 1], ["Sort by author", 2], ["Sort by title", 3]]), {class: 'filter-input'}) %>
+    <%= submit_tag "👁", :name => nil, class: "btn btn-outline-success my-2 my-sm-0 ml-2" %>
+  <% end %>
+</div>
+<!--<small style="color:white;">My Books(<%#= books.count %>)</small>-->
 <div class="row justify-content-sm-center">
   <% books.each do |book| %>
     <div class="card-source">
