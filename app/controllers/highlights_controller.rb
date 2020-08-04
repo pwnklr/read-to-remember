@@ -1,10 +1,10 @@
 class HighlightsController < ApplicationController
-  before_action :set_highlight, only: [:show, :edit, :update, :destroy, :fav_h, :fav, :unfav_h, :unfav]
+  before_action :set_highlight, only: [:show, :edit, :update, :destroy, :fav, :unfav]
   before_action :set_source, only: [:new, :create]
-  before_action :set_tag, only: [:tags_h, :tags]
+  before_action :set_tag, only: :tags
 
   def index
-    @highlights = Highlight.all.order(created_at: :desc)
+    @highlights = current_user.highlights.includes(:taggings, source: :author).order(created_at: :desc)
   end
 
   # i think we don't need this one
@@ -43,15 +43,9 @@ class HighlightsController < ApplicationController
     redirect_to highlights_path, notice: "Highlight was succsesfully removed!"
   end
 
-  def fav_h
-  end
-
   def fav
     current_user.favorite(@highlight)
     redirect_to highlights_path # do smtng here
-  end
-
-  def unfav_h
   end
 
   def unfav
@@ -60,7 +54,7 @@ class HighlightsController < ApplicationController
   end
 
   def flashcards
-    @highlights = Highlight.all
+    @highlights = current_user.highlights.includes(source: :author)
     @flashcards = []
     if @highlights.empty?
       @msg = "You have no highlights!"
@@ -76,14 +70,15 @@ class HighlightsController < ApplicationController
   end
 
   def favorites
-    @highlights = current_user.all_favorited
-  end
-
-  def tags_h
+    @highlights = current_user.all_favorited.reverse!
   end
 
   def tags
-    @tagged_highlights = Highlight.tagged_with(["#{@tag}"], :any => true)
+    @tagged_highlights = current_user.highlights.includes(:taggings, source: :author).tagged_with(["#{@tag}"], :any => true)
+  end
+
+  def all_tags
+    @all_tags = current_user.highlights.includes(:taggings, source: :author).tag_counts_on(:tags)
   end
 
   private
