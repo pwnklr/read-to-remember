@@ -3,6 +3,7 @@ class HighlightsController < ApplicationController
   before_action :set_source, only: [:new, :create]
   before_action :set_tag, only: :tags
 
+  # i think we don't need this one
   def index
     @highlights = current_user.highlights.includes(:taggings, source: :author).order(created_at: :desc)
   end
@@ -32,7 +33,7 @@ class HighlightsController < ApplicationController
   def update # still wip
     @highlight.update(note_tag_param)
     if @highlight.save
-      redirect_to highlights_path # do smtng here
+      redirect_to favorites_highlights_path # do smtng here
     else
       render :edit
     end
@@ -40,17 +41,17 @@ class HighlightsController < ApplicationController
 
   def destroy
     @highlight.destroy
-    redirect_to highlights_path, notice: "Highlight was succsesfully removed!"
+    redirect_to favorites_highlights_path, notice: "Highlight was succsesfully removed!"
   end
 
   def fav
     current_user.favorite(@highlight)
-    redirect_to highlights_path # do smtng here
+    redirect_to favorites_highlights_path # do smtng here
   end
 
   def unfav
     current_user.unfavorite(@highlight)
-    redirect_to highlights_path # do smtng here
+    redirect_to favorites_highlights_path # do smtng here
   end
 
   def flashcards

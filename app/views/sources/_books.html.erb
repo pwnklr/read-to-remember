@@ -1,11 +1,15 @@
-<div class="nav-filter"> <!-- books -->
-  <%= form_tag library_sources_path, :method => "get" do %>
-    <%= select_tag(:select, options_for_select([["Sort by date", 1], ["Sort by author", 2], ["Sort by title", 3]]), {class: 'filter-input'}) %>
-    <%= submit_tag "👁", :name => nil, class: "btn btn-outline-success my-2 my-sm-0 ml-2" %>
-  <% end %>
+<%= render 'shared/dropdown' %>
+<div style="position: fixed; z-index:900; top: 8vh; width: 100%; padding: 12px 0;background: linear-gradient(180deg, #25265b 10%, #4013a2 100%);">
+  <div class="nav-filter" style="padding-left: 5vw;"> <!-- books -->
+    <%= form_tag library_sources_path, :method => "get" do %>
+      <%= select_tag(:select, options_for_select([["Sort by date", 1], ["Sort by author", 2], ["Sort by title", 3]]), {class: 'filter-input'}) %>
+      <%= submit_tag "Sort", :name => nil, style: "background-color:rgba(126,68,255,1); border:none; font-weight:bold; padding:1px 8px; color: white; border-radius: 8px;" %>
+    <% end %>
+  </div>
 </div>
+
 <!--<small style="color:white;">My Books(<%#= books.count %>)</small>-->
-<div class="container">
+<div class="container" style="padding-bottom: 64px; padding-top: 22vh;min-height: 100vh;">
 <div class="row justify-content-sm-center">
   <% books.each do |book| %>
     <div class="card-source">
