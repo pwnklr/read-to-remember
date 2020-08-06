@@ -79,7 +79,7 @@ class HighlightsController < ApplicationController
   end
 
   def all_tags
-    @all_tags = current_user.highlights.includes(:taggings, source: :author).tag_counts_on(:tags)
+    @all_tags = current_user.highlights.includes(:taggings, source: :author).tag_counts_on(:tags).order(created_at: :desc)
   end
 
   private

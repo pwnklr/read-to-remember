@@ -27,7 +27,7 @@
               </p>
             <% else %>
               <p>
-                <%= link_to fav_highlight_path(h) do %>
+                <%= link_to fav_highlight_path(h), remote: true  do %>
                   <i class="far fa-heart"></i>
                 <% end %>
               </p>
@@ -46,7 +46,7 @@
             </p>
           </div>
           <div class="delete">
-            <p><%= link_to h, method: :delete, data: {confirm: "Are you sure?"} do %>
+            <p><%= link_to h, method: :delete, data: {confirm: "Are you sure?"}, remote: true do %>
               <i class="far fa-trash-alt"></i></p>
             <% end %>
           </div>

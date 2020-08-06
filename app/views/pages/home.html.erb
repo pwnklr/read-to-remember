@@ -17,10 +17,9 @@
     </div>
     <div class="background-color", style="min-height: 100vh;">
        <h2>Highlight of the day</h2>
-       <div class="container" style="text-align: justify; vertical-align: middle;">
-         <% highlight = current_user.highlights.sample %>
-         <p style="color:white;"><%= highlight.content %></p>
-         <p style="color:white; position:absolute;left:50%;transform:translateX(-50%);"><%= highlight.source.author.name %></p>
+       <div class="container" style="text-align: center;">
+         <p style="color:white;"><em><%= @highlight.content %></em></p>
+         <p style="color:white;"><%= @highlight.source.author.name %></p>
        </div>
        <%= render 'shared/navbar' %>
     </div>

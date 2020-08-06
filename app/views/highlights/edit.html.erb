@@ -6,7 +6,7 @@
   <small style="color:white;"><%= @highlight.source.title %></small>
   <br>
   <div class="card" style="width: 86%;">
-    <%= simple_form_for(@highlight) do |f| %>
+    <%= simple_form_for([@highlight], remote: true) do |f| %>
       <%= f.input :my_note, label: false %>
       <%= f.submit "Save", style: "background-color:rgba(126,68,255,1); border:none; font-weight:bold; padding:4px 8px; color: white; border-radius: 16px;" %>
     <% end %>

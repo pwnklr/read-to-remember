@@ -3,13 +3,13 @@
   <div class="nav-filter" style="padding-left: 5vw;"> <!-- books -->
     <%= form_tag library_sources_path, :method => "get" do %>
       <%= select_tag(:select, options_for_select([["Sort by date", 1], ["Sort by author", 2], ["Sort by title", 3]]), {class: 'filter-input'}) %>
-      <%= submit_tag "Sort", :name => nil, style: "background-color:rgba(126,68,255,1); border:none; font-weight:bold; padding:1px 8px; color: white; border-radius: 8px;" %>
+      <%= submit_tag "Sort!", :name => nil, style: "background-color:rgba(126,68,255,1); border:none; font-weight:bold; padding:1px 8px; color: white; border-radius: 8px;" %>
     <% end %>
   </div>
 </div>
 
 <!--<small style="color:white;">My Books(<%#= books.count %>)</small>-->
-<div class="container" style="padding-bottom: 64px; padding-top: 22vh;min-height: 100vh;">
+<div class="container" style="padding-bottom: 64px; padding-top: 20vh;min-height: 100vh;">
 <div class="row justify-content-sm-center">
   <% books.each do |book| %>
     <div class="card-source">
