@@ -17,7 +17,7 @@ puts "starting seeds"
 
 # user
   new_user = User.new(
-    email: "readtoremember@gmail.com",
+    email: "readtorememberrrr@gmail.com",
     password: "readtoremember")
   puts "user not saved"
     # image = URI.open("https://avatars1.githubusercontent.com/u/15158574?s=400&u=323d8c6b203f88a8e1ea6fdf359977e1d7aa79c5&v=4")
@@ -108,7 +108,7 @@ puts "starting seeds"
 # 7 book
   author_7 = Author.create!(name: "Caroline Criado Perez, Anna Sak")
   new_book = Source.new(
-    title: "Invisible Women: Data Bias in a Worlds Designed for Men",
+    title: "Invisible Women: Data Bias in a World Designed for Men",
     publishing_year: "2019",
     category: "book")
     image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595532090/7_giwjxu.jpg")
@@ -265,7 +265,7 @@ puts "starting seeds"
   # 9 article
   author_9 = Author.create!(name: "Laura M. Halson")
   new_article = Source.new(
-    title: "Are We Living in a Post-Happines World?",
+    title: "Are We Living in a Post-Happiness World?",
     publishing_year: "2019",
     category: "article")
     image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595678282/9.9_jqb6hv.png")
@@ -305,7 +305,7 @@ Another in the day.",
 
 # 2 highlight
   highlight_2 = Highlight.new(
-    content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    content: "So allowing ourselves to be bored is not as simple as just managing our screen time better. We need to change our attitude to boredom if we are to help it fuel our creativity. “You need to give yourself permission first and foremost,” says Deakin from Huge. “And allow yourself to say, ‘Fuck you, world, I’m busy getting bored.”",
     page: 210)
 
    # highlight_2.tag_list ="feminism"
@@ -315,7 +315,7 @@ Another in the day.",
 
 # 3 highlight
 highlight_3 = Highlight.new(
-  content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+  conent: "Learning doesn’t always have to be intentional, but can be something that just happens naturally",    
   page: 89)
 
  # highlight_3.tag_list ="politics"
@@ -325,7 +325,7 @@ highlight_3 = Highlight.new(
 
 # 4 highlight
 highlight_4 = Highlight.new(
-  content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+  content: "No matter what you’ve done, even if you regret it, even if you don’t know what the hell to do next, every single thing that happens to you has the potential to open new doors. It happened for a reason—and it’s still taking you somewhere, even if you can’t see it right now.",
   page: 2)
 
   #highlight_4.tag_list ="biography"
@@ -335,7 +335,7 @@ highlight_4 = Highlight.new(
 
 # 5 highlight
   highlight_5 = Highlight.new(
-    content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    content: "Today, researchers find it troubling that businesses have co-opted joy to market soda pop, productivity planners and storage containers. “Contentment is the next growth industry,” Dr. Keltner said. “Marketers will tell you buying things will make you happy even though the opposite is true.”",
     page: 210)
 
    # highlight_5.tag_list ="race"
@@ -345,7 +345,7 @@ highlight_4 = Highlight.new(
 
 # 6 highlight
   highlight_6 = Highlight.new(
-    content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    content: "Global warming may seem like a distended morality tale playing out over several centuries and inflicting a kind of Old Testament retribution on the great-great-grandchildren of those responsible, since it was carbon burning in eighteenth-century England that lit the fuse of everything that has followed. But that is a fable about historical villainy that acquits those of us alive today—and unfairly. The majority of the burning has come since the premiere of Seinfeld. Since the end of World War II, the figure is about 85 percent. The story of the industrial world’s kamikaze mission is the story of a single lifetime—the planet brought from apparent stability to the brink of catastrophe in the years between a baptism or bar mitzvah and a funeral.",
     page: 14)
 
    # highlight_6.tag_list ="climat"
@@ -355,7 +355,7 @@ highlight_4 = Highlight.new(
 
 # 7 highlight
   highlight_7 = Highlight.new(
-    content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    conent: "Although black people had been fighting for freedom “for more than a hundred years,” the only thing that was “explicitly certain is that the struggle for it will endure.”",
     page: 165)
 
    # highlight_7.tag_list ="science"
@@ -365,7 +365,7 @@ highlight_4 = Highlight.new(
 
 # 8 highlight
   highlight_8 = Highlight.new(
-    content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    content: "It doesn’t matter what anybody else thinks of your life. All that matters is what you think of it, and what you decide to make of it.",
     page: 1)
 
     #highlight_8.tag_list ="politics"
@@ -375,7 +375,7 @@ highlight_4 = Highlight.new(
 
 # 9 highlight
   highlight_9 = Highlight.new(
-    content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    conent: "Legal standards for retaliation – one of the biggest fears behind non-reporting – need to change to protect [women reporting crimes]. Culturally, it is still said “women allege” or “claim” they were sexually assaulted. Those accused “deny what was alleged”. What if we changed the emphasis and said that survivors “report” and the accused “alleges” or “claims” it didn’t happen?",
     page: 4)
 
     #highlight_9.tag_list ="#psychology"
@@ -385,18 +385,13 @@ highlight_4 = Highlight.new(
 
 # 10 highlight
   highlight_10 = Highlight.new(
-    content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    content: "Leaders are in love – in love with the people who do the work, with what their organizations practice, and with their customers."
     page: 10, my_note: "My note #sociology")
 
     #highlight_10.tag_list ="#sociology"
     highlight_10.source = Source.all.sample
     highlight_10.user = new_user
     highlight_10.save!
-
-# <--- add, once models are created!
-# class Article < ApplicationRecord
-#   has_one_attached :photo
-#  end
 
 new_user.favorite(highlight_1)
 new_user.favorite(highlight_6)
