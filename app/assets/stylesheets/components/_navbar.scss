@@ -1,9 +1,12 @@
 .navbar-lewagon {
-  justify-content: space-between;
+  justify-content: space-around;
   background: #24265C;
   position: fixed;
-  bottom: 0;
+  bottom: -1px;
   width: 100%;
+  z-index: 2;
+  border-top-left-radius: 48px;
+  border-top-right-radius: 48px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -12,4 +15,25 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 60px;
+}
+
+#navbarDropdown.navbar-brand.dropdown-toggle {
+ margin: 40px 0;
+}
+
+.dropdown-menu {
+  background: #24265C;
+  border-radius: 16px;
+  border: 1px solid #fff;
+  opacity: .9;
+}
+
+.dropdown-item {
+  color: #fff;
+  font-weight: 600;
+}
+
+.navbar-brand .dropdown-toggle {
+  width: 60px;
+  height: 40px;
 }

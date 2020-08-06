@@ -1,8 +1,12 @@
-<div class="container">
-  <h1 style="color: white;">My tags</h1>
+<%= render 'shared/dropdown' %>
+<div style="position: fixed; z-index:900; top: 8vh; width: 100%; padding: 12px 0;background:linear-gradient(180deg,  #25265b 10%, #4013a2 50%, #25265b 100%);">
+  <h1 style="color: white; padding-left: 5vw;padding-top: 8px;">My tags (<%= @all_tags.count %>)</h1>
+</div>
+<div class="container" style="padding-bottom: 56px; padding-top: 18vh; min-height: 100vh;">
   <div style="display:flex;flex-wrap: wrap;">
-  <% @all_tags.each do |t| %>
-    <p style="padding-left: .7vw;"><%= link_to t.name, tags_highlights_path(t.name), class: "tags", style: "color: white;" %></p>
-  <% end %>
+    <% @all_tags.each do |t| %>
+      <p style="padding-left: 1vw;"><%= link_to t.name, tags_highlights_path(t.name), class: "tags", style: "color: white;" %></p>
+    <% end %>
+  </div>
 </div>
-</div>
+

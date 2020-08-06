@@ -1,14 +1,14 @@
 <!-- wip - render this form -->
-<div class="container">
-<p><%= link_to "All highlights", highlights_path, style: "color:white;" %></p>
-<small style="color:white;"><%= @highlight.source.author.name %></small>
-<br>
-<small style="color:white;"><%= @highlight.source.title %></small>
-<br>
-<small style="color:white;"><%= @highlight.content %></small>
-
-<%= simple_form_for(@highlight) do |f| %>
-  <%= f.input :my_note %>
-  <%= f.submit "Save" %>
-<% end %>
+<%= render 'shared/dropdown' %>
+<div class="container" style="padding-bottom: 64px; padding-top: 11vh; height: 100vh;">
+  <small style="color:white;"><%= @highlight.source.author.name %></small>
+  <br>
+  <small style="color:white;"><%= @highlight.source.title %></small>
+  <br>
+  <div class="card" style="width: 86%;">
+    <%= simple_form_for([@highlight], remote: true) do |f| %>
+      <%= f.input :my_note, label: false %>
+      <%= f.submit "Save", style: "background-color:rgba(126,68,255,1); border:none; font-weight:bold; padding:4px 8px; color: white; border-radius: 16px;" %>
+    <% end %>
+  </div>
 </div>

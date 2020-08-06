@@ -1,45 +1,69 @@
 <div>
-  <div class="background-image">
-    <%= image_tag "logo.png" %>
-    <div class="header">
-
-    <h1 id="title">Read to remember</h1>
-    <p id="description">Your one stop place to collect, review and learn from your ebook and article highlights.</p>
-    </div>
-
-    <div class="button-homepage">
-    <%= link_to "Sign up with Amazon Kindle", "#", class: "big-button" %>
-    </div>
-
-    <div class="button-homepage">
-    <%= link_to "Sign in", "/users/sign_in", class: "big-button" %>
-    </div>
-
-  </div>
-  <div class="background-color">
-    <h2>Why you need Read to remember?</h2>
-    <div class="functions">
-    <p id="function-1"><strong>Revise</strong> your highlights from Kindle using our flashcard function</p>
-    <p id="function-2">Store all your highlights from Kindle so you <strong>never forget</strong> anything again</p>
-    <p id="function-3"><strong>Favorite and share</strong> your highlights on Twiter and Instagram</p>
-    </div>
-
-    <h2>Reviews</h2>
-    <div class="reviews">
-      <div id="review-1">
-        <p>"Using this app the past few months! I can't imagine my life without it"</p>
-        <div class="name-tag">
-          <%= image_tag "kal-visuals-b1Hg7QI-zcc-unsplash.jpg", class: "avatar", alt: "avatar" %>
-          <p class="name">Alexis Stylianou</p>
+  <!-- user's home-page -->
+  <% if current_user %>
+    <div class="background-image" style="height: 40vh;">
+      <li class="nav-item dropdown">
+        <%= image_tag "logo.png", class: "navbar-brand dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%= link_to "Home", "/", class: "dropdown-item" %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </div>
+      </li>
+
+      <div class="header">
+        <h1 id="title" style="position:absolute; top: 6%; left:50%; transform:translateX(-50%);">Read to remember</h1>
+      <!--<p id="description">Your one stop place to collect, review and learn from your ebook and article highlights.</p>-->
       </div>
-      <div id="review-2">
-        <p>"This app has changed the way I revise my notes!"</p>
+    </div>
+    <div class="background-color", style="min-height: 100vh;">
+       <h2>Highlight of the day</h2>
+       <div class="container" style="text-align: center;">
+         <p style="color:white;"><em><%= @highlight.content %></em></p>
+         <p style="color:white;"><%= @highlight.source.author.name %></p>
+       </div>
+       <%= render 'shared/navbar' %>
+    </div>
+  <!-- visitor'shome-page -->
+  <% else %>
+    <div class="background-image">
+      <%= link_to "/", class: "navbar-brand" do %>
+       <%= image_tag "logo.png" %>
+      <% end %>
+      <div class="header">
+        <h1 id="title">Read to remember</h1>
+        <p id="description">Your one stop place to collect, review and learn from your ebook and article highlights.</p>
+      </div>
+      <div class="button-homepage">
+        <%= link_to "Sign up with Amazon Kindle", "#", class: "big-button" %>
+      </div>
+      <div class="button-homepage">
+        <%= link_to "Sign in", "/users/sign_in", class: "big-button" %>
+      </div>
+    </div>
+    <div class="background-color">
+      <h2>Why you need Read to remember?</h2>
+      <div class="functions">
+        <p id="function-1"><strong>Revise</strong> your highlights from Kindle using our flashcard function</p>
+        <p id="function-2">Store all your highlights from Kindle so you <strong>never forget</strong> anything again</p>
+        <p id="function-3"><strong>Favorite and share</strong> your highlights on Twiter and Instagram</p>
+      </div>
+      <h2>Reviews</h2>
+      <div class="reviews">
+        <div id="review-1">
+          <p>"Using this app the past few months! I can't imagine my life without it"</p>
+          <div class="name-tag">
+            <%= image_tag "kal-visuals-b1Hg7QI-zcc-unsplash.jpg", class: "avatar", alt: "avatar" %>
+            <p class="name">Alexis Stylianou</p>
+          </div>
+        </div>
+        <div id="review-2">
+          <p>"This app has changed the way I revise my notes!"</p>
           <div class="name-tag">
             <%= image_tag "christian-buehner-DItYlc26zVI-unsplash.jpg", class: "avatar", alt: "avatar" %>
             <p class="name">Patrik Winkler</p>
           </div>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>

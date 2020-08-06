@@ -8,7 +8,7 @@
         <p class="page">Page <%= h.page %></p>
         <!-- -->
         <% if h.my_note %>
-          <div class="card", style="width:96%;">
+          <div class="card", style="width:86%;">
             <p><%= h.h_note %></p>
             <div style="display:flex;flex-wrap: wrap;">
               <% h.tag_list.each do |t| %>
@@ -27,7 +27,7 @@
               </p>
             <% else %>
               <p>
-                <%= link_to fav_highlight_path(h) do %>
+                <%= link_to fav_highlight_path(h), remote: true  do %>
                   <i class="far fa-heart"></i>
                 <% end %>
               </p>
@@ -46,7 +46,7 @@
             </p>
           </div>
           <div class="delete">
-            <p><%= link_to h, method: :delete, data: {confirm: "Are you sure?"} do %>
+            <p><%= link_to h, method: :delete, data: {confirm: "Are you sure?"}, remote: true do %>
               <i class="far fa-trash-alt"></i></p>
             <% end %>
           </div>

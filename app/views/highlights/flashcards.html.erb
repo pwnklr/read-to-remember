@@ -1,7 +1,8 @@
-<div class="container">
-  <p><%= link_to "All highlights", highlights_path, style: "color:white;" %></p>
-  <h1 style="color:white;">Flashcards (<%= @flashcards.count %>)</h1>
-
+<%= render 'shared/dropdown' %>
+<div style="position: fixed; z-index:900; top: 8vh; width: 100%; padding: 12px 0;background:linear-gradient(180deg,  #25265b 10%, #4013a2 50%, #25265b 100%);">
+  <h1 style="color:white; padding-left: 5vw; padding-top: 8px;">Flashcards</h1>
+</div>
+<div class="container" style="padding-bottom: 64px; padding-top: 20vh; min-height: 109%;">
   <div class="carousel">
     <% @flashcards.each do |h| %>
       <div class="card carousel-cell">
@@ -10,7 +11,7 @@
           <p><%= h.content %></p>
           <p class="page">Page <%= h.page %></p>
         <% if h.my_note %>
-          <div class="comment">
+          <div class="card" style="width:86%;">
             <p><%= h.h_note %></p>
             <div style="display:flex;flex-wrap: wrap;">
               <% h.tag_list.each do |t| %>
