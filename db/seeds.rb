@@ -315,7 +315,7 @@ Another in the day.",
 
 # 3 highlight
 highlight_3 = Highlight.new(
-  conent: "Learning doesn’t always have to be intentional, but can be something that just happens naturally",    
+  content: "Learning doesn’t always have to be intentional, but can be something that just happens naturally",
   page: 89)
 
  # highlight_3.tag_list ="politics"
@@ -355,7 +355,7 @@ highlight_4 = Highlight.new(
 
 # 7 highlight
   highlight_7 = Highlight.new(
-    conent: "Although black people had been fighting for freedom “for more than a hundred years,” the only thing that was “explicitly certain is that the struggle for it will endure.”",
+    content: "Although black people had been fighting for freedom “for more than a hundred years,” the only thing that was “explicitly certain is that the struggle for it will endure.”",
     page: 165)
 
    # highlight_7.tag_list ="science"
@@ -375,7 +375,7 @@ highlight_4 = Highlight.new(
 
 # 9 highlight
   highlight_9 = Highlight.new(
-    conent: "Legal standards for retaliation – one of the biggest fears behind non-reporting – need to change to protect [women reporting crimes]. Culturally, it is still said “women allege” or “claim” they were sexually assaulted. Those accused “deny what was alleged”. What if we changed the emphasis and said that survivors “report” and the accused “alleges” or “claims” it didn’t happen?",
+    content: "Legal standards for retaliation – one of the biggest fears behind non-reporting – need to change to protect [women reporting crimes]. Culturally, it is still said “women allege” or “claim” they were sexually assaulted. Those accused “deny what was alleged”. What if we changed the emphasis and said that survivors “report” and the accused “alleges” or “claims” it didn’t happen?",
     page: 4)
 
     #highlight_9.tag_list ="#psychology"
@@ -385,17 +385,97 @@ highlight_4 = Highlight.new(
 
 # 10 highlight
   highlight_10 = Highlight.new(
-    content: "Leaders are in love – in love with the people who do the work, with what their organizations practice, and with their customers."
+    content: "Leaders are in love – in love with the people who do the work, with what their organizations practice, and with their customers.",
     page: 10, my_note: "My note #sociology")
 
-    #highlight_10.tag_list ="#sociology"
     highlight_10.source = Source.all.sample
     highlight_10.user = new_user
     highlight_10.save!
 
+  highlight_11 = Highlight.new(
+    content: "How might I gather all my highlights from Kindle and put them into a personal online archive, where I can share, browse, and reflect on everything I’ve read?",
+    page: 15, my_note: "#kindle")
+
+    highlight_11.source = Source.all.sample
+    highlight_11.user = new_user
+    highlight_11.save!
+
+  highlight_12 = Highlight.new(
+    content: "I wanted total ownership and database-level access to my raw book and highlight data so that I could perform more advanced analysis and improvements.",
+    page: 25, my_note: "#kindle")
+
+    highlight_12.source = Source.all.sample
+    highlight_12.user = new_user
+    highlight_12.save!
+
+  highlight_13 = Highlight.new(
+    content: "One of the original reasons I wanted a place to collect my highlights was because I felt it would help me better remember what I read and retain those learnings.",
+    page: 9, my_note: "#kindle")
+
+    highlight_13.source = Source.all.sample
+    highlight_13.user = new_user
+    highlight_13.save!
+
+  highlight_14 = Highlight.new(
+    content: "We want to communicate those with our user. We also want to provide links for the user to navigate our Devise pages.",
+    page: 63, my_note: "#devise")
+
+    highlight_14.source = Source.all.sample
+    highlight_14.user = new_user
+    highlight_14.save!
+
+  highlight_15 = Highlight.new(
+    content: "You should see a “Sign in with Facebook” link has automatically been added to your unauthenticated views. If you did everything correctly, you should be signed in!",
+    page: 69, my_note: "#devise")
+
+    highlight_15.source = Source.all.sample
+    highlight_15.user = new_user
+    highlight_15.save!
+
+  highlight_16 = Highlight.new(
+    content: "Nokogiri is the Japanese translation for a fine-toothed saw used in woodwork. It’s also a Ruby gem that allows us to parse HTML, ripping through a massive string and allowing us to access the finer nested nodes within it.",
+    page: 19, my_note: "#nokogiri")
+
+    highlight_16.source = Source.all.sample
+    highlight_16.user = new_user
+    highlight_16.save!
+
+  highlight_17 = Highlight.new(
+    content: "If you haven’t added the Nokogiri gem to your Gemfile, bundled, and ran your ActiveRecord migrations, do that now. Time for the fun part.",
+    page: 20, my_note: "#nokogiri")
+
+    highlight_17.source = Source.all.sample
+    highlight_17.user = new_user
+    highlight_17.save!
+
+  highlight_18 = Highlight.new(
+    content: "I know it looks like there’s a lot going on here, but the logic in this method is actually quite simple.",
+    page: 82, my_note: "#simple")
+
+    highlight_18.source = Source.all.sample
+    highlight_18.user = new_user
+    highlight_18.save!
+
+  highlight_19 = Highlight.new(
+    content: "Ready Steady ??.. Let’s do it.",
+    page: 12)
+
+    highlight_19.source = Source.all.sample
+    highlight_19.user = new_user
+    highlight_19.save!
+
+  highlight_20 = Highlight.new(
+    content: "If you’re new to developing Rails applications, you’ve probably come across the term N + 1 queries.",
+    page: 197, my_note: "#queries")
+
+    highlight_20.source = Source.all.sample
+    highlight_20.user = new_user
+    highlight_20.save!
+
 new_user.favorite(highlight_1)
 new_user.favorite(highlight_6)
 new_user.favorite(highlight_10)
+new_user.favorite(highlight_16)
 new_user.save!
 
 puts "Done!"
