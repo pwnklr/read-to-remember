@@ -63,7 +63,7 @@ class HighlightsController < ApplicationController
   end
 
   def flashcards
-    @flashcards = current_user.generate_daily_highlights
+    @flashcards = current_user.flashcards
   end
 
   def favorites

@@ -1,7 +1,7 @@
 class UserMailer < ApplicationMailer
   def daily_highlights(user)
     @user = user
-    @flashcards = @user.highlights.where(display_on: Date.today)
+    @flashcards = @user.flashcards
 
     mail(
       from: "dailyhighlights@readtoremember.xyz",
