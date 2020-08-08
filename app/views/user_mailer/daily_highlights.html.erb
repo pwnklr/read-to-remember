@@ -17,10 +17,15 @@
     <br>
     <span style="font-size:14px;font-family:bookerly"><%= flashcard.content %></span>
     <br>
-    <span style="font-size:14px;font-family:bookerly"><%= flashcard.h_note %></span>
-    <span style="font-size:14px;font-family:bookerly"><%= flashcard.tag_list %></span>
     <br>
+    <% unless flashcard.my_note.blank? %>
+      <span style="color:#9a9a9a;font-size:12px;font-family:sans-serif">My notes</span><br>
+      <span style="color:#474545;font-size:14px;font-family:bookerly"><i><%= "#{flashcard.h_note} - " %><%= flashcard.tag_list %></i></span>
+      <br>
+      <br>
+    <% end %>
     <br>
+
     <span style="color:#cccccc;">-----------------------------------------</span>
     <br>
     <br>
@@ -29,7 +34,7 @@
     <br>
     <br>
 
-    <p style="color:#9a9a9a;font-size:12px;font-family:sans-serif">Thanks for stopping by - have a great day,<br>
+    <p style="color:#9a9a9a;font-size:12px;font-family:sans-serif">Thanks for stopping by, see you tomorrow,<br>
     Your Read to Remember team ❤️</p>
   </body>
 </html>
