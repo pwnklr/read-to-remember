@@ -1,3 +1,5 @@
+require 'kindle_highlights'
+
 class HighlightsController < ApplicationController
   before_action :set_highlight, only: [:show, :edit, :update, :destroy, :fav, :unfav]
   before_action :set_source, only: [:new, :create]
@@ -5,26 +7,11 @@ class HighlightsController < ApplicationController
 
   # i think we don't need this one
   def index
-    @highlights = current_user.highlights.includes(:taggings, source: :author).order(created_at: :desc)
+    #@highlights = current_user.highlights.includes(:taggings, source: :author).order(created_at: :desc)
   end
 
   # i think we don't need this one
   def show
-  end
-
-  def new
-    @highlight = Highlight.new
-    @highlight.user = current_user
-    @highlight.source = @source
-  end
-
-  def create
-    @highlight = Highlight.new(highlight_params)
-    if @highlight.save
-      redirect_to highlights_path
-    else
-      render :new
-    end
   end
 
   def edit
@@ -46,12 +33,12 @@ class HighlightsController < ApplicationController
 
   def fav
     current_user.favorite(@highlight)
-    redirect_to favorites_highlights_path # do smtng here
+    redirect_back(fallback_location: 'pages#home')
   end
 
   def unfav
     current_user.unfavorite(@highlight)
-    redirect_to favorites_highlights_path # do smtng here
+    redirect_back(fallback_location: 'pages#home')
   end
 
   def flashcards

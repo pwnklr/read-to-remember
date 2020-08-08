@@ -15,11 +15,17 @@
       <!--<p id="description">Your one stop place to collect, review and learn from your ebook and article highlights.</p>-->
       </div>
     </div>
+<!--
+<#% if current_user.kindle %>
+<#% else %> -->
+   <p style="background-color:white" > <%= link_to "Connect Kindle", new_kindle_path %> </p>
+<!--<#% end %> -->
+
     <div class="background-color", style="min-height: 100vh;">
        <h2>Highlight of the day</h2>
        <div class="container" style="text-align: center;">
-         <p style="color:white;"><em><%= @highlight.content %></em></p>
-         <p style="color:white;"><%= @highlight.source.author.name %></p>
+         <p style="color:white;"><em><%#= @highlight.content %></em></p>
+         <p style="color:white;"><%#= @highlight.source.author.name %></p>
        </div>
        <%= render 'shared/navbar' %>
     </div>
