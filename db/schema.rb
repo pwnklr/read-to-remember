@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2020_08_08_093651) do
     t.integer "page"
     t.text "my_note"
     t.text "h_note"
+    t.date "display_on"
     t.index ["source_id"], name: "index_highlights_on_source_id"
     t.index ["user_id"], name: "index_highlights_on_user_id"
   end
