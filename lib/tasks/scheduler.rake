@@ -6,5 +6,8 @@ end
 # desc "Reset Daily Flashcards in App"
 # task :set_new_flashcards => :environment do
 
+desc "Set daily flashards"
+task :set_daily_flashcards => :environment do
+  User.set_daily_flashcards
+end
 
-# end

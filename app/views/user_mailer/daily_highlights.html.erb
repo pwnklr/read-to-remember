@@ -1,23 +1,29 @@
-<h2>READ TO REMEMBER</h2>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>READ TO REMEMBER</h1>
+    <p>Here are your daily highlights. If you prefer to do review them within the app, go to</p>
+    <br>
+    <br>
+    <h2>DAILY HIGHLIGHTS</h2>
 
-<p>Here are your daily highlights. If you prefer to do review them within the app, go to</p>
+    <% @flashcards.each do |flashcard| %>
+
+    <p><%= flashcard.source.title %></h3>
+    <p color="grey">by <%= flashcard.source.author.name %></p>
+    <p>"<%= flashcard.content %>"</p>
+    <br>
+    <p><%= flashcard.content %></p>
+
+    <br>
+    -----------------------------------------
+    <% end %>
 
 
 
-
-<% @flashcards.each do |flashcard| %>
-
-<h3><%= flashcard.source.title %></h3>
-<p color="grey"><%= flashcard.source.author.name %></p>
-<p><%= flashcard.content %></p>
-
-<br>
-<br>
------------------------------------------
-<% end %>
-
------------------------------------------
-
-<p>Thanks for stopping by - have a great day.</p>
-
-
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

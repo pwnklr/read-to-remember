@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_29_093234) do
+ActiveRecord::Schema.define(version: 2020_08_08_091645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,9 @@ ActiveRecord::Schema.define(version: 2020_07_29_093234) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "page"
+    t.text "my_note"
+    t.text "h_note"
+    t.date "display_on"
     t.index ["source_id"], name: "index_highlights_on_source_id"
     t.index ["user_id"], name: "index_highlights_on_user_id"
   end
@@ -85,7 +88,9 @@ ActiveRecord::Schema.define(version: 2020_07_29_093234) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "category"
+    t.bigint "user_id"
     t.index ["author_id"], name: "index_sources_on_author_id"
+    t.index ["user_id"], name: "index_sources_on_user_id"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -134,5 +139,6 @@ ActiveRecord::Schema.define(version: 2020_07_29_093234) do
   add_foreign_key "highlights", "users"
   add_foreign_key "notes", "highlights"
   add_foreign_key "sources", "authors"
+  add_foreign_key "sources", "users"
   add_foreign_key "taggings", "tags"
 end

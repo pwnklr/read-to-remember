@@ -12,12 +12,21 @@ class User < ApplicationRecord
     end
   end
 
-  def generate_daily_highlights
-    daily_highlights = []
-    while daily_highlights < 7 do
-      daily_highlights <<  highlights.sample
-      daily_highlights.uniq!
+  def self.set_daily_flashcards
+    User.all.each do |user|
+      daily_flashcards = user.generate_daily_highlights
+      daily_flashcards.each do |flashcard|
+        flashcard.display_on = Date.today
+        flashcard.save
+      end
     end
-    daily_highlights
+  end
+
+  def generate_daily_highlights
+    highlights.sample(7)
+  end
+
+  def flashcards
+    highlights.where(display_on: Date.today)
   end
 end
