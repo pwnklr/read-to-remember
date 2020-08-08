@@ -55,19 +55,7 @@ class HighlightsController < ApplicationController
   end
 
   def flashcards
-    @highlights = current_user.highlights.includes(source: :author)
-    @flashcards = []
-    if @highlights.empty?
-      @msg = "You have no highlights!"
-    elsif @highlights.count <= 7
-      @flashcards = @highlights
-    else
-      # run this every 24 hours or smtng like that => gem whenever => https://github.com/javan/whenever ?
-      while @flashcards.length < 7 do
-        @flashcards <<  @highlights.sample
-        @flashcards.uniq!
-      end
-    end
+    @flashcards = current_user.flashcards
   end
 
   def favorites
