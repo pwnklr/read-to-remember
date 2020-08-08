@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :highlights, dependent: :destroy
+  has_many :sources, dependent: :destroy
   acts_as_favoritor
 
   def self.send_daily_highlights

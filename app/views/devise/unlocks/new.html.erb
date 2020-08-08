@@ -1,3 +1,9 @@
+<div class="background-image">
+  <%= link_to "/", class: "navbar-brand" do %>
+    <%= image_tag "logo.png" %>
+  <% end %>
+</div>
+<div class="container" style="height:100vh;padding: 32px;">
 <h2>Resend unlock instructions</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
@@ -17,3 +23,4 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>

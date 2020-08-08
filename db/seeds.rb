@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 require 'faker'
 require "open-uri"
 
@@ -36,6 +28,7 @@ puts "starting seeds"
       new_book_1.photo.attach(io: image_1, filename: "#{new_book_1.title}", content_type: 'image/png')
 
   new_book_1.author = author_1
+  new_book_1.user = new_user
   puts new_book_1.author.id
   new_book_1.save!
 
@@ -49,6 +42,7 @@ puts "starting seeds"
     new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
 
   new_book.author = author_2
+  new_book.user = new_user
   new_book.save!
 
 # 3 book
@@ -61,6 +55,7 @@ puts "starting seeds"
     new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
 
   new_book.author = author_3
+  new_book.user = new_user
   new_book.save!
 
 # 4 book
@@ -73,6 +68,7 @@ puts "starting seeds"
     new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
 
   new_book.author = author_4
+  new_book.user = new_user
   new_book.save!
 
 # 5 book
@@ -85,6 +81,7 @@ puts "starting seeds"
     new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
 
   new_book.author = author_5
+  new_book.user = new_user
   new_book.save!
 
 # 6 book
@@ -97,18 +94,20 @@ puts "starting seeds"
     new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
 
   new_book.author = author_6
+  new_book.user = new_user
   new_book.save!
 
 # 7 book
   author_7 = Author.create!(name: "Caroline Criado Perez, Anna Sak")
   new_book = Source.new(
-    title: "Invisible Women: Data Bias in a Worlds Designed for Men",
+    title: "Invisible Women: Data Bias in a World Designed for Men",
     publishing_year: "2019",
     category: "book")
     image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595532090/7_giwjxu.jpg")
     new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
 
   new_book.author = author_7
+  new_book.user = new_user
   new_book.save!
 
 # 8 book
@@ -121,6 +120,7 @@ puts "starting seeds"
     new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
 
   new_book.author = author_8
+  new_book.user = new_user
   new_book.save!
 
 # 9 book
@@ -133,6 +133,7 @@ puts "starting seeds"
     new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
 
   new_book.author = author_9
+  new_book.user = new_user
   new_book.save!
 
 # 10 book
@@ -145,6 +146,7 @@ puts "starting seeds"
     new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
 
   new_book.author = author_10
+  new_book.user = new_user
   new_book.save!
 
 # articles
@@ -158,6 +160,7 @@ puts "starting seeds"
       new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
   new_article.author = author_1
+  new_article.user = new_user
   new_article.save!
 
   # 2 article
@@ -170,6 +173,7 @@ puts "starting seeds"
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
     new_article.author = author_2
+    new_article.user = new_user
     new_article.save!
 
   # 3 article
@@ -182,6 +186,7 @@ puts "starting seeds"
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
     new_article.author = author_3
+    new_article.user = new_user
     new_article.save!
 
   # 4 article
@@ -194,6 +199,7 @@ puts "starting seeds"
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
     new_article.author = author_4
+    new_article.user = new_user
     new_article.save!
 
   # 5 article
@@ -206,6 +212,7 @@ puts "starting seeds"
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
     new_article.author = author_5
+    new_article.user = new_user
     new_article.save!
 
   # 6 article
@@ -218,6 +225,7 @@ puts "starting seeds"
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
     new_article.author = author_6
+    new_article.user = new_user
     new_article.save!
 
   # 7 article
@@ -230,6 +238,7 @@ puts "starting seeds"
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
     new_article.author = author_7
+    new_article.user = new_user
     new_article.save!
 
   # 8 article
@@ -242,18 +251,20 @@ puts "starting seeds"
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
     new_article.author = author_8
+    new_article.user = new_user
     new_article.save!
 
   # 9 article
   author_9 = Author.create!(name: "Laura M. Halson")
   new_article = Source.new(
-    title: "Are We Living in a Post-Happines World?",
+    title: "Are We Living in a Post-Happiness World?",
     publishing_year: "2019",
     category: "article")
     image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595678282/9.9_jqb6hv.png")
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
     new_article.author = author_9
+    new_article.user = new_user
     new_article.save!
 
   # 10 article
@@ -266,6 +277,7 @@ puts "starting seeds"
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
     new_article.author = author_10
+    new_article.user = new_user
     new_article.save!
 
 #highlights
@@ -278,109 +290,184 @@ To serve one master in the night,
 Another in the day.",
     page: 20)
 
-    highlight_1.tag_list ="poetry"
+   # highlight_1.tag_list ="poetry"
     highlight_1.source = new_book_1
     highlight_1.user = new_user
     highlight_1.save!
 
 # 2 highlight
   highlight_2 = Highlight.new(
-    content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    content: "So allowing ourselves to be bored is not as simple as just managing our screen time better. We need to change our attitude to boredom if we are to help it fuel our creativity. “You need to give yourself permission first and foremost,” says Deakin from Huge. “And allow yourself to say, ‘Fuck you, world, I’m busy getting bored.”",
     page: 210)
 
-    highlight_2.tag_list ="feminism"
+   # highlight_2.tag_list ="feminism"
     highlight_2.source = new_book_1
     highlight_2.user = new_user
     highlight_2.save!
 
 # 3 highlight
 highlight_3 = Highlight.new(
-  content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+  content: "Learning doesn’t always have to be intentional, but can be something that just happens naturally",
   page: 89)
 
-  highlight_3.tag_list ="politics"
+ # highlight_3.tag_list ="politics"
   highlight_3.source = new_book_1
   highlight_3.user = new_user
   highlight_3.save!
 
 # 4 highlight
 highlight_4 = Highlight.new(
-  content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+  content: "No matter what you’ve done, even if you regret it, even if you don’t know what the hell to do next, every single thing that happens to you has the potential to open new doors. It happened for a reason—and it’s still taking you somewhere, even if you can’t see it right now.",
   page: 2)
 
-  highlight_4.tag_list ="biography"
+  #highlight_4.tag_list ="biography"
   highlight_4.source = Source.all.sample
   highlight_4.user = new_user
   highlight_4.save!
 
 # 5 highlight
   highlight_5 = Highlight.new(
-    content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    content: "Today, researchers find it troubling that businesses have co-opted joy to market soda pop, productivity planners and storage containers. “Contentment is the next growth industry,” Dr. Keltner said. “Marketers will tell you buying things will make you happy even though the opposite is true.”",
     page: 210)
 
-    highlight_5.tag_list ="race"
+   # highlight_5.tag_list ="race"
     highlight_5.source = Source.all.sample
     highlight_5.user = new_user
     highlight_5.save!
 
 # 6 highlight
   highlight_6 = Highlight.new(
-    content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    content: "Global warming may seem like a distended morality tale playing out over several centuries and inflicting a kind of Old Testament retribution on the great-great-grandchildren of those responsible, since it was carbon burning in eighteenth-century England that lit the fuse of everything that has followed. But that is a fable about historical villainy that acquits those of us alive today—and unfairly. The majority of the burning has come since the premiere of Seinfeld. Since the end of World War II, the figure is about 85 percent. The story of the industrial world’s kamikaze mission is the story of a single lifetime—the planet brought from apparent stability to the brink of catastrophe in the years between a baptism or bar mitzvah and a funeral.",
     page: 14)
 
-    highlight_6.tag_list ="climat"
+   # highlight_6.tag_list ="climat"
     highlight_6.source = Source.all.sample
     highlight_6.user = new_user
     highlight_6.save!
 
 # 7 highlight
   highlight_7 = Highlight.new(
-    content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    content: "Although black people had been fighting for freedom “for more than a hundred years,” the only thing that was “explicitly certain is that the struggle for it will endure.”",
     page: 165)
 
-    highlight_7.tag_list ="science"
+   # highlight_7.tag_list ="science"
     highlight_7.source = Source.all.sample
     highlight_7.user = new_user
     highlight_7.save!
 
 # 8 highlight
   highlight_8 = Highlight.new(
-    content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    content: "It doesn’t matter what anybody else thinks of your life. All that matters is what you think of it, and what you decide to make of it.",
     page: 1)
 
-    highlight_8.tag_list ="politics"
+    #highlight_8.tag_list ="politics"
     highlight_8.source = Source.all.sample
     highlight_8.user = new_user
     highlight_8.save!
 
 # 9 highlight
   highlight_9 = Highlight.new(
-    content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    content: "Legal standards for retaliation – one of the biggest fears behind non-reporting – need to change to protect [women reporting crimes]. Culturally, it is still said “women allege” or “claim” they were sexually assaulted. Those accused “deny what was alleged”. What if we changed the emphasis and said that survivors “report” and the accused “alleges” or “claims” it didn’t happen?",
     page: 4)
 
-    highlight_9.tag_list ="psychology"
+    #highlight_9.tag_list ="#psychology"
     highlight_9.source = Source.all.sample
     highlight_9.user = new_user
     highlight_9.save!
 
 # 10 highlight
   highlight_10 = Highlight.new(
-    content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-    page: 10)
+    content: "Leaders are in love – in love with the people who do the work, with what their organizations practice, and with their customers.",
+    page: 10, my_note: "My note #sociology")
 
-    highlight_10.tag_list ="sociology"
     highlight_10.source = Source.all.sample
     highlight_10.user = new_user
     highlight_10.save!
 
-# <--- add, once models are created!
-# class Article < ApplicationRecord
-#   has_one_attached :photo
-#  end
+  highlight_11 = Highlight.new(
+    content: "How might I gather all my highlights from Kindle and put them into a personal online archive, where I can share, browse, and reflect on everything I’ve read?",
+    page: 15, my_note: "#kindle")
+
+    highlight_11.source = Source.all.sample
+    highlight_11.user = new_user
+    highlight_11.save!
+
+  highlight_12 = Highlight.new(
+    content: "I wanted total ownership and database-level access to my raw book and highlight data so that I could perform more advanced analysis and improvements.",
+    page: 25, my_note: "#kindle")
+
+    highlight_12.source = Source.all.sample
+    highlight_12.user = new_user
+    highlight_12.save!
+
+  highlight_13 = Highlight.new(
+    content: "One of the original reasons I wanted a place to collect my highlights was because I felt it would help me better remember what I read and retain those learnings.",
+    page: 9, my_note: "#kindle")
+
+    highlight_13.source = Source.all.sample
+    highlight_13.user = new_user
+    highlight_13.save!
+
+  highlight_14 = Highlight.new(
+    content: "We want to communicate those with our user. We also want to provide links for the user to navigate our Devise pages.",
+    page: 63, my_note: "#devise")
+
+    highlight_14.source = Source.all.sample
+    highlight_14.user = new_user
+    highlight_14.save!
+
+  highlight_15 = Highlight.new(
+    content: "You should see a “Sign in with Facebook” link has automatically been added to your unauthenticated views. If you did everything correctly, you should be signed in!",
+    page: 69, my_note: "#devise")
+
+    highlight_15.source = Source.all.sample
+    highlight_15.user = new_user
+    highlight_15.save!
+
+  highlight_16 = Highlight.new(
+    content: "Nokogiri is the Japanese translation for a fine-toothed saw used in woodwork. It’s also a Ruby gem that allows us to parse HTML, ripping through a massive string and allowing us to access the finer nested nodes within it.",
+    page: 19, my_note: "#nokogiri")
+
+    highlight_16.source = Source.all.sample
+    highlight_16.user = new_user
+    highlight_16.save!
+
+  highlight_17 = Highlight.new(
+    content: "If you haven’t added the Nokogiri gem to your Gemfile, bundled, and ran your ActiveRecord migrations, do that now. Time for the fun part.",
+    page: 20, my_note: "#nokogiri")
+
+    highlight_17.source = Source.all.sample
+    highlight_17.user = new_user
+    highlight_17.save!
+
+  highlight_18 = Highlight.new(
+    content: "I know it looks like there’s a lot going on here, but the logic in this method is actually quite simple.",
+    page: 82, my_note: "#simple")
+
+    highlight_18.source = Source.all.sample
+    highlight_18.user = new_user
+    highlight_18.save!
+
+  highlight_19 = Highlight.new(
+    content: "Ready Steady ??.. Let’s do it.",
+    page: 12)
+
+    highlight_19.source = Source.all.sample
+    highlight_19.user = new_user
+    highlight_19.save!
+
+  highlight_20 = Highlight.new(
+    content: "If you’re new to developing Rails applications, you’ve probably come across the term N + 1 queries.",
+    page: 197, my_note: "#queries")
+
+    highlight_20.source = Source.all.sample
+    highlight_20.user = new_user
+    highlight_20.save!
 
 new_user.favorite(highlight_1)
 new_user.favorite(highlight_6)
 new_user.favorite(highlight_10)
+new_user.favorite(highlight_16)
 new_user.save!
 
 puts "Done!"

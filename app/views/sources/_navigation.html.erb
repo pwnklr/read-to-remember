@@ -1,10 +1,6 @@
-<!-- this one is here just for easier navigation atm-->
-<p><%= link_to "All highlights", highlights_path %></p>
-<!-- library navigation -->
-<div style="display:flex; justify-content: flex-start;">
+<div style="position:fixed;display:flex;justify-content: flex-start;top:13.6vh;width: 100%;z-index:1000;background:linear-gradient(180deg, #4013a2 0%, #25265b 100%);">
   <%= link_to "Books", library_sources_path, class: "link-library" %>
   <%= link_to "Articles", articles_sources_path, class: "link-library" %></p>
 </div>
 <!-- TODO: add active class to current/pressed link -->
-<!-- TODO: make navigation fixed -->
-<!-- TODO: make it pretty -->
+<!-- TODO: make it prettier -->

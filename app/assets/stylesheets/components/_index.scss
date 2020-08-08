@@ -3,10 +3,12 @@
 @import "avatar";
 @import "navbar";
 @import "card";
+@import "button";
+
 
 body {
   background: rgb(37,38,91);
-  background: linear-gradient(90deg, rgba(37,38,91,1) 0%, rgba(64,19,162,1) 35%, rgba(126,68,255,1) 100%);
+  background: linear-gradient(180deg, rgba(37,38,91,1) 0%, rgba(64,19,162,1) 35%, rgba(126,68,255,1) 100%);
   color: #242543;
 }
 
@@ -72,3 +74,4 @@ p {
   font-size: 20px;
   color: #13154E;
 }
+

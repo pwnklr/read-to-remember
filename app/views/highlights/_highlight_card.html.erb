@@ -1,17 +1,14 @@
-<%= render 'shared/dropdown' %>
-<div style="position: fixed; z-index:900; top: 8vh; width: 100%; padding: 12px 0;background:linear-gradient(180deg,  #25265b 10%, #4013a2 50%, #25265b 100%);">
-  <h1 style="color:white; padding-left: 5vw; padding-top: 8px;">Flashcards</h1>
-</div>
-<div class="container" style="padding-bottom: 64px; padding-top: 20vh; min-height: 109%;">
-  <div class="carousel">
-    <% @flashcards.each do |h| %>
-      <div class="card carousel-cell">
+<div class="container">
+  <div class="row">
+    <% highlights.each do |h| %>
+      <div class="card">
         <h3><%= link_to h.source.title, source_path(h.source) %></h3>
         <h5><%= h.source.author.name %></h5>
-          <p><%= h.content %></p>
-          <p class="page">Page <%= h.page %></p>
+        <p><%= h.content %></p>
+        <p class="page">Page <%= h.page %></p>
+        <!-- -->
         <% if h.my_note %>
-          <div class="card" style="width:86%;">
+          <div class="card", style="width:86%;">
             <p><%= h.h_note %></p>
             <div style="display:flex;flex-wrap: wrap;">
               <% h.tag_list.each do |t| %>
@@ -30,7 +27,7 @@
               </p>
             <% else %>
               <p>
-                <%= link_to fav_highlight_path(h) do %>
+                <%= link_to fav_highlight_path(h), remote: true  do %>
                   <i class="far fa-heart"></i>
                 <% end %>
               </p>
@@ -41,14 +38,15 @@
                   <i class="fas fa-pen"></i>
                 <% end %>
               </p>
+
             <p>
-              <%= link_to unfav_highlight_path(h) do %> <!-- build this one :share -->
+              <%= link_to unfav_highlight_path(h) do %> <!-- build this one :export -->
                 <i class="fas fa-paper-plane"></i>
               <% end %>
             </p>
           </div>
           <div class="delete">
-            <p><%= link_to h, method: :delete, data: {confirm: "Are you sure?"} do %>
+            <p><%= link_to h, method: :delete, data: {confirm: "Are you sure?"}, remote: true do %>
               <i class="far fa-trash-alt"></i></p>
             <% end %>
           </div>

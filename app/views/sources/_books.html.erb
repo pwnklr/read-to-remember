@@ -1,17 +1,36 @@
-<div class="container">
-<small>My Books(<%= books.count %>)</small>
+<%= render 'shared/dropdown' %>
+<div style="position: fixed; z-index:900; top: 8vh; width: 100%; padding: 12px 0;background: linear-gradient(180deg, #25265b 10%, #4013a2 100%);">
+  <div class="nav-filter" style="padding-left: 5vw;"> <!-- books -->
+    <%= form_tag library_sources_path, :method => "get" do %>
+      <%= select_tag(:select, options_for_select([["Sort by date", 1], ["Sort by author", 2], ["Sort by title", 3]]), {class: 'filter-input'}) %>
+      <%= submit_tag "Sort!", :name => nil, style: "background-color:rgba(126,68,255,1); border:none; font-weight:bold; padding:1px 8px; color: white; border-radius: 8px;" %>
+    <% end %>
+  </div>
+</div>
+
+<!--<small style="color:white;">My Books(<%#= books.count %>)</small>-->
+<div class="container" style="padding-bottom: 64px; padding-top: 20vh;min-height: 100vh;">
+<div class="row justify-content-sm-center">
   <% books.each do |book| %>
     <div class="card-source">
-      <div>
-        <%= link_to source_path(book) do %>
-          <%= cl_image_tag book.photo.key, height: 128, width: 100, crop: :fill, class: "cover" %>
+      <div style="display:flex; justify-content: space-between; width: 314px;">
+        <% if book.photo.present? %>
+          <div>
+            <%= link_to source_path(book) do %>
+              <%= cl_image_tag book.photo.key, height: 100, width: 80, crop: :fill, class: "cover" %>
+            <% end %>
+          </div>
         <% end %>
-      </div>
-      <div class="text">
-        <strong><%= link_to book.author.name %></strong> <!-- build this path? Patrik? -->
-        <h6><em><%= link_to book.title, source_path(book) %></em></h6>
-        <p><%= pluralize book.highlights.count, "highlight" %></p>
+        <div class="text">
+          <strong><%= link_to book.author.name %></strong> <!-- build this path? Patrik? -->
+          <h6><em><%= link_to book.title, source_path(book) %></em></h6>
+          <p><%= pluralize book.highlights.count, "highlight" %></p>
+          <div class="export-main">
+            <p class="export"><i class="fas fa-file-export"></i></p>
+          </div>
+        </div>
       </div>
     </div>
   <% end %>
+</div>
 </div>

@@ -1,19 +1,81 @@
-<div class="container">
+<%= render 'shared/dropdown' %>
+<div class="container" style="padding-bottom: 6px;padding-top: 10vh;position:fixed;z-index:900;width: 100%;background: linear-gradient(180deg, #25265b 10%, #4013a2 100%);">
   <%= link_to "Back", library_sources_path, class: "link-library" %>
-  <div class="card-source">
-    <div>
-  <%= cl_image_tag @source.photo.key, height: 300, width: 300, crop: :fill, class: "cover" %>
-</div>
-<div class="text">
-  <h1><%= @source.author.name %></h1> <!-- build this path? Patrik? -->
-  <h2><%= @source.title %></h2>
-  <p><%= pluralize @source.highlights.count, "highlight" %></p>
-</div>
-  </div>
-  <% @source.highlights.order(page: :asc).each do |h| %>
-    <div> <!-- card-highlight -->
-      <small>page <%= h.page %></small>
-      <p><%= h.content %></p>
+  <br>
+  <div class="row ustify-content-sm-center">
+    <div class="card-source">
+      <div style="display:flex; justify-content: space-between; width: 314px;">
+        <% if @source.photo.present? %>
+          <div>
+            <%= cl_image_tag @source.photo.key, height: 100, width: 80, crop: :fill, class: "cover" %>
+          </div>
+        <% end %>
+        <div class="text">
+          <strong><%= @source.author.name %></strong> <!-- build this path? Patrik? -->
+          <h6><em><%= @source.title %></em></h6>
+          <p><%= pluralize @source.highlights.count, "highlight" %></p>
+        </div>
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>
+<div class="container" style="padding-top:30vh; padding-bottom:64px; min-height:100vh;">
+
+  <div class="container">
+  <div class="row">
+    <% @source.highlights.order(page: :asc).each do |h| %>
+      <div class="card">
+        <p><%= h.content %></p>
+        <p class="page">Page <%= h.page %></p>
+        <!-- -->
+        <% if h.my_note %>
+          <div class="card", style="width:86%;">
+            <p><%= h.h_note %></p>
+            <div style="display:flex;flex-wrap: wrap;">
+              <% h.tag_list.each do |t| %>
+                <p style="padding-left: .5vw;"><%= link_to "#{t}", tags_highlights_path(t) %></p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        <div class="icons">
+          <div class="sent">
+            <% if current_user.favorited?(h) %>
+              <p>
+                <%= link_to unfav_highlight_path(h) do %>
+                  <i class="fas fa-heart"></i>
+                <% end %>
+              </p>
+            <% else %>
+              <p>
+                <%= link_to fav_highlight_path(h) do %>
+                  <i class="far fa-heart"></i>
+                <% end %>
+              </p>
+            <% end %>
+            <!-- render form -->
+              <p>
+                <%= link_to edit_highlight_path(h) do %>
+                  <i class="fas fa-pen"></i>
+                <% end %>
+              </p>
+
+            <p>
+              <%= link_to unfav_highlight_path(h) do %> <!-- build this one :export -->
+                <i class="fas fa-paper-plane"></i>
+              <% end %>
+            </p>
+          </div>
+          <div class="delete">
+            <p><%= link_to h, method: :delete, data: {confirm: "Are you sure?"} do %>
+              <i class="far fa-trash-alt"></i></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+</div>
+

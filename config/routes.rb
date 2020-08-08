@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     collection do
       get :flashcards
       get :favorites
+      get :tags
+      put :tags
+      get :all_tags
     end
     member do
       get :fav
