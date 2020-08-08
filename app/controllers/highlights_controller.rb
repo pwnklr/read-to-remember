@@ -1,5 +1,3 @@
-require 'kindle_highlights'
-
 class HighlightsController < ApplicationController
   before_action :set_highlight, only: [:show, :edit, :update, :destroy, :fav, :unfav]
   before_action :set_source, only: [:new, :create]
@@ -41,6 +39,7 @@ class HighlightsController < ApplicationController
     redirect_back(fallback_location: 'pages#home')
   end
 
+##
   def flashcards
     @highlights = current_user.highlights.includes(source: :author)
     @flashcards = []
@@ -56,6 +55,7 @@ class HighlightsController < ApplicationController
       end
     end
   end
+##
 
   def favorites
     @highlights = current_user.all_favorited.reverse!

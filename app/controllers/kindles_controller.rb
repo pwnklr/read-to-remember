@@ -1,10 +1,7 @@
 require 'kindle_highlights'
 
 class KindlesController < ApplicationController
-  before_action :set_kindle, only: [:edit, :update, :show]
-
-  def show
-  end
+  before_action :set_kindle, only: [:edit, :update]
 
   def new
     @kindle = Kindle.new
@@ -16,7 +13,7 @@ class KindlesController < ApplicationController
     @kindle.user = current_user
     @kindle.get_kindle_data
     if @kindle.save
-      redirect_to library_sources_path # or?
+      redirect_to "/"
     else
       render :new
     end
@@ -28,7 +25,7 @@ class KindlesController < ApplicationController
   def update
      @kindle.update(kindle_param)
     if @kindle.save
-      redirect_to library_sources_path # or where?
+      redirect_to "/"
     else
       render :edit
     end
