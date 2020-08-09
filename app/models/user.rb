@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :highlights, dependent: :destroy
   has_many :sources, dependent: :destroy
+  has_one :kindle, dependent: :destroy
   acts_as_favoritor
 
   def self.send_daily_highlights
