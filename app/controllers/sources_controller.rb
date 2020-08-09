@@ -4,13 +4,6 @@ class SourcesController < ApplicationController
   def show
   end
 
-  def new
-  end
-
-  def create # wip
-    @source = Source.create!(source_params)
-  end
-
   def library
     if params[:select]
       if params[:select] == '2' # author
