@@ -13,7 +13,7 @@
         <div class="text">
           <strong><%= @source.author.name %></strong> <!-- build this path? Patrik? -->
           <h6><em><%= @source.title %></em></h6>
-          <p><%= pluralize @source.highlights.count, "highlight" %></p>
+          <p><%= pluralize @source.highlights.size, "highlight" %></p>
         </div>
       </div>
     </div>
