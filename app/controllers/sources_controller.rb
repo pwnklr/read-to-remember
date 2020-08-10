@@ -7,7 +7,7 @@ class SourcesController < ApplicationController
   def library
     if params[:select]
       if params[:select] == '2' # author
-        @books = current_user.sources.where(category: 'book').includes(:author).joins(:author).order(name: :asc)
+        @books = current_user.sources.where(category: 'book').includes(:author).joins(:author).select("name, split_part(name, ' ', 2) as last_name").order("last_name")
       elsif params[:select] == '3' # title
         @books = current_user.sources.where(category: 'book').includes(:author).order(title: :asc)
       else
@@ -21,7 +21,7 @@ class SourcesController < ApplicationController
   def articles
     if params[:select_a]
       if params[:select_a] == '2' # author
-        @articles =  current_user.sources.where(category: 'article').includes(:author).joins(:author).order(name: :asc)
+        @articles =  current_user.sources.where(category: 'article').includes(:author).joins(:author).select("name, split_part(name, ' ', 2) as last_name").order("last_name")
       elsif params[:select_a] == '3' # title
         @articles = current_user.sources.where(category: 'article').includes(:author).order(title: :asc)
       else
