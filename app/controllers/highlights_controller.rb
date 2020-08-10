@@ -3,7 +3,7 @@ class HighlightsController < ApplicationController
   before_action :set_source, only: [:new, :create]
   before_action :set_tag, only: :tags
 
-  # i think we don't need this one
+  # search here
   def index
     #@highlights = current_user.highlights.includes(:taggings, source: :author).order(created_at: :desc)
   end
@@ -52,7 +52,7 @@ class HighlightsController < ApplicationController
   end
 
   def all_tags
-    @all_tags = current_user.highlights.includes(:taggings, source: :author).tag_counts_on(:tags).order(created_at: :desc)
+    @all_tags = current_user.highlights.includes(:taggings, source: :author).tag_counts_on(:tags).order(taggings_count: :desc)
   end
 
   private
