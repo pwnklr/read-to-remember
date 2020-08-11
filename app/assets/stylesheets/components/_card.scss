@@ -1,3 +1,40 @@
+.transparent-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  width: 100%; // don't change this!!
+  background: transparent;
+  // text-align: justify;
+  font-size: 25px;
+
+}
+
+.flashcard {
+  margin: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  width: 90%; // don't change this!!
+  height: 520px;
+  background: white;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 20px;
+  padding: 15px;
+  // text-align: justify;
+  font-size: 25px;
+  box-shadow: 0px 4px 4px rgba(8, 13, 60, 0.09);
+}
+
+.comment {
+  @extend .card;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
 .card {
   position: relative;
   display: flex;
@@ -17,9 +54,44 @@
   box-shadow: 0px 4px 4px rgba(8, 13, 60, 0.09);
 }
 
-.comment {
-  @extend .card;
-  margin: 0;
-  margin-bottom: 20px;
+
+.flashcard-button {
+  border-radius: 50%;
+  background-color: white;
+  opacity: 60%;
+  padding: 16px;
+  margin: 16px;
+  box-shadow: 0px 4px 4px rgba(8, 13, 60, 0.09);
+  position: sticky;
+  bottom: 0;
 }
 
+.text-box {
+  display: flex;
+  min-width: 0;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 20px;
+  padding-left: 15px;
+  margin-bottom: 16px;
+  // text-align: justify;
+  font-size: 25px;
+  width: 100% !important;
+}
+
+.text-box div p {
+  width: 50%;
+  padding: 10px;
+}
+
+.exit-icon {
+  color:white !important;
+  font-size: 24px !important;
+  position: relative !important;
+  flex-direction: row-reverse !important;
+  padding: 16px;
+  text-align: right;
+  position: relative;
+  display: flex;
+}

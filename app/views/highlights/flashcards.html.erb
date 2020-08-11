@@ -1,55 +1,59 @@
-<%= render 'shared/dropdown' %>
-<div style="position: fixed; z-index:900; top: 8vh; width: 100%; padding: 12px 0;background:linear-gradient(180deg,  #25265b 10%, #4013a2 50%, #25265b 100%);">
-  <h1 style="color:white; padding-left: 5vw; padding-top: 8px;">Flashcards</h1>
-</div>
-<div class="container" style="padding-bottom: 64px; padding-top: 20vh; min-height: 109%;">
+
+<div class="transparent-container">
   <div class="carousel">
     <% @flashcards.each do |h| %>
-      <div class="card carousel-cell">
-        <h3><%= link_to h.source.title, source_path(h.source) %></h3>
-        <h5><%= h.source.author.name %></h5>
-          <p><%= h.content %></p>
-          <p class="page">Page <%= h.page %></p>
-        <% if h.my_note %>
-          <div class="card" style="width:86%;">
-            <p><%= h.h_note %></p>
-            <div style="display:flex;flex-wrap: wrap;">
-              <% h.tag_list.each do |t| %>
-                <p style="padding-left: .5vw;"><%= link_to "#{t}", tags_highlights_path(t) %></p>
-              <% end %>
-            </div>
-          </div>
+      <div class="transparent-container ">
+        <%= link_to library_sources_path do %>
+        <i class="fas fa-times exit-icon"></i>
         <% end %>
+        <div class="flashcard ">
+          <div class="flashcard-text carousel-cell">
+            <h3><%= link_to h.source.title, source_path(h.source) %></h3>
+            <h5><%= h.source.author.name %></h5>
+              <p><%= h.content %></p>
+              <p class="page">Page <%= h.page %></p>
+          </div>
+          <% if h.my_note %>
+            <div class="text-box" style="width:86%;">
+              <p><%= h.h_note %></p>
+              <div style="display:flex;flex-wrap: wrap;">
+                <% h.tag_list.each do |t| %>
+                  <p style="padding-left: .5vw;"><%= link_to "#{t}", tags_highlights_path(t) %></p>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
         <div class="icons">
-          <div class="sent">
+
             <% if current_user.favorited?(h) %>
               <p>
                 <%= link_to unfav_highlight_path(h) do %>
-                  <i class="fas fa-heart"></i>
+                  <i class="fas fa-heart flashcard-button"></i>
                 <% end %>
               </p>
             <% else %>
               <p>
                 <%= link_to fav_highlight_path(h) do %>
-                  <i class="far fa-heart"></i>
+                  <i class="far fa-heart flashcard-button"></i>
                 <% end %>
               </p>
             <% end %>
             <!-- render form -->
               <p>
                 <%= link_to edit_highlight_path(h) do %>
-                  <i class="fas fa-pen"></i>
+                  <i class="fas fa-pen flashcard-button"></i>
                 <% end %>
               </p>
             <p>
               <%= link_to unfav_highlight_path(h) do %> <!-- build this one :share -->
-                <i class="fas fa-paper-plane"></i>
+                <i class="fas fa-paper-plane flashcard-button"></i>
               <% end %>
             </p>
-          </div>
+
           <div class="delete">
             <p><%= link_to h, method: :delete, data: {confirm: "Are you sure?"} do %>
-              <i class="far fa-trash-alt"></i></p>
+              <i class="far fa-trash-alt flashcard-button"></i></p>
             <% end %>
           </div>
         </div>

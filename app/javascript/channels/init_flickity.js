@@ -4,7 +4,10 @@ const initFlickity = () => {
   const flkty = new Flickity( carousel, {
     // you can flick forever, man.
     freeScroll: true,
-    wrapAround: true
+    contain: true,
+    // disable previous & next buttons and dots
+    prevNextButtons: false,
+    pageDots: false
   });
   const cards = carousel.querySelectorAll('.carousel-cell');
   // get transform property
@@ -20,3 +23,4 @@ const initFlickity = () => {
   });
 }
 export { initFlickity };
+
