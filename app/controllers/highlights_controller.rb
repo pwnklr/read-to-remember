@@ -40,7 +40,7 @@ class HighlightsController < ApplicationController
   end
 
   def flashcards
-    @flashcards = current_user.highlights.where(display_on: Date.today)
+    @flashcards = current_user.flashcards
   end
 
   def favorites
