@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3 style="font-family:sans-serif">READ TO REMEMBER</h3>
+    <p style="color:#9a9a9a;font-size:12px;font-family:sans-serif"><i>This is a daily collection of highlights from your books. You can change the amount of highlights in the app, as well as when and how often you get this email.</i></p>
+    <br>
+    <h3 style="color:#666666;font-family:sans-serif">DAILY HIGHLIGHTS</h3>
+
+    <% @flashcards.each do |flashcard| %>
+
+    <span style="font-family:verdana;font-size:12px"><b><%= flashcard.source.title %></b></span><br>
+    <span style="color:grey;font-family:courier;font-size:12px;">by <%= flashcard.source.author.name %></span>
+    <br>
+    <br>
+    <span style="font-size:14px;font-family:bookerly"><%= flashcard.content %></span>
+    <br>
+    <br>
+    <% unless flashcard.my_note.blank? %>
+      <span style="color:#9a9a9a;font-size:12px;font-family:sans-serif">My notes</span><br>
+      <span style="color:#474545;font-size:14px;font-family:bookerly"><i><%= "#{flashcard.h_note} - " %><%= flashcard.tag_list %></i></span>
+      <br>
+      <br>
+    <% end %>
+    <br>
+
+    <span style="color:#cccccc;">-----------------------------------------</span>
+    <br>
+    <br>
+
+    <% end %>
+    <br>
+    <br>
+
+    <p style="color:#9a9a9a;font-size:12px;font-family:sans-serif">Thanks for stopping by, see you tomorrow,<br>
+    Your Read to Remember team ❤️</p>
+  </body>
+</html>

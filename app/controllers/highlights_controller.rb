@@ -3,28 +3,13 @@ class HighlightsController < ApplicationController
   before_action :set_source, only: [:new, :create]
   before_action :set_tag, only: :tags
 
-  # i think we don't need this one
+  # search here
   def index
-    @highlights = current_user.highlights.includes(:taggings, source: :author).order(created_at: :desc)
+    #@highlights = current_user.highlights.includes(:taggings, source: :author).order(created_at: :desc)
   end
 
   # i think we don't need this one
   def show
-  end
-
-  def new
-    @highlight = Highlight.new
-    @highlight.user = current_user
-    @highlight.source = @source
-  end
-
-  def create
-    @highlight = Highlight.new(highlight_params)
-    if @highlight.save
-      redirect_to highlights_path
-    else
-      render :new
-    end
   end
 
   def edit
@@ -46,28 +31,16 @@ class HighlightsController < ApplicationController
 
   def fav
     current_user.favorite(@highlight)
-    redirect_to favorites_highlights_path # do smtng here
+    redirect_back(fallback_location: 'pages#home')
   end
 
   def unfav
     current_user.unfavorite(@highlight)
-    redirect_to favorites_highlights_path # do smtng here
+    redirect_back(fallback_location: 'pages#home')
   end
 
   def flashcards
-    @highlights = current_user.highlights.includes(source: :author)
-    @flashcards = []
-    if @highlights.empty?
-      @msg = "You have no highlights!"
-    elsif @highlights.count <= 7
-      @flashcards = @highlights
-    else
-      # run this every 24 hours or smtng like that => gem whenever => https://github.com/javan/whenever ?
-      while @flashcards.length < 7 do
-        @flashcards <<  @highlights.sample
-        @flashcards.uniq!
-      end
-    end
+    @flashcards = current_user.flashcards
   end
 
   def favorites
@@ -79,7 +52,7 @@ class HighlightsController < ApplicationController
   end
 
   def all_tags
-    @all_tags = current_user.highlights.includes(:taggings, source: :author).tag_counts_on(:tags).order(created_at: :desc)
+    @all_tags = current_user.highlights.includes(:taggings, source: :author).tag_counts_on(:tags).order(taggings_count: :desc)
   end
 
   private

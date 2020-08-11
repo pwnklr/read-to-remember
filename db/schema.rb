@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_04_085236) do
+ActiveRecord::Schema.define(version: 2020_08_08_093651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,8 +68,18 @@ ActiveRecord::Schema.define(version: 2020_08_04_085236) do
     t.integer "page"
     t.text "my_note"
     t.text "h_note"
+    t.date "display_on"
     t.index ["source_id"], name: "index_highlights_on_source_id"
     t.index ["user_id"], name: "index_highlights_on_user_id"
+  end
+
+  create_table "kindles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "email"
+    t.string "password"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_kindles_on_user_id"
   end
 
   create_table "notes", force: :cascade do |t|
@@ -134,6 +144,7 @@ ActiveRecord::Schema.define(version: 2020_08_04_085236) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "highlights", "sources"
   add_foreign_key "highlights", "users"
+  add_foreign_key "kindles", "users"
   add_foreign_key "notes", "highlights"
   add_foreign_key "sources", "authors"
   add_foreign_key "sources", "users"
