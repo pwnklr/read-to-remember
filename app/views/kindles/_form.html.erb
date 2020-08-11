@@ -1,0 +1,9 @@
+<%= simple_form_for(@kindle) do |f| %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <% if @kindle.persisted? %>
+    <%= f.submit value="Save", class: "button button-text" %>
+  <% else %>
+    <%= f.submit value="Add", class: "button button-text" %>
+  <% end %>
+<% end %>

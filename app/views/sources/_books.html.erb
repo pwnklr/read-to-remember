@@ -24,7 +24,7 @@
         <div class="text">
           <strong><%= link_to book.author.name %></strong> <!-- build this path? Patrik? -->
           <h6><em><%= link_to book.title, source_path(book) %></em></h6>
-          <p><%= pluralize book.highlights.count, "highlight" %></p>
+          <p><%= pluralize book.highlights.size, "highlight" %></p>
           <div class="export-main">
             <p class="export"><i class="fas fa-file-export"></i></p>
           </div>
