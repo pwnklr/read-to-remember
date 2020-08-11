@@ -15,8 +15,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
-    <% unless request.fullpath == "/" %>
+  <body style='<%= "height: unset;" if current_page?(controller: 'highlights', action: 'flashcards') %>'>
+    <% unless request.fullpath == "/" || request.fullpath == "/highlights/flashcards"%>
       <%= render 'shared/navbar' %>
     <% end %>
     <%= render 'shared/flashes' %>
