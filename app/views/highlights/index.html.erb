@@ -1,10 +1,18 @@
 <div class="container">
-<!-- links for navigation atm -->
-<p><%= link_to "My favorites", favorites_highlights_path, style: "color:white;"  %></p>
-<p><%= link_to "My flashcards", flashcards_highlights_path, style: "color:white;"  %></p>
-<p><%= link_to "My library", library_sources_path, style: "color:white;"  %></p>
-<p><%= link_to "My tags", all_tags_highlights_path, style: "color:white;"  %></p>
-
+<!-- Ilona, make this pretty :)-->
+  <div style="padding: 16px 6px 6px 6px;">
+    <%= form_tag highlights_path, class: "form-inline-sm", method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control-sm",
+        placeholder: "keyword"
+      %>
+      <%= submit_tag "Search", class: "form-control-sm search-btn" %>
+    <% end %>
+  </div>
+  <% if @query %>
+    <p style="color: #fff;">We found <%= pluralize @count, 'result' %> for <%= @query.upcase %>!</p>
+  <% end %>
 </div>
 
 <%= render 'highlights/highlight_card', highlights: @highlights %>
