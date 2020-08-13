@@ -7,6 +7,16 @@ class Highlight < ApplicationRecord
   acts_as_taggable_on :tags
   acts_as_favoritable
   before_save :set_note_and_tags
+  # pg_search => searching through association
+  include PgSearch::Model
+  pg_search_scope :global_search,
+  against: [:content, :my_note],
+  associated_against: {
+    source: [:title]
+  },
+  using: {
+    tsearch: { prefix: true }
+  }
 
   private
 
