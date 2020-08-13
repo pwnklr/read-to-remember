@@ -22,8 +22,7 @@ class HighlightsController < ApplicationController
   end
 
   def update # still wip
-    @highlight.update(note_tag_param)
-    if @highlight.save
+    if @highlight.update(note_tag_param)
       redirect_to favorites_highlights_path # do smtng here
     else
       render :edit
@@ -58,7 +57,7 @@ class HighlightsController < ApplicationController
   end
 
   def all_tags
-    @all_tags = current_user.highlights.includes(:taggings, source: :author).tag_counts_on(:tags).order(taggings_count: :desc)
+    @all_tags = current_user.highlights.includes(:taggings, source: :author).tag_counts_on(:tags).order(created_at: :desc)
   end
 
   private
