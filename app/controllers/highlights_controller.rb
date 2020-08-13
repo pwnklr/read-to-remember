@@ -5,7 +5,13 @@ class HighlightsController < ApplicationController
 
   # search here
   def index
-    #@highlights = current_user.highlights.includes(:taggings, source: :author).order(created_at: :desc)
+    if params[:query].present?
+      @query = params[:query]
+      @highlights = current_user.highlights.includes(:source).global_search(@query)
+      @count = @highlights.size
+    else
+      @highlights = current_user.highlights.last(10)
+    end
   end
 
   # i think we don't need this one

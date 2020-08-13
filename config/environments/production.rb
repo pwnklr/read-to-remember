@@ -1,5 +1,6 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
+  config.action_mailer.default_url_options = { host: "http://www.readtoremember.xyz" }
+  config.action_mailer.delivery_method = :mailjet
   # Settings specified here will take precedence over those in config/application.rb.
 
   # config.cache_store = :redis_store, ENV['REDIS_URL']

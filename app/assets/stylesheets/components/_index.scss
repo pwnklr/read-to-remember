@@ -7,22 +7,23 @@
 
 
 body {
-  background: rgb(37,38,91);
-  background: linear-gradient(180deg, rgba(37,38,91,1) 0%, rgba(64,19,162,1) 35%, rgba(126,68,255,1) 100%);
-  color: #242543;
+  background-image: asset_url("backround.png");
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+  height: 1500px;
+  background-color: #3E09A7;
 }
 
 h5 {
   font-family: 'Spartan', sans-serif;
   font-size: 14px;
-  letter-spacing: -1px;
   font-style: normal;
 }
 
 h3 {
   font-family: 'Spartan', sans-serif;
   font-size: 15px;
-  letter-spacing: -1px;
   font-weight: 900;
   font-style: normal;
 }
@@ -58,7 +59,7 @@ p {
   padding: 0px 0px;
   color: rgba(0,0,0,0.3);
   align-items: center;
-  background: #fff;
+
 }
 
 .sent {
@@ -75,3 +76,12 @@ p {
   color: #13154E;
 }
 
+.hover:hover {
+  color: #151251;
+}
+
+.row-highlights {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+  max-width: 100%;
+}
