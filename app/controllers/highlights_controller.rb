@@ -31,7 +31,7 @@ class HighlightsController < ApplicationController
 
   def destroy
     @highlight.destroy
-    redirect_to favorites_highlights_path, notice: "Highlight was succsesfully removed!"
+    redirect_back(fallback_location: 'pages#home') #notice: "Highlight was succsesfully removed!"
   end
 
   def fav
