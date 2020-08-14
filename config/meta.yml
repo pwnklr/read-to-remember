@@ -1,0 +1,5 @@
+meta_product_name: "Read to Remember"
+meta_title: "Read to Remember - Every book, every article"
+meta_description: "One place to collect all your highlights from your Kindle books and Pocket/Instapaper articles."
+meta_image: "favicon.png" # should exist in `app/assets/images/`
+twitter_account: "@ReadtoRemember"   # required for Twitter Card
