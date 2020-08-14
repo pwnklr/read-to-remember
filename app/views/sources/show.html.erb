@@ -28,7 +28,7 @@
         <p><%= h.content %></p>
         <p class="page">Page <%= h.page %></p>
         <!-- -->
-        <% if h.my_note %>
+        <% if h.my_note != "" %>
           <div class="card", style="width:86%;">
             <p><%= h.h_note %></p>
             <div style="display:flex;flex-wrap: wrap;">
@@ -38,6 +38,7 @@
             </div>
           </div>
         <% end %>
+
         <div class="icons">
           <div class="sent">
             <% if current_user.favorited?(h) %>
