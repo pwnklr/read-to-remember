@@ -4,7 +4,7 @@
   grid-template-columns: 1fr 2fr;
   width: 330px;
   height: 120px;
-  left: 5px;
+  left: 10px;
   top: 0px;
   padding: 10px;
   margin-bottom: 0px;
@@ -31,16 +31,16 @@
 }
 
 .link-library {
-  padding: 4px 20px;
+  padding: 2px 17px;
   background-color: #ccc;
   border-radius: 24px;
-  margin-left: 5vw;
-  margin-top: 2px;
-  margin-bottom: 8px;
+  margin-left: 6vw;
+  margin-top: 4px;
+  margin-bottom: 9px;
   background-color: #6d6d8a;
   color: white;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 300;
   &:hover {
     color: black;
     text-decoration: none;
