@@ -1,13 +1,9 @@
-
-<div class="transparent-container">
+<%= render 'exit'%>
   <div class="carousel">
     <% @flashcards.each do |h| %>
-      <div class="transparent-container ">
-        <%= link_to library_sources_path do %>
-        <i class="fas fa-times exit-icon"></i>
-        <% end %>
-        <div class="flashcard ">
-          <div class="flashcard-text carousel-cell">
+      <div class="flashcard transparent-container carousel-cell" id="carousel-cell<%= @flashcards.index(h) + 1 %>" data-card-id="<%= h.id %>">
+        <div class="" id="card-<%= h.id %>">
+          <div class="flashcard-text">
             <h3><%= link_to h.source.title, source_path(h.source) %></h3>
             <h5><%= h.source.author.name %></h5>
               <p><%= h.content %></p>
@@ -24,40 +20,7 @@
             </div>
           <% end %>
         </div>
-        <div class="icons">
-
-            <% if current_user.favorited?(h) %>
-              <p>
-                <%= link_to unfav_highlight_path(h) do %>
-                  <i class="fas fa-heart flashcard-button"></i>
-                <% end %>
-              </p>
-            <% else %>
-              <p>
-                <%= link_to fav_highlight_path(h) do %>
-                  <i class="far fa-heart flashcard-button"></i>
-                <% end %>
-              </p>
-            <% end %>
-            <!-- render form -->
-              <p>
-                <%= link_to edit_highlight_path(h) do %>
-                  <i class="fas fa-pen flashcard-button"></i>
-                <% end %>
-              </p>
-            <p>
-              <%= link_to unfav_highlight_path(h) do %> <!-- build this one :share -->
-                <i class="fas fa-paper-plane flashcard-button"></i>
-              <% end %>
-            </p>
-
-          <div class="delete">
-            <p><%= link_to h, method: :delete, data: {confirm: "Are you sure?"} do %>
-              <i class="far fa-trash-alt flashcard-button"></i></p>
-            <% end %>
-          </div>
-        </div>
       </div>
     <% end %>
   </div>
-</div>
+<%= render 'icons', h: @flashcards.first %>

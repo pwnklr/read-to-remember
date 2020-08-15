@@ -5,7 +5,7 @@
     <% end %>
   </p>
 
-  <p><%= link_to flashcards_highlights_path do%>
+  <p><%= link_to flashcards_highlights_path(anchor: current_user.flashcards.first) do %>
       <i class="hover far fa-copy" style="color:#8989A8;"></i>
     <% end %>
   </p>

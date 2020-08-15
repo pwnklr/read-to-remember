@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :kindles, only: [:new, :create, :edit, :update]
   resources :highlights do
     collection do
+      # get 'flashcards:id', to: 'highlights#flashcards', as: :flashcards
       get :flashcards
       get :favorites
       get :tags
