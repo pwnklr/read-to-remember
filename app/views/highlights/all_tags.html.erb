@@ -1,7 +1,5 @@
-<div style="position: fixed; z-index:900; top: 8vh; width: 100%; padding: 12px 0;background:linear-gradient(180deg,  #25265b 10%, #4013a2 50%, #25265b 100%);">
-  <h1 style="color: white; padding-left: 5vw;padding-top: 8px;">My tags (<%= @all_tags.load.size %>)</h1>
-</div>
-<div class="container" style="padding-bottom: 50px; padding-top: 18vh; min-height: 100vh;">
+
+<div class="container" style="padding-bottom: 50px; padding-top: 3vh; min-height: 100vh;">
   <div style="display:flex; flex-wrap: wrap;">
     <% @all_tags.each do |t| %>
     <% font_size= 'font-size: 20px;' if t.taggings_count == 2 %>
@@ -9,7 +7,7 @@
     <% font_size= 'font-size: 28px;' if t.taggings_count == 4 %>
     <% font_size= 'font-size: 32px;' if t.taggings_count == 5 %>
     <% font_size= 'font-size: 36px;' if t.taggings_count == 6 %>
-     <p class="tag" style=" border-style: solid; border-width: 0; border-radius: 30px; font-size: 15px; padding: 1vh 2vh; color: #4013A2; background-color: #7E44FF; font-weight: bolder; margin-left: 1vh;"><%= link_to t.name, tags_highlights_path(t.name), class: "tags", style: "color: white; padding-right: 1vh; font-size: 15px; #{font_size}"%>(<%= t.taggings_count %>)</p>
+     <p class="tags" style="border-style: solid; border-width: 0; border-radius: 30px; font-size: 15px; padding: 1vh 2vh; color: #4013A2; background-color: #7E44FF; font-weight: bolder; margin-left: 1vh; opacity: 70%; box-shadow: 0px 4px 4px rgba(8, 13, 60, 0.09);"><%= link_to t.name, tags_highlights_path(t.name), class: "tag", style: "color: white; padding-right: 1vh; font-size: 15px; #{font_size}"%>(<%= t.taggings_count %>)</p>
     <% end %>
   </div>
 </div>

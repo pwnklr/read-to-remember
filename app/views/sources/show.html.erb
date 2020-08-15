@@ -1,7 +1,4 @@
-<%= render 'shared/dropdown' %>
-<div class="container" style="padding-bottom: 6px;padding-top: 10vh;position:fixed;z-index:900;width: 100%;background: linear-gradient(180deg, #25265b 10%, #4013a2 100%);">
-  <%= link_to "Back", library_sources_path, class: "link-library" %>
-  <br>
+<div class="container" style="padding-top: 20px; position:absolute; z-index:900; width: 100%;">
   <div class="row ustify-content-sm-center">
     <div class="card-source">
       <div style="display:flex; justify-content: space-between; width: 314px;">
@@ -19,7 +16,7 @@
     </div>
   </div>
 </div>
-<div class="container" style="padding-top:30vh; padding-bottom:64px; min-height:100vh;">
+<div class="container" style="padding-top:28vh; min-height:100vh;">
 
   <div class="container">
   <div class="row">
@@ -28,16 +25,18 @@
         <p><%= h.content %></p>
         <p class="page">Page <%= h.page %></p>
         <!-- -->
-        <% if h.my_note %>
-          <div class="card", style="width:86%;">
-            <p><%= h.h_note %></p>
-            <div style="display:flex;flex-wrap: wrap;">
-              <% h.tag_list.each do |t| %>
-                <p style="padding-left: .5vw;"><%= link_to "#{t}", tags_highlights_path(t) %></p>
+        <% if h.my_note.present? %>
+          <div class="card-note" style="width: 100%; padding-bottom: 12px;">
+            <p style="font-weight: bold; color: #898AA6; font-size:13px; margin: 0;">Notes</p>
+            <p style="font-weight: 300; font-size:12px; color: #25265B; margin: 0;"><%= h.h_note %></p>
+            <div style="display: flex; flex-wrap: wrap;">
+              <p style="font-size: 12px; font-height:0;"><% h.tag_list.each do |t| %></p>
+                <p style="font-weight: 300; padding-left: .5vw; font-size:12px; margin:0;"><%= link_to "#{t}", tags_highlights_path(t), style: "color:#25265B;"%></p>
               <% end %>
             </div>
           </div>
         <% end %>
+
         <div class="icons">
           <div class="sent">
             <% if current_user.favorited?(h) %>

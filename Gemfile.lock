@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/ivaMm/kindle-highlights.git
+  revision: 44aeb1a332195aa78974c5fc111ab3024bf37f79
+  branch: master
+  specs:
+    kindle-highlights (2.0.1)
+      activesupport
+      mechanize (>= 2.7.5)
+
+GIT
   remote: https://github.com/mailjet/mailjet-gem.git
   revision: 98cc7323881ae3dc7a482e4a8d11efd9d4321410
   specs:
@@ -128,9 +137,6 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
-    kindle-highlights (2.0.1)
-      activesupport
-      mechanize (>= 2.7.5)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -326,7 +332,7 @@ DEPENDENCIES
   faker
   font-awesome-sass
   jbuilder (~> 2.7)
-  kindle-highlights
+  kindle-highlights!
   listen (~> 3.2)
   mailjet!
   pg (>= 0.18, < 2.0)
