@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'faker'
 gem 'cloudinary', '~> 1.12.0'
 gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
-gem 'kindle-highlights'
+gem 'kindle-highlights', github: 'ivaMm/kindle-highlights', branch: 'master'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'acts_as_favoritor'
 gem 'whenever', require: false

@@ -13,7 +13,7 @@ class Kindle < ApplicationRecord
       # book.photo => scrape book cover
       book.save!
       kindle_data.highlights_for(b.asin).each do |h|
-        highlight = Highlight.new(content: h.text, page: h.location)
+        highlight = Highlight.new(content: h.text, page: h.location, my_note: h.note)
         highlight.user = user
         highlight.source = book
         highlight.save!
