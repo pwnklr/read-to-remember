@@ -63,3 +63,13 @@ input#query.form-control-sm {
     color: white; 
     border-radius: 24px;
   }
+
+.input#query.form-control-sm:focus {
+  background-color: #524D82;
+  outline: none !important;
+  border: none;
+}
+
+.textarea:focus, input:focus {
+  outline: none;
+}

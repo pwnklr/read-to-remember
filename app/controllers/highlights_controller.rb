@@ -10,7 +10,7 @@ class HighlightsController < ApplicationController
       @highlights = current_user.highlights.includes(:source).global_search(@query)
       @count = @highlights.size
     else
-      @highlights = current_user.highlights.last(10)
+      @highlights = []
     end
   end
 
