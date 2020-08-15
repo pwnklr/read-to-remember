@@ -40,20 +40,23 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  width: 100%; // don't change this!!
+  width: 94%; // don't change this!!
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 10px;
   padding: 15px;
-  margin: 10px;
   margin-bottom: 20px;
+  margin: 13px 12px;
   // text-align: justify;
   font-size: 25px;
   box-shadow: 0px 4px 4px rgba(8, 13, 60, 0.09);
 }
 
+.card-adjusted {
+  width: 86%;
+}
 
 .flashcard-button {
   border-radius: 50%;
