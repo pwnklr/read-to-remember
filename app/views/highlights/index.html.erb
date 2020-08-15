@@ -1,17 +1,18 @@
 <div class="container">
-<!-- Ilona, make this pretty :)-->
-  <div style="padding: 16px 6px 6px 6px;">
-    <%= form_tag highlights_path, class: "form-inline-sm", method: :get do %>
+<!-- Ilona, make this pretty :P-->
+  <div style="padding-left: 15px; padding-top: 30px; padding-bottom: 10px;">
+
+    <%= form_tag highlights_path, class: "form-inline-sm search", method: :get do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control-sm",
-        placeholder: "keyword"
+        placeholder: "Search ReadToRemember"
       %>
-      <%= submit_tag "Search", class: "form-control-sm search-btn" %>
+      <%= submit_tag "Search", class: "form-control-sm search-btn"%>
     <% end %>
   </div>
   <% if @query %>
-    <p style="color: #fff;">We found <%= pluralize @count, 'result' %> for <%= @query.upcase %>!</p>
+    <p style="color: #fff; padding-left: 10px;">We found <%= pluralize @count, 'result' %> for <%= @query.upcase %>!</p>
   <% end %>
 </div>
 

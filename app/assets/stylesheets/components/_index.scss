@@ -10,9 +10,11 @@ body {
   background-image: asset_url("backround.png");
   background-size:     cover;
   background-repeat:   no-repeat;
-  background-position: center center;
-  height: 1500px;
   background-color: #3E09A7;
+}
+
+.container:last-of-type {
+  margin-bottom: 60px;
 }
 
 h5 {
