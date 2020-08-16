@@ -1,6 +1,7 @@
 require 'faker'
 require "open-uri"
 
+Kindle.destroy_all
 User.destroy_all
 Author.destroy_all
 puts "user + highlight destroyed"
@@ -121,6 +122,7 @@ highlight_13 = Highlight.new(
     content: "“Elon will say, ‘Fine. You’re off the project, and I am now the CEO of the project. I will do your job and be CEO of two companies at the same time. I will deliver it,’” Brogan said. “What’s crazy is that Elon actually does it. Every time he’s fired someone and taken their job, he’s delivered on whatever the project was.”",
     page: 3666)
     highlight_13.user = new_user
+    highlight_13.source = new_book_1
     highlight_13.save!
 
 puts "1. book done"
@@ -728,59 +730,542 @@ highlight_85 = Highlight.new(
     highlight_85.source = new_book_6
     highlight_85.save!
 
-puts "6.book done"
+puts "6. book done"
 
 # 7 book
-  author_7 = Author.create!(name: "Caroline Criado Perez, Anna Sak")
-  new_book = Source.new(
-    title: "Invisible Women: Data Bias in a World Designed for Men",
-    publishing_year: "2019",
+  author_7 = Author.create!(name: "Carol S. Dweck")
+  new_book_7 = Source.new(
+    title: "Mindset: The New Psychology of Success (English Edition)",
     category: "book")
-    image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595532090/7_giwjxu.jpg")
-    new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
+    image = URI.open("https://res.cloudinary.com/long-learning-company/image/upload/v1531986798/Pre-Order/10%20Awesome%20Books%20to%20Help%20You%20Communicate%20Better%20at%20Work/7.jpg")
+    new_book_7.photo.attach(io: image, filename: "#{new_book_7.title}", content_type: 'image/png')
 
-  new_book.author = author_7
-  new_book.user = new_user
-  new_book.save!
+  new_book_7.author = author_7
+  new_book_7.user = new_user
+  new_book_7.save!
+
+highlight_86 = Highlight.new(
+    content: "Not only weren’t they discouraged by failure, they didn’t even think they were failing. They thought they were learning.",
+    page: 102)
+    highlight_86.user = new_user
+    highlight_86.source = new_book_7
+    highlight_86.save!
+
+highlight_87 = Highlight.new(
+    content: "What are the consequences of thinking that your intelligence or personality is something you can develop, as opposed to something that is a fixed, deep-seated trait?",
+    page: 106)
+    highlight_87.user = new_user
+    highlight_87.source = new_book_7
+    highlight_87.save!
+
+
+highlight_88 = Highlight.new(
+    content: "the view you adopt for yourself profoundly affects the way you lead your life.",
+    page: 137)
+    highlight_88.user = new_user
+    highlight_88.source = new_book_7
+    highlight_88.save!
+
+highlight_89 = Highlight.new(
+    content: "Why waste time proving over and over how great you are, when you could be getting better? Why hide deficiencies instead of overcoming them? Why look for friends or partners who will just shore up your self-esteem instead of ones who will also challenge you to grow?",
+    page: 164)
+    highlight_89.user = new_user
+    highlight_89.source = new_book_7
+    highlight_89.save!
+
+highlight_90 = Highlight.new(
+    content: "The passion for stretching yourself and sticking to it,",
+    page: 166)
+    highlight_90.user = new_user
+    highlight_90.source = new_book_7
+    highlight_90.save!
+
+highlight_91 = Highlight.new(
+    content: "work things out with my best friend the next time we speak.”",
+    page: 198,
+    my_note: "Also in the relationship. Speak abkoj it we all csn change")
+    highlight_91.user = new_user
+    highlight_91.source = new_book_7
+    highlight_91.save!
+
+highlight_92 = Highlight.new(
+    content: "Think about someone you know who is steeped in the fixed mindset. Think about how they’re always trying to prove themselves and how they’re supersensitive about being wrong or making mistakes. Did you ever wonder why they were this way? (Are you this way?) Now you can begin to understand why.”",
+    page: 283,
+    my_note: "#mistake #mindset")
+    highlight_92.user = new_user
+    highlight_92.source = new_book_7
+    highlight_92.save!
+
+highlight_93 = Highlight.new(
+    content: "In one world—the world of fixed traits—success is about proving you’re smart or talented. Validating yourself. In the other—the world of changing qualities—it’s about stretching yourself to learn something new. Developing yourself.",
+    page: 309,
+    my_note: "#change #learn")
+    highlight_93.user = new_user
+    highlight_93.source = new_book_7
+    highlight_93.save!
+
+highlight_94 = Highlight.new(
+    content: "In one world, effort is a bad thing. It, like failure, means you’re not smart or talented. If you were, you wouldn’t need effort. In the other world, effort is what makes you smart or talented.",
+    page: 314,
+    my_note: "#effort")
+    highlight_94.user = new_user
+    highlight_94.source = new_book_7
+    highlight_94.save!
+
+highlight_95 = Highlight.new(
+    content: "But for children with the growth mindset, success is about stretching themselves. It’s about becoming smarter.",
+    page: 333,
+    my_note: "#effort #mindset")
+    highlight_95.user = new_user
+    highlight_95.source = new_book_7
+    highlight_95.save!
+
+highlight_96 = Highlight.new(
+    content: "“When you’re lying on your deathbed, one of the cool things to say is, ‘I really explored myself.’ This sense of urgency was instilled when my mom died. If you only go through life doing stuff that’s easy, shame on you.” So when wrestling presented a challenge, she was ready to take it on.",
+    page: 409)
+    highlight_96.user = new_user
+    highlight_96.source = new_book_7
+    highlight_96.save!
+
+highlight_97 = Highlight.new(
+    content: "Clearly, people with the growth mindset thrive when they’re stretching themselves.",
+    page: 427,
+    my_note: "#mindset")
+    highlight_97.user = new_user
+    highlight_97.source = new_book_7
+    highlight_97.save!
+
+highlight_98 = Highlight.new(
+    content: "I’ll never forget the first time I heard myself say, “This is hard. This is fun.” That’s the moment I knew I was changing mindsets.",
+    page: 452,
+    my_note: "#mindset #change")
+    highlight_98.user = new_user
+    highlight_98.source = new_book_7
+    highlight_98.save!
+
+highlight_99 = Highlight.new(
+    content: "When Do You Feel Smart: When You’re Flawless or When You’re Learning?",
+    page: 453)
+    highlight_99.user = new_user
+    highlight_99.source = new_book_7
+    highlight_99.save!
+
+highlight_100 = Highlight.new(
+    content: "Becoming is better than being.” The fixed mindset does not allow people the luxury of becoming. They have to already be.",
+    page: 482)
+    highlight_100.user = new_user
+    highlight_100.source = new_book_7
+    highlight_100.save!
+
+highlight_101 = Highlight.new(
+    content: "They gave this test the power to define them. That’s why every success is so important.",
+    page: 506)
+    highlight_101.user = new_user
+    highlight_101.source = new_book_7
+    highlight_101.save!
+
+highlight_102 = Highlight.new(
+    content: "People with the growth mindset know that it takes time for potential to flower.",
+    page: 526)
+    highlight_102.user = new_user
+    highlight_102.source = new_book_7
+    highlight_102.save!
+
+highlight_103 = Highlight.new(
+    content: "They were all rejecting the idea of fixed ability and selecting instead for mindset.",
+    page: 546)
+    highlight_103.user = new_user
+    highlight_103.source = new_book_7
+    highlight_103.save!
+
+highlight_104 = Highlight.new(
+    content: "problem is when special begins to mean better than others. A more valuable human being. A superior person. An entitled person.",
+    page: 567)
+    highlight_104.user = new_user
+    highlight_104.source = new_book_7
+    highlight_104.save!
+
+highlight_105 = Highlight.new(
+    content: "“I was shocked with the level of intensity my coming back to the game created….People were praising me like I was a religious cult or something. That was very embarrassing. I’m a human being like everyone else.” Jordan knew how hard he had worked to develop his abilities.",
+    page: 588)
+    highlight_105.user = new_user
+    highlight_105.source = new_book_7
+    highlight_105.save!
+
+puts "7. book done"
 
 # 8 book
-  author_8 = Author.create!(name: "Reni Eddo-Lodge")
-  new_book = Source.new(
-    title: "Why I'm No Longer Talking to White People About Race",
-    publishing_year: "2017",
+  author_8 = Author.create!(name: "Tara Westover")
+  new_book_8 = Source.new(
+    title: "Educated: The international bestselling memoir (English Edition)",
     category: "book")
-    image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595532090/8_iagkos.jpg")
-    new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
+    image = URI.open("https://i.ebayimg.com/images/g/GAAAAOSwp7deurST/s-l640.jpg")
+    new_book_8.photo.attach(io: image, filename: "#{new_book_8.title}", content_type: 'image/png')
 
-  new_book.author = author_8
-  new_book.user = new_user
-  new_book.save!
+  new_book_8.author = author_8
+  new_book_8.user = new_user
+  new_book_8.save!
 
+  highlight_106 = Highlight.new(
+    content: "Then she’d smile—not a soothing smile for someone else but a smile for herself, of baffled amusement, a smile that to me always seemed to say, Ain’t nothin’ funnier than real life, I tell you what.",
+    page: 654)
+    highlight_106.user = new_user
+    highlight_106.source = new_book_8
+    highlight_106.save!
+
+  highlight_107 = Highlight.new(
+    content: "The seed of curiosity had been planted; it needed nothing more than time and boredom to grow.",
+    page: 1086)
+    highlight_107.user = new_user
+    highlight_107.source = new_book_8
+    highlight_107.save!
+
+  highlight_108 = Highlight.new(
+    content: "that the odds are better if you rely only on yourself.",
+    page: 1738,
+    my_note: "Not myself any more")
+    highlight_108.user = new_user
+    highlight_108.source = new_book_8
+    highlight_108.save!
+
+  highlight_109 = Highlight.new(
+    content: "He is looking at me strangely, as if to say, This is who you are. You’ve been pretending that you’re someone else. Someone better. But you are just this.",
+    page: 3140)
+    highlight_109.user = new_user
+    highlight_109.source = new_book_8
+    highlight_109.save!
+
+  highlight_110 = Highlight.new(
+    content: "I begin to reason with myself, to doubt whether I had spoken clearly: what had I whispered and what had I screamed? I decide that if I had asked differently, been more calm, he would have stopped. I write this until I believe it, which doesn’t take long because I want to believe it. It’s comforting to think the defect is mine, because that means it is under my power.",
+    page: 3169)
+    highlight_110.user = new_user
+    highlight_110.source = new_book_8
+    highlight_110.save!
+
+  highlight_111 = Highlight.new(
+    content: "began to experience the most powerful advantage of money: the ability to think of things besides money.",
+    page: 3345)
+    highlight_111.user = new_user
+    highlight_111.source = new_book_8
+    highlight_111.save!
+
+ highlight_112 = Highlight.new(
+    content: "I thought if I could accept that what they had written was not absolute but was the result of a biased process of conversation and revision, maybe I could reconcile myself with the fact that the history most people agreed upon was not the history I had been taught.",
+    page: 3817)
+    highlight_112.user = new_user
+    highlight_112.source = new_book_8
+    highlight_112.save!
+
+ highlight_113 = Highlight.new(
+    content: "To myself I pretended there were other reasons I couldn’t belong at Cambridge, reasons having to do with class and status: that it was because I was poor, had grown up poor. Because I could stand in the wind on the chapel roof and not tilt. That was the person who didn’t belong in Cambridge: the roofer, not the whore. I can go to school, I had written in my journal that very afternoon.",
+    page: 3897)
+    highlight_113.user = new_user
+    highlight_113.source = new_book_8
+    highlight_113.save!
+
+  highlight_114 = Highlight.new(
+    content: "“The most powerful determinant of who you are is inside you,” he said. “Professor Steinberg says this is Pygmalion. Think of the story, Tara.” He paused, his eyes fierce, his voice piercing. “She was just a cockney in a nice dress. Until she believed in herself. Then it didn’t matter what dress she wore.”",
+    page: 3904)
+    highlight_114.user = new_user
+    highlight_114.source = new_book_8
+    highlight_114.save!
+
+  highlight_115 = Highlight.new(
+    content: "He said positive liberty is self-mastery—the rule of the self, by the self. To have positive liberty, he explained, is to take control of one’s own mind; to be liberated from irrational fears and beliefs, from addictions, superstitions and all other forms of self-coercion.",
+    page: 4064)
+    highlight_115.user = new_user
+    highlight_115.source = new_book_8
+    highlight_115.save!
+
+  highlight_116 = Highlight.new(
+    content: "It was as if I had stepped through a mirror and was living a day in the life I might have had, if I’d stayed on the mountain. But I hadn’t stayed. My life had diverged from my sister’s, and it felt as though there was no common ground between us.",
+    page: 4211)
+    highlight_116.user = new_user
+    highlight_116.source = new_book_8
+    highlight_116.save!
+
+  highlight_117 = Highlight.new(
+    content: "But although I wished it were otherwise, I did not want to go home. I preferred the family I had chosen to the one I had been given, so the happier I became in Cambridge, the more my happiness was made fetid by my feeling that I had betrayed Buck’s Peak. That feeling became a physical part of me, something I could taste on my tongue or smell on my own breath.",
+    page: 4440)
+    highlight_117.user = new_user
+    highlight_117.source = new_book_8
+    highlight_117.save!
+
+  highlight_118 = Highlight.new(
+    content: "The thing about having a mental breakdown is that no matter how obvious it is that you’re having one, it is somehow not obvious to you. I’m fine, you think. So what if I watched TV for twenty-four straight hours yesterday. I’m not falling apart. I’m just lazy. Why it’s better to think yourself lazy than think yourself in distress, I’m not sure. But it was better. More than better: it was vital.",
+    page: 4833)
+    highlight_118.user = new_user
+    highlight_118.source = new_book_8
+    highlight_118.save!
+
+  highlight_119 = Highlight.new(
+    content: "decisions I made after that moment were not the ones she would have made. They were the choices of a changed person, a new self.",
+    page: 5152,
+    my_note: "#change")
+    highlight_119.user = new_user
+    highlight_119.source = new_book_8
+    highlight_119.save!
+
+puts "8. book done"
 # 9 book
-  author_9 = Author.create!(name: "Ted Chiang")
-  new_book = Source.new(
-    title: "Exhalation: Stories",
-    publishing_year: "2019",
+  author_9 = Author.create!(name: "Gayle Laakmann McDowell and Jackie Bavaro")
+  new_book_9 = Source.new(
+    title: "Cracking the PM Interview: How to Land a Product Manager Job in Technology (English Edition)",
     category: "book")
-    image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595532083/9_tdg7kf.jpg")
-    new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
+    image = URI.open("https://prodimage.images-bn.com/pimages/9780984782819_p0_v1_s1200x630.jpg")
+    new_book_9.photo.attach(io: image, filename: "#{new_book_9.title}", content_type: 'image/png')
 
-  new_book.author = author_9
-  new_book.user = new_user
-  new_book.save!
+  new_book_9.author = author_9
+  new_book_9.user = new_user
+  new_book_9.save!
+
+
+  highlight_120 = Highlight.new(
+    content: "PMs are expected to think about strategy for their teams, for example, which customers and areas to focus on.",
+    page: 30)
+    highlight_120.user = new_user
+    highlight_120.source = new_book_9
+    highlight_120.save!
+
+ highlight_121 = Highlight.new(
+    content: "Great PMs at these companies influence strategy by pitching their ideas to executives and winning them over.",
+    page: 30)
+    highlight_121.user = new_user
+    highlight_121.source = new_book_9
+    highlight_121.save!
+
+  highlight_122 = Highlight.new(
+    content: "The top-down vision makes it hard to make big changes in direction in the middle of a launch cycle. Even if the idea is great, it’s hard to find developers with spare time to build it. On the other hand, you’re generally working on features that everyone agrees are important. This means that you can spend your energy trying to build something great instead of convincing management to let you launch the great thing you built.",
+    page: 34)
+    highlight_122.user = new_user
+    highlight_122.source = new_book_9
+    highlight_122.save!
+
+  highlight_123 = Highlight.new(
+    content: "Coding skills are great—often required, in fact—but they’re not sufficient. Find a way to show leadership, business skills, and initiative.",
+    page: 51)
+    highlight_123.user = new_user
+    highlight_123.source = new_book_9
+    highlight_123.save!
+
+  highlight_124 = Highlight.new(
+    content: "An MBA isn’t a requirement for product management, and at some startups it might even count against you. On the other hand, teams with more of a business focus consider an MBA a real asset, and some companies, such as Amazon, explicitly focus on hiring MBAs.",
+    page: 52)
+    highlight_124.user = new_user
+    highlight_124.source = new_book_9
+    highlight_124.save!
+
+  highlight_125 = Highlight.new(
+    content: "Instead of guessing what users would want, he started thinking about which metrics he wanted to drive.",
+    page: 52)
+    highlight_125.user = new_user
+    highlight_125.source = new_book_9
+    highlight_125.save!
+
+  highlight_126 = Highlight.new(
+    content: "As a product manager, you need to let go of that instinct and allow yourself to envision a world where you’ve made the impossible happen.",
+    page: 56)
+    highlight_126.user = new_user
+    highlight_126.source = new_book_9
+    highlight_126.save!
+
+  highlight_127 = Highlight.new(
+    content: "Teams need product managers who can lead them into the future, building things that have never been built before.",
+    page: 56)
+    highlight_127.user = new_user
+    highlight_127.source = new_book_9
+    highlight_127.save!
+
+  highlight_128 = Highlight.new(
+    content: "Credibility is the currency of the PM role.",
+    page: 57)
+    highlight_128.user = new_user
+    highlight_128.source = new_book_9
+    highlight_128.save!
+
+  highlight_129 = Highlight.new(
+    content: "It’s your job to cut through the ambiguity to help the team get moving.",
+    page: 57)
+    highlight_129.user = new_user
+    highlight_129.source = new_book_9
+    highlight_129.save!
+
+  highlight_130 = Highlight.new(
+    content: "A great way to hone your prioritization sense is to follow up on your designs after they’ve launched. See if you can talk to customers or read support tickets to learn if your prioritization was right.",
+    page: 61)
+    highlight_130.user = new_user
+    highlight_130.source = new_book_9
+    highlight_130.save!
+
+  highlight_131 = Highlight.new(
+    content: "Your side project should be listed on your resume as well as on your website, if you have one. It’s great if your side projects were successful, but just having done something shows a lot. Don’t be afraid to list “unsuccessful” side projects.",
+    page: 66)
+    highlight_131.user = new_user
+    highlight_131.source = new_book_9
+    highlight_131.save!
+
+  highlight_132 = Highlight.new(
+    content: "What are the five things you are most proud of? What would your team say are the five most impactful things you did? The answers to these questions should form your bullets.",
+    page: 108)
+    highlight_132.user = new_user
+    highlight_132.source = new_book_9
+    highlight_132.save!
+
+puts "9. book done"
 
 # 10 book
-  author_10 = Author.create!(name: "Mark O'Connell")
-  new_book = Source.new(
-    title: "Notes from an Apocalypse: A Personal Hourney to the End of the World and Back",
-    publishing_year: "2020",
+  author_10 = Author.create!(name: "Marc Brackett,Ph.D.")
+  new_book_10 = Source.new(
+    title: "Permission to Feel: Unlocking the Power of Emotions to Help Our Kids, Ourselves, and Our Society Thrive (English Edition)",
     category: "book")
-    image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595532094/10_wevelj.jpg")
-    new_book.photo.attach(io: image, filename: "#{new_book.title}", content_type: 'image/png')
+    image = URI.open("https://bilder.buecher.de/produkte/57/57505/57505495n.jpg")
+    new_book_10.photo.attach(io: image, filename: "#{new_book_10.title}", content_type: 'image/png')
 
-  new_book.author = author_10
-  new_book.user = new_user
-  new_book.save!
+  new_book_10.author = author_10
+  new_book_10.user = new_user
+  new_book_10.save!
+
+highlight_133 = Highlight.new(
+    content: "My message for everyone is the same: that if we can learn to identify, express, and harness our feelings, even the most challenging ones, we can use those emotions to help us create positive, satisfying lives.",
+    page: 142)
+    highlight_133.user = new_user
+    highlight_133.source = new_book_10
+    highlight_133.save!
+
+highlight_134 = Highlight.new(
+    content: "The irony, though, is that when we ignore our feelings, or suppress them, they only become stronger. The really powerful emotions build up inside us, like a dark force that inevitably poisons everything we do, whether we like it or not. Hurt feelings don’t vanish on their own. They don’t heal themselves. If we don’t express our emotions, they pile up like a debt that will eventually come due.",
+    page: 176)
+    highlight_134.user = new_user
+    highlight_134.source = new_book_10
+    highlight_134.save!
+
+highlight_135 = Highlight.new(
+    content: "American youths now rank in the bottom quarter among developed nations in well-being and life satisfaction, according to a report by UNICEF. Research shows that our youths have stress levels that surpass those of adults.",
+    page: 188)
+    highlight_135.user = new_user
+    highlight_135.source = new_book_10
+    highlight_135.save!
+
+puts "10. book done"
+
+# 11 book
+  author_11 = Author.create!(name: "Yvon Chouinard and Naomi Klein")
+  new_book_11 = Source.new(
+    title: "Let My People Go Surfing: The Education of a Reluctant Businessman--Including 10 More Years of Business Unusual (English Edition)",
+    category: "book")
+    image = URI.open("https://bilder.buecher.de/produkte/44/44606/44606574n.jpg")
+    new_book_11.photo.attach(io: image, filename: "#{new_book_11.title}", content_type: 'image/png')
+
+  new_book_11.author = author_11
+  new_book_11.user = new_user
+  new_book_11.save!
+
+  highlight_136 = Highlight.new(
+    content: "If we could all come to see our consumer products as tools that help us to live our real lives—rather than as substitutes and surrogates for that life—we would need many fewer products to be happy. And we would keep the ones we already have for longer.",
+    page: 173)
+    highlight_136.user = new_user
+    highlight_136.source = new_book_11
+    highlight_136.save!
+
+  highlight_137 = Highlight.new(
+    content: "To know and not to do is not to know. —Wang Yang Ming",
+    page: 182)
+    highlight_137.user = new_user
+    highlight_137.source = new_book_11
+    highlight_137.save!
+
+  highlight_138 = Highlight.new(
+    content: "We have no intention to sell out or to become a public company, which would compromise on our mission “to use business to inspire and implement solutions to the environmental crisis.”",
+    page: 192)
+    highlight_138.user = new_user
+    highlight_138.source = new_book_11
+    highlight_138.save!
+
+ highlight_139 = Highlight.new(
+    content: "I believe I inherited his love of hard physical work and an appreciation of quality, particularly of fine tools.",
+    page: 261)
+    highlight_139.user = new_user
+    highlight_139.source = new_book_11
+    highlight_139.save!
+
+  highlight_140 = Highlight.new(
+    content: "We auctioned off all our possessions, including the hand-built furniture my father had made, and one traumatic day the six of us piled into the family Chrysler and drove west.",
+    page: 272)
+    highlight_140.user = new_user
+    highlight_140.source = new_book_11
+    highlight_140.save!
+
+  highlight_141 = Highlight.new(
+    content: "Before the other kids in my neighborhood were even allowed to cross the street on their own, I was bicycling seven or eight miles to reach a lake on a private golf course, where I hid in the willows away from the guards and fished for bluegills and bass.",
+    page: 289)
+    highlight_141.user = new_user
+    highlight_141.source = new_book_11
+    highlight_141.save!
+
+ highlight_142 = Highlight.new(
+    content: "I learned at an early age that it’s better to invent your own game; then you can always be a winner.",
+    page: 297)
+    highlight_142.user = new_user
+    highlight_142.source = new_book_11
+    highlight_142.save!
+
+ highlight_143 = Highlight.new(
+    content: "but we did know how to make things functional, tough, and simple—just",
+    page: 626)
+    highlight_143.user = new_user
+    highlight_143.source = new_book_11
+    highlight_143.save!
+
+ highlight_144 = Highlight.new(
+    content: "“Here’s Patagonia. Here’s Chouinard Equipment. Do with them what you will. I’m going climbing.”",
+    page: 676)
+    highlight_144.user = new_user
+    highlight_144.source = new_book_11
+    highlight_144.save!
+
+  highlight_145 = Highlight.new(
+    content: "I was especially interested in books on Japanese or Scandinavian styles of management because I knew the American way of doing business offered only one of many possible routes.",
+    page: 723)
+    highlight_145.user = new_user
+    highlight_145.source = new_book_11
+    highlight_145.save!
+
+  highlight_146 = Highlight.new(
+    content: "He was the one who introduced me to the remote region of Chile and Argentina called Patagonia in 1968, after he had sold the North Face, and in fact it was while we were on that trip that Susie and a friend started the business Plain Jane, which became Esprit.",
+    page: 728)
+    highlight_146.user = new_user
+    highlight_146.source = new_book_11
+    highlight_146.save!
+
+  highlight_147 = Highlight.new(
+    content: "all our decisions as though we would be in business for a hundred years. We would grow only at a rate we could sustain for that long.",
+    page: 1100)
+    highlight_147.user = new_user
+    highlight_147.source = new_book_11
+    highlight_147.save!
+
+  highlight_148 = Highlight.new(
+    content: "We envision the future of Patagonia to be a balance between mountain and wilderness activities and ocean- and water-related sports.",
+    page: 1160)
+    highlight_148.user = new_user
+    highlight_148.source = new_book_11
+    highlight_148.save!
+
+  highlight_149 = Highlight.new(
+    content: "At our headquarters in Ventura, California, we built a three-story office building using 95 percent recycled materials. There are solar panels on the roofs and over the parking lots.",
+    page: 1163)
+    highlight_149.user = new_user
+    highlight_149.source = new_book_11
+    highlight_149.save!
+
+  highlight_150 = Highlight.new(
+    content: "“Make the best product, cause no unnecessary harm, and use business to inspire and implement solutions to the environmental crisis.”",
+    page: 1181)
+    highlight_150.user = new_user
+    highlight_150.source = new_book_11
+    highlight_150.save!
+
+  puts "11. book done - books done, 150 highlights"
 
 # articles
 # 1 article
