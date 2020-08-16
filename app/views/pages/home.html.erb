@@ -1,42 +1,35 @@
 <div>
   <!-- user's home-page -->
   <% if current_user %>
-    <div class="background-image" style="height: 40vh;">
+    <div class="background-image" style="height: 20vh;">
       <li class="nav-item dropdown">
         <%= image_tag "logo.png", class: "navbar-brand dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "Home", "/", class: "dropdown-item" %>
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </div>
       </li>
-
-      <div class="header">
-        <h1 id="title" style="position:absolute; top: 6%; left:50%; transform:translateX(-50%);">Read to remember</h1>
-      <!--<p id="description">Your one stop place to collect, review and learn from your ebook and article highlights.</p>-->
-      </div>
     </div>
 
-
-<!-- kindle => have fun Alexis! :D -->
+    <!-- kindle => have fun Alexis! :D -->
 
 <% if current_user.kindle %>
 <!--<p style="background-color:white" > <%#= link_to "Edit Kindle", edit_kindle_path(current_user.kindle) %> </p>-->
 <% else %>
-   <p style="background-color:white" > <%= link_to "Connect Kindle", new_kindle_path %> </p>
+  <%= link_to "Connect Kindle", new_kindle_path, class: "link-library" %>
 <% end %>
 <!-- -->
 
-
-    <div class="background-color", style="min-height: 100vh;">
-      <% if @highlight %>
-       <h2>Highlight of the day</h2>
-       <div class="container" style="text-align: center;">
-         <p style="color:white;"><em><%= @highlight.content %></em></p>
-         <p style="color:white;"><%= @highlight.source.author.name %></p>
-       </div>
+  <div class="container" style="padding: 10px;">
+   <% @book_covers.each do |book| %>
+     <% if book.photo.present? %>
+        <%= cl_image_tag book.photo.key, height: 140, width: 120, crop: :fill, class: "cover" %>
       <% end %>
-       <%= render 'shared/navbar' %>
-    </div>
+    <% end %>
+  </div>
+    <%= link_to "Start your review!", flashcards_highlights_path, class: "link-library" %>
+
+  <%= render 'shared/navbar' %>
+
   <!-- visitor'shome-page -->
   <% else %>
     <div class="background-image">

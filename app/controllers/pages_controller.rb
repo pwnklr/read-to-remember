@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     if current_user
-      @highlight = current_user.highlights.includes(source: :author).sample
+      @book_covers = current_user.sources.sample(4)
     end
   end
 end
