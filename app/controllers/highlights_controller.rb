@@ -36,12 +36,12 @@ class HighlightsController < ApplicationController
 
   def fav
     current_user.favorite(@highlight)
-    redirect_back(fallback_location: 'pages#home')
+    redirect_back(anchor: @highlight.id, fallback_location: 'pages#home')
   end
 
   def unfav
     current_user.unfavorite(@highlight)
-    redirect_back(fallback_location: 'pages#home')
+    redirect_back(anchor: @highlight.id, fallback_location: 'pages#home')
   end
 
   def flashcards

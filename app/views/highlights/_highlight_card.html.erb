@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" style="margin: 15px; padding-bottom: 55px;">
   <div class="row">
     <% highlights.each do |h| %>
-      <div class="card">
+      <div class="card card-adjusted">
         <h3><%= link_to h.source.title, source_path(h.source) %></h3>
         <h5><%= h.source.author.name %></h5>
         <p><%= h.content %></p>

@@ -5,6 +5,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="description" content="<%= meta_description %>">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable"  content="yes">
+    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+    <%= render 'shared/ios_pwa_links' %>
 
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="<%= meta_title %>" />
@@ -35,7 +39,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body style='<%= "height: unset;" if current_user && current_page?(controller: 'highlights', action: 'flashcards') %>'>
+  <body style='<%#= "height: unset;" if current_user && current_page?(controller: 'highlights', action: 'flashcards') %>'>
     <% unless request.fullpath == "/" || request.fullpath == "/highlights/flashcards"%>
       <%= render 'shared/navbar' %>
     <% end %>

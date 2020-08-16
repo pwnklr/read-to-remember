@@ -1,0 +1,32 @@
+<div class="icons">
+    <% if current_user.favorited?(h) %>
+      <p>
+        <%= link_to unfav_highlight_path(h), id: "fav" do %>
+          <i class="fas fa-heart flashcard-button"></i>
+        <% end %>
+      </p>
+    <% else %>
+      <p>
+        <%= link_to fav_highlight_path(h), id: "fav" do %>
+          <i class="far fa-heart flashcard-button"></i>
+        <% end %>
+      </p>
+    <% end %>
+    <!-- render form -->
+      <p>
+        <%= link_to edit_highlight_path(h), id: "fav" do %>
+          <i class="fas fa-pen flashcard-button"></i>
+        <% end %>
+      </p>
+    <p>
+      <%= link_to unfav_highlight_path(h), id: "fav" do %> <!-- build this one :share -->
+        <i class="fas fa-paper-plane flashcard-button"></i>
+      <% end %>
+    </p>
+
+  <div class="delete">
+    <p><%= link_to h, method: :delete, data: {confirm: "Are you sure?"} do %>
+      <i class="far fa-trash-alt flashcard-button"></i></p>
+    <% end %>
+  </div>
+</div>

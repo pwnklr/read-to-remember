@@ -8,7 +8,7 @@ class PagesController < ApplicationController
       flashcards.each do |f|
         @book_covers << f.source
       end
-    @book_covers
+      @book_covers
     end
   end
 end
