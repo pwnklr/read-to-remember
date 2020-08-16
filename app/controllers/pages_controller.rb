@@ -3,7 +3,12 @@ class PagesController < ApplicationController
 
   def home
     if current_user
-      @highlight = current_user.highlights.includes(source: :author).sample
+      flashcards = current_user.flashcards.first(4)
+      @book_covers = []
+      flashcards.each do |f|
+        @book_covers << f.source
+      end
+      @book_covers
     end
   end
 end
