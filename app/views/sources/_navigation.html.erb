@@ -1,6 +1,6 @@
-<div style="position:fixed; display:flex; justify-content: flex-start; top:9.7vh; width: 100%; padding-top: 9px; padding-bottom: 9px; z-index:1000; font-weight: 600; background: linear-gradient(180deg, #4013a2 0%, #25265b 100%);">
-  <%= link_to "Books", library_sources_path, class: "link-library" %>
-  <%= link_to "Articles", articles_sources_path, class: "link-library" %></p>
+<div id="sourceNavigation" style="position:fixed; display:flex; justify-content: flex-start; top:9.7vh; width: 100%; padding-top: 9px; padding-bottom: 9px; z-index:1000; background: linear-gradient(180deg, #4013a2 0%, #25265b 100%);">
+  <%= link_to "Books", library_sources_path, class: "link-library books" %>
+  <%= link_to "Articles", articles_sources_path, class: "link-library articles" %></p>
   <%= link_to "My Tags", all_tags_highlights_path, class: "link-library" %></p>
 </div>
 <!-- TODO: add active class to current/pressed link -->
