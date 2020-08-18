@@ -28,7 +28,7 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initFlickity } from '../channels/init_flickity';
-import { initActiveNavbar} from '../channels/init_active_navbar';
+import { initActiveNavbar } from '../channels/init_active_navbar';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -38,12 +38,10 @@ document.addEventListener('turbolinks:load', () => {
     initFlickity();
   }
 
-  initActiveNavbar();
-  /*
-  const navbar = document.getElementById("myNavbar");
-  if (navbar) {
-
-  } */
+  //const navbar = document.getElementById("myNavbar");
+  //if (navbar) {
+     initActiveNavbar();
+  //  }
 
     //initActiveSourceNavigation();
 

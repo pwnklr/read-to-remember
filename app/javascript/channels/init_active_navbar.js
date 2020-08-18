@@ -1,32 +1,23 @@
-
 const initActiveNavbar = () => {
   const navbar = document.getElementById("myNavbar");
-  // Get all buttons
-  const btns = navbar.querySelectorAll("i.fas");
-  console.log(btns);
-  let checkvalue= window.location;
-  console.log(checkvalue);
+  const location = window.location.href;
 
-  // Loop through the buttons and add the active class to the current/clicked button
-  for (let i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function() {
-      //e.preventDefault(); // active classes works, links no :(
-      let checkvalue= window.location;
-       console.log(checkvalue);
+  const btnHome = document.querySelector(".fas.fa-house-user");
+  const btnSearch = document.querySelector(".fas.fa-search");
+  const btnFav = document.querySelector(".fas.fa-heart");
+  const btnLib = document.querySelector(".fas.fa-book-reader");
 
-      let current = document.getElementsByClassName("active");
-
-     const wvalue = this.className.split(" ")[0];
-
-     window.location = 'http://localhost:3000/'+ wvalue;
-
-   console.log(current);
-      current[0].className = current[0].className.replace(" active", "");
-      this.className += " active";
-     // current.classList.remove("active"); //className = current.className.replace(" active", "");
-     // this.classList.add("active")
-      console.log(this);
-    });
+  if (location == "http://localhost:3000/" || location == "https://www.readtoremember.xyz/") {
+    btnHome.className += " active";
+  }
+  if (location == "http://localhost:3000/highlights" || location == "https://www.readtoremember.xyz/highlights") {
+    btnSearch.className += " active";
+  }
+  if (location == "http://localhost:3000/highlights/favorites" || location == "https://www.readtoremember.xyz/highlights/favorites") {
+    btnFav.className += " active";
+  }
+  if (location == "http://localhost:3000/sources/library" || location == "https://www.readtoremember.xyz/sources/library") {
+    btnLib.className += " active";
   }
 }
 
@@ -37,7 +28,7 @@ export { initActiveNavbar };
 const initActiveSourceNavigation = () => {
   const navigation = document.getElementById("sourceNavigation");
   // Get all buttons
-  const btns = navigation.querySelectorAll('a.link-library');
+  const btns = document.querySelectorAll('a.link-library');
   console.log(btns);
 
   // Loop through the buttons and add the active class to the current/clicked button
