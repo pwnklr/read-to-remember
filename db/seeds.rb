@@ -10,8 +10,8 @@ puts "starting seeds"
 
 # user
   new_user = User.new(
-    email: "read2remember@gmail.com",
-    password: "#fakeitillyoumakeit")
+    email: "readtorememberrrr@gmail.com",
+    password: "readtoremember")
   puts "user not saved"
 
 

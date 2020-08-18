@@ -25,7 +25,13 @@
 
   <p>
     <%= link_to '/' do %>
-      <i class="fas fa-house-user" style="color:#8989A8;"></i>
+      <i class="fas fa-house-user nav-bar-icon" style="color:#8989A8;"></i>
     <% end %>
   </p>
 </div>
+
+<script>
+  $('.nav-bar-icon').on('click', function(){
+    $(this).addClass('active');
+  });
+</script>
