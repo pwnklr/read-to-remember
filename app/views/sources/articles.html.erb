@@ -23,8 +23,8 @@
           </div>
         <% end %>
         <div class="text">
-          <strong><%= article.author.name %></strong>
           <h6><em><%= link_to article.title, source_path(article) %></em></h6>
+          <strong><%= article.author.name %></strong>
           <p><%= pluralize article.highlights.size, "highlight" %></p>
           <!--
           <div class="export-main">
