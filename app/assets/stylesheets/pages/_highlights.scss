@@ -25,6 +25,7 @@
 */
 .carousel-cell {
   counter-increment: carousel-cell;
+  margin-left: 8px;
 }
 
 .carousel-cell:before {
@@ -44,22 +45,22 @@
   }
 
 input#query.form-control-sm {
-  border-radius: 24px; 
-  margin-left: -5px; 
-  border: none; 
-  margin-right:15px; 
-  width: 35vh; 
-  padding-top: 10px; 
+  border-radius: 24px;
+  margin-left: -5px;
+  border: none;
+  margin-right:15px;
+  width: 35vh;
+  padding-top: 10px;
   padding-bottom: 10px;
   }
 
   input.form-control-sm.search-btn {
-    background-color:rgba(126,68,255,1); 
-    border:none; 
-    font-weight: 300; 
-    margin-left: -11px; 
-    padding: 2px 17px; 
-    color: white; 
+    background-color:rgba(126,68,255,1);
+    border:none;
+    font-weight: 300;
+    margin-left: -11px;
+    padding: 2px 17px;
+    color: white;
     border-radius: 24px;
     opacity: 70%;
   }
