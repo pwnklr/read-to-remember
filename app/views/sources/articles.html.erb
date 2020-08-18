@@ -1,9 +1,11 @@
 <div style="position: fixed; z-index:900; top: 0vh; width: 100%; padding: 5px 0;background: linear-gradient(180deg, #25265b 10%, #4013a2 100%);">
-  <div class="nav-filter" style="padding-left: 19px; padding-top: 20px;"> <!-- articles -->
+  <div class="nav-filter" style="padding-left: 23px; padding-top: 20px;"> <!-- articles -->
+    <div style="border-radius: 24px; margin-bottom: 10px; color: white;">
     <%= form_tag articles_sources_path, :method => "get" do %>
-      <%= select_tag(:select_a, options_for_select([["Sort by date", 1], ["Sort by author", 2], ["Sort by title", 3]]), {class: 'filter-input'}) %>
-      <%= submit_tag "Sort", :name => nil, style: "display-flex; background-color:rgba(126,68,255,1); border:none; font-weight: 300; margin-left: 30px; padding: 2px 17px; color: white; border-radius: 24px;" %>
+      <%= select_tag(:select_a, options_for_select([["Sort by Date", 1], ["Sort by Author", 2], ["Sort by Title", 3]]), {class: 'filter-input'}) %>
+      <%= submit_tag "Sort", :name => nil, style: "opacity: 70%; display-flex; background-color:rgba(126,68,255,1); border:none; font-weight: 300; margin-left: 10px; padding: 2px 17px; color: white; border-radius: 24px;" %>
     <% end %>
+    </div>
   </div>
 </div>
 <%= render 'sources/navigation' %>
@@ -12,21 +14,23 @@
 <div class="row justify-content-sm-center;">
   <% @articles.each do |article| %>
     <div class="card-source">
-      <div style="display:flex; justify-content: space-between; width: 314px;">
+      <div style="display:flex; justify-content: space-between; width: 308px;">
         <% if article.photo.present? %>
           <div>
             <%= link_to source_path(article) do %>
-              <%= cl_image_tag article.photo.key, height: 100, width: 80, crop: :fill, class: "cover" %>
+              <%= cl_image_tag article.photo.key, height: 108, width: 80, crop: :fill, class: "cover" %>
             <% end %>
           </div>
         <% end %>
         <div class="text">
-          <strong><%= link_to article.author.name %></strong> <!-- build this path? Patrik? -->
+          <strong><%= article.author.name %></strong>
           <h6><em><%= link_to article.title, source_path(article) %></em></h6>
           <p><%= pluralize article.highlights.size, "highlight" %></p>
+          <!--
           <div class="export-main">
             <p class="export"><i class="fas fa-file-export"></i></p>
           </div>
+        -->
         </div>
       </div>
     </div>

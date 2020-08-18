@@ -9,12 +9,13 @@
               <p><%= h.content %></p>
               <p class="page">Page <%= h.page %></p>
           </div>
-          <% if h.my_note %>
-            <div class="text-box" style="width:86%;">
-              <p><%= h.h_note %></p>
-              <div style="display:flex;flex-wrap: wrap;">
-                <% h.tag_list.each do |t| %>
-                  <p style="padding-left: .5vw;"><%= link_to "#{t}", tags_highlights_path(t) %></p>
+          <% if h.my_note.present? %>
+            <div class="card-note" style="width: 100%; padding-bottom: 12px;">
+              <p style="font-weight: bold; color: #898AA6; font-size:13px; margin: 0;">Notes</p>
+              <p style="font-weight: 300; font-size:12px; color: #25265B; margin: 0;"><%= h.h_note %></p>
+              <div style="display: flex; flex-wrap: wrap;">
+                <p style="font-size: 12px; font-height:0;"><% h.tag_list.each do |t| %></p>
+                  <p style="font-weight: 300; padding-left: .5vw; font-size:12px; margin:0;"><%= link_to "#{t}", tags_highlights_path(t), style: "color:#25265B;"%></p>
                 <% end %>
               </div>
             </div>
