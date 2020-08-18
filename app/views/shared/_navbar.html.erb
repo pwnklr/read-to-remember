@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <p>
     <%= link_to library_sources_path do %>
-      <i class="hover fas fa-book-reader" style="color:#8989A8;"></i>
+      <i class="hover fas fa-book-reader icon" style="color:#8989A8;"></i>
     <% end %>
   </p>
 
@@ -13,19 +13,25 @@
 
   <p>
     <%= link_to favorites_highlights_path do %>
-      <i class="hover fas fa-heart" style="color:#8989A8;"></i>
+      <i class="hover fas fa-heart icon" style="color:#8989A8;"></i>
     <% end %>
   </p>
 
   <p>
     <%= link_to highlights_path do %>
-      <i class="hover fas fa-search" style="color:#8989A8;"></i>
+      <i class="hover fas fa-search icon" style="color:#8989A8;"></i>
     <% end %>
   </p>
 
   <p>
     <%= link_to '/' do %>
-      <i class="fas fa-house-user" style="color:#8989A8;"></i>
+      <i class="fas fa-house-user icon" style="color:#8989A8;"></i>
     <% end %>
   </p>
 </div>
+
+<script>
+  $('.icon').click(function() {
+    $(this).addClass('active');
+  }
+</script>
