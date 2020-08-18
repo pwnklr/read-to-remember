@@ -45,14 +45,12 @@
   text-decoration: none;
   font-weight: 600;
   &:hover {
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-    opacity: .6;
+    color: #524D82;
+    background: #fff;
   }
 }
 
-.actives {
+.active-s {
   color: #524D82;
   background: #fff;
 }

@@ -7,44 +7,22 @@ const initActiveNavbar = () => {
   const btnFav = document.querySelector(".fas.fa-heart");
   const btnLib = document.querySelector(".fas.fa-book-reader");
 
-  if (location == "http://localhost:3000/" || location == "https://www.readtoremember.xyz/") {
+  switch (location) {
+    case "http://localhost:3000/" || "https://www.readtoremember.xyz/":
     btnHome.className += " active";
-  }
-  if (location == "http://localhost:3000/highlights" || location == "https://www.readtoremember.xyz/highlights") {
+    break;
+    case "http://localhost:3000/highlights" || "https://www.readtoremember.xyz/highlights":
     btnSearch.className += " active";
-  }
-  if (location == "http://localhost:3000/highlights/favorites" || location == "https://www.readtoremember.xyz/highlights/favorites") {
+    break;
+    case "http://localhost:3000/highlights/favorites" || "https://www.readtoremember.xyz/highlights/favorites":
     btnFav.className += " active";
-  }
-  if (location == "http://localhost:3000/sources/library" || location == "https://www.readtoremember.xyz/sources/library") {
+    break;
+    case "http://localhost:3000/sources/library" || "https://www.readtoremember.xyz/sources/library":
     btnLib.className += " active";
-  }
+    break;
+    case "http://localhost:3000/sources/articles" || "https://www.readtoremember.xyz/sources/articles":
+    btnLib.className += " active";
+   }
 }
 
 export { initActiveNavbar };
-
-
-/*
-const initActiveSourceNavigation = () => {
-  const navigation = document.getElementById("sourceNavigation");
-  // Get all buttons
-  const btns = document.querySelectorAll('a.link-library');
-  console.log(btns);
-
-  // Loop through the buttons and add the active class to the current/clicked button
-  for (let i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function(e) {
-      e.preventDefault(); //active class works, links don't
-      let current = document.getElementsByClassName("actives");
-      console.log(current);
-      current[0].className = current[0].className.replace(" actives", "");
-      this.className += " actives";
-     //current.classList.remove("actives"); //className = current.className.replace(" active", "");
-    // this.classList.add("actives")
-      console.log(this);
-    });
-  }
-}
-
-export { initActiveSourceNavigation };
-*/
