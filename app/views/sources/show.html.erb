@@ -7,9 +7,9 @@
             <%= cl_image_tag @source.photo.key, height: 84, width: 70, crop: :fill, class: "cover-s" %>
           </div>
         <% end %>
-        <div class="text-s">
-          <strong><%= @source.title %></strong>
-          <h6><em><%= @source.author.name %></em></h6>
+        <div class="text-s" style="">
+          <h6><em><%= @source.title %></em></h6>
+          <strong><%= @source.author.name %></strong>
           <small><%#= pluralize @source.highlights.size, "highlight" %></small>
         </div>
       </div>
