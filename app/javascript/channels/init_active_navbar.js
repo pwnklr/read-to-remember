@@ -20,7 +20,31 @@ const initActiveNavbar = () => {
     case "https://www.readtoremember.xyz/sources/library":
     btnLib.className += " active";
     break;
+    case "https://www.readtoremember.xyz/sources/library?select=1":
+    btnLib.className += " active";
+    break;
+    case "https://www.readtoremember.xyz/sources/library?select=2":
+    btnLib.className += " active";
+    break;
+    case "https://www.readtoremember.xyz/sources/library?select=3":
+    btnLib.className += " active";
+    break;
+    case "https://www.readtoremember.xyz/sources/library?select=4":
+    btnLib.className += " active";
+    break;
     case "https://www.readtoremember.xyz/sources/articles":
+    btnLib.className += " active";
+    break;
+    case "https://www.readtoremember.xyz/sources/articles?select_a=1":
+    btnLib.className += " active";
+    break;
+    case "https://www.readtoremember.xyz/sources/articles?select_a=2":
+    btnLib.className += " active";
+    break;
+    case "https://www.readtoremember.xyz/sources/articles?select_a=3":
+    btnLib.className += " active";
+    break;
+    case "https://www.readtoremember.xyz/sources/articles?select_a=4":
     btnLib.className += " active";
    }
 }
