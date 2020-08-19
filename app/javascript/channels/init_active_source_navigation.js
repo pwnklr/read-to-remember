@@ -18,6 +18,9 @@ const initActiveSourceNavigation = () => {
     case "https://www.readtoremember.xyz/sources/library?select=3":
     btnBooks.className += " active-s";
     break;
+    case "https://www.readtoremember.xyz/sources/library?select=4":
+    btnBooks.className += " active-s";
+    break;
     case "https://www.readtoremember.xyz/sources/articles":
     btnArticles.className += " active-s";
     break;
@@ -28,6 +31,9 @@ const initActiveSourceNavigation = () => {
     btnArticles.className += " active-s";
     break;
     case "https://www.readtoremember.xyz/sources/articles?select_a=3":
+    btnArticles.className += " active-s";
+    break;
+    case "https://www.readtoremember.xyz/sources/articles?select_a=4":
     btnArticles.className += " active-s";
    }
 }
