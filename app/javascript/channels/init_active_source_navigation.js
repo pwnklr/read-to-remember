@@ -6,10 +6,28 @@ const initActiveSourceNavigation = () => {
   const btnArticles = document.querySelector(".link-library.articles");
 
   switch (location) {
-    case "http://localhost:3000/sources/library" || "https://www.readtoremember.xyz/sources/library":
+    case "https://www.readtoremember.xyz/sources/library":
     btnBooks.className += " active-s";
     break;
-    case "http://localhost:3000/sources/articles" || "https://www.readtoremember.xyz/sources/articles":
+    case "https://www.readtoremember.xyz/sources/library?select=1":
+    btnBooks.className += " active-s";
+    break;
+    case "https://www.readtoremember.xyz/sources/library?select=2":
+    btnBooks.className += " active-s";
+    break;
+    case "https://www.readtoremember.xyz/sources/library?select=3":
+    btnBooks.className += " active-s";
+    break;
+    case "https://www.readtoremember.xyz/sources/articles":
+    btnArticles.className += " active-s";
+    break;
+    case "https://www.readtoremember.xyz/sources/articles?select_a=1":
+    btnArticles.className += " active-s";
+    break;
+    case "https://www.readtoremember.xyz/sources/articles?select_a=2":
+    btnArticles.className += " active-s";
+    break;
+    case "https://www.readtoremember.xyz/sources/articles?select_a=3":
     btnArticles.className += " active-s";
    }
 }
