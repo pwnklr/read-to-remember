@@ -36,7 +36,9 @@ class HighlightsController < ApplicationController
 
   def fav
     current_user.favorite(@highlight)
-    redirect_back(anchor: @highlight.id, fallback_location: 'pages#home')
+    current_flashcard = current_user.flashcards.find{ |flashcard| flashcard == @highlight }
+    redirect_to "#{flashcards_highlights_path}##{@highlight.id}?flashcard_index=#{current_flashcard}"
+    # redirect_back(anchor: @highlight.id, fallback_location: 'pages#home')
   end
 
   def unfav

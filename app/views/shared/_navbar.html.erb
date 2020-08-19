@@ -1,9 +1,20 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon" id="myNavbar">
+
   <p>
-    <%= link_to library_sources_path do %>
-      <i class="fas fa-book-reader"></i>
+
+    <%= link_to "/" do %>
+      <i class="fas fa-play"></i>
     <% end %>
   </p>
+
+
+  <p>
+    <%= link_to library_sources_path do %>
+      <i class="fas fa-book"></i>
+    <% end %>
+  </p>
+
+
 
   <p>
     <%= link_to favorites_highlights_path do %>
@@ -14,17 +25,6 @@
   <p>
     <%= link_to highlights_path do %>
       <i class="fas fa-search"></i>
-    <% end %>
-  </p>
-
-  <p>
-
-    <%= link_to "/" do %>
-      <i class="fas fa-house-user"></i>
-<!--
-    <%#= link_to '/' do %>
-      <i class="fas fa-house-user nav-bar-icon" style="color:#8989A8;"></i>
->>>>>>> master -->
     <% end %>
   </p>
 </div>
