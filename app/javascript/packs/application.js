@@ -39,7 +39,9 @@ document.addEventListener('turbolinks:load', () => {
   if (carousel) {
     initFlickity();
   }
-
-  initActiveNavbar();
+  const navbar = document.getElementById("myNavbar");
+  if (navbar) {
+    initActiveNavbar();
+  }
   initActiveSourceNavigation();
 });
