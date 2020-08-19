@@ -1,20 +1,19 @@
 <%= render 'exit'%>
-  <div class="carousel">
+  <div class="carousel" data-initial-card="<%= @highlight.id if @highlight %>">
     <% @flashcards.each do |h| %>
       <div class="flashcard transparent-container carousel-cell" id="carousel-cell<%= @flashcards.index(h) + 1 %>" data-card-id="<%= h.id %>">
         <div class="" id="card-<%= h.id %>">
           <div class="flashcard-text">
-            <h3><%= link_to h.source.title, source_path(h.source) %></h3>
-            <h5><%= h.source.author.name %></h5>
-              <p><%= h.content %></p>
-              <p class="page">Page <%= h.page %></p>
+            <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan"><%= link_to h.source.title, source_path(h.source) %></h3>
+            <h5 style="color: #B6B4B5; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
+              <p style="margin-bottom:20px;"><%= h.content %></p>
           </div>
           <% if h.my_note.present? %>
             <div class="card-note" style="width: 100%; padding-bottom: 12px;">
-              <p style="font-weight: bold; color: #898AA6; font-size:13px; margin: 0;">Notes</p>
-              <p style="font-weight: 300; font-size:12px; color: #25265B; margin: 0;"><%= h.h_note %></p>
+              <p style="font-weight: 600; color: #898AA6; font-size:12px; margin: 0;">Notes</p>
+              <p style="font-weight: 300; font-size:14px; color: #13154E; margin: 0; font-family: Roboto;"><%= h.h_note %></p>
               <div style="display: flex; flex-wrap: wrap;">
-                <p style="font-size: 12px; font-height:0;"><% h.tag_list.each do |t| %></p>
+                <p style="font-size: 12px; font-weight: 300; font-height:0; color: #13154E; font-family: Roboto;"><% h.tag_list.each do |t| %></p>
                   <p style="font-weight: 300; padding-left: .5vw; font-size:12px; margin:0;"><%= link_to "#{t}", tags_highlights_path(t), style: "color:#25265B;"%></p>
                 <% end %>
               </div>

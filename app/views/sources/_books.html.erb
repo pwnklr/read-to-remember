@@ -23,8 +23,8 @@
           </div>
         <% end %>
         <div class="text">
-          <strong><%= book.author.name %></strong>
-          <h6><em><%= link_to book.title, source_path(book) %></em></h6>
+          <p><strong><%= link_to book.title, source_path(book) %></strong></p>
+          <h6 style="color: #B6B4B5;"><%= book.author.name %></h6>
           <p><%= pluralize book.highlights.size, "highlight" %></p>
           <!--
           <div class="export-main">
