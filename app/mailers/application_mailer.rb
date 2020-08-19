@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'dailyhighlights@readtoremember.xyz'
+  default from: 'Read to Remember'
   layout 'mailer'
 end
