@@ -11,6 +11,7 @@ const initFlickity = () => {
     hash: true
   });
   const cards = carousel.querySelectorAll('.carousel-cell');
+  console.log(cards);
   // get transform property
   const docStyle = document.documentElement.style;
   const transformProp = typeof docStyle.transform == 'string' ?
