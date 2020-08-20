@@ -4,6 +4,7 @@ const initActiveSourceNavigation = () => {
 
   const btnBooks = document.querySelector(".link-library.books");
   const btnArticles = document.querySelector(".link-library.articles");
+  const btnTag = document.querySelector(".link-library.tag");
 
   switch (location) {
     case "https://www.readtoremember.xyz/sources/library":
@@ -35,6 +36,9 @@ const initActiveSourceNavigation = () => {
     break;
     case "https://www.readtoremember.xyz/sources/articles?select_a=4":
     btnArticles.className += " active-s";
+    break;
+    case "https://www.readtoremember.xyz/highlights/all_tags":
+    btnTag.className += " active-s";
    }
 }
 

@@ -3,7 +3,7 @@
     <% highlights.each do |h| %>
       <div class="card card-adjusted" id='<%= "note-#{h.id}" %>'>
         <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan"><%= link_to h.source.title, source_path(h.source) %></h3>
-        <h5 style="color: #B6B4B5; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
+        <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
         <p><%= h.content %></p>
         <p class="page">Page <%= h.page %></p>
         <!-- -->
@@ -32,25 +32,25 @@
             <% else %>
               <p>
                 <%= link_to fav_highlight_path(h), method: :put, remote: true do %>
-                  <i class="far fa-heart"></i>
+                  <i class="far fa-heart" style="font-size:16px;color:#353535;"></i>
                 <% end %>
               </p>
             <% end %>
           <!-- render form -->
             <p>
               <%= link_to edit_highlight_path(h), remote: true do %>
-                <i class="fas fa-pen edit-icon" data-id="<%= h.id %>"></i>
+                <i class="fas fa-pen edit-icon" data-id="<%= h.id %>" style="font-size:16px;color:#AAAAAA;"></i>
               <% end %>
             </p>
             <p>
               <%= link_to unfav_highlight_path(h) do %> <!-- build this one :export -->
-                <i class="fas fa-paper-plane"></i>
+                <i class="fas fa-paper-plane" style="font-size:16px;color:#AAAAAA;"></i>
               <% end %>
             </p>
           </div>
           <div class="delete">
             <p><%= link_to h, method: :delete, data: {confirm: "Are you sure?"}, remote: true do %>
-              <i class="far fa-trash-alt"></i></p>
+              <i class="far fa-trash-alt" style="font-size:16px;color:#AAAAAA;"></i></p>
             <% end %>
           </div>
         </div>
