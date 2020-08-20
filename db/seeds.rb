@@ -1008,11 +1008,11 @@ puts "7. book done"
 
 puts "8. book done"
 # 9 book
-  author_9 = Author.create!(name: "Gayle Laakmann McDowell and Jackie Bavaro")
+  author_9 = Author.create!(name: "Dale Carnegie")
   new_book_9 = Source.new(
-    title: "Cracking the PM Interview: How to Land a Product Manager Job in Technology (English Edition)",
+    title: "The Art of Public Speaking",
     category: "book")
-    image = URI.open("https://prodimage.images-bn.com/pimages/9780984782819_p0_v1_s1200x630.jpg")
+    image = URI.open("https://bilder.buecher.de/produkte/48/48430/48430723z.jpg")
     new_book_9.photo.attach(io: image, filename: "#{new_book_9.title}", content_type: 'image/png')
 
   new_book_9.author = author_9
@@ -1114,11 +1114,11 @@ puts "8. book done"
 puts "9. book done"
 
 # 10 book
-  author_10 = Author.create!(name: "Marc Brackett,Ph.D.")
+  author_10 = Author.create!(name: "Carmine Gallo")
   new_book_10 = Source.new(
-    title: "Permission to Feel: Unlocking the Power of Emotions to Help Our Kids, Ourselves, and Our Society Thrive (English Edition)",
+    title: "Talk Like TED",
     category: "book")
-    image = URI.open("https://bilder.buecher.de/produkte/57/57505/57505495n.jpg")
+    image = URI.open("http://www.carminegallo.com/newsite/wp-content/uploads/2016/05/talkliketed3d_web.png")
     new_book_10.photo.attach(io: image, filename: "#{new_book_10.title}", content_type: 'image/png')
 
   new_book_10.author = author_10
@@ -1153,7 +1153,7 @@ puts "10. book done"
   new_book_11 = Source.new(
     title: "Out of Our Minds: Learning to be Creative",
     category: "book")
-    image = URI.open("https://bilder.buecher.de/produkte/44/44606/44606574n.jpg")
+    image = URI.open("https://learning.oreilly.com/library/cover/9781907312472/250w/")
     new_book_11.photo.attach(io: image, filename: "#{new_book_11.title}", content_type: 'image/png')
 
   new_book_11.author = author_11
