@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   width: 326px;
-  height: 128px;
+  height: 150px;
   left: 10px;
   top: 0px;
   padding: 8px 8px;
@@ -16,8 +16,10 @@
   margin: 16px;
   background-color: #fff;
   .text {
-    margin: 5px 0px;
+    margin: -15px 0px;
     width: 58vw;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
     strong, h6, p {
       font-size: 12px;
       color: #242543;
