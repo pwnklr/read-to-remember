@@ -1151,7 +1151,7 @@ puts "10. book done"
 # 11 book
   author_11 = Author.create!(name: "Ken Robinson")
   new_book_11 = Source.new(
-    title: "Out of Our Minds: Learning to be Creative"
+    title: "Out of Our Minds: Learning to be Creative",
     category: "book")
     image = URI.open("https://bilder.buecher.de/produkte/44/44606/44606574n.jpg")
     new_book_11.photo.attach(io: image, filename: "#{new_book_11.title}", content_type: 'image/png')

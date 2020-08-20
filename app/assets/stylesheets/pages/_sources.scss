@@ -3,20 +3,20 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   width: 326px;
-  height: 128px;
+  height: 140px;
   left: 10px;
   top: 0px;
-  padding: 8px 8px;
+  padding: 10px 8px;
   margin-bottom: 0px;
   min-width: 0px;
   border-radius: 10px;
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  margin: 16px;
+  margin: 15px;
   background-color: #fff;
   .text {
-    margin: 5px 0px;
+    margin: -6px 0px;
     width: 58vw;
     strong, h6, p {
       font-size: 12px;
