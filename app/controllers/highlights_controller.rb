@@ -30,8 +30,8 @@ class HighlightsController < ApplicationController
         format.json
       end
     redirect_back(fallback_location: 'pages#home')
-    else
-      render :edit
+   # else
+  #    render :edit
     end
   end
 
@@ -59,7 +59,7 @@ class HighlightsController < ApplicationController
   end
 
   def favorites
-    @highlights = current_user.all_favorited.reverse!
+    @highlights = current_user.all_favorited #.reverse!
   end
 
   def tags
