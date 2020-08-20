@@ -22,7 +22,7 @@
   <div class="container">
   <div class="row">
     <% @source.highlights.order(page: :asc).each do |h| %>
-      <div class="card">
+      <div class="card" id='<%= "note-#{h.id}" %>'>
         <p><%= h.content %></p>
         <p class="page">Page <%= h.page %></p>
         <!-- -->
@@ -38,24 +38,26 @@
           </div>
         <% end %>
 
+        <div id="<%= h.id %>" style="display: none;"></div>
+
         <div class="icons">
           <div class="sent">
             <% if current_user.favorited?(h) %>
               <p>
-                <%= link_to unfav_highlight_path(h) do %>
+                <%= link_to unfav_highlight_path(h), method: :put, remote: true  do %>
                   <i class="fas fa-heart" ></i>
                 <% end %>
               </p>
             <% else %>
               <p>
-                <%= link_to fav_highlight_path(h) do %>
+                <%= link_to fav_highlight_path(h), method: :put, remote: true  do %>
                   <i class="far fa-heart"></i>
                 <% end %>
               </p>
             <% end %>
             <!-- render form -->
               <p>
-                <%= link_to edit_highlight_path(h) do %>
+                <%= link_to edit_highlight_path(h), remote: true do %>
                   <i class="fas fa-pen"></i>
                 <% end %>
               </p>

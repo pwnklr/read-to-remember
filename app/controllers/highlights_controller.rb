@@ -2,6 +2,7 @@ class HighlightsController < ApplicationController
   before_action :set_highlight, only: [:show, :edit, :update, :destroy, :fav, :unfav]
   before_action :set_source, only: [:new, :create]
   before_action :set_tag, only: :tags
+  respond_to :html, :js
 
   # search here
   def index
@@ -23,9 +24,11 @@ class HighlightsController < ApplicationController
 
   def update # still wip
     if @highlight.update(note_tag_param)
-      redirect_to favorites_highlights_path # do smtng here
-    else
-      render :edit
+      respond_to do |format|
+        format.html {redirect_back(fallback_location: 'pages#home')}
+        format.json
+        format.js
+      end
     end
   end
 
@@ -36,14 +39,16 @@ class HighlightsController < ApplicationController
 
   def fav
     current_user.favorite(@highlight)
-    current_flashcard = current_user.flashcards.find{ |flashcard| flashcard == @highlight }
-    redirect_to "#{flashcards_highlights_path}##{@highlight.id}?flashcard_index=#{current_flashcard}"
-    # redirect_back(anchor: @highlight.id, fallback_location: 'pages#home')
+    respond_to do |format|
+      format.js
+    end
   end
 
   def unfav
     current_user.unfavorite(@highlight)
-    redirect_back(anchor: @highlight.id, fallback_location: 'pages#home')
+    respond_to do |format|
+      format.js
+    end
   end
 
   def flashcards
@@ -51,7 +56,7 @@ class HighlightsController < ApplicationController
   end
 
   def favorites
-    @highlights = current_user.all_favorited.reverse!
+    @highlights = current_user.all_favorited
   end
 
   def tags
