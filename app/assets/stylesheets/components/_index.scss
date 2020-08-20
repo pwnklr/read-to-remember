@@ -35,9 +35,9 @@ p {
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
-  margin-top: 7px;
+
   margin-bottom: 7px;
-  line-height: 22px;
+
   color: #898AA6;
 }
 
@@ -86,4 +86,65 @@ p {
   margin-right: 0px !important;
   margin-left: 0px !important;
   max-width: 100%;
+}
+
+.flashcard-numbers {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.logo {
+  width: 60px;
+}
+
+.home-page-grid {
+  display: flex;
+  flex-direction: column;
+  padding: 0 !important;
+}
+
+.book-images {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.home-page-card {
+  margin-top: 24px;
+  margin-left: 19px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  width: 90%; // don't change this!!
+  height: 400px;
+  background: white;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 20px;
+  padding: 15px;
+  // text-align: justify;
+  box-shadow: 0px 4px 4px rgba(8, 13, 60, 0.09);
+}
+
+.button {
+  margin-left: 48px !important;
+  margin-right: 48px !important;
+  text-align: center;
+}
+
+.cover_images {
+  border-radius: 10px;
+  margin: 8px;
+  box-shadow: 0px 4px 4px rgba(8, 13, 60, 0.09);
+}
+
+.home-page-grid {
+  margin-top: 10px;
+
+}
+
+.spacing {
+  margin-top: 35px !important;
 }
