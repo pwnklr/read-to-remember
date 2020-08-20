@@ -2,7 +2,7 @@
   <div class="carousel" data-initial-card="<%= @highlight.id if @highlight %>">
     <% @flashcards.each do |h| %>
         <div class="flashcard transparent-container carousel-cell" id="carousel-cell<%= @flashcards.index(h) + 1 %>" data-card-id="<%= h.id %>">
-        <div class="" id="card-<%= h.id %>">
+        <div class="" id='<%= "note-#{h.id}" %>'> <!--id="card-<%#= h.id %>">-->
           <div class="flashcard-text">
             <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan"><%= link_to h.source.title, source_path(h.source) %></h3>
             <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
@@ -19,6 +19,7 @@
               </div>
             </div>
           <% end %>
+          <div id="<%= h.id %>" style="display: none;"></div>
         </div>
       </div>
     <% end %>

@@ -1,5 +1,5 @@
 class HighlightsController < ApplicationController
-  before_action :set_highlight, only: [:show, :edit, :update, :destroy, :fav, :unfav]
+  before_action :set_highlight, only: [:edit, :update, :destroy, :fav, :unfav]
   before_action :set_source, only: [:new, :create]
   before_action :set_tag, only: :tags
   respond_to :html, :js
@@ -13,10 +13,6 @@ class HighlightsController < ApplicationController
     else
       @highlights = []
     end
-  end
-
-  # i think we don't need this one
-  def show
   end
 
   def edit
