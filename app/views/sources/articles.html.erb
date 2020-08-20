@@ -23,6 +23,8 @@
           </div>
         <% end %>
         <div class="text">
+          <h6><em><%= link_to article.title, source_path(article) %></em></h6>
+          <strong><%= article.author.name %></strong>
           <strong><%= article.author.name %></strong>
           <h6 style="color: #B6B4B5;"><em><%= link_to article.title, source_path(article) %></em></h6>
           <p><%= pluralize article.highlights.size, "highlight" %></p>
