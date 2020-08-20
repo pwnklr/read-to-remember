@@ -39,7 +39,7 @@
           <!-- render form -->
             <p>
               <%= link_to edit_highlight_path(h), remote: true do %>
-                <i class="fas fa-pen"></i>
+                <i class="fas fa-pen" id="<%= h.id %>"></i>
               <% end %>
             </p>
             <p>
