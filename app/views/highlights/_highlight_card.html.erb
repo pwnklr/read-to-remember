@@ -26,13 +26,13 @@
             <% if current_user.favorited?(h) %>
               <p>
                 <%= link_to unfav_highlight_path(h), method: :put, remote: true do %>
-                  <i class="fas fa-heart"></i>
+                  <i class="fas fa-heart" style="font-size:16px;color:#555555;"></i>
                 <% end %>
               </p>
             <% else %>
               <p>
                 <%= link_to fav_highlight_path(h), method: :put, remote: true do %>
-                  <i class="far fa-heart" style="font-size:16px;color:#353535;"></i>
+                  <i class="far fa-heart" style="font-size:16px;color:#AAAAAA;"></i>
                 <% end %>
               </p>
             <% end %>
