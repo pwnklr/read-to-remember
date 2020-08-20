@@ -1,15 +1,2 @@
-$('.note-form').html("<%= j (render 'highlights/edit') %>");
-$('.note-form').slideDown(350);
-/*
-$('.note-form').each(function() {
-  $( this ).html("<%= j (render 'highlights/edit') %>");
-//$('#note-form').slideDown(350);
-});
-*/
-/*
-$('.fas.fa-pen').on("click", function () {
-   var clickedBtnID = $(this).attr('id'); // or var clickedBtnID = this.id
-   alert('you clicked on button #' + clickedBtnID);
-});
-
-*/
+$('#<%= @highlight.id %>').html("<%= j (render 'highlights/edit') %>");
+$('#<%= @highlight.id %>').slideDown(350);
