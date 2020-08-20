@@ -10,6 +10,8 @@ class SourcesController < ApplicationController
         @books = current_user.sources.where(category: 'book').includes(:author).joins(:author).select("name, split_part(name, ' ', 2) as last_name").order("last_name")
       elsif params[:select] == '3' # title
         @books = current_user.sources.where(category: 'book').includes(:author).order(title: :asc)
+      elsif params[:select] == '4' # highlights
+        @books = current_user.sources.where(category: 'book').includes(:author).left_joins(:highlights).group(:id).order('COUNT(highlights.id) DESC')
       else
         @books = current_user.sources.where(category: 'book').includes(:author).order(created_at: :desc)
       end
@@ -24,6 +26,8 @@ class SourcesController < ApplicationController
         @articles =  current_user.sources.where(category: 'article').includes(:author).joins(:author).select("name, split_part(name, ' ', 2) as last_name").order("last_name")
       elsif params[:select_a] == '3' # title
         @articles = current_user.sources.where(category: 'article').includes(:author).order(title: :asc)
+      elsif params[:select_a] == '4' # highlights
+        @articles = current_user.sources.where(category: 'article').includes(:author).left_joins(:highlights).group(:id).order('COUNT(highlights.id) DESC')
       else
         @articles = current_user.sources.where(category: 'article').includes(:author).order(created_at: :desc)
       end
