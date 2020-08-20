@@ -18,6 +18,9 @@
             </div>
           </div>
         <% end %>
+
+       <div id="note-form"></div> <!--srediti ovo -->
+
         <div class="icons">
           <div class="sent">
             <% if current_user.favorited?(h) %>
@@ -35,7 +38,7 @@
             <% end %>
           <!-- render form -->
             <p>
-              <%= link_to edit_highlight_path(h) do %>
+              <%= link_to edit_highlight_path(h), remote: true do %>
                 <i class="fas fa-pen"></i>
               <% end %>
             </p>
