@@ -39,6 +39,12 @@ const initActiveSourceNavigation = () => {
     break;
     case "https://www.readtoremember.xyz/highlights/all_tags":
     btnTag.className += " active-s";
+    break;
+    case "https://www.readtoremember.xyz/highlights/all_tags?select_t=1":
+    btnTag.className += " active-s";
+    break;
+    case "https://www.readtoremember.xyz/highlights/all_tags?select_t=2":
+    btnTag.className += " active-s";
    }
 }
 

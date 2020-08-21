@@ -1,5 +1,5 @@
 class HighlightsController < ApplicationController
-  before_action :set_highlight, only: [:show, :edit, :update, :destroy, :fav, :unfav]
+  before_action :set_highlight, only: [:edit, :update, :destroy, :fav, :unfav]
   before_action :set_source, only: [:new, :create]
   before_action :set_tag, only: :tags
   respond_to :html, :js
@@ -13,10 +13,6 @@ class HighlightsController < ApplicationController
     else
       @highlights = []
     end
-  end
-
-  # i think we don't need this one
-  def show
   end
 
   def edit
@@ -64,7 +60,15 @@ class HighlightsController < ApplicationController
   end
 
   def all_tags
-    @all_tags = current_user.highlights.includes(:taggings, source: :author).tag_counts_on(:tags).order(created_at: :desc)
+    if params[:select_t]
+      if params[:select_t] == '2' # amount
+        @all_tags = current_user.highlights.includes(:taggings, source: :author).tag_counts_on(:tags).order(taggings_count: :desc)
+      else
+        @all_tags = current_user.highlights.includes(:taggings, source: :author).tag_counts_on(:tags).order(created_at: :desc)
+      end
+    else
+      @all_tags = current_user.highlights.includes(:taggings, source: :author).tag_counts_on(:tags).order(created_at: :desc)
+    end
   end
 
   private
