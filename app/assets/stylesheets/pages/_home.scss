@@ -127,4 +127,12 @@ p {
   align-items: center;
 }
 
-
+.form-actions, .white-link {
+  color: #fff;
+  &:hover {
+    color: #1EDD88;
+  }
+}
+.form-inputs {
+  color: #fff;
+}

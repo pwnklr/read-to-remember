@@ -46,6 +46,15 @@ const initActiveNavbar = () => {
     break;
     case "https://www.readtoremember.xyz/sources/articles?select_a=4":
     btnLib.className += " active";
+    break;
+    case "https://www.readtoremember.xyz/highlights/all_tags":
+    btnLib.className += " active";
+    break;
+    case "https://www.readtoremember.xyz/highlights/all_tags?select_t=1":
+    btnLib.className += " active";
+    break;
+    case "https://www.readtoremember.xyz/highlights/all_tags?select_t=2":
+    btnLib.className += " active";
    }
 }
 
