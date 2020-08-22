@@ -18,6 +18,24 @@ const initFlickity = () => {
     'transform' : 'WebkitTransform';
   flkty.on('scroll', function() {
     const currentId = flkty.selectedElement.dataset.cardId;
+
+    const favLink = document.querySelector('#fav');
+    if (favLink) {
+      favLink.href = `${currentId}/fav`
+    } else {
+      const unfavLink = document.querySelector('#unfav');
+      unfavLink.href = `${currentId}/unfav`
+    }
+
+
+    const editLink = document.querySelector('#edit');
+    editLink.href = `highlights/${currentId}/edit` // add correct url route here (using rails routes to see what it is)
+    const deleteLink = document.querySelector('#del');
+    deleteLink.href = `highlights/${currentId}/` //
+
+
+
+
     window.location.hash = '#' + currentId;
     flkty.slides.forEach( function( slide, i ) {
       const card = cards[i];
