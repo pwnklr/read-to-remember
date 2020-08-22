@@ -5,9 +5,9 @@
         <%= text_field_tag :query,
           params[:query],
           class: "form-control-sm",
-          placeholder: "Search..."
+          placeholder: "What are you looking for?"
         %>
-        <%= submit_tag "Submit", class: "form-control-sm search-btn"%>
+        <%= submit_tag "Search", class: "form-control-sm search-btn"%>
       <% end %>
       <% if @query %>
         <p style="color: #fff;padding-left: 10px; ">We found <%= pluralize @count, 'result' %> for <strong><%= @query %></strong>.</p>
