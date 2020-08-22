@@ -2,14 +2,14 @@
   <div class="nav-filter" style="padding-left: 23px; padding-top: 20px;"> <!-- tags -->
     <div style="border-radius: 24px; margin-bottom: 10px; color: white;">
     <%= form_tag all_tags_highlights_path, :method => "get" do %>
-      <%= select_tag(:select_t, options_for_select([["Sort by Date", 1], ["Sort by Amount", 2]]), {class: 'filter-input'}) %>
-      <%= submit_tag "Sort", :name => nil, style: "opacity: 70%; display-flex; background-color:rgba(126,68,255,1); border:none; font-weight: 300; margin-left: 10px; padding: 2px 17px; color: white; border-radius: 24px;" %>
+      <%= select_tag(:select_t, options_for_select([["Sort by Date", 1], ["Sort by Amount", 2]]), {class: 'filter-input t'}) %>
+      <%= submit_tag "Sort", :name => nil, style: "opacity: 70%; display-flex; background-color:rgba(126,68,255,1); border:none; font-weight: 600; margin-left: 10px; padding: 2px 17px; color: white; border-radius: 24px;" %>
     <% end %>
     </div>
   </div>
 </div>
 <%= render 'sources/navigation' %>
-<div class="container" style="padding-bottom: 20px; padding-top: 130px; min-height: 100vh;">
+<div class="container" style="padding-bottom: 20px; padding-top: 142px; min-height: 100vh;">
   <div style="display:flex; flex-wrap: wrap;">
     <% @all_tags.each do |t| %>
     <% font_size= 'font-size: 16px;' if t.taggings_count == 2 %>
@@ -21,4 +21,3 @@
     <% end %>
   </div>
 </div>
-
