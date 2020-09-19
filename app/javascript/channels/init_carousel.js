@@ -118,9 +118,34 @@ const initCarousel = () => {
     }
   }
 
+/*
+  function setActions() {
+
+    const currentId = carousel.selectedElement.dataset.cardId;  // ??
+    console.log(currentId);
+
+    const favLink = document.querySelector('#fav');
+    if (favLink) {
+      favLink.href = `${currentId}/fav`
+    } else {
+      const unfavLink = document.querySelector('#unfav');
+      unfavLink.href = `${currentId}/unfav`
+    }
+
+
+    const editLink = document.querySelector('#edit');
+    editLink.href = `highlights/${currentId}/edit` // add correct url route here (using rails routes to see what it is)
+    const deleteLink = document.querySelector('#del');
+    deleteLink.href = `highlights/${currentId}/` //
+
+    window.location.hash = '#' + currentId;
+
+  }  */
+
   function startCarousel() {
     setInitialClasses();
     setEventListeners();
+   // setActions();
 
     // Set moving to false now that the carousel is ready
     moving = false;
