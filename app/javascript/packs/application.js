@@ -27,7 +27,7 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-import { initFlickity } from '../channels/init_flickity';
+import { initCarousel } from '../channels/init_carousel';
 import { initActiveNavbar } from '../channels/init_active_navbar';
 import { initActiveSourceNavigation } from '../channels/init_active_source_navigation';
 
@@ -37,7 +37,7 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   const carousel = document.querySelector('.carousel');
   if (carousel) {
-    initFlickity();
+    initCarousel();
   }
   const navbar = document.getElementById("myNavbar");
   if (navbar) {

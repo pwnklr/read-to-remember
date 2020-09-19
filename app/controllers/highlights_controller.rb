@@ -21,8 +21,8 @@ class HighlightsController < ApplicationController
   def update # still wip
     if @highlight.update(note_tag_param)
       respond_to do |format|
-        format.html {redirect_back(fallback_location: 'pages#home')}
-        format.json
+        format.html #{redirect_back(fallback_location: 'pages#home')}
+        # format.json
         format.js
       end
     end
