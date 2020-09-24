@@ -1,10 +1,10 @@
 <%= render 'exit'%>
-<div class="carousel" data-initial-card="<%= @highlight.id if @highlight %>">
-  <div id="slider" class="slider">
+<div class="carousel">
+  <div id="slider" class="slider" data-initial-card="<%= @highlight.id if @highlight %>">
     <div class="wrapper">
       <div id="items" class="items">
         <% @flashcards.each do |h| %>
-          <span class="slide" id="carousel-cell<%= @flashcards.index(h) + 1 %>">
+          <span class="slide" id="carousel-cell<%= @flashcards.index(h) + 1 %>" data-card-id="<%= h.id %>">
             <div class="carousel-card" id='<%= "note-#{h.id}" %>'> <!--id="card-<%#= h.id %>">-->
               <div style="float: right;"><%= @flashcards.index(h) + 1 %></div>
               <div class="flashcard-text">

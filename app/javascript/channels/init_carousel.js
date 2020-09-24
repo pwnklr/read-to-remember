@@ -7,7 +7,7 @@ let slider = document.getElementById('slider'),
 
 slide(slider, sliderItems, prev, next);
 
-function slide(wrapper, items, prev, next) {
+function slide(wrapper, items) {
   let posX1 = 0,
       posX2 = 0,
       posInitial,
@@ -118,10 +118,10 @@ function slide(wrapper, items, prev, next) {
     allowShift = true;
   }
 }
-/*
-  function setActions() {
 
-    const currentId = carousel.selectedElement.dataset.cardId;  // ??
+ //function setActions() {
+/*
+    const currentId = items.dataset.cardId;  // ??
     console.log(currentId);
 
     const favLink = document.querySelector('#fav');
@@ -139,10 +139,10 @@ function slide(wrapper, items, prev, next) {
     deleteLink.href = `highlights/${currentId}/` //
 
     window.location.hash = '#' + currentId;
+*/
+ // }
 
-  }  */
-
-
+//setActions();
 }
 
 export { initCarousel };
