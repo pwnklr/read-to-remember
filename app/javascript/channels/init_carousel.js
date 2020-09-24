@@ -1,123 +1,123 @@
 const initCarousel = () => {
-  const carousel = document.querySelector('.carousel');
 
-  const itemClassName = "flashcard transparent-container carousel-cell";
-  const cards = document.getElementsByClassName(itemClassName);
-  console.log(cards);
+let slider = document.getElementById('slider'),
+    sliderItems = document.getElementById('items'),
+    prev = document.getElementById('prev'),
+    next = document.getElementById('next');
 
-  const totalCards = cards.length;
-  let slide = 0,
-      moving = true;
+slide(slider, sliderItems, prev, next);
 
-  // To initialise the carousel we'll want to update the DOM with our own classes
-  function setInitialClasses() {
-    // Target the last, initial, and next items and give them the relevant class.
-    // This assumes there are three or more items.
-    cards[totalCards - 1].classList.add("prev");
-    cards[0].classList.add("active");
-    cards[1].classList.add("next");
-  }
+function slide(wrapper, items, prev, next) {
+  let posX1 = 0,
+      posX2 = 0,
+      posInitial,
+      posFinal,
+      threshold = 100,
+      slides = items.getElementsByClassName('slide'),
+      slidesLength = slides.length,
+      slideSize = items.getElementsByClassName('slide')[0].offsetWidth,
+      firstSlide = slides[0],
+      lastSlide = slides[slidesLength - 1],
+      cloneFirst = firstSlide.cloneNode(true),
+      cloneLast = lastSlide.cloneNode(true),
+      index = 0,
+      allowShift = true;
 
-  // Set click events to navigation buttons
-  function setEventListeners() {
-    const next = document.getElementsByClassName('carousel__button--next')[0];
-    const prev = document.getElementsByClassName('carousel__button--prev')[0];
+  // Clone first and last slide
+  items.appendChild(cloneLast);
+  items.insertBefore(cloneLast, firstSlide);
+  wrapper.classList.add('loaded');
 
-    next.addEventListener('click', moveNext);
-    prev.addEventListener('click', movePrev);
-  }
+  // Mouse and Touch events
+  items.onmousedown = dragStart;
 
-  function disableInteraction() {
-    moving = true;
+  // Touch events
+  items.addEventListener('touchstart', dragStart);
+  items.addEventListener('touchend', dragEnd);
+  items.addEventListener('touchmove', dragAction);
 
-    setTimeout(function(){
-      moving = false
-    }, 500);
-  }
+  // Click events
+  //prev.addEventListener('click', function () { shiftSlide(-1) });
+  //next.addEventListener('click', function () { shiftSlide(1) });
 
-  function moveCarouselTo(slide) {
-    // Check if carousel is moving, if not, allow interaction
-    if(!moving) {
-      // temporarily disable interactivity
-      disableInteraction();
+  // Transition events
+  items.addEventListener('transitionend', checkIndex);
 
-      // Preemptively set variables for the current next and previous slide, as well as the potential next or previous slide.
-      var newPrevious = slide - 1,
-          newNext = slide + 1,
-          oldPrevious = slide - 2,
-          oldNext = slide + 2;
+  function dragStart (e) {
+    e = e || window.event;
+    e.preventDefault();
+    posInitial = items.offsetLeft;
 
-      // Test if carousel has more than three items
-      if ((totalCards  - 1) > 3) {
-
-        // Checks if the new potential slide is out of bounds and sets slide numbers
-        if (newPrevious <= 0) {
-          oldPrevious = (totalCards  - 1);
-        } else if (newNext >= (totalCards - 1)){
-          oldNext = 0;
-        }
-
-        // Check if current slide is at the beginning or end and sets slide numbers
-        if (slide === 0) {
-          newPrevious = (totalCards - 1);
-          oldPrevious = (totalCards - 2);
-          oldNext = (slide + 1);
-        } else if (slide === (totalCards -1)) {
-          newPrevious = (slide - 1);
-          newNext = 0;
-          oldNext = 1;
-        }
-
-        // Now we've worked out where we are and where we're going, by adding and removing classes, we'll be triggering the carousel's transitions.
-
-        // Based on the current slide, reset to default classes.
-        cards[oldPrevious].className = itemClassName;
-        cards[oldNext].className = itemClassName;
-
-        // Add the new classes
-        cards[newPrevious].className = itemClassName + " prev";
-        cards[slide].className = itemClassName + " active";
-        cards[newNext].className = itemClassName + " next";
-      }
+    if (e.type == 'touchstart') {
+      posX1 = e.touches[0].clientX;
+    } else {
+      posX1 = e.clientX;
+      document.onmouseup = dragEnd;
+      document.onmousemove = dragAction;
     }
   }
 
-  // Next navigation handler
-  function moveNext() {
+  function dragAction (e) {
+    e = e || window.event;
 
-    // Check if moving
-    if (!moving) {
-
-      // If it's the last slide, reset to 0, else +1
-      if (slide === (totalCards - 1)) {
-        slide = 0;
-      } else {
-        slide++;
-      }
-
-      // Move carousel to updated slide
-      moveCarouselTo(slide);
+    if (e.type == 'touchmove') {
+      posX2 = posX1 - e.touches[0].clientX;
+      posX1 = e.touches[0].clientX;
+    } else {
+      posX2 = posX1 - e.clientX;
+      posX1 = e.clientX;
     }
+    items.style.left = (items.offsetLeft - posX2) + "px";
   }
 
-  // Previous navigation handler
-  function movePrev() {
-
-    // Check if moving
-    if (!moving) {
-
-      // If it's the first slide, set as the last slide, else -1
-      if (slide === 0) {
-        slide = (totalCards - 1);
-      } else {
-        slide--;
-      }
-
-      // Move carousel to updated slide
-      moveCarouselTo(slide);
+  function dragEnd (e) {
+    posFinal = items.offsetLeft;
+    if (posFinal - posInitial < -threshold) {
+      shiftSlide(1, 'drag');
+    } else if (posFinal - posInitial > threshold) {
+      shiftSlide(-1, 'drag');
+    } else {
+      items.style.left = (posInitial) + "px";
     }
+
+    document.onmouseup = null;
+    document.onmousemove = null;
   }
 
+  function shiftSlide(dir, action) {
+    items.classList.add('shifting');
+
+    if (allowShift) {
+      if (!action) { posInitial = items.offsetLeft; }
+
+      if (dir == 1) {
+        items.style.left = (posInitial - slideSize) + "px";
+        index++;
+      } else if (dir == -1) {
+        items.style.left = (posInitial + slideSize) + "px";
+        index--;
+      }
+    };
+
+    allowShift = false;
+  }
+
+  function checkIndex (){
+    items.classList.remove('shifting');
+
+    if (index == -1) {
+      items.style.left = -(slidesLength * slideSize) + "px";
+      index = slidesLength - 1;
+    }
+
+    if (index == slidesLength) {
+      items.style.left = -(1 * slideSize) + "px";
+      index = 0;
+    }
+
+    allowShift = true;
+  }
+}
 /*
   function setActions() {
 
@@ -142,16 +142,7 @@ const initCarousel = () => {
 
   }  */
 
-  function startCarousel() {
-    setInitialClasses();
-    setEventListeners();
-   // setActions();
 
-    // Set moving to false now that the carousel is ready
-    moving = false;
-  }
-
-  startCarousel();
 }
 
 export { initCarousel };

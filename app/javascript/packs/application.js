@@ -35,8 +35,9 @@ import { initActiveSourceNavigation } from '../channels/init_active_source_navig
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  const carousel = document.querySelector('.carousel');
-  if (carousel) {
+  //const carousel = document.querySelector('.carousel');
+  const slider = document.getElementById('slider');
+  if (slider) {
     initCarousel();
   }
   const navbar = document.getElementById("myNavbar");
