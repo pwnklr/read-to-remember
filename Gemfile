@@ -33,6 +33,8 @@ gem 'acts_as_favoritor'
 gem 'whenever', require: false
 gem 'pg_search', '~> 2.3.0'
 
+gem 'omniauth-amazon'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
