@@ -1277,7 +1277,7 @@ puts "10. book done"
       image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595678356/1.1_vaemxa.png")
       new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
-  new_article.author = author_1
+  new_article.author = author_11
   new_article.user = new_user
   new_article.save!
 
@@ -1290,7 +1290,7 @@ puts "10. book done"
     image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595678354/2.2_ud77ra.png")
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
-    new_article.author = author_2
+    new_article.author = author_12
     new_article.user = new_user
     new_article.save!
 
@@ -1303,7 +1303,7 @@ puts "10. book done"
     image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595678559/3.3_zfzktq.png")
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
-    new_article.author = author_3
+    new_article.author = author_13
     new_article.user = new_user
     new_article.save!
 
@@ -1316,7 +1316,7 @@ puts "10. book done"
     image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595678263/4.4_mgmj9a.jpg")
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
-    new_article.author = author_4
+    new_article.author = author_14
     new_article.user = new_user
     new_article.save!
 
@@ -1329,12 +1329,12 @@ puts "10. book done"
     image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595678266/5.5_kpynop.jpg")
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
-    new_article.author = author_5
+    new_article.author = author_15
     new_article.user = new_user
     new_article.save!
 
   # 6 article
-  author_6 = Author.create!(name: "Charlotte Alter, Suyin Haynes, Justin Worland")
+  author_16 = Author.create!(name: "Charlotte Alter, Suyin Haynes, Justin Worland")
   new_article = Source.new(
     title: "Time 2019 Person of the Year: Greta Thunberg",
     publishing_year: "2019",
@@ -1342,12 +1342,12 @@ puts "10. book done"
     image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595678345/6.6_dqhwii.png")
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
-    new_article.author = author_6
+    new_article.author = author_16
     new_article.user = new_user
     new_article.save!
 
   # 7 article
-  author_7 = Author.create!(name: "Eddie S. Glaude, Jr.")
+  author_17 = Author.create!(name: "Eddie S. Glaude, Jr.")
   new_article = Source.new(
     title: "The History That James Baldwin Wanted America to See",
     publishing_year: "2020",
@@ -1355,12 +1355,12 @@ puts "10. book done"
     image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595678314/7.7_sidtba.jpg")
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
-    new_article.author = author_7
+    new_article.author = author_17
     new_article.user = new_user
     new_article.save!
 
   # 8 article
-  author_8 = Author.create!(name: "Lauren Martin")
+  author_18 = Author.create!(name: "Lauren Martin")
   new_article = Source.new(
     title: "Patti Smith’s Advice On Following The Road Less Traveled",
     publishing_year: "2017",
@@ -1368,12 +1368,12 @@ puts "10. book done"
     image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595678278/7.7_tnhw34.jpg")
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
-    new_article.author = author_8
+    new_article.author = author_18
     new_article.user = new_user
     new_article.save!
 
   # 9 article
-  author_9 = Author.create!(name: "Laura M. Halson")
+  author_19 = Author.create!(name: "Laura M. Halson")
   new_article = Source.new(
     title: "Are We Living in a Post-Happiness World?",
     publishing_year: "2019",
@@ -1381,12 +1381,12 @@ puts "10. book done"
     image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595678282/9.9_jqb6hv.png")
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
-    new_article.author = author_9
+    new_article.author = author_19
     new_article.user = new_user
     new_article.save!
 
   # 10 article
-  author_10 = Author.create!(name: "Lauren Martin")
+  author_20 = Author.create!(name: "Lauren Martin")
   new_article = Source.new(
     title: "Bethenny Frankel: 14 Rules For Getting Everything You Want",
     publishing_year: "2017",
@@ -1394,7 +1394,7 @@ puts "10. book done"
     image = URI.open("https://res.cloudinary.com/dwrrzkqpc/image/upload/v1595678288/10.10_r3o5uy.jpg")
     new_article.photo.attach(io: image, filename: "#{new_article.title}", content_type: 'image/png')
 
-    new_article.author = author_10
+    new_article.author = author_20
     new_article.user = new_user
     new_article.save!
 

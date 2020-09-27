@@ -42,14 +42,6 @@ ActiveRecord::Schema.define(version: 2020_09_27_195657) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "counters", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.integer "day"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_counters_on_user_id"
-  end
-
   create_table "favorites", force: :cascade do |t|
     t.string "favoritable_type", null: false
     t.bigint "favoritable_id", null: false
@@ -65,17 +57,6 @@ ActiveRecord::Schema.define(version: 2020_09_27_195657) do
     t.index ["favoritor_id", "favoritor_type"], name: "fk_favorites"
     t.index ["favoritor_type", "favoritor_id"], name: "index_favorites_on_favoritor_type_and_favoritor_id"
     t.index ["scope"], name: "index_favorites_on_scope"
-  end
-
-  create_table "flashcards", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "highlight_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "source"
-    t.string "author"
-    t.index ["highlight_id"], name: "index_flashcards_on_highlight_id"
-    t.index ["user_id"], name: "index_flashcards_on_user_id"
   end
 
   create_table "highlights", force: :cascade do |t|
@@ -99,23 +80,6 @@ ActiveRecord::Schema.define(version: 2020_09_27_195657) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_kindles_on_user_id"
-  end
-
-  create_table "notes", force: :cascade do |t|
-    t.text "content"
-    t.bigint "highlight_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["highlight_id"], name: "index_notes_on_highlight_id"
-  end
-
-  create_table "quotes", force: :cascade do |t|
-    t.string "content"
-    t.string "author"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_quotes_on_user_id"
   end
 
   create_table "sources", force: :cascade do |t|
@@ -172,14 +136,9 @@ ActiveRecord::Schema.define(version: 2020_09_27_195657) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "counters", "users"
-  add_foreign_key "flashcards", "highlights"
-  add_foreign_key "flashcards", "users"
   add_foreign_key "highlights", "sources"
   add_foreign_key "highlights", "users"
   add_foreign_key "kindles", "users"
-  add_foreign_key "notes", "highlights"
-  add_foreign_key "quotes", "users"
   add_foreign_key "sources", "authors"
   add_foreign_key "sources", "users"
   add_foreign_key "taggings", "tags"
