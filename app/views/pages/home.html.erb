@@ -12,19 +12,22 @@
     <!-- kindle => have fun Alexis! :D -->
   <div class="home-page-grid" style="padding: 10px;">
 
-<!-- -->
+<!-- --> <!--
+ <#% if current_user.flashcards.present? %> -->
     <div class="home-page-card">
       <h1>Today's flashcards are ready for you!</h1>
       <div class="book-images ">
+       <% if @book_covers %>
        <% @book_covers.each do |book| %>
          <% if book.photo.present? %>
             <%= cl_image_tag book.photo.key, height: 123, width: 123, crop: :fill, class: "cover cover_images" %>
           <% end %>
         <% end %>
+        <% end %>
       </div>
         <%= link_to "Start daily review", flashcards_highlights_path(anchor: current_user.flashcards.first), class: "button-home button" %>
       </div>
-
+ <!--  <#% end %> -->
 
     <%= render 'shared/navbar' %>
 
