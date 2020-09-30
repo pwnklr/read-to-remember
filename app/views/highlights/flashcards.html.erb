@@ -1,4 +1,5 @@
 <%= render 'exit'%>
+<% if @flashcards.present? %>
   <div class="carousel" data-initial-card="<%= @highlight.id if @highlight %>">
     <% @flashcards.each do |h| %>
         <div class="flashcard transparent-container carousel-cell" id="carousel-cell<%= @flashcards.index(h) + 1 %>" data-card-id="<%= h.id %>">
@@ -25,3 +26,4 @@
     <% end %>
   </div>
 <%= render 'icons', h: @flashcards.first %>
+<% end %>
