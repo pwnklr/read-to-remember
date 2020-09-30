@@ -3,12 +3,21 @@ class PagesController < ApplicationController
 
   def home
     if current_user
-      flashcards = current_user.flashcards.first(4)
-      @book_covers = []
-      flashcards.each do |f|
-        @book_covers << f.source
+      if current_user.flashcards.present?
+        flashcards = current_user.flashcards
+        @book_covers = []
+        covers = []
+        books = []
+        flashcards.each do |f|
+          covers << f.source
+        end
+        books = covers.uniq!
+        if books.length >= 4
+          @book_covers = books.first(4)
+        else
+          @book_covers = covers.first(4)
+        end
       end
-      @book_covers
     end
   end
 end

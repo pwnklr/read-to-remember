@@ -1,4 +1,5 @@
 <%= render 'exit'%>
+<% if @flashcards.present? %>
 <div class="carousel">
   <div id="slider" class="slider" data-initial-card="<%= @highlight.id if @highlight %>">
     <div class="wrapper">
@@ -32,3 +33,4 @@
   </div>
 </div>
 <%= render 'icons', h: @flashcards.first %>
+<% end %>

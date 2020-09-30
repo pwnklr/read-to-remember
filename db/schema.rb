@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_08_093651) do
+ActiveRecord::Schema.define(version: 2020_09_27_195657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,14 +82,6 @@ ActiveRecord::Schema.define(version: 2020_08_08_093651) do
     t.index ["user_id"], name: "index_kindles_on_user_id"
   end
 
-  create_table "notes", force: :cascade do |t|
-    t.text "content"
-    t.bigint "highlight_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["highlight_id"], name: "index_notes_on_highlight_id"
-  end
-
   create_table "sources", force: :cascade do |t|
     t.bigint "author_id", null: false
     t.string "title"
@@ -137,6 +129,8 @@ ActiveRecord::Schema.define(version: 2020_08_08_093651) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -145,7 +139,6 @@ ActiveRecord::Schema.define(version: 2020_08_08_093651) do
   add_foreign_key "highlights", "sources"
   add_foreign_key "highlights", "users"
   add_foreign_key "kindles", "users"
-  add_foreign_key "notes", "highlights"
   add_foreign_key "sources", "authors"
   add_foreign_key "sources", "users"
   add_foreign_key "taggings", "tags"
