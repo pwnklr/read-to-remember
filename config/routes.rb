@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :kindles, only: [:new, :create, :edit, :update]
-  resources :highlights do
+  resources :highlights, only: [:index, :edit, :update, :destroy] do
     collection do
       # get 'flashcards:id', to: 'highlights#flashcards', as: :flashcards
       get :flashcards
@@ -19,8 +19,7 @@ Rails.application.routes.draw do
       put :unfav
     end
   end
-  resources :users, only: :show
-  resources :sources, only: [:show, :create] do
+  resources :sources, only: [:show] do
     collection do
       get :books
       get :articles
