@@ -1,7 +1,31 @@
 class SourcesController < ApplicationController
-  before_action :set_source, only: :show
+  before_action :set_source, only: [:show, :export_book]
 
   def show
+  end
+
+  def export_book
+  end
+
+  def export_many
+    directory_name = "my-r2r-files"
+    Dir.mkdir(directory_name) unless File.exists?(directory_name)
+    highlights = params[:highlights]
+    highlight = Highlight.find(highlights[0].to_i)
+    title = highlight.source.title
+    author = highlight.source.author.name
+    file_name = title.gsub(' ', '_')
+    File.open("#{directory_name}/#{file_name}.md", "wb+") do |file|
+      file << "# #{title}\n\n"
+      file << "## #{author}\n\n\n\n"
+      highlights.each do |id|
+        h = Highlight.find(id)
+        file << "#{h.content}\n\npage: #{h.page}\n\n"
+        file << "note: #{h.my_note}\n\n\n\n" # do smtng here
+      end
+    end
+    flash[:notice] = 'Yay! Highlights were succsesfully exported!'  # notice works!:)
+    redirect_to source_path(highlight.source_id)
   end
 
   def library

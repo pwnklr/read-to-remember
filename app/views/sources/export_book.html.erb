@@ -10,17 +10,22 @@
         <div class="text-s">
           <h6 style="margin-top:7px;"><%= @source.title %></h6>
           <span style="color: #B6B4B5;font-size: 12px;"><%= @source.author.name %></span>
-          <p><%= link_to 'Export', export_book_source_path, style: "color: #fff; font-size: 16px;"%></p>
+          <p><%= link_to 'Cancel', :back, style: "color: #fff; font-size: 16px;"%></p>
         </div>
       </div>
     </div>
+
 </div>
 
 <div class="container" style="padding-top:16vh; min-height:100vh;">
 
-  <div class="container">
-  <div class="row">
+
+  <%= form_tag export_many_sources_path, class: 'row', :method => "get" do %>
     <% @source.highlights.order(page: :asc).each do |h| %>
+    <div class='col-1'>
+      <p style='position: absolute; top: 50%; transform: translate(0, -50%);'><%= check_box_tag 'highlights[]', h.id %></p>
+    </div>
+    <div class='col-11'>
       <div class="card" id='<%= "note-#{h.id}" %>'>
         <p><%= h.content %></p>
         <p class="page">Page <%= h.page %></p>
@@ -74,11 +79,13 @@
           </div>
         </div>
       </div>
+    </div>
     <% end %>
-  </div>
+    <%= submit_tag "Submit" %>
+    <% end %>
 </div>
 
-</div>
+
 
 <script>
  function changeHeart(_this) {

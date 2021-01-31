@@ -56,7 +56,13 @@ class HighlightsController < ApplicationController
     Dir.mkdir(directory_name) unless File.exists?(directory_name)
     h = @highlight
     file_name = h.source.title.gsub(' ', '_')
-    File.open("#{directory_name}/#{file_name}_#{h.page}.md", "w") { |file| file.puts "BOOK: #{h.source.title}\nAUTHOR: #{h.source.author.name}\nHIGHLIGHT: #{h.content}\nPAGE: #{h.page}\nNOTE: #{h.my_note}"}
+    File.open("#{directory_name}/#{file_name}_#{h.page}.md", "w") do |file|
+      file << "# #{h.source.title}\n\n"
+      file << "## #{h.source.author.name}\n\n"
+      file << "#{h.content}\n\n"
+      file << "page: #{h.page}\n\n"
+      file << "note: #{h.my_note}"
+    end
     flash[:notice] = 'Yay! Highlight was succsesfully exported!'  # keine notice :/
     redirect_back(fallback_location: 'pages#home')
   end

@@ -18,14 +18,18 @@ Rails.application.routes.draw do
       get :unfav
       put :unfav
       get :export
-      put :export
+
     end
   end
   resources :sources, only: [:show] do
+    member do
+      get :export_book
+    end
     collection do
       get :books
       get :articles
       get :library
+      get :export_many
     end
   end
 end
