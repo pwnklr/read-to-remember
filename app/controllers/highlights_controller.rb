@@ -1,6 +1,5 @@
 class HighlightsController < ApplicationController
   before_action :set_highlight, only: [:edit, :update, :destroy, :fav, :unfav]
-  # before_action :set_source, only: [:new, :create]
   before_action :set_tag, only: :tags
   respond_to :html, :js
 
@@ -20,31 +19,36 @@ class HighlightsController < ApplicationController
 
   def update
     if @highlight.update(note_tag_param)
-      respond_to do |format|
-        format.html {redirect_back(fallback_location: 'pages#home')}
+       respond_to do |format|
+        format.html {redirect_back @highlight }
         format.json
         format.js
       end
     end
   end
 
-  def destroy
+  def destroy # works, except: carousel
     @highlight.destroy
-    redirect_back(fallback_location: 'pages#home') #notice: "Highlight was succsesfully removed!"
+    flash[:notice] = 'Highlight was succsesfully removed!'
+    redirect_back(fallback_location: 'pages#home')
   end
 
-  def fav
+  def fav # works! except: carousel
     current_user.favorite(@highlight)
-    respond_to do |format|
-      format.js
-    end
+    redirect_back @highlight
+    #redirect_back(fallback_location: 'pages#home')
+    # respond_to do |format|
+    #   format.js
+    # end
   end
 
-  def unfav
+  def unfav # works except: favorites + carousel
     current_user.unfavorite(@highlight)
-    respond_to do |format|
-      format.js
-    end
+    redirect_back @highlight
+    #redirect_back(fallback_location: 'pages#home')
+    # respond_to do |format|
+    #  format.js
+    # end
   end
 
   def flashcards
@@ -76,10 +80,6 @@ class HighlightsController < ApplicationController
   def set_highlight
     @highlight = Highlight.find(params[:id])
   end
-
-  # def set_source
-  #  @source = Source.find(params[:source_id])
-  # end
 
   def set_tag
     @tag = params[:format]

@@ -2,13 +2,13 @@
     <% if current_user.favorited?(h) %>
       <p>
         <%= link_to unfav_highlight_path(h), id: "unfav",  method: :put, remote: true  do %>
-          <i class="fas fa-heart flashcard-button"></i>
+          <i onclick=changeHeart(this) class="fas fa-heart flashcard-button"></i>
         <% end %>
       </p>
     <% else %>
       <p>
         <%= link_to fav_highlight_path(h), id: "fav", method: :put, remote: true  do %>
-          <i class="far fa-heart flashcard-button"></i>
+          <i onclick=changeHeart(this) class="far fa-heart flashcard-button"></i>
         <% end %>
       </p>
     <% end %>
@@ -31,3 +31,14 @@
   </div>
 </div>
 
+<script>
+ function changeHeart(_this) {
+    if (_this.classList.contains('far')) {
+      _this.classList.remove('far');
+      _this.classList.add('fas');
+    } else {
+      _this.classList.remove('fas');
+      _this.classList.add('far');
+    }
+  }
+</script>
