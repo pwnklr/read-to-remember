@@ -11,6 +11,7 @@ class SourcesController < ApplicationController
     directory_name = "my-r2r-files"
     Dir.mkdir(directory_name) unless File.exists?(directory_name)
     highlights = params[:highlights]
+    highlights.map!(&:to_i).sort!
     highlight = Highlight.find(highlights[0].to_i)
     title = highlight.source.title
     author = highlight.source.author.name
