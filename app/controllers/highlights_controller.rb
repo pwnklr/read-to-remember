@@ -52,9 +52,11 @@ class HighlightsController < ApplicationController
   end
 
   def export # set path! do smtng with content...
+    directory_name = "my-r2r-files"
+    Dir.mkdir(directory_name) unless File.exists?(directory_name)
     h = @highlight
     file_name = h.source.title.gsub(' ', '_')
-    File.open("#{file_name}_#{h.page}.md", "w") { |file| file.puts "BOOK: #{h.source.title}\nAUTHOR: #{h.source.author.name}\nHIGHLIGHT: #{h.content}\nPAGE: #{h.page}\nNOTE: #{h.my_note}"}
+    File.open("#{directory_name}/#{file_name}_#{h.page}.md", "w") { |file| file.puts "BOOK: #{h.source.title}\nAUTHOR: #{h.source.author.name}\nHIGHLIGHT: #{h.content}\nPAGE: #{h.page}\nNOTE: #{h.my_note}"}
     flash[:notice] = 'Yay! Highlight was succsesfully exported!'  # keine notice :/
     redirect_back(fallback_location: 'pages#home')
   end
