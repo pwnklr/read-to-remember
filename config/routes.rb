@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       put :fav
       get :unfav
       put :unfav
+      get :export
+      put :export
     end
   end
   resources :sources, only: [:show] do

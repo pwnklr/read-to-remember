@@ -1,5 +1,5 @@
 class HighlightsController < ApplicationController
-  before_action :set_highlight, only: [:edit, :update, :destroy, :fav, :unfav]
+  before_action :set_highlight, only: [:edit, :update, :destroy, :fav, :unfav, :export]
   before_action :set_tag, only: :tags
   respond_to :html, :js
 
@@ -49,6 +49,14 @@ class HighlightsController < ApplicationController
     # respond_to do |format|
     #  format.js
     # end
+  end
+
+  def export # set path! do smtng with content...
+    h = @highlight
+    file_name = h.source.title.gsub(' ', '_')
+    File.open("#{file_name}_#{h.page}.md", "w") { |file| file.puts "BOOK: #{h.source.title}\nAUTHOR: #{h.source.author.name}\nHIGHLIGHT: #{h.content}\nPAGE: #{h.page}\nNOTE: #{h.my_note}"}
+    flash[:notice] = 'Yay! Highlight was succsesfully exported!'  # keine notice :/
+    redirect_back(fallback_location: 'pages#home')
   end
 
   def flashcards
