@@ -20,7 +20,7 @@ class HighlightsController < ApplicationController
   def update
     if @highlight.update(note_tag_param)
        respond_to do |format|
-        format.html {redirect_back @highlight }
+        format.html
         format.json
         format.js
       end
@@ -35,16 +35,14 @@ class HighlightsController < ApplicationController
 
   def fav # works! except: carousel
     current_user.favorite(@highlight)
-    redirect_back @highlight
     #redirect_back(fallback_location: 'pages#home')
     # respond_to do |format|
     #   format.js
     # end
   end
 
-  def unfav # works except: favorites + carousel
+  def unfav # works except: favorites (do js - element remove) + carousel
     current_user.unfavorite(@highlight)
-    redirect_back @highlight
     #redirect_back(fallback_location: 'pages#home')
     # respond_to do |format|
     #  format.js
@@ -63,8 +61,8 @@ class HighlightsController < ApplicationController
       file << "page: #{h.page}\n\n"
       file << "note: #{h.my_note}"
     end
-    flash[:notice] = 'Yay! Highlight was succsesfully exported!'  # keine notice :/
-    redirect_back(fallback_location: 'pages#home')
+    #flash[:notice] = 'Yay! Highlight was succsesfully exported!'  # keine notice :/ => do JS + css magic
+    #redirect_back(fallback_location: 'pages#home') # flash notice radi s redirect + method: :put (ali ne radi remote..)
   end
 
   def flashcards
