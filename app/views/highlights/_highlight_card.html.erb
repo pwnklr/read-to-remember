@@ -45,7 +45,7 @@
             </p>
             <p>
               <%= link_to export_highlight_path(h), remote: true do %> <!-- improve this one :export -->
-                <i class="fas fa-paper-plane" title='Export' style="font-size:16px;color:#AAAAAA;"></i>
+                <i onclick=showAlert() class="fas fa-paper-plane" title='Export' style="font-size:16px;color:#AAAAAA;"></i>
               <% end %>
             </p>
           </div>
@@ -59,6 +59,14 @@
     <% end %>
   </div>
 </div>
+
+<div id='myAlert' class="alert alert-warning alert-dismissible fade show m-1" style='display:none;'>
+  Yay! Highlight was succsesfully exported!
+  <button type="button" class="close" onclick=closeIt()>
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
 <script>
  function changeHeart(_this) {
     if (_this.classList.contains('far')) {
@@ -70,5 +78,13 @@
       _this.classList.add('far');
       _this.title = 'Favorite';
     }
+  }
+
+  function showAlert() {
+    setTimeout(function(){ document.getElementById('myAlert').style.display = 'inherit'; }, 900 )
+  }
+
+  function closeIt() {
+    document.getElementById('myAlert').style.display = 'none';
   }
 </script>
