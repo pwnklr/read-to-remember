@@ -8,25 +8,30 @@ class SourcesController < ApplicationController
   end
 
   def export_many
-    directory_name = "my-r2r-files"
+    directory_name = "public/data"
     Dir.mkdir(directory_name) unless File.exists?(directory_name)
     highlights = params[:highlights]
-    highlights.map!(&:to_i).sort!
-    highlight = Highlight.find(highlights[0].to_i)
-    title = highlight.source.title
-    author = highlight.source.author.name
-    file_name = title.gsub(' ', '_')
-    File.open("#{directory_name}/#{file_name}.md", "wb+") do |file|
-      file << "# #{title}\n\n"
-      file << "## #{author}\n\n\n\n"
-      highlights.each do |id|
-        h = Highlight.find(id)
-        file << "#{h.content}\n\npage: #{h.page}\n\n"
-        file << "note: #{h.my_note}\n\n\n\n" # do smtng here
+    if highlights.nil?
+      flash[:notice] = 'Please select highlights!'
+      redirect_back(fallback_location: 'pages#home')
+    else
+      highlights.map!(&:to_i).sort!
+      highlight = Highlight.find(highlights[0].to_i)
+      title = highlight.source.title
+      author = highlight.source.author.name
+      file_name = title.gsub(' ', '_')
+      File.open("#{directory_name}/#{file_name}.md", "wb+") do |file|
+        file << "# #{title}\n\n"
+        file << "## #{author}\n\n\n\n"
+        highlights.each do |id|
+          h = Highlight.find(id)
+          file << "#{h.content}\n\npage: #{h.page}\n\n"
+          file << "note: #{h.my_note}\n\n\n\n" # do smtng here
+        end
       end
+      flash[:notice] = 'Yay! Highlights were succsesfully exported!'  # notice works!:)
+      redirect_to source_path(highlight.source_id)
     end
-    flash[:notice] = 'Yay! Highlights were succsesfully exported!'  # notice works!:)
-    redirect_to source_path(highlight.source_id)
   end
 
   def library

@@ -50,7 +50,7 @@ class HighlightsController < ApplicationController
   end
 
   def export # set path! do smtng with content...
-    directory_name = "my-r2r-files"
+    directory_name = "public/data"
     Dir.mkdir(directory_name) unless File.exists?(directory_name)
     h = @highlight
     file_name = h.source.title.gsub(' ', '_')
