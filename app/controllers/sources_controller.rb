@@ -1,5 +1,5 @@
 class SourcesController < ApplicationController
-  before_action :set_source, only: [:show, :export_book]
+  before_action :set_source, only: [:show, :export_book, :export_many]
 
   def show
   end
@@ -26,10 +26,14 @@ class SourcesController < ApplicationController
         highlights.each do |id|
           h = Highlight.find(id)
           file << "#{h.content}\n\npage: #{h.page}\n\n"
-          file << "note: #{h.my_note}\n\n\n\n" # do smtng here
+          if h.my_note.nil? || h.my_note.match(/^\s+$/)
+            file << "\n\n\n\n"
+          else
+            file << "note: #{h.my_note}\n\n\n\n" if h.my_note.match(/[^\s]/)
+          end
         end
       end
-      flash[:notice] = 'Yay! Highlights were succsesfully exported!'  # notice works!:)
+      flash[:notice] = 'Yay! Highlights were succsesfully exported!'
       redirect_to source_path(highlight.source_id)
     end
   end

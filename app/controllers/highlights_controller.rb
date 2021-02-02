@@ -50,19 +50,19 @@ class HighlightsController < ApplicationController
   end
 
   def export # set path! do smtng with content...
+    # download works for files in public/data ...
+    # generate file:
     directory_name = "public/data"
     Dir.mkdir(directory_name) unless File.exists?(directory_name)
     h = @highlight
     file_name = h.source.title.gsub(' ', '_')
-    File.open("#{directory_name}/#{file_name}_#{h.page}.md", "w") do |file|
+    File.open("#{directory_name}/#{file_name}_#{h.id}.md", "w") do |file|
       file << "# #{h.source.title}\n\n"
       file << "## #{h.source.author.name}\n\n"
       file << "#{h.content}\n\n"
       file << "page: #{h.page}\n\n"
-      file << "note: #{h.my_note}"
+      file << "note: #{h.my_note}" if h.my_note.match(/[^\s]/)
     end
-    #flash[:notice] = 'Yay! Highlight was succsesfully exported!'  # keine notice :/ => do JS + css magic
-    #redirect_back(fallback_location: 'pages#home') # flash notice radi s redirect + method: :put (ali ne radi remote..)
   end
 
   def flashcards
