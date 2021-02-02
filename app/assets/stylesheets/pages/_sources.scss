@@ -137,7 +137,7 @@ a:hover {
 
 
 /* checkbox forexport */
-input[type="checkbox"] {
+input[type="checkbox"].rounded {
   font-size: 18px;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -145,17 +145,17 @@ input[type="checkbox"] {
   width: 1.5em;
   height: 1.5em;
   background: #eee;
-  border-radius: 3em;
+  border-radius: 3em !important;
   position: relative;
   cursor: pointer;
   outline: none;
 }
 
-input[type="checkbox"]:checked {
+input[type="checkbox"].rounded:checked {
   background: #eee;
 }
 
-input[type="checkbox"]:after {
+input[type="checkbox"].rounded:after {
   position: absolute;
   content: "";
   width: 1.5em;
@@ -166,6 +166,6 @@ input[type="checkbox"]:after {
           transform: scale(.7);
 }
 
-input[type="checkbox"]:checked:after {
+input[type="checkbox"].rounded:checked:after {
   background: #eee;
 }

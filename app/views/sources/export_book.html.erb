@@ -23,7 +23,7 @@
   <%= form_tag export_many_sources_path, class: 'row', :method => "get" do %>
     <% @source.highlights.order(page: :asc).each do |h| %>
     <div class='col-1'>
-      <p style='position: absolute; top: 50%; transform: translate(0, -50%);'><%= check_box_tag 'highlights[]', h.id %></p>
+      <p style='position: absolute; top: 50%; transform: translate(0, -50%);'><%= check_box_tag 'highlights[]', h.id, false, class: 'rounded' %></p>
     </div>
     <div class='col-11'>
       <div class="card" id='<%= "note-#{h.id}" %>'>
