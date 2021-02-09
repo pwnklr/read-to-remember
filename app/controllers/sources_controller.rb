@@ -1,5 +1,5 @@
 class SourcesController < ApplicationController
-  before_action :set_source, only: [:show, :export_book, :export_many]
+  before_action :set_source, only: [:show, :export_book]
 
   def show
   end
