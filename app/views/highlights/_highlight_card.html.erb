@@ -28,14 +28,14 @@
             <% if current_user.favorited?(h) %>
               <p>
                 <%= link_to unfav_highlight_path(h), method: :put, remote: true do %>
-                  <i id='f-<%= h.id %>' onclick=changeHeart(this) title='Unfavorite' class="fas fa-heart" style="font-size:16px;" ></i>
+                  <i id='f-<%= h.id %>' onclick=changeHeart(this) title='Unfavorite' class="fas fa-heart" style="font-size:16px;color:#555555;" ></i>
                 <% end %>
 
               </p>
             <% else %>
               <p>
                 <%= link_to fav_highlight_path(h), method: :put, remote: true do %>
-                  <i onclick=changeHeart(this) title='Favorite' class="far fa-heart" style="font-size:16px;"></i>
+                  <i onclick=changeHeart(this) title='Favorite' class="far fa-heart" style="font-size:16px;color:#aaa"></i>
                 <% end %>
               </p>
             <% end %>
@@ -80,10 +80,12 @@
         _this.classList.remove('far');
         _this.classList.add('fas');
         _this.title = 'Unfavorite';
+        _this.style.color = '#555555';
       } else {
         _this.classList.remove('fas');
         _this.classList.add('far');
         _this.title = 'Favorite';
+        _this.style.color = '#aaa';
       }
     }
   }
