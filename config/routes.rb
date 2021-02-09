@@ -17,13 +17,19 @@ Rails.application.routes.draw do
       put :fav
       get :unfav
       put :unfav
+      get :export
+
     end
   end
   resources :sources, only: [:show] do
+    member do
+      get :export_book
+    end
     collection do
       get :books
       get :articles
       get :library
+      get :export_many
     end
   end
 end

@@ -10,18 +10,23 @@
         <div class="text-s">
           <h6 style="margin-top:7px;"><%= @source.title %></h6>
           <span style="color: #B6B4B5;font-size: 12px;"><%= @source.author.name %></span>
-          <p><%= link_to 'Export', export_book_source_path, style: "color: #fff; font-size: 16px;"%></p>
+          <p><%= link_to 'Cancel', :back, style: "color: #fff; font-size: 16px;"%></p>
         </div>
       </div>
     </div>
+
 </div>
 
 <div class="container" style="padding-top:16vh; min-height:100vh;">
 
-  <div class="container" style="margin: 15px;">
-  <div class="row">
+
+  <%= form_tag export_many_sources_path, class: 'row', :method => "get" do %>
     <% @source.highlights.order(page: :asc).each do |h| %>
-      <div class="card card-adjusted" id='<%= "note-#{h.id}" %>'>
+    <div class='col-1'>
+      <p style='position: absolute; top: 50%; transform: translate(0, -50%);'><%= check_box_tag 'highlights[]', h.id, false, class: 'rounded' %></p>
+    </div>
+    <div class='col-11'>
+      <div class="card" id='<%= "note-#{h.id}" %>'>
         <p><%= h.content %></p>
         <p class="page">Page <%= h.page %></p>
         <!-- -->
@@ -36,56 +41,53 @@
             </div>
           </div>
         <% end %>
-
+<!--
         <div id="<%= h.id %>" style="display: none;"></div>
 
         <div class="icons">
           <div class="sent">
-            <% if current_user.favorited?(h) %>
+            <#% if current_user.favorited?(h) %>
               <p>
-                <%= link_to unfav_highlight_path(h), method: :put, remote: true  do %>
+                <#%= link_to unfav_highlight_path(h), method: :put, remote: true  do %>
                   <i onclick=changeHeart(this) title='Unfavorite' class="fas fa-heart" style="font-size:16px;"></i>
-                <% end %>
+                <#% end %>
               </p>
-            <% else %>
+            <#% else %>
               <p>
-                <%= link_to fav_highlight_path(h), method: :put, remote: true  do %>
+                <#%= link_to fav_highlight_path(h), method: :put, remote: true  do %>
                   <i onclick=changeHeart(this) title='Favorite' class="far fa-heart" style="font-size:16px;"></i>
-                <% end %>
+                <#% end %>
               </p>
-            <% end %>
-            <!-- render form -->
+            <#% end %>
+
               <p>
-                <%= link_to edit_highlight_path(h), remote: true do %>
+                <#%= link_to edit_highlight_path(h), remote: true do %>
                   <i class="fas fa-pen" title='Write/update note' style="font-size:16px;color:#AAAAAA;"></i>
-                <% end %>
+                <#% end %>
               </p>
 
             <p>
-              <%= link_to export_highlight_path(h), remote: true do %>
-                <i onclick=showAlert() class="fas fa-paper-plane" title='Export' style="font-size:16px;color:#AAAAAA;"></i>
-              <% end %>
+              <#%= link_to export_highlight_path(h), remote: true do %>
+                <i class="fas fa-paper-plane" title='Export' style="font-size:16px;color:#AAAAAA;"></i>
+              <#% end %>
             </p>
           </div>
           <div class="delete">
-            <p><%= link_to h, method: :delete, data: {confirm: "Are you sure?"} do %>
+            <p><#%= link_to h, method: :delete, data: {confirm: "Are you sure?"} do %>
               <i class="far fa-trash-alt" title='Delete' style="font-size:16px;color:#AAAAAA;"></i></p>
-            <% end %>
+            <#% end %>
           </div>
         </div>
+
+      -->
       </div>
+    </div>
     <% end %>
-  </div>
-</div>
-</div>
-
-<div id='myAlert' class="alert alert-warning alert-dismissible fade show m-1" style='display:none;'>
-  Yay! Highlight was succsesfully exported!
-  <button type="button" class="close" onclick=closeIt()>
-    <span aria-hidden="true">&times;</span>
-  </button>
+    <%= submit_tag "Submit", class: 'btn btn-primary' %>
+    <% end %>
 </div>
 
+<!--
 <script>
  function changeHeart(_this) {
     if (_this.classList.contains('far')) {
@@ -98,12 +100,5 @@
       _this.title = 'Favorite';
     }
   }
-
-  function showAlert() {
-    setTimeout(function(){ document.getElementById('myAlert').style.display = 'inherit'; }, 900 )
-  }
-
-  function closeIt() {
-    document.getElementById('myAlert').style.display = 'none';
-  }
 </script>
+-->
