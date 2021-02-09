@@ -28,7 +28,7 @@
             <% if current_user.favorited?(h) %>
               <p>
                 <%= link_to unfav_highlight_path(h), method: :put, remote: true do %>
-                  <i onclick=changeHeart(this) title='Unfavorite' class="fas fa-heart" style="font-size:16px;" ></i>
+                  <i id='f-<%= h.id %>' onclick=changeHeart(this) title='Unfavorite' class="fas fa-heart" style="font-size:16px;" ></i>
                 <% end %>
 
               </p>
@@ -71,6 +71,11 @@
 
 <script>
  function changeHeart(_this) {
+  const location = window.location.href; //change location for production => https://www.readtoremember.xyz/highlights/favorites
+  if (location == 'http://localhost:3000/highlights/favorites') {
+    const id = _this.id.replace('f-', '')
+    document.getElementById('note-' + id).remove();
+  } else {
     if (_this.classList.contains('far')) {
       _this.classList.remove('far');
       _this.classList.add('fas');
@@ -81,7 +86,7 @@
       _this.title = 'Favorite';
     }
   }
-
+}
   function showAlert() {
     setTimeout(function(){ document.getElementById('myAlert').style.display = 'inherit'; }, 900 )
   }

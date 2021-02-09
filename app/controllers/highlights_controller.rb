@@ -41,7 +41,7 @@ class HighlightsController < ApplicationController
     # end
   end
 
-  def unfav # works except: favorites (do js - element remove) + carousel
+  def unfav # works! except: carousel
     current_user.unfavorite(@highlight)
     #redirect_back(fallback_location: 'pages#home')
     # respond_to do |format|
