@@ -18,10 +18,10 @@
 
 <div class="container" style="padding-top:16vh; min-height:100vh;">
 
-  <div class="container">
+  <div class="container" style="margin: 15px;">
   <div class="row">
     <% @source.highlights.order(page: :asc).each do |h| %>
-      <div class="card" id='<%= "note-#{h.id}" %>'>
+      <div class="card card-adjusted" id='<%= "note-#{h.id}" %>'>
         <p><%= h.content %></p>
         <p class="page">Page <%= h.page %></p>
         <!-- -->
