@@ -41,43 +41,45 @@
             </div>
           </div>
         <% end %>
-
+<!--
         <div id="<%= h.id %>" style="display: none;"></div>
 
         <div class="icons">
           <div class="sent">
-            <% if current_user.favorited?(h) %>
+            <#% if current_user.favorited?(h) %>
               <p>
-                <%= link_to unfav_highlight_path(h), method: :put, remote: true  do %>
+                <#%= link_to unfav_highlight_path(h), method: :put, remote: true  do %>
                   <i onclick=changeHeart(this) title='Unfavorite' class="fas fa-heart" style="font-size:16px;"></i>
-                <% end %>
+                <#% end %>
               </p>
-            <% else %>
+            <#% else %>
               <p>
-                <%= link_to fav_highlight_path(h), method: :put, remote: true  do %>
+                <#%= link_to fav_highlight_path(h), method: :put, remote: true  do %>
                   <i onclick=changeHeart(this) title='Favorite' class="far fa-heart" style="font-size:16px;"></i>
-                <% end %>
+                <#% end %>
               </p>
-            <% end %>
-            <!-- render form -->
+            <#% end %>
+
               <p>
-                <%= link_to edit_highlight_path(h), remote: true do %>
+                <#%= link_to edit_highlight_path(h), remote: true do %>
                   <i class="fas fa-pen" title='Write/update note' style="font-size:16px;color:#AAAAAA;"></i>
-                <% end %>
+                <#% end %>
               </p>
 
             <p>
-              <%= link_to export_highlight_path(h), remote: true do %>
+              <#%= link_to export_highlight_path(h), remote: true do %>
                 <i class="fas fa-paper-plane" title='Export' style="font-size:16px;color:#AAAAAA;"></i>
-              <% end %>
+              <#% end %>
             </p>
           </div>
           <div class="delete">
-            <p><%= link_to h, method: :delete, data: {confirm: "Are you sure?"} do %>
+            <p><#%= link_to h, method: :delete, data: {confirm: "Are you sure?"} do %>
               <i class="far fa-trash-alt" title='Delete' style="font-size:16px;color:#AAAAAA;"></i></p>
-            <% end %>
+            <#% end %>
           </div>
         </div>
+
+      -->
       </div>
     </div>
     <% end %>
@@ -85,8 +87,7 @@
     <% end %>
 </div>
 
-
-
+<!--
 <script>
  function changeHeart(_this) {
     if (_this.classList.contains('far')) {
@@ -100,3 +101,4 @@
     }
   }
 </script>
+-->
