@@ -21,7 +21,7 @@ class SourcesController < ApplicationController
       title = highlight.source.title
       author = highlight.source.author.name
       #file_name = title.gsub(' ', '_')
-      file_path = "#{directory_name}/tempfile.md"
+      file_path = "#{directory_name}/read_to_remember_#{current_user.id}.md"
       File.open(file_path, "wb+") do |file|
         file << "# #{title}\n\n"
         file << "## #{author}\n\n\n\n"
@@ -89,7 +89,7 @@ class SourcesController < ApplicationController
     Dir.mkdir(directory_name) unless File.exists?(directory_name)
     h = @highlight
     #file_name = h.source.title.gsub(' ', '_')
-    file_path = "#{directory_name}/tempfile.md" #"#{directory_name}/#{file_name}_#{h.id}.md"
+    file_path = "#{directory_name}/read_to_remember_#{current_user.id}.md" #"#{directory_name}/#{file_name}_#{h.id}.md"
     File.open(file_path, "w+") do |file|
       file << ""
     end

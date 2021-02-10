@@ -57,7 +57,7 @@ class HighlightsController < ApplicationController
     Dir.mkdir(directory_name) unless File.exists?(directory_name)
     h = @highlight
     #file_name = h.source.title.gsub(' ', '_')
-    file_path = "#{directory_name}/tempfile.md" #"#{directory_name}/#{file_name}_#{h.id}.md"
+    file_path = "#{directory_name}/read_to_remember_#{current_user.id}.md" #"#{directory_name}/#{file_name}_#{h.id}.md"
     File.open(file_path, "w+") do |file|
       file << "# #{h.source.title}\n\n"
       file << "## #{h.source.author.name}\n\n"
@@ -115,7 +115,7 @@ class HighlightsController < ApplicationController
     Dir.mkdir(directory_name) unless File.exists?(directory_name)
     h = @highlight
     #file_name = h.source.title.gsub(' ', '_')
-    file_path = "#{directory_name}/tempfile.md" #"#{directory_name}/#{file_name}_#{h.id}.md"
+    file_path = "#{directory_name}/read_to_remember_#{current_user.id}.md" #"#{directory_name}/#{file_name}_#{h.id}.md"
     File.open(file_path, "w+") do |file|
       file << ""
     end
