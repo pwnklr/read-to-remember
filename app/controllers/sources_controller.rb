@@ -1,5 +1,6 @@
 class SourcesController < ApplicationController
   before_action :set_source, only: [:show, :export_book]
+  after_action :destroy_file, only: :export_many
 
   def show
   end
@@ -19,8 +20,9 @@ class SourcesController < ApplicationController
       highlight = Highlight.find(highlights[0].to_i)
       title = highlight.source.title
       author = highlight.source.author.name
-      file_name = title.gsub(' ', '_')
-      File.open("#{directory_name}/#{file_name}.md", "wb+") do |file|
+      #file_name = title.gsub(' ', '_')
+      file_path = "#{directory_name}/tempfile.md"
+      File.open(file_path, "wb+") do |file|
         file << "# #{title}\n\n"
         file << "## #{author}\n\n\n\n"
         highlights.each do |id|
@@ -33,6 +35,7 @@ class SourcesController < ApplicationController
           end
         end
       end
+      sleep(3)
       flash[:notice] = 'Yay! Highlights were succsesfully exported!'
       redirect_to source_path(highlight.source_id)
     end
@@ -78,5 +81,17 @@ class SourcesController < ApplicationController
 
   def source_params
     params.require(:source).permit(:title, :publishing_year, :category, :author_id, :photo)
+  end
+
+  def destroy_file
+    sleep(2)
+    directory_name = "public/data"
+    Dir.mkdir(directory_name) unless File.exists?(directory_name)
+    h = @highlight
+    #file_name = h.source.title.gsub(' ', '_')
+    file_path = "#{directory_name}/tempfile.md" #"#{directory_name}/#{file_name}_#{h.id}.md"
+    File.open(file_path, "w+") do |file|
+      file << ""
+    end
   end
 end

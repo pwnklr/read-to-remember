@@ -18,12 +18,13 @@ Rails.application.routes.draw do
       get :unfav
       put :unfav
       get :export
-
+      get :destroy_file
     end
   end
   resources :sources, only: [:show] do
     member do
       get :export_book
+      get :destroy_file
     end
     collection do
       get :books

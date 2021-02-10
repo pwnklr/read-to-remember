@@ -2,6 +2,7 @@ class HighlightsController < ApplicationController
   before_action :set_highlight, only: [:edit, :update, :destroy, :fav, :unfav, :export]
   before_action :set_tag, only: :tags
   respond_to :html, :js
+  after_action :destroy_file, only: :export
 
   # search here
   def index
@@ -55,8 +56,9 @@ class HighlightsController < ApplicationController
     directory_name = "public/data"
     Dir.mkdir(directory_name) unless File.exists?(directory_name)
     h = @highlight
-    file_name = h.source.title.gsub(' ', '_')
-    File.open("#{directory_name}/#{file_name}_#{h.id}.md", "w") do |file|
+    #file_name = h.source.title.gsub(' ', '_')
+    file_path = "#{directory_name}/tempfile.md" #"#{directory_name}/#{file_name}_#{h.id}.md"
+    File.open(file_path, "w+") do |file|
       file << "# #{h.source.title}\n\n"
       file << "## #{h.source.author.name}\n\n"
       file << "#{h.content}\n\n"
@@ -105,5 +107,17 @@ class HighlightsController < ApplicationController
 
   def note_tag_param
     params.require(:highlight).permit(:h_note, :my_note, :tag_list)
+  end
+
+  def destroy_file
+    sleep(2)
+    directory_name = "public/data"
+    Dir.mkdir(directory_name) unless File.exists?(directory_name)
+    h = @highlight
+    #file_name = h.source.title.gsub(' ', '_')
+    file_path = "#{directory_name}/tempfile.md" #"#{directory_name}/#{file_name}_#{h.id}.md"
+    File.open(file_path, "w+") do |file|
+      file << ""
+    end
   end
 end
