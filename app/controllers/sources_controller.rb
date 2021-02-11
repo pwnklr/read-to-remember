@@ -20,18 +20,17 @@ class SourcesController < ApplicationController
       highlight = Highlight.find(highlights[0].to_i)
       title = highlight.source.title
       author = highlight.source.author.name
-      #file_name = title.gsub(' ', '_')
       file_path = "#{directory_name}/read_to_remember_#{current_user.id}.md"
       File.open(file_path, "wb+") do |file|
         file << "# #{title}\n\n"
-        file << "## #{author}\n\n\n\n"
+        file << "## #{author}\n\n"
         highlights.each do |id|
           h = Highlight.find(id)
           file << "#{h.content}\n\npage: #{h.page}\n\n"
-          if h.my_note.nil? || h.my_note.match(/^\s+$/)
-            file << "\n\n\n\n"
+          if !h.my_note.nil? && h.my_note.match(/[^\s]/)
+            file << "note: #{h.my_note.strip}\n\n\n\n"
           else
-            file << "note: #{h.my_note}\n\n\n\n" if h.my_note.match(/[^\s]/)
+            file << "\n\n"
           end
         end
       end

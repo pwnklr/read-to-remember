@@ -63,7 +63,7 @@ class HighlightsController < ApplicationController
       file << "## #{h.source.author.name}\n\n"
       file << "#{h.content}\n\n"
       file << "page: #{h.page}\n\n"
-      file << "note: #{h.my_note}" if h.my_note.match(/[^\s]/)
+      file << "note: #{h.my_note.strip}" if h.my_note.match(/[^\s]/)
     end
   end
 
