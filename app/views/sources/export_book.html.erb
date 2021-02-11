@@ -10,17 +10,21 @@
         <div class="text-s">
           <h6 style="margin-top:7px;"><%= @source.title %></h6>
           <span style="color: #B6B4B5;font-size: 12px;"><%= @source.author.name %></span>
-          <p><%= link_to 'Cancel', :back, style: "color: #fff; font-size: 16px;"%></p>
+          <br>
+          <span><%= link_to 'Cancel', :back, style: "color: #fff; font-size: 16px;"%> | </span>
+          <span onclick=downloadIt();><%= link_to 'Export all', export_all_source_path, style: "color: #fff; font-size: 16px;" %></span>
         </div>
       </div>
     </div>
 
 </div>
 
+<%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "#{@source.title.gsub(' ', '_')}.md", id: 'dwnld', style: 'display: none;' %>
+
 <div class="container" style="padding-top:16vh; min-height:100vh;">
 
 
-  <%= form_tag export_many_sources_path, class: 'row', :method => "get" do %>
+  <%= form_tag export_many_sources_path, class: 'row id-form', :method => "get" do %>
     <% @source.highlights.order(page: :asc).each do |h| %>
     <div class='col-1'>
       <p style='position: absolute; top: 50%; transform: translate(0, -50%);'><%= check_box_tag 'highlights[]', h.id, false, class: 'rounded' %></p>
@@ -83,22 +87,18 @@
       </div>
     </div>
     <% end %>
-    <%= submit_tag "Submit", class: 'btn btn-primary' %>
+    <%= submit_tag "Submit", class: 'btn btn-primary download' %>
     <% end %>
 </div>
 
-<!--
+
 <script>
- function changeHeart(_this) {
-    if (_this.classList.contains('far')) {
-      _this.classList.remove('far');
-      _this.classList.add('fas');
-      _this.title = 'Unfavorite';
-    } else {
-      _this.classList.remove('fas');
-      _this.classList.add('far');
-      _this.title = 'Favorite';
-    }
+  document.querySelector(".btn.btn-primary.download").addEventListener('click', downloadIt);
+
+  function downloadIt() {
+    setTimeout(function(){
+      document.getElementById('dwnld').click();
+    }, 800 );
   }
 </script>
--->
+
