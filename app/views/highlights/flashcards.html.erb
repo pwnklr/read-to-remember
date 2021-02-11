@@ -9,14 +9,22 @@
             <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
               <p style="margin-bottom:20px;"><%= h.content %></p>
           </div>
+          <!-- note and tags in one line! -->
           <% if h.my_note.present? %>
             <div class="card-note" style="width: 100%; padding-bottom: 12px;">
               <p style="font-weight: 600; color: #898AA6; font-size:12px; margin: 0;">Notes</p>
-              <p style="font-weight: 300; font-size:14px; color: #13154E; margin: 0; font-family: Roboto;"><%= h.h_note %></p>
               <div style="display: flex; flex-wrap: wrap;">
-                <p style="font-size: 12px; font-weight: 300; font-height:0; color: #13154E; font-family: Roboto;"><% h.tag_list.each do |t| %></p>
-                  <p style="font-weight: 300; padding-left: .5vw; font-size:12px; margin:0;"><%= link_to "#{t}", tags_highlights_path(t), style: "color:#25265B;"%></p>
+              <p style="">
+                <% h.my_note.split(' ').each do |w| %>
+                  <% if h.tag_list.include?(w) %>
+                    <span>
+                      <%= link_to "#{w}", tags_highlights_path(w), style: "margin: 0, 2px; font-family: Roboto; font-size: 16px; font-weight: 300; font-height:0; color:#25265B;"%>
+                    </span>
+                  <% else %>
+                    <span style="font-weight: 300; font-size:14px; color: #13154E; margin: 0; font-family: Roboto;"><%= w %> </span>
+                  <% end %>
                 <% end %>
+              </p>
               </div>
             </div>
           <% end %>
