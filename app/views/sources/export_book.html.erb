@@ -17,7 +17,7 @@
 
 </div>
 
-<%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "read_to_remember.md", id: 'dwnld', style: 'display: none;' %>
+<%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "#{@source.title.gsub(' ', '_')}.md", id: 'dwnld', style: 'display: none;' %>
 
 <div class="container" style="padding-top:16vh; min-height:100vh;">
 
