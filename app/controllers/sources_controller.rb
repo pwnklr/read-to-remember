@@ -1,6 +1,6 @@
 class SourcesController < ApplicationController
-  before_action :set_source, only: [:show, :export_book]
-  after_action :destroy_file, only: :export_many
+  before_action :set_source, only: [:show, :export_book, :export_all]
+  after_action :destroy_file, only: [:export_many, :export_all]
 
   def show
   end
@@ -9,35 +9,22 @@ class SourcesController < ApplicationController
   end
 
   def export_many
-    directory_name = "public/data"
-    Dir.mkdir(directory_name) unless File.exists?(directory_name)
     highlights = params[:highlights]
     if highlights.nil?
       flash[:notice] = 'Please select highlights!'
       redirect_back(fallback_location: 'pages#home')
     else
-      highlights.map!(&:to_i).sort!
-      highlight = Highlight.find(highlights[0].to_i)
-      title = highlight.source.title
-      author = highlight.source.author.name
-      file_path = "#{directory_name}/read_to_remember_#{current_user.id}.md"
-      File.open(file_path, "wb+") do |file|
-        file << "# #{title}\n\n"
-        file << "## #{author}\n\n"
-        highlights.each do |id|
-          h = Highlight.find(id)
-          file << "#{h.content}\n\npage: #{h.page}\n\n"
-          if !h.my_note.nil? && h.my_note.match(/[^\s]/)
-            file << "note: #{h.my_note.strip}\n\n\n\n"
-          else
-            file << "\n\n"
-          end
-        end
-      end
-      sleep(3)
-      flash[:notice] = 'Yay! Highlights were succsesfully exported!'
-      redirect_to source_path(highlight.source_id)
+      highlights.map!(&:to_i)
+                .sort!
+                .map!{|h| Highlight.find(h)}
+
+      source = highlights.first.source
+      generate_file(source, highlights)
     end
+  end
+
+  def export_all
+    generate_file(@source, @source.highlights.order(page: :asc))
   end
 
   def library
@@ -82,13 +69,32 @@ class SourcesController < ApplicationController
     params.require(:source).permit(:title, :publishing_year, :category, :author_id, :photo)
   end
 
-  def destroy_file
-    sleep(2)
+  def generate_file(source, highlights)
     directory_name = "public/data"
     Dir.mkdir(directory_name) unless File.exists?(directory_name)
-    h = @highlight
-    #file_name = h.source.title.gsub(' ', '_')
-    file_path = "#{directory_name}/read_to_remember_#{current_user.id}.md" #"#{directory_name}/#{file_name}_#{h.id}.md"
+    file_path = "#{directory_name}/read_to_remember_#{current_user.id}.md"
+    File.open(file_path, "wb+") do |file|
+      file << "# #{source.title}\n\n"
+      file << "## #{source.author.name}\n\n"
+      highlights.each do |h|
+        file << "#{h.content}\n\npage: #{h.page}\n\n"
+        if !h.my_note.nil? && h.my_note.match(/[^\s]/)
+          file << "note: #{h.my_note.strip}\n\n\n\n"
+        else
+          file << "\n\n"
+        end
+      end
+    end
+    sleep(2)
+    flash[:notice] = 'Yay! Highlights were succsesfully exported!'
+    redirect_to source_path(source)
+  end
+
+  def destroy_file
+    sleep(3)
+    directory_name = "public/data"
+    Dir.mkdir(directory_name) unless File.exists?(directory_name)
+    file_path = "#{directory_name}/read_to_remember_#{current_user.id}.md"
     File.open(file_path, "w+") do |file|
       file << ""
     end

@@ -10,7 +10,9 @@
         <div class="text-s">
           <h6 style="margin-top:7px;"><%= @source.title %></h6>
           <span style="color: #B6B4B5;font-size: 12px;"><%= @source.author.name %></span>
-          <p><%= link_to 'Cancel', :back, style: "color: #fff; font-size: 16px;"%></p>
+          <br>
+          <span><%= link_to 'Cancel', :back, style: "color: #fff; font-size: 16px;"%> | </span>
+          <span onclick=downloadIt();><%= link_to 'Export all', export_all_source_path, style: "color: #fff; font-size: 16px;" %></span>
         </div>
       </div>
     </div>

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     member do
       get :export_book
       get :destroy_file
+      get :export_all
     end
     collection do
       get :books

@@ -50,20 +50,17 @@ class HighlightsController < ApplicationController
     # end
   end
 
-  def export # set path! do smtng with content...
-    # download works for files in public/data ...
+  def export
     # generate file:
     directory_name = "public/data"
     Dir.mkdir(directory_name) unless File.exists?(directory_name)
-    h = @highlight
-    #file_name = h.source.title.gsub(' ', '_')
-    file_path = "#{directory_name}/read_to_remember_#{current_user.id}.md" #"#{directory_name}/#{file_name}_#{h.id}.md"
+    file_path = "#{directory_name}/read_to_remember_#{current_user.id}.md"
     File.open(file_path, "w+") do |file|
-      file << "# #{h.source.title}\n\n"
-      file << "## #{h.source.author.name}\n\n"
-      file << "#{h.content}\n\n"
-      file << "page: #{h.page}\n\n"
-      file << "note: #{h.my_note.strip}" if h.my_note.match(/[^\s]/)
+      file << "# #{@highlight.source.title}\n\n"
+      file << "## #{@highlight.source.author.name}\n\n"
+      file << "#{@highlight.content}\n\n"
+      file << "page: #{@highlight.page}\n\n"
+      file << "note: #{@highlight.my_note.strip}" if @highlight.my_note.match(/[^\s]/)
     end
   end
 
@@ -113,9 +110,7 @@ class HighlightsController < ApplicationController
     sleep(2)
     directory_name = "public/data"
     Dir.mkdir(directory_name) unless File.exists?(directory_name)
-    h = @highlight
-    #file_name = h.source.title.gsub(' ', '_')
-    file_path = "#{directory_name}/read_to_remember_#{current_user.id}.md" #"#{directory_name}/#{file_name}_#{h.id}.md"
+    file_path = "#{directory_name}/read_to_remember_#{current_user.id}.md"
     File.open(file_path, "w+") do |file|
       file << ""
     end
