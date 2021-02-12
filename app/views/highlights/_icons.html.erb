@@ -20,7 +20,7 @@
       </p>
     <p>
       <%= link_to export_highlight_path(h), id: "export", remote: true do %>
-        <i class="fas fa-paper-plane flashcard-button" title='Export'></i>
+        <i onclick=showAlert() class="fas fa-paper-plane flashcard-button" title='Export'></i>
       <% end %>
     </p>
   <div class="delete">
@@ -30,6 +30,13 @@
       <% end %>
     </p>
   </div>
+</div>
+
+<div id='myAlert' class="alert alert-warning alert-dismissible fade show m-1" style='display:none;'>
+  Yay! Highlight was succsesfully exported!
+  <button type="button" class="close" onclick=closeIt()>
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
 
 <script>
@@ -62,6 +69,11 @@
   exportLink.href = `${ids[i]}/export`;
   delLink.href = `${ids[i]}/`;
 
+  const counter = {
+    'no' : 0,
+    'date': new Date()
+  }
+  console.log(counter)
   myNext.addEventListener('click', function () {
 
     if(i < j) {
@@ -79,6 +91,8 @@
       delLink.href = `${ids[i+1]}/`;
 
       i++;
+    } else {
+      console.log('the end, do counter on this!')
     }
   });
 
@@ -102,15 +116,40 @@
 
 //do the same with touch events ^^
 
-/* function changeHeart(_this) {
+function showAlert() {
+  setTimeout(function(){
+    document.getElementById('dwnld').click();
+    document.getElementById('myAlert').style.display = 'inherit';
+  }, 900 )
+}
+
+function closeIt() {
+  document.getElementById('myAlert').style.display = 'none';
+}
+
+
+function changeHeart(_this) {
+  const location = window.location.href; //change location for production => https://www.readtoremember.xyz/highlights/favorites
+  if (location == 'http://localhost:3000/highlights/favorites') {
+    const id = _this.id.replace('f-', '');
+    document.getElementById('note-' + id).remove();
+  } else {
     if (_this.classList.contains('far')) {
       _this.classList.remove('far');
       _this.classList.add('fas');
       _this.title = 'Unfavorite';
-    } else {
+      _this.style.color = '#555555';
+  } else {
       _this.classList.remove('fas');
       _this.classList.add('far');
       _this.title = 'Favorite';
+      _this.style.color = '#aaa';
+      }
     }
-  } */
+  }
+
+  myCarousel.addEventListener('slid.bs.carousel', function () {
+  // do something...
+  console.log('hello');
+})
 </script>

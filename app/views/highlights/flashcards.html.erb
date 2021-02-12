@@ -34,7 +34,7 @@
   </div>
 </div> --->
 
-<div id="carouselExampleIndicators" class="carousel slide" data-wrap='false'style='position:absolute; left:50%; transform:translateX(-50%); background: transparent; padding: 4px; height: 500px;'>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride='false' data-wrap='false'style='position:absolute; left:50%; transform:translateX(-50%); background: transparent; padding: 4px; height: 500px; width: 350px;'>
   <div class="carousel-inner" style='background: #fff; border-radius: 16px; height: 500px; padding: 16px; box-shadow: 0px 2px 8px 4px rgba(8, 13, 60, 0.3);'>
     <div class="carousel-item active">
       <% h = @flashcards[0] %>
@@ -65,6 +65,7 @@
             </div>
           <% end %>
         <div id="<%= h.id %>" style="display: none;"></div>
+        <%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "flashcard.md", id: 'dwnld', style: 'display: none;' %>
       </div>
 
 
@@ -95,19 +96,22 @@
               </div>
 
           <% end %>
+          <div id="<%= h.id %>" style="display: none;"></div>
+          <%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "flashcard.md", id: 'dwnld', style: 'display: none;' %>
+
           </div>
-        <div id="<%= h.id %>" style="display: none;"></div>
+
       </div>
 
     <% end %>
   </div>
 
    <a class="carousel-control-prev" href="#carouselExampleIndicators" id='myPrev' role="button" data-slide="prev" style="background-color: transparent;">
-    <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: transparent;"></span>
+    <span class="carousel-control-prev-icon" aria-hidden="true" style="color: transparent;"></span>
     <span class="sr-only">Previous</span>
   </a>
   <a class="carousel-control-next" href="#carouselExampleIndicators" id='myNext' role="button" data-slide="next" style="background-color: transparent;">
-    <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: transparent;"></span>
+    <span class="carousel-control-next-icon" aria-hidden="true" style="color: transparent;"></span>
     <span class="sr-only" >Next</span>
   </a>
 </div>
