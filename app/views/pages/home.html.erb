@@ -1,78 +1,69 @@
 <div>
   <!-- user's home-page -->
   <% if current_user %>
-      <li class="nav-item dropdown">
-        <%= image_tag "logo.png", class: "logo navbar-brand dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-        </div>
-      </li>
-
-
-    <!-- kindle => have fun Alexis! :D -->
-  <div class="home-page-grid" style="padding: 10px;">
-
-<!-- --> <!--
- <#% if current_user.flashcards.present? %> -->
-    <div class="home-page-card">
-      <h1>Today's flashcards are ready for you!</h1>
-      <div class="book-images ">
-       <% if @book_covers %>
-       <% @book_covers.each do |book| %>
-         <% if book.photo.present? %>
-            <%= cl_image_tag book.photo.key, height: 123, width: 123, crop: :fill, class: "cover cover_images" %>
-          <% end %>
-        <% end %>
-        <% end %>
+    <div class="nav-item dropdown" style="padding-left: 5vw;">
+      <%= image_tag "logo.png", class: "logo navbar-brand dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
       </div>
+    </div>
+    <div class="home-page-grid" style="padding: 10px;">
+      <div class="home-page-card">
+        <h1>Today's flashcards are ready for you!</h1>
+        <div class="book-images ">
+          <% if @book_covers %>
+            <% @book_covers.each do |book| %>
+              <% if book.photo.present? %>
+                <%= cl_image_tag book.photo.key, height: 123, width: 123, crop: :fill, class: "cover cover_images" %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
         <%= link_to "Start daily review", flashcards_highlights_path(anchor: current_user.flashcards.first), class: "button-home button" %>
       </div>
- <!--  <#% end %> -->
-
-    <%= render 'shared/navbar' %>
-
+      <%= render 'shared/navbar' %>
     <!-- visitor'shome-page -->
-    <% else %>
-      <div class="background-image">
-        <%= link_to "/", class: "navbar-brand" do %>
-         <%= image_tag "logo.png" %>
-        <% end %>
-        <div class="header">
-          <h1 id="title">Read to remember</h1>
-          <p id="description">Your one stop place to collect, review and learn from your ebook and article highlights.</p>
-        </div>
-        <div class="button-homepage">
-          <%= link_to "Continue with Amazon Kindle", user_amazon_omniauth_authorize_path, class: "big-button" %>
-        </div>
-        <div class="button-homepage">
-          <%= link_to "Sign in", "/users/sign_in", class: "big-button" %>
-        </div>
+  <% else %>
+    <div class="background-image">
+      <%= link_to "/", class: "navbar-brand" do %>
+        <%= image_tag "logo.png" %>
+      <% end %>
+      <div class="header">
+        <h1 id="title">Read to remember</h1>
+        <p id="description">Your one stop place to collect, review and learn from your ebook and article highlights.</p>
       </div>
-      <div class="background-color">
-        <h2>Why you need Read to remember?</h2>
-        <div class="functions">
-          <p id="function-1"><strong>Revise</strong> your highlights from Kindle using our flashcard function</p>
-          <p id="function-2">Store all your highlights from Kindle so you <strong>never forget</strong> anything again</p>
-          <p id="function-3"><strong>Favorite and share</strong> your highlights on Twiter and Instagram</p>
-        </div>
-        <h2>Reviews</h2>
-        <div class="reviews">
-          <div id="review-1">
-            <p>"Using this app the past few months! I can't imagine my life without it"</p>
-            <div class="name-tag">
-              <%= image_tag "kal-visuals-b1Hg7QI-zcc-unsplash.jpg", class: "avatar", alt: "avatar" %>
-              <p class="name">Alexis Stylianou</p>
-            </div>
-          </div>
-          <div id="review-2">
-            <p>"This app has changed the way I revise my notes!"</p>
-            <div class="name-tag">
-              <%= image_tag "christian-buehner-DItYlc26zVI-unsplash.jpg", class: "avatar", alt: "avatar" %>
-              <p class="name">Patrik Winkler</p>
-            </div>
+      <div class="button-homepage">
+        <%= link_to "Continue with Amazon Kindle", user_amazon_omniauth_authorize_path, class: "big-button" %>
+      </div>
+      <div class="button-homepage">
+        <%= link_to "Sign in", "/users/sign_in", class: "big-button" %>
+      </div>
+    </div>
+    <div class="background-color">
+      <h2>Why you need Read to remember?</h2>
+      <div class="functions">
+        <p id="function-1"><strong>Revise</strong> your highlights from Kindle using our flashcard function</p>
+        <p id="function-2">Store all your highlights from Kindle so you <strong>never forget</strong> anything again</p>
+        <p id="function-3"><strong>Favorite and share</strong> your highlights on Twiter and Instagram</p>
+      </div>
+      <h2>Reviews</h2>
+      <div class="reviews">
+        <div id="review-1">
+          <p>"Using this app the past few months! I can't imagine my life without it"</p>
+          <div class="name-tag">
+            <%= image_tag "kal-visuals-b1Hg7QI-zcc-unsplash.jpg", class: "avatar", alt: "avatar" %>
+            <p class="name">Alexis Stylianou</p>
           </div>
         </div>
+        <div id="review-2">
+          <p>"This app has changed the way I revise my notes!"</p>
+          <div class="name-tag">
+            <%= image_tag "christian-buehner-DItYlc26zVI-unsplash.jpg", class: "avatar", alt: "avatar" %>
+            <p class="name">Patrik Winkler</p>
+          </div>
+        </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+   </div>
 </div>

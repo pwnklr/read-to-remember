@@ -1,1 +1,1 @@
-window.location.reload();
+$('#note-<%= @highlight.id %>').replaceWith("<%= j (render 'highlights/highlight') %>");

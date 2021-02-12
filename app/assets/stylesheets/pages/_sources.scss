@@ -134,3 +134,38 @@ a:hover {
 .textarea:focus, input:focus {
   outline: none;
 }
+
+
+/* checkbox forexport */
+input[type="checkbox"].rounded {
+  font-size: 18px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 1.5em;
+  height: 1.5em;
+  background: #eee;
+  border-radius: 3em !important;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+}
+
+input[type="checkbox"].rounded:checked {
+  background: #eee;
+}
+
+input[type="checkbox"].rounded:after {
+  position: absolute;
+  content: "";
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background: #1c0568;
+  -webkit-transform: scale(.7);
+          transform: scale(.7);
+}
+
+input[type="checkbox"].rounded:checked:after {
+  background: #eee;
+}

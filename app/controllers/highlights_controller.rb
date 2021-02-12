@@ -1,8 +1,8 @@
 class HighlightsController < ApplicationController
-  before_action :set_highlight, only: [:edit, :update, :destroy, :fav, :unfav]
-  before_action :set_source, only: [:new, :create]
+  before_action :set_highlight, only: [:edit, :update, :destroy, :fav, :unfav, :export]
   before_action :set_tag, only: :tags
   respond_to :html, :js
+  after_action :destroy_file, only: :export
 
   # search here
   def index
@@ -18,32 +18,49 @@ class HighlightsController < ApplicationController
   def edit
   end
 
-  def update # still wip
+  def update
     if @highlight.update(note_tag_param)
       respond_to do |format|
-        format.html #{redirect_back(fallback_location: 'pages#home')}
-        # format.json
+        format.html
+        format.json
         format.js
       end
     end
   end
 
-  def destroy
+  def destroy # works, except: carousel
     @highlight.destroy
-    redirect_back(fallback_location: 'pages#home') #notice: "Highlight was succsesfully removed!"
+    flash[:notice] = 'Highlight was succsesfully removed!'
+    redirect_back(fallback_location: 'pages#home')
   end
 
-  def fav
+  def fav # works! except: carousel
     current_user.favorite(@highlight)
-    respond_to do |format|
-      format.js
-    end
+    #redirect_back(fallback_location: 'pages#home')
+    # respond_to do |format|
+    #   format.js
+    # end
   end
 
-  def unfav
+  def unfav # works! except: carousel
     current_user.unfavorite(@highlight)
-    respond_to do |format|
-      format.js
+    #redirect_back(fallback_location: 'pages#home')
+    # respond_to do |format|
+    #  format.js
+    # end
+  end
+
+  def export
+    # generate file:
+    directory_name = "public/data"
+    Dir.mkdir(directory_name) unless File.exists?(directory_name)
+    file_path = "#{directory_name}/read_to_remember_#{current_user.id}.md"
+    File.open(file_path, "w+") do |file|
+      file << "# #{@highlight.source.title}\n\n"
+      file << "## #{@highlight.source.author.name}\n\n"
+      file << "#{@highlight.content}\n\n"
+      file << "page: #{@highlight.page}\n\n"
+      file << "note: #{@highlight.my_note.strip}" if @highlight.my_note.match(/[^\s]/)
     end
   end
 
@@ -77,10 +94,6 @@ class HighlightsController < ApplicationController
     @highlight = Highlight.find(params[:id])
   end
 
-  def set_source
-    @source = Source.find(params[:source_id])
-  end
-
   def set_tag
     @tag = params[:format]
   end
@@ -91,5 +104,15 @@ class HighlightsController < ApplicationController
 
   def note_tag_param
     params.require(:highlight).permit(:h_note, :my_note, :tag_list)
+  end
+
+  def destroy_file
+    sleep(2)
+    directory_name = "public/data"
+    Dir.mkdir(directory_name) unless File.exists?(directory_name)
+    file_path = "#{directory_name}/read_to_remember_#{current_user.id}.md"
+    File.open(file_path, "w+") do |file|
+      file << ""
+    end
   end
 end

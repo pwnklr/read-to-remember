@@ -1,0 +1,104 @@
+<div class="container" style="position:fixed; z-index:900; width: 100%;top: 0vh; padding:0;background: linear-gradient(180deg, #25265b 10%, #4013a2 100%);">
+
+    <div class="card-s">
+      <div style="display:flex; justify-content: space-between; width: 100%;">
+        <% if @source.photo.present? %>
+          <div>
+            <%= cl_image_tag @source.photo.key, height: 84, width: 70, crop: :fill, class: "cover-s" %>
+          </div>
+        <% end %>
+        <div class="text-s">
+          <h6 style="margin-top:7px;"><%= @source.title %></h6>
+          <span style="color: #B6B4B5;font-size: 12px;"><%= @source.author.name %></span>
+          <br>
+          <span><%= link_to 'Cancel', :back, style: "color: #fff; font-size: 16px;"%> | </span>
+          <span onclick=downloadIt();><%= link_to 'Export all', export_all_source_path, style: "color: #fff; font-size: 16px;" %></span>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+<%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "#{@source.title.gsub(' ', '_')}.md", id: 'dwnld', style: 'display: none;' %>
+
+<div class="container" style="padding-top:16vh; min-height:100vh;">
+
+
+  <%= form_tag export_many_sources_path, class: 'row id-form', :method => "get" do %>
+    <% @source.highlights.order(page: :asc).each do |h| %>
+    <div class='col-1'>
+      <p style='position: absolute; top: 50%; transform: translate(0, -50%);'><%= check_box_tag 'highlights[]', h.id, false, class: 'rounded' %></p>
+    </div>
+    <div class='col-11'>
+      <div class="card" id='<%= "note-#{h.id}" %>'>
+        <p><%= h.content %></p>
+        <p class="page">Page <%= h.page %></p>
+        <!-- -->
+        <% if h.my_note.present? %>
+          <div class="card-note" style="width: 100%; padding-bottom: 12px;">
+            <p style="font-weight: 600; color: #898AA6; font-size:12px; margin: 0;">Notes</p>
+            <p style="font-weight: 300; font-size:14px; color: #13154E; margin: 0; font-family: Roboto"><%= h.h_note %></p>
+            <div style="display: flex; flex-wrap: wrap;">
+              <p style="font-size: 12px; font-weight: 300; font-height:0; color: #13154E; font-family: Roboto;"><% h.tag_list.each do |t| %></p>
+              <p style="font-weight: 300; padding-left: .5vw; font-size:12px; margin:0;"><%= link_to "#{t}", tags_highlights_path(t), style: "color:#25265B;"%></p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+<!--
+        <div id="<%= h.id %>" style="display: none;"></div>
+
+        <div class="icons">
+          <div class="sent">
+            <#% if current_user.favorited?(h) %>
+              <p>
+                <#%= link_to unfav_highlight_path(h), method: :put, remote: true  do %>
+                  <i onclick=changeHeart(this) title='Unfavorite' class="fas fa-heart" style="font-size:16px;"></i>
+                <#% end %>
+              </p>
+            <#% else %>
+              <p>
+                <#%= link_to fav_highlight_path(h), method: :put, remote: true  do %>
+                  <i onclick=changeHeart(this) title='Favorite' class="far fa-heart" style="font-size:16px;"></i>
+                <#% end %>
+              </p>
+            <#% end %>
+
+              <p>
+                <#%= link_to edit_highlight_path(h), remote: true do %>
+                  <i class="fas fa-pen" title='Write/update note' style="font-size:16px;color:#AAAAAA;"></i>
+                <#% end %>
+              </p>
+
+            <p>
+              <#%= link_to export_highlight_path(h), remote: true do %>
+                <i class="fas fa-paper-plane" title='Export' style="font-size:16px;color:#AAAAAA;"></i>
+              <#% end %>
+            </p>
+          </div>
+          <div class="delete">
+            <p><#%= link_to h, method: :delete, data: {confirm: "Are you sure?"} do %>
+              <i class="far fa-trash-alt" title='Delete' style="font-size:16px;color:#AAAAAA;"></i></p>
+            <#% end %>
+          </div>
+        </div>
+
+      -->
+      </div>
+    </div>
+    <% end %>
+    <%= submit_tag "Submit", class: 'btn btn-primary download' %>
+    <% end %>
+</div>
+
+
+<script>
+  document.querySelector(".btn.btn-primary.download").addEventListener('click', downloadIt);
+
+  function downloadIt() {
+    setTimeout(function(){
+      document.getElementById('dwnld').click();
+    }, 800 );
+  }
+</script>
+
