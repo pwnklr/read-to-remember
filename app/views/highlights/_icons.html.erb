@@ -31,3 +31,72 @@
   </div>
 </div>
 
+<script>
+  const myCarousel = document.getElementById('carouselExampleIndicators');
+  const cards = document.getElementsByClassName("carousel-card");
+  const ids = Array.prototype.map.call(cards, function(a) { return a.id.replace('note-', '') });
+
+  const myNext = document.getElementById('myNext');
+  const myPrev = document.getElementById('myPrev');
+
+  const favLink = document.getElementById('fav');
+  const unfavLink = document.getElementById('unfav');
+  const editLink = document.getElementById('edit');
+  //const exportLink = document.getElementById('export');
+  const delLink = document.getElementById('del');
+
+
+  let i = 0;
+
+  window.location.href = 'http://localhost:3000/highlights/flashcards#' + ids[i]
+
+  if (favLink) {
+    favLink.href = `${ids[i]}/fav`;
+  } else {
+    unfavLink.href = `${ids[i]}/unfav`;
+  }
+
+  editLink.href = `${ids[i]}/edit`;
+  //exportLink.href = `${ids[i+1]}/export`;
+  delLink.href = `${ids[i]}/`;
+
+  myNext.addEventListener('click', function () {
+
+    if(i < 6) {
+      console.log(`${ids[i]}`);
+      console.log(i);
+      window.location.href = 'http://localhost:3000/highlights/flashcards#' + ids[i+1]
+
+      if (favLink) {
+        favLink.href = `${ids[i+1]}/fav`;
+      } else {
+        unfavLink.href = `${ids[i+1]}/unfav`;
+      }
+      editLink.href = `${ids[i+1]}/edit`;
+      //exportLink.href = `${ids[i+1]}/export`;
+      delLink.href = `${ids[i+1]}/`;
+
+      i++;
+    }
+  });
+
+  myPrev.addEventListener('click', function () {
+    if(i > 0) {
+      console.log(`${ids[i]}`);
+      window.location.href = 'http://localhost:3000/highlights/flashcards#' + ids[i-1]
+
+      if (favLink) {
+        favLink.href = `${ids[i-1]}/fav`;
+      } else {
+        unfavLink.href = `${ids[i-1]}/unfav`;
+      }
+      editLink.href = `${ids[i-1]}/edit`;
+      //exportLink.href = `${ids[i+1]}/export`;
+      delLink.href = `${ids[i-1]}/`;
+
+      i--;
+    }
+  });
+
+//do the same with touch events ^^
+</script>

@@ -27,7 +27,7 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-import { initCarousel } from '../channels/init_carousel';
+//import { initCarousel } from '../channels/init_carousel';
 import { initActiveNavbar } from '../channels/init_active_navbar';
 import { initActiveSourceNavigation } from '../channels/init_active_source_navigation';
 
@@ -36,10 +36,11 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   //const carousel = document.querySelector('.carousel');
+  /*
   const slider = document.getElementById('slider');
   if (slider) {
     initCarousel();
-  }
+  } */
   const navbar = document.getElementById("myNavbar");
   if (navbar) {
     initActiveNavbar();
