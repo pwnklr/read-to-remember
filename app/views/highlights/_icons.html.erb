@@ -69,11 +69,7 @@
   exportLink.href = `${ids[i]}/export`;
   delLink.href = `${ids[i]}/`;
 
-  const counter = {
-    'no' : 0,
-    'date': new Date()
-  }
-  console.log(counter)
+
   myNext.addEventListener('click', function () {
 
     if(i < j) {
@@ -148,8 +144,9 @@ function changeHeart(_this) {
     }
   }
 
-  myCarousel.addEventListener('slid.bs.carousel', function () {
-  // do something...
-  console.log('hello');
-})
+//export => works (filename: flashcard)
+//edit => works (wrong card)
+//delete => no remote everywhere!
+//fav/unfav => kill me please
+//+ big highlights... => exclude them from flashcards?
 </script>
