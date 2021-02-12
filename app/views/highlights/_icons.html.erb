@@ -1,4 +1,4 @@
-<div class="icons">
+<div class="icons" style='position: absolute; top: 86%; left:50%; transform:translateX(-50%);'>
     <% if current_user.favorited?(h) %>
       <p>
         <%= link_to unfav_highlight_path(h), id: "unfav",  method: :put, remote: true  do %>

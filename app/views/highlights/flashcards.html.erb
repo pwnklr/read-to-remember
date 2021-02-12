@@ -1,36 +1,110 @@
 <%= render 'exit'%>
 <% if @flashcards.present? %>
+<!--
 <div class="carousel">
-  <div id="slider" class="slider" data-initial-card="<%= @highlight.id if @highlight %>">
+  <div id="slider" class="slider" data-initial-card="<#%= @highlight.id if @highlight %>">
     <div class="wrapper">
       <div id="items" class="items">
-        <% @flashcards.each do |h| %>
-          <span class="slide" id="carousel-cell<%= @flashcards.index(h) + 1 %>" data-card-id="<%= h.id %>">
-            <div class="carousel-card" id='<%= "note-#{h.id}" %>'> <!--id="card-<%#= h.id %>">-->
-              <div style="float: right;"><%= @flashcards.index(h) + 1 %></div>
+        <#% @flashcards.each do |h| %>
+          <span class="slide" id="carousel-cell<#%= @flashcards.index(h) + 1 %>" data-card-id="<#%= h.id %>">
+            <div class="carousel-card" id='<#%= "note-#{h.id}" %>'> <!-id="card-<%#= h.id %>">--> <!--
+              <div style="float: right;"><#%= @flashcards.index(h) + 1 %></div>
               <div class="flashcard-text">
-                <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan; padding-top: 56px;"><%= h.source.title %></h3>
-                <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
-                <p style="margin-bottom: 20px;"><%= h.content %></p>
+                <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan; padding-top: 56px;"><#%= h.source.title %></h3>
+                <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><#%= h.source.author.name %></h5>
+                <p style="margin-bottom: 20px;"><#%= h.content %></p>
               </div>
-              <% if h.my_note.present? %>
+              <#% if h.my_note.present? %>
                 <div class="card-note" style="width: 100%; padding-bottom: 12px;">
                   <p style="font-weight: 600; color: #898AA6; font-size:12px; margin: 0;">Notes</p>
-                  <p style="font-weight: 300; font-size:14px; color: #13154E; margin: 0; font-family: Roboto;"><%= h.h_note %></p>
+                  <p style="font-weight: 300; font-size:14px; color: #13154E; margin: 0; font-family: Roboto;"><#%= h.h_note %></p>
                   <div style="display: flex; flex-wrap: wrap;">
-                    <p style="font-size: 12px; font-weight: 300; font-height:0; color: #13154E; font-family: Roboto;"><% h.tag_list.each do |t| %></p>
-                      <p style="font-weight: 300; padding-left: .5vw; font-size:12px; margin:0;"><%= link_to "#{t}", tags_highlights_path(t), style: "color:#25265B;"%></p>
-                    <% end %>
+                    <p style="font-size: 12px; font-weight: 300; font-height:0; color: #13154E; font-family: Roboto;"><#% h.tag_list.each do |t| %></p>
+                      <p style="font-weight: 300; padding-left: .5vw; font-size:12px; margin:0;"><#%= link_to "#{t}", tags_highlights_path(t), style: "color:#25265B;"%></p>
+                    <#% end %>
                   </div>
                 </div>
-              <% end %>
-              <div id="<%= h.id %>" style="display: none;"></div>
+              <#% end %>
+              <div id="<#%= h.id %>" style="display: none;"></div>
             </div>
           </span>
-        <% end %>
+        <#% end %>
       </div>
     </div>
   </div>
+</div> --->
+
+<div id="carouselExampleIndicators" class="carousel slide" data-wrap='false'style='position:absolute; left:50%; transform:translateX(-50%); background: transparent; padding: 4px; height: 500px;'>
+  <div class="carousel-inner" style='background: #fff; border-radius: 16px; height: 500px; padding: 16px; box-shadow: 0px 2px 8px 4px rgba(8, 13, 60, 0.3);'>
+    <div class="carousel-item active">
+      <% h = @flashcards[0] %>
+
+      <div class="carousel-card" id='<%= "note-#{h.id}" %>'> <!--id="card-<%#= h.id %>">-->
+        <div style="float: right;"><%= @flashcards.index(h) + 1 %></div>
+          <div class="flashcard-text">
+            <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan; padding-top: 56px;"><%= h.source.title %></h3>
+            <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
+            <p style="margin-bottom: 20px;"><%= h.content %></p>
+          </div>
+          <% if h.my_note.present? %>
+            <div class="card-note" style="width: 100%; padding-bottom: 12px;">
+              <p style="font-weight: 600; color: #898AA6; font-size:12px; margin: 0;">Notes</p>
+              <p style="font-weight: 300; font-size:14px; color: #13154E; margin: 0; font-family: Roboto;"><%= h.h_note %></p>
+              <div style="display: flex; flex-wrap: wrap;">
+                <p style="font-size: 12px; font-weight: 300; font-height:0; color: #13154E; font-family: Roboto;"><% h.tag_list.each do |t| %></p>
+                  <p style="font-weight: 300; padding-left: .5vw; font-size:12px; margin:0;"><%= link_to "#{t}", tags_highlights_path(t), style: "color:#25265B;"%></p>
+                  <% end %>
+                </div>
+            </div>
+          <% end %>
+        <div id="<%= h.id %>" style="display: none;"></div>
+      </div>
+
+
+
+    </div>
+    <% @flashcards[1..-1].each do |h| %>
+    <div class="carousel-item">
+
+      <div class="carousel-card" id='<%= "note-#{h.id}" %>'> <!--id="card-<%#= h.id %>">-->
+        <div style="float: right;"><%= @flashcards.index(h) + 1 %></div>
+          <div class="flashcard-text">
+            <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan; padding-top: 56px;"><%= h.source.title %></h3>
+            <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
+            <p style="margin-bottom: 20px;"><%= h.content %></p>
+          </div>
+          <% if h.my_note.present? %>
+            <div class="card-note" style="width: 100%; padding-bottom: 12px;">
+              <p style="font-weight: 600; color: #898AA6; font-size:12px; margin: 0;">Notes</p>
+              <p style="font-weight: 300; font-size:14px; color: #13154E; margin: 0; font-family: Roboto;"><%= h.h_note %></p>
+              <div style="display: flex; flex-wrap: wrap;">
+                <p style="font-size: 12px; font-weight: 300; font-height:0; color: #13154E; font-family: Roboto;"><% h.tag_list.each do |t| %></p>
+                  <p style="font-weight: 300; padding-left: .5vw; font-size:12px; margin:0;"><%= link_to "#{t}", tags_highlights_path(t), style: "color:#25265B;"%></p>
+                  <% end %>
+                </div>
+            </div>
+          <% end %>
+        <div id="<%= h.id %>" style="display: none;"></div>
+      </div>
+
+
+       </div>
+    <% end %>
+  </div>
+
+   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="background-color: transparent;">
+    <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: transparent;"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" style="background-color: transparent;">
+    <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: transparent;"></span>
+    <span class="sr-only" >Next</span>
+  </a>
 </div>
+
 <%= render 'icons', h: @flashcards.first %>
 <% end %>
+
+<script>
+
+</script>

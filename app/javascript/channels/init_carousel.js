@@ -119,14 +119,14 @@ function slide(wrapper, items) {
   }
 }
 
- //function setActions() {
-/*
+ function setActions() {
+
     const currentId = items.dataset.cardId;  // ??
     console.log(currentId);
 
     const favLink = document.querySelector('#fav');
     if (favLink) {
-      favLink.href = `${currentId}/fav`
+      favLink.href = `${currentId}/fav`;
     } else {
       const unfavLink = document.querySelector('#unfav');
       unfavLink.href = `${currentId}/unfav`
@@ -134,15 +134,15 @@ function slide(wrapper, items) {
 
 
     const editLink = document.querySelector('#edit');
-    editLink.href = `highlights/${currentId}/edit` // add correct url route here (using rails routes to see what it is)
+    editLink.href = `${currentId}/edit`; // add correct url route here (using rails routes to see what it is)
     const deleteLink = document.querySelector('#del');
-    deleteLink.href = `highlights/${currentId}/` //
+    deleteLink.href = `${currentId}/`; //
 
     window.location.hash = '#' + currentId;
-*/
- // }
 
-//setActions();
+  }
+
+  setActions();
 }
 
 export { initCarousel };
