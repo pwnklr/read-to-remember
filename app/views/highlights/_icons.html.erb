@@ -1,17 +1,17 @@
 <div class="icons" style='position: absolute; top: 86%; left:50%; transform:translateX(-50%);'>
-    <% if current_user.favorited?(h) %>
+
       <p>
         <%= link_to unfav_highlight_path(h), id: "unfav",  method: :put, remote: true  do %>
           <i onclick=changeHeart(this) title='Unfavorite' class="fas fa-heart flashcard-button"></i>
         <% end %>
       </p>
-    <% else %>
       <p>
         <%= link_to fav_highlight_path(h), id: "fav", method: :put, remote: true  do %>
           <i onclick=changeHeart(this) title='Favorite' class="far fa-heart flashcard-button"></i>
         <% end %>
       </p>
-    <% end %>
+
+
     <!-- render form -->
       <p>
         <%= link_to edit_highlight_path(h), id: "edit", remote: true do %>
@@ -59,11 +59,20 @@
 
   window.location.href = 'http://localhost:3000/highlights/flashcards#' + ids[i]
 
-  if (favLink) {
-    favLink.href = `${ids[i]}/fav`;
-  } else {
+
+  let myBool = [true, false, true, false, true, false]; //get this one!! and update it!
+
+
+  if (myBool[i]) {
     unfavLink.href = `${ids[i]}/unfav`;
+    favLink.style.display = 'none';
+    unfavLink.style.display = 'inherit';
+  } else {
+    favLink.href = `${ids[i]}/fav`;
+    unfavLink.style.display = 'none';
+    favLink.style.display = 'inherit';
   }
+
 
   editLink.href = `${ids[i]}/edit`;
   exportLink.href = `${ids[i]}/export`;
@@ -77,14 +86,20 @@
       console.log(i);
       window.location.href = 'http://localhost:3000/highlights/flashcards#' + ids[i+1]
 
-      if (favLink) {
-        favLink.href = `${ids[i+1]}/fav`;
-      } else {
+
+      if (myBool[i+1]) {
         unfavLink.href = `${ids[i+1]}/unfav`;
+        favLink.style.display = 'none';
+        unfavLink.style.display = 'inherit';
+      } else {
+        unfavLink.href = `${ids[i+1]}/fav`;
+        unfavLink.style.display = 'none';
+        favLink.style.display = 'inherit';
       }
-      editLink.href = `${ids[i+1]}/edit`;
-      exportLink.href = `${ids[i+1]}/export`;
-      delLink.href = `${ids[i+1]}/`;
+
+        editLink.href = `${ids[i+1]}/edit`;
+        exportLink.href = `${ids[i+1]}/export`;
+        delLink.href = `${ids[i+1]}/`;
 
       i++;
     } else {
@@ -97,11 +112,16 @@
       console.log(`${ids[i]}`);
       window.location.href = 'http://localhost:3000/highlights/flashcards#' + ids[i-1]
 
-      if (favLink) {
-        favLink.href = `${ids[i-1]}/fav`;
-      } else {
+      if (myBool[i-1]) {
         unfavLink.href = `${ids[i-1]}/unfav`;
+        favLink.style.display = 'none';
+        unfavLink.style.display = 'inherit';
+      } else {
+        unfavLink.href = `${ids[i-1]}/fav`;
+        unfavLink.style.display = 'none';
+        favLink.style.display = 'inherit';
       }
+
       editLink.href = `${ids[i-1]}/edit`;
       exportLink.href = `${ids[i+1]}/export`;
       delLink.href = `${ids[i-1]}/`;
