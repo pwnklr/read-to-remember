@@ -21,7 +21,8 @@
   <div class="container" style="margin: 15px;">
   <div class="row">
     <% @source.highlights.order(page: :asc).each do |h| %>
-      <div class="card card-adjusted" id='<%= "note-#{h.id}" %>'>
+      <div class="card card-adjusted">
+        <div id='<%= "note-#{h.id}" %>'>
         <p><%= h.content %></p>
         <p class="page">Page <%= h.page %></p>
         <!-- note and tags in one line! -->
@@ -81,6 +82,7 @@
             <% end %>
           </div>
         </div>
+      </div>
       </div>
     <% end %>
   </div>
