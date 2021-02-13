@@ -39,7 +39,7 @@
     <div class="carousel-item active">
       <% h = @flashcards[0] %>
 
-      <div class="carousel-card" id='<%= "note-#{h.id}" %>'> <!--id="card-<%#= h.id %>">-->
+      <div class="carousel-card" id='<%= "#{current_user.favorited?(h)}-#{h.id}" %>'> <!--id="card-<%#= h.id %>">-->
         <div style="float: right;"><%= @flashcards.index(h) + 1 %></div>
           <div class="flashcard-text">
             <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan; padding-top: 56px;"><%= h.source.title %></h3>
@@ -72,7 +72,7 @@
     <% @flashcards[1..-1].each do |h| %>
     <div class="carousel-item">
 
-      <div class="carousel-card" id='<%= "note-#{h.id}" %>'> <!--id="card-<%#= h.id %>">-->
+      <div class="carousel-card" id='<%= "#{current_user.favorited?(h)}-#{h.id}" %>'> <!--id="card-<%#= h.id %>">-->
         <div style="float: right;"><%= @flashcards.index(h) + 1 %></div>
           <div class="flashcard-text">
             <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan; padding-top: 56px;"><%= h.source.title %></h3>
