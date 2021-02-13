@@ -1,28 +1,24 @@
-
-        <div id='<%= "note-#{@highlight.id}" %>'>
-        <p><%= @highlight.content %></p>
-        <p class="page">Page <%= @highlight.page %></p>
-      <!-- note and tags in one line! -->
-        <% if @highlight.my_note.present? %>
-          <div class="card-note" style="width: 100%; padding-bottom: 12px;">
-            <p style="font-weight: 600; color: #898AA6; font-size:12px; margin: 0;">Notes</p>
-            <div style="display: flex; flex-wrap: wrap;">
-            <p style="">
-              <% @highlight.my_note.split(' ').each do |w| %>
-                <% if @highlight.tag_list.include?(w) %>
-                  <span>
-                    <%= link_to "#{w}", tags_highlights_path(w), style: "margin: 0, 2px; font-family: Roboto; font-size: 16px; font-weight: 300; font-height:0; color:#25265B;"%>
-                  </span>
-                <% else %>
-                  <span style="font-weight: 300; font-size:14px; color: #13154E; margin: 0; font-family: Roboto;"><%= w %> </span>
-                <% end %>
-              <% end %>
-            </p>
-            </div>
-          </div>
-        <% end %>
-
-       <div id="<%= @highlight.id %>" style="display: none;"></div>
-
-<%#= link_to "Click to download",  asset_path("/data/Here_goes_file_name.md"), download: "Here_goes_file_name.md" %>
+<div id='<%= "note-#{@highlight.id}" %>'>
+  <p><%= @highlight.content %></p>
+  <p class="page">Page <%= @highlight.page %></p>
+  <!-- note and tags in one line! -->
+  <% if @highlight.my_note.present? %>
+    <div class="card-note" style="width: 100%; padding-bottom: 12px;">
+      <p style="font-weight: 600; color: #898AA6; font-size:12px; margin: 0;">Notes</p>
+      <div style="display: flex; flex-wrap: wrap;">
+        <p style="">
+          <% @highlight.my_note.split(' ').each do |w| %>
+            <% if @highlight.tag_list.include?(w) %>
+              <span>
+                <%= link_to "#{w}", tags_highlights_path(w), style: "margin: 0, 2px; font-family: Roboto; font-size: 16px; font-weight: 300; font-height:0; color:#25265B;"%>
+              </span>
+            <% else %>
+              <span style="font-weight: 300; font-size:14px; color: #13154E; margin: 0; font-family: Roboto;"><%= w %> </span>
+            <% end %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+  <div id="<%= @highlight.id %>" style="display: none;"></div>
 </div>
