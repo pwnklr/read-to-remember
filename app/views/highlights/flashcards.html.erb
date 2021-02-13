@@ -44,8 +44,12 @@
           <div class="flashcard-text">
             <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan; padding-top: 56px;"><%= h.source.title %></h3>
             <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
-            <p style="margin-bottom: 20px;"><%= h.content %></p>
           </div>
+
+
+<div id='<%= "note-#{h.id}" %>'>
+            <p style="margin-bottom: 20px;"><%= h.content %></p>
+
           <!-- note and tags in one line! -->
           <% if h.my_note.present? %>
             <div class="card-note" style="width: 100%; padding-bottom: 12px;">
@@ -65,7 +69,10 @@
             </div>
           <% end %>
         <div id="<%= h.id %>" style="display: none;"></div>
-        <%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "flashcard.md", id: 'dwnld', style: 'display: none;' %>
+
+</div>
+
+<%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "flashcard.md", id: 'dwnld', style: 'display: none;' %>
       </div>
 
 
@@ -77,8 +84,12 @@
           <div class="flashcard-text">
             <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan; padding-top: 56px;"><%= h.source.title %></h3>
             <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
-            <p style="margin-bottom: 20px;"><%= h.content %></p>
           </div>
+
+<div id='<%= "note-#{h.id}" %>'>
+
+            <p style="margin-bottom: 20px;"><%= h.content %></p>
+
           <% if h.my_note.present? %>
             <div class="card-note" style="width: 100%; padding-bottom: 12px;">
               <p style="font-weight: 600; color: #898AA6; font-size:12px; margin: 0;">Notes</p>
@@ -99,8 +110,10 @@
           <div id="<%= h.id %>" style="display: none;"></div>
           <%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "flashcard.md", id: 'dwnld', style: 'display: none;' %>
 
-          </div>
+    </div>
 
+
+      </div>
       </div>
 
     <% end %>

@@ -22,7 +22,9 @@
   <div class="row">
     <% @source.highlights.order(page: :asc).each do |h| %>
       <div class="card card-adjusted">
-        <div id='<%= "note-#{h.id}" %>'>
+
+
+      <div id='<%= "note-#{h.id}" %>'>
         <p><%= h.content %></p>
         <p class="page">Page <%= h.page %></p>
         <!-- note and tags in one line! -->
@@ -46,8 +48,9 @@
         <% end %>
 
         <div id="<%= h.id %>" style="display: none;"></div>
-        <%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "#{h.source.title.gsub(' ', '_')}_#{h.page}.md", id: 'dwnld', style: 'display: none;' %>
 
+</div>
+<%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "#{h.source.title.gsub(' ', '_')}_#{h.page}.md", id: 'dwnld', style: 'display: none;' %>
         <div class="icons">
           <div class="sent">
             <% if current_user.favorited?(h) %>
@@ -82,7 +85,7 @@
             <% end %>
           </div>
         </div>
-      </div>
+
       </div>
     <% end %>
   </div>

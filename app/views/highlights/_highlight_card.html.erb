@@ -4,7 +4,8 @@
       <div class="card card-adjusted">
         <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan"><%= link_to h.source.title, source_path(h.source) %></h3>
         <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
-        <div id='<%= "note-#{h.id}" %>'>
+
+  <div id='<%= "note-#{h.id}" %>'>
         <p><%= h.content %></p>
         <p class="page">Page <%= h.page %></p>
         <!-- -->
@@ -37,8 +38,9 @@
 
        <div id="<%= h.id %>" style="display: none;"></div>
 
-      <%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "#{h.source.title.gsub(' ', '_')}_#{h.page}.md", id: 'dwnld', style: 'display: none;' %>
+</div>
 
+<%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "#{h.source.title.gsub(' ', '_')}_#{h.page}.md", id: 'dwnld', style: 'display: none;' %>
         <div class="icons">
           <div class="sent">
             <% if current_user.favorited?(h) %>
@@ -74,10 +76,8 @@
           </div>
         </div>
 
+</div>
 
-
-      </div>
-      </div>
     <% end %>
   </div>
 </div>
