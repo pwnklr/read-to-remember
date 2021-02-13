@@ -5,9 +5,10 @@
         <%= text_field_tag :query,
           params[:query],
           class: "form-control-sm",
+          id: 'mySearch',
           placeholder: "What are you looking for?"
         %>
-        <%= submit_tag "Search", class: "form-control-sm search-btn"%>
+        <% submit_tag "Search", id: 'mySubmit' %>
       <% end %>
       <% if @query %>
         <p style="color: #fff;padding-left: 10px; padding-top: 8px; ">We found <%= pluralize @count, 'result' %> for <strong><%= @query %></strong>.</p>
@@ -19,3 +20,13 @@
 <div class="container" style="padding-top: 12vh;min-height: 100vh;">
   <%= render 'highlights/highlight_card', highlights: @highlights %>
 </div>
+
+<script>
+  document.getElementById('mySearch').addEventListener('keyup', triggerSubmit);
+  function triggerSubmit(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById('mySubmit').click();
+    }
+  }
+</script>
