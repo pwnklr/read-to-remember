@@ -2,8 +2,7 @@
   <div class="nav-filter" style="padding-left: 23px; padding-top: 20px;"> <!-- tags -->
     <div style="border-radius: 24px; margin-bottom: 10px; color: white;">
     <%= form_tag all_tags_highlights_path, :method => "get" do %>
-      <%= select_tag(:select_t, options_for_select([["Sort by Date", 1], ["Sort by Amount", 2]]), {class: 'filter-input t'}) %>
-      <%= submit_tag "Sort", :name => nil, style: "opacity: 70%; display-flex; background-color:rgba(126,68,255,1); border:none; font-weight: 600; margin-left: 10px; padding: 2px 17px; color: white; border-radius: 24px;" %>
+      <%= select_tag :select_t, options_for_select([["Sort by Date", 1], ["Sort by Amount", 2]], selected: params[:select_t]), {class: 'filter-input t', onchange: 'this.form.submit();'} %>
     <% end %>
     </div>
   </div>
