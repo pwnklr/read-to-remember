@@ -18,7 +18,7 @@
   <div class="container" style="margin: 15px;">
   <div class="row">
     <% @source.highlights.order(page: :asc).each do |h| %>
-      <div class="card card-adjusted">
+      <div class="card card-adjusted" id='card-<%= h.id %>'>
         <div id='<%= "note-#{h.id}" %>'>
           <p><%= h.content %></p>
           <p class="page">Page <%= h.page %></p>
@@ -71,7 +71,7 @@
               </p>
             </div>
             <div class="delete">
-              <p><%= link_to h, method: :delete, data: {confirm: "Are you sure?"} do %>
+              <p><%= link_to h, method: :delete, data: {confirm: "Are you sure?"}, remote: true do %>
                 <i class="far fa-trash-alt" title='Delete' style="font-size:16px;color:#AAAAAA;"></i></p>
               <% end %>
             </div>

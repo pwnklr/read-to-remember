@@ -21,7 +21,7 @@
   </p>
   <div class="delete">
     <p>
-      <%= link_to h, method: :delete, data: {confirm: "Are you sure?"}, id: "del" do %>
+      <%= link_to h, method: :delete, data: {confirm: "Are you sure?"}, id: "del", remote: true do %>
         <i class="far fa-trash-alt flashcard-button" title='Delete'></i>
       <% end %>
     </p>
@@ -246,9 +246,9 @@ function slide(wrapper, items) {
 
 window.onload = initCarousel();
 
-//export => works //check error
+//export => works
 //edit => WTF? //input..
-//delete => no remote everywhere!
+//delete => works good everywhere except here..
 //fav/unfav => works
 //+ big highlights... => exclude them from flashcards?
 </script>

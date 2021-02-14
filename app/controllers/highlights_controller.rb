@@ -30,8 +30,8 @@ class HighlightsController < ApplicationController
 
   def destroy # works, except: carousel
     @highlight.destroy
-    flash[:notice] = 'Highlight was succsesfully removed!'
-    redirect_back(fallback_location: 'pages#home')
+    respond_to :js
+    #flash[:notice] = 'Highlight was succsesfully removed!'
   end
 
   def fav # works! except: carousel
