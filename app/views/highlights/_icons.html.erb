@@ -172,7 +172,11 @@ function slide(wrapper, items) {
 
   function checkIndex (){
     items.classList.remove('shifting');
-    console.log(myBool)
+    console.log(myBool);
+    console.log(ids);
+    console.log(index);
+    console.log(ids[index]);
+
 
     if (index == -1) {
       items.style.left = -(slidesLength * slideSize) + "px";
@@ -220,6 +224,7 @@ function slide(wrapper, items) {
   }
 
   editLink.addEventListener('click', makeItWork);
+
   function makeItWork() {
     console.log('do smtng');
   }

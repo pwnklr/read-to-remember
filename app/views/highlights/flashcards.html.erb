@@ -4,7 +4,7 @@
     <div class="wrapper" style='background: #fff; border-radius: 16px; overflow: hidden; position: relative;box-shadow: 0px 2px 8px 4px rgba(8, 13, 60, 0.3);'>
       <div id='items' class="items" style='width: 10000px;position: relative;top:0; left: -300px;'>
         <% @flashcards.each do |h| %>
-          <div class="carousel-card" id='<%= "#{current_user.favorited?(h)}-#{h.id}" %>'> <!--id="card-<%#= h.id %>">-->
+          <div class="carousel-card" id='<%= current_user.favorited?(h) %>-<%= h.id %>'> <!--id="card-<%#= h.id %>">-->
             <div style="float: left;"><%= @flashcards.index(h) + 1 %></div>
               <div class="flashcard-text">
                 <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan; padding-top: 24px;"><%= h.source.title %></h3>
