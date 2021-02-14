@@ -1,13 +1,14 @@
 <%= render 'exit'%>
 <% if @flashcards.present? %>
-  <div id="carouselExampleIndicators" class="carousel slide" data-interval="false"data-wrap='false'style='position:absolute; left:50%; transform:translateX(-50%); background: transparent; padding: 4px; height: 500px;'>
-    <div class="carousel-inner" style='background: #fff; border-radius: 16px; height: 500px; padding: 16px; box-shadow: 0px 2px 8px 4px rgba(8, 13, 60, 0.3);'>
-      <div class="carousel-item active">
-        <% h = @flashcards[0] %>
+  <div id="slider" class="slider"style='position:absolute; left:50%; transform:translateX(-50%); background: transparent; padding: 4px; height: 500px; width: 300px;'>
+    <div class="wrapper" style='background: #fff; border-radius: 16px; overflow: hidden; position: relative;box-shadow: 0px 2px 8px 4px rgba(8, 13, 60, 0.3);'>
+      <div id='items' class="items" style='width: 10000px;position: relative;top:0; left: -300px;'>
+        <% @flashcards.each do |h| %>
+
         <div class="carousel-card" id='<%= "#{current_user.favorited?(h)}-#{h.id}" %>'> <!--id="card-<%#= h.id %>">-->
-          <div style="float: right;"><%= @flashcards.index(h) + 1 %></div>
+          <div style="float: left;"><%= @flashcards.index(h) + 1 %></div>
             <div class="flashcard-text">
-              <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan; padding-top: 56px;"><%= h.source.title %></h3>
+              <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan; padding-top: 24px;"><%= h.source.title %></h3>
               <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
             </div>
             <div id='<%= "note-#{h.id}" %>'>
@@ -32,48 +33,14 @@
             <div id="<%= h.id %>" style="display: none;"></div>
           </div>
           <%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "flashcard.md", id: 'dwnld', style: 'display: none;' %>
+         <% end %>
         </div>
-        <% @flashcards[1..-1].each do |h| %>
-          <div class="carousel-item">
-            <div class="carousel-card" id='<%= "#{current_user.favorited?(h)}-#{h.id}" %>'> <!--id="card-<%#= h.id %>">-->
-              <div style="float: right;"><%= @flashcards.index(h) + 1 %></div>
-                <div class="flashcard-text">
-                  <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan; padding-top: 56px;"><%= h.source.title %></h3>
-                  <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
-                </div>
-                <div id='<%= "note-#{h.id}" %>'>
-                  <p style="margin-bottom: 20px;"><%= h.content %></p>
-                  <% if h.my_note.present? %>
-                    <div class="card-note" style="width: 100%; padding-bottom: 12px;">
-                      <p style="font-weight: 600; color: #898AA6; font-size:12px; margin: 0;">Notes</p>
-                      <p style="">
-                        <% h.my_note.split(' ').each do |w| %>
-                          <% if h.tag_list.include?(w) %>
-                            <span>
-                              <%= link_to "#{w}", tags_highlights_path(w), style: "margin: 0, 2px; font-family: Roboto; font-size: 16px; font-weight: 300; font-height:0; color:#25265B;"%>
-                            </span>
-                          <% else %>
-                            <span style="font-weight: 300; font-size:14px; color: #13154E; margin: 0; font-family: Roboto;"><%= w %> </span>
-                          <% end %>
-                        <% end %>
-                      </p>
-                      </div>
-                  <% end %>
-                  <div id="<%= h.id %>" style="display: none;"></div>
-                  <%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "flashcard.md", id: 'dwnld', style: 'display: none;' %>
-                </div>
-              </div>
-            </div>
-          <% end %>
+
+
+
+
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" id='myPrev' role="button" data-slide="prev" style="background-color: transparent;width: 50%;">
-      <span class="" aria-hidden="true" style="color: transparent;"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" id='myNext' role="button" data-slide="next" style="background-color: transparent; width: 50%;">
-      <span class="" aria-hidden="true" style="color: transparent;"></span>
-      <span class="sr-only" >Next</span>
-    </a>
+
   </div>
 
   <%= render 'icons', h: @flashcards.first %>
