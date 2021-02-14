@@ -20,18 +20,14 @@ class HighlightsController < ApplicationController
 
   def update
     if @highlight.update(note_tag_param)
-      respond_to do |format|
-        format.html
-        format.json
-        format.js
-      end
+      respond_to :js
     end
   end
 
   def destroy # works, except: carousel
     @highlight.destroy
-    respond_to :js
-    #flash[:notice] = 'Highlight was succsesfully removed!'
+    # respond_to :js
+    # flash[:notice] = 'Highlight was succsesfully removed!'
   end
 
   def fav # works! except: carousel

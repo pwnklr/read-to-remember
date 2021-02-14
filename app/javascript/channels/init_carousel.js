@@ -1,21 +1,20 @@
 const initCarousel = () => {
+  const myCarousel = document.getElementById('slider');
+  const sliderItems= document.getElementById('items');
 
-let slider = document.getElementById('slider'),
-    sliderItems = document.getElementById('items'),
-    prev = document.getElementById('prev'),
-    next = document.getElementById('next');
+  slide(myCarousel, sliderItems);
+}
 
-slide(slider, sliderItems, prev, next);
 
 function slide(wrapper, items) {
-  let posX1 = 0,
+  var posX1 = 0,
       posX2 = 0,
       posInitial,
       posFinal,
       threshold = 100,
-      slides = items.getElementsByClassName('slide'),
+      slides = items.getElementsByClassName('carousel-card'),
       slidesLength = slides.length,
-      slideSize = items.getElementsByClassName('slide')[0].offsetWidth,
+      slideSize = items.getElementsByClassName('carousel-card')[0].offsetWidth,
       firstSlide = slides[0],
       lastSlide = slides[slidesLength - 1],
       cloneFirst = firstSlide.cloneNode(true),
@@ -24,21 +23,48 @@ function slide(wrapper, items) {
       allowShift = true;
 
   // Clone first and last slide
-  items.appendChild(cloneLast);
+  items.appendChild(cloneFirst);
   items.insertBefore(cloneLast, firstSlide);
   wrapper.classList.add('loaded');
 
   // Mouse and Touch events
-  items.onmousedown = dragStart;
+  items.addEventListener('mousedown', dragStart);
+
+  //vars
+  let ids = Array.prototype.map.call(slides, function(a) { return a.id.replace(/(false|true)-/, '') });
+  ids.shift();
+  console.log(ids)
+  let myBool = Array.prototype.map.call(slides, function(a) { return JSON.parse(a.id.replace(/-[0-9]+/, '')) });
+  myBool.shift();
+  console.log(myBool)
+
+  const favLink = document.getElementById('fav');
+  const unfavLink = document.getElementById('unfav');
+  const editLink = document.getElementById('edit');
+  const exportLink = document.getElementById('export');
+  const delLink = document.getElementById('del');
+
+  // init links
+  if (myBool[index]) {
+    unfavLink.href = `${ids[index]}/unfav`;
+    favLink.style.display = 'none';
+    unfavLink.style.display = 'inherit';
+  } else {
+    favLink.href = `${ids[index]}/fav`;
+    unfavLink.style.display = 'none';
+    favLink.style.display = 'inherit';
+  }
+
+
+  editLink.href = `${ids[index]}/edit`;
+  exportLink.href = `${ids[index]}/export`;
+  delLink.href = `${ids[index]}/`;
+
 
   // Touch events
   items.addEventListener('touchstart', dragStart);
   items.addEventListener('touchend', dragEnd);
   items.addEventListener('touchmove', dragAction);
-
-  // Click events
-  //prev.addEventListener('click', function () { shiftSlide(-1) });
-  //next.addEventListener('click', function () { shiftSlide(1) });
 
   // Transition events
   items.addEventListener('transitionend', checkIndex);
@@ -63,6 +89,7 @@ function slide(wrapper, items) {
     if (e.type == 'touchmove') {
       posX2 = posX1 - e.touches[0].clientX;
       posX1 = e.touches[0].clientX;
+
     } else {
       posX2 = posX1 - e.clientX;
       posX1 = e.clientX;
@@ -104,6 +131,11 @@ function slide(wrapper, items) {
 
   function checkIndex (){
     items.classList.remove('shifting');
+    console.log(myBool);
+    console.log(ids);
+    console.log(index);
+    console.log(ids[index]);
+
 
     if (index == -1) {
       items.style.left = -(slidesLength * slideSize) + "px";
@@ -116,33 +148,70 @@ function slide(wrapper, items) {
     }
 
     allowShift = true;
+
+    //update links
+      if (myBool[index]) {
+        unfavLink.href = `${ids[index]}/unfav`;
+        favLink.style.display = 'none';
+        unfavLink.style.display = 'inherit';
+      } else {
+        favLink.href = `${ids[index]}/fav`;
+        unfavLink.style.display = 'none';
+        favLink.style.display = 'inherit';
+      }
+
+      editLink.href = `${ids[index]}/edit`;
+      exportLink.href = `${ids[index]}/export`;
+      delLink.href = `${ids[index]}/`;
   }
-}
 
- function setActions() {
+  favLink.addEventListener('click', changeHeart);
+  unfavLink.addEventListener('click', changeHeart);
 
-    const currentId = items.dataset.cardId;  // ??
-    console.log(currentId);
+  function changeHeart() {
 
-    const favLink = document.querySelector('#fav');
-    if (favLink) {
-      favLink.href = `${currentId}/fav`;
+    if (myBool[index] === true) {
+      myBool[index] = false;
+      favLink.style.display = 'inherit';
+      unfavLink.style.display = 'none';
     } else {
-      const unfavLink = document.querySelector('#unfav');
-      unfavLink.href = `${currentId}/unfav`
+      myBool[index] = true;
+      favLink.style.display = 'none';
+      unfavLink.style.display = 'inherit';
     }
+    console.log(myBool);
+  }
 
+  editLink.addEventListener('click', makeItWork);
 
-    const editLink = document.querySelector('#edit');
-    editLink.href = `${currentId}/edit`; // add correct url route here (using rails routes to see what it is)
-    const deleteLink = document.querySelector('#del');
-    deleteLink.href = `${currentId}/`; //
+  function makeItWork() {
+    console.log('do smtng');
 
-    window.location.hash = '#' + currentId;
+    // stop carousel do be able to write a note
+    // items.removeEventListener('mousedown', dragStart);
+    // items.removeEventListener('touchstart', dragStart);
+
+   // *make it run again on submit
 
   }
 
-  setActions();
+  exportLink.addEventListener('click', showAlert);
+
+  function showAlert() {
+    setTimeout(function(){
+      document.getElementById(`dwnld-${ids[index]}`).click();
+      document.getElementById('myAlert').style.display = 'inherit';
+      document.getElementById('clsBtn').addEventListener('click', closeIt);
+    }, 900 );
+
+    setTimeout(function(){
+      document.getElementById('myAlert').style.display = 'none';
+    }, 4000);
+  }
+
+  function closeIt() {
+    document.getElementById('myAlert').style.display = 'none';
+  }
 }
 
 export { initCarousel };
