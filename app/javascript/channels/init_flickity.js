@@ -62,8 +62,8 @@ const initFlickity = () => {
     }
 
   // change heart on click (first one)
-  favLink.addEventListener('click', changeHeart);
-  unfavLink.addEventListener('click', changeHeart);
+  favLink.addEventListener('click', changeFirstHeart);
+  unfavLink.addEventListener('click', changeFirstHeart);
 
    const currentId = flkty.selectedElement.dataset.cardId.replace(/[0-9]-(false|true)-/, '');
     console.log(currentId);
@@ -71,14 +71,15 @@ const initFlickity = () => {
     console.log(myFav);
     const currentIndex = flkty.selectedElement.dataset.cardId.replace(/-(false|true)-[0-9]+/, '');
 
-  function changeHeart() {
+
+  function changeFirstHeart() {
 
     if (myBool[parseInt(currentIndex, 10)-1]) {
-      myBool[parseInt(currentIndex, 10)-1] = false;
+      myBool[0] = false;
       favLink.style.display = 'inherit';
       unfavLink.style.display = 'none';
     } else {
-      myBool[parseInt(currentIndex, 10)-1] = true;
+      myBool[0] = true;
       favLink.style.display = 'none';
       unfavLink.style.display = 'inherit';
     }
@@ -86,12 +87,9 @@ const initFlickity = () => {
   }
 
 
-
-
-
   flkty.on('scroll', function() {
 
-      const currentId = flkty.selectedElement.dataset.cardId.replace(/[0-9]-(false|true)-/, '');
+    const currentId = flkty.selectedElement.dataset.cardId.replace(/[0-9]-(false|true)-/, '');
     //console.log(currentId);
     const myFav = flkty.selectedElement.dataset.cardId.replace(/[0-9-[0-9]+/g, '');
     //console.log(myFav);
@@ -109,6 +107,9 @@ const initFlickity = () => {
       unfavLink.style.display = 'none';
       favLink.style.display = 'inherit';
    }
+
+    favLink.addEventListener('click', changeFirstHeart);
+    unfavLink.addEventListener('click', changeFirstHeart);
 
     favLink.addEventListener('click', changeHeart);
     unfavLink.addEventListener('click', changeHeart);
@@ -172,3 +173,5 @@ const initFlickity = () => {
 export { initFlickity };
 
 
+// changing hearts on click - works but no good (slow...)
+// export - no destroy..
