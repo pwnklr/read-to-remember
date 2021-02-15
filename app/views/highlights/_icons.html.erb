@@ -19,14 +19,14 @@
       <i class="fas fa-paper-plane flashcard-button" title='Export'></i>
     <% end %>
   </p>
-  <!--
+<!-- remove this option -->
   <div class="delete">
     <p>
-      <#%= link_to h, method: :delete, data: {confirm: "Are you sure?"}, id: "del", remote: true do %>
+      <%= link_to h, method: :delete, data: {confirm: "Are you sure?"}, id: "del", remote: true do %>
         <i class="far fa-trash-alt flashcard-button" title='Delete'></i>
-      <#% end %>
+      <% end %>
     </p>
-  </div> -->
+  </div>
 </div>
 
 <div id='myAlert' class="alert alert-warning alert-dismissible fade show m-1" style='display:none;'>

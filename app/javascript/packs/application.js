@@ -29,10 +29,10 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 
 // vanilla
-// import { initCarousel } from '../channels/init_carousel';
+import { initCarousel } from '../channels/init_carousel';
 
 // flickity
-import { initFlickity } from '../channels/init_flickity';
+// import { initFlickity } from '../channels/init_flickity';
 
 import { initActiveNavbar } from '../channels/init_active_navbar';
 import { initActiveSourceNavigation } from '../channels/init_active_source_navigation';
@@ -42,17 +42,18 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 
-  /* vanilla
+  // vanilla
   const slider = document.getElementById('slider');
   if (slider) {
     initCarousel();
-  } */
+  }
 
   // flickity
+  /*
   const carousel = document.getElementById('myCarousel');
   if (carousel) {
     initFlickity();
-  }
+  }  */
 
   const navbar = document.getElementById("myNavbar");
   if (navbar) {
