@@ -1,7 +1,7 @@
 <div class="container" style="margin: 15px;">
   <div class="row">
     <% highlights.each do |h| %>
-      <div class="card card-adjusted" id='<%= current_user.favorited?(h) %>-<%= h.id %>'>
+      <div class="card card-adjusted" id='card-<%= h.id %>'>
         <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan"><%= link_to h.source.title, source_path(h.source) %></h3>
         <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
         <!-- render part -->
@@ -78,7 +78,7 @@
     const location = window.location.href; //change location for production => https://www.readtoremember.xyz/highlights/favorites
     if (location == 'http://localhost:3000/highlights/favorites') {
       const id = _this.id.replace('f-', '');
-      document.getElementById('note-' + id).remove();
+      document.getElementById('card-' + id).remove();
     } else {
       if (_this.classList.contains('far')) {
         _this.classList.remove('far');
