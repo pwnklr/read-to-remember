@@ -15,28 +15,19 @@ const initFlickity = () => {
   const cards = carousel.querySelectorAll('.carousel-cell');
   console.log(cards);
 
-  const indices = Array.prototype.map.call(cards, function(a) { return parseInt(a.dataset.cardId.replace(/-(false|true)-[0-9]+/, ''), 10) - 1 });
-  console.log(indices)
-
   let ids = Array.prototype.map.call(cards, function(a) { return a.dataset.cardId.replace(/[0-9]-(false|true)-/, '') });
   console.log(ids)
   let myBool = Array.prototype.map.call(cards, function(a) { return JSON.parse(a.dataset.cardId.replace(/[0-9-[0-9]+/g, '')) });
   console.log(myBool)
-
 
   // get transform property
   const docStyle = document.documentElement.style;
   const transformProp = typeof docStyle.transform == 'string' ?
     'transform' : 'WebkitTransform';
 
-  const firstId = flkty.selectedElement.dataset.cardId.replace(/[0-9]-(false|true)-/, '');
-  const firstFav = flkty.selectedElement.dataset.cardId.replace(/[0-9-[0-9]+/g, '');
-  const firstIndex = flkty.selectedElement.dataset.cardId.replace(/-(false|true)-[0-9]+/, '');
-
-  console.log(firstId + ' bool: ' + firstFav + ' index: ' + parseInt(firstIndex, 10) );
   // dwnld links + export
   const myDownload = document.getElementById(`dwnld`);
-  myDownload.download = `flashcard_${firstId}.md`;
+  myDownload.download = `flashcard_${ids[0]}.md`;
   const exportLink = document.querySelector('#export');
 
  // export on click
@@ -60,45 +51,56 @@ const initFlickity = () => {
   const favLink = document.querySelector('#fav');
   const unfavLink = document.querySelector('#unfav');
 
-    if (JSON.parse(firstFav)) {
-      unfavLink.href = `${firstId}/unfav`;
+    if (myBool[0]) {
+      unfavLink.href = `${ids[0]}/unfav`;
       favLink.style.display = 'none';
       unfavLink.style.display = 'inherit';
     } else {
-      favLink.href = `${firstId}/fav`;
+      favLink.href = `${ids[0]}/fav`;
       unfavLink.style.display = 'none';
       favLink.style.display = 'inherit';
     }
 
   // change heart on click (first one)
-  /*
   favLink.addEventListener('click', changeHeart);
   unfavLink.addEventListener('click', changeHeart);
 
+   const currentId = flkty.selectedElement.dataset.cardId.replace(/[0-9]-(false|true)-/, '');
+    console.log(currentId);
+    const myFav = flkty.selectedElement.dataset.cardId.replace(/[0-9-[0-9]+/g, '');
+    console.log(myFav);
+    const currentIndex = flkty.selectedElement.dataset.cardId.replace(/-(false|true)-[0-9]+/, '');
+
   function changeHeart() {
 
-    if (myBool[parseInt(firstIndex, 10)-1]) {
-      myBool[parseInt(firstIndex, 10)-1] = false;
+    if (myBool[parseInt(currentIndex, 10)-1]) {
+      myBool[parseInt(currentIndex, 10)-1] = false;
       favLink.style.display = 'inherit';
       unfavLink.style.display = 'none';
     } else {
-      myBool[parseInt(firstIndex, 10)-1] = true;
+      myBool[parseInt(currentIndex, 10)-1] = true;
       favLink.style.display = 'none';
       unfavLink.style.display = 'inherit';
     }
     console.log(myBool);
-  } */
+  }
+
+
+
+
 
   flkty.on('scroll', function() {
-    const currentId = flkty.selectedElement.dataset.cardId.replace(/[0-9]-(false|true)-/, '');
-    console.log(currentId);
+
+      const currentId = flkty.selectedElement.dataset.cardId.replace(/[0-9]-(false|true)-/, '');
+    //console.log(currentId);
     const myFav = flkty.selectedElement.dataset.cardId.replace(/[0-9-[0-9]+/g, '');
-    console.log(myFav);
+    //console.log(myFav);
+    const currentIndex = flkty.selectedElement.dataset.cardId.replace(/-(false|true)-[0-9]+/, '');
 
     myDownload.download = `flashcard_${currentId}.md`;
 
     //changeHearts on scrolling  // do this with array of booleans and index
-    if (JSON.parse(myFav)) {
+    if (myBool[parseInt(currentIndex, 10)-1]) {
       unfavLink.href = `${currentId}/unfav`;
       favLink.style.display = 'none';
       unfavLink.style.display = 'inherit';
@@ -107,6 +109,24 @@ const initFlickity = () => {
       unfavLink.style.display = 'none';
       favLink.style.display = 'inherit';
    }
+
+    favLink.addEventListener('click', changeHeart);
+    unfavLink.addEventListener('click', changeHeart);
+
+    function changeHeart() {
+
+      if (myBool[parseInt(currentIndex, 10)-1]) {
+        myBool[parseInt(currentIndex, 10)-1] = false;
+        favLink.style.display = 'inherit';
+        unfavLink.style.display = 'none';
+      } else {
+        myBool[parseInt(currentIndex, 10)-1] = true;
+        favLink.style.display = 'none';
+        unfavLink.style.display = 'inherit';
+      }
+      console.log(myBool);
+    }
+
 
     const editLink = document.querySelector('#edit');  //works
     editLink.href = `${currentId}/edit`;
