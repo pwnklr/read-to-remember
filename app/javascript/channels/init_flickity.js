@@ -59,6 +59,7 @@ const initFlickity = () => {
   // set first card hearts
   const favLink = document.querySelector('#fav');
   const unfavLink = document.querySelector('#unfav');
+
     if (JSON.parse(firstFav)) {
       unfavLink.href = `${firstId}/unfav`;
       favLink.style.display = 'none';
@@ -69,36 +70,34 @@ const initFlickity = () => {
       favLink.style.display = 'inherit';
     }
 
-  // change heart on click
+  // change heart on click (first one)
   /*
   favLink.addEventListener('click', changeHeart);
   unfavLink.addEventListener('click', changeHeart);
 
   function changeHeart() {
 
-    if (myBool[index] === true) {
-      myBool[index] = false;
+    if (myBool[parseInt(firstIndex, 10)-1]) {
+      myBool[parseInt(firstIndex, 10)-1] = false;
       favLink.style.display = 'inherit';
       unfavLink.style.display = 'none';
     } else {
-      myBool[index] = true;
+      myBool[parseInt(firstIndex, 10)-1] = true;
       favLink.style.display = 'none';
       unfavLink.style.display = 'inherit';
     }
     console.log(myBool);
-  }
-
- */
+  } */
 
   flkty.on('scroll', function() {
-    const currentId = flkty.selectedElement.dataset.cardId.replace(/(true|false)-/, '');
+    const currentId = flkty.selectedElement.dataset.cardId.replace(/[0-9]-(false|true)-/, '');
     console.log(currentId);
-    const myFav = flkty.selectedElement.dataset.cardId.replace(/-[0-9]+/, '');
+    const myFav = flkty.selectedElement.dataset.cardId.replace(/[0-9-[0-9]+/g, '');
     console.log(myFav);
 
     myDownload.download = `flashcard_${currentId}.md`;
 
-    //changeHearts on scrolling
+    //changeHearts on scrolling  // do this with array of booleans and index
     if (JSON.parse(myFav)) {
       unfavLink.href = `${currentId}/unfav`;
       favLink.style.display = 'none';
