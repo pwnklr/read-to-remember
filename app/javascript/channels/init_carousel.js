@@ -42,7 +42,11 @@ function slide(wrapper, items) {
   console.log(ids)
   let myBool = Array.prototype.map.call(slides, function(a) { return JSON.parse(a.id.replace(/-[0-9]+/, '')) });
   myBool.shift();
-  console.log(myBool)
+  console.log(myBool);
+
+  const lastBools = document.getElementById('lastBools');
+  lastBools.innerText = myBool;
+  lastInx.innerText = index;
 
   const favLink = document.getElementById('fav');
   const unfavLink = document.getElementById('unfav');
@@ -97,6 +101,9 @@ function slide(wrapper, items) {
   }
 
   function dragEnd (e) {
+
+    lastInx.innerText = index;
+
     posFinal = items.offsetLeft;
     if (posFinal - posInitial < -threshold) {
       shiftSlide(1, 'drag');
@@ -179,6 +186,7 @@ function slide(wrapper, items) {
       unfavLink.style.display = 'inherit';
     }
     console.log(myBool);
+    lastBools.innerText = myBool;
   }
 
   editLink.addEventListener('click', makeItWork);
@@ -191,6 +199,7 @@ function slide(wrapper, items) {
     items.removeEventListener('touchstart', dragStart);
     items.removeEventListener('touchend', dragEnd);
     items.removeEventListener('touchmove', dragAction);
+    items.removeEventListener('transitionend', checkIndex);
 
    // *make it run again on submit
 

@@ -14,6 +14,7 @@
               </div>
               <div id='<%= "note-#{h.id}" %>'>
                 <p style="margin-bottom: 20px;"><%= h.content %></p>
+                <p class="page">Page <%= h.page %></p>
                 <% if h.my_note.present? %>
                   <div class="card-note" style="width: 100%; padding-bottom: 12px;">
                     <p style="font-weight: 600; color: #898AA6; font-size:12px; margin: 0;">Notes</p>
@@ -37,6 +38,9 @@
         <% end %>
       </div>
     </div>
+    <div id='lastInx' style='display: none;'></div>
+    <div id='lastBools' style='display: none;'></div>
+
   </div>
 
   <%= render 'icons', h: @flashcards.first %>
