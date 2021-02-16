@@ -29,6 +29,12 @@ function slide(wrapper, items) {
 
   // Mouse and Touch events
   items.addEventListener('mousedown', dragStart);
+  // Touch events
+  items.addEventListener('touchstart', dragStart);
+  items.addEventListener('touchend', dragEnd);
+  items.addEventListener('touchmove', dragAction);
+  // Transition events
+  items.addEventListener('transitionend', checkIndex);
 
   //vars
   let ids = Array.prototype.map.call(slides, function(a) { return a.id.replace(/(false|true)-/, '') });
@@ -61,18 +67,11 @@ function slide(wrapper, items) {
   delLink.href = `${ids[index]}/`;
 
 
-  // Touch events
-  items.addEventListener('touchstart', dragStart);
-  items.addEventListener('touchend', dragEnd);
-  items.addEventListener('touchmove', dragAction);
-
-  // Transition events
-  items.addEventListener('transitionend', checkIndex);
-
   function dragStart (e) {
     e = e || window.event;
     e.preventDefault();
     posInitial = items.offsetLeft;
+    console.log('dragstart: ' + posInitial);
 
     if (e.type == 'touchstart') {
       posX1 = e.touches[0].clientX;
@@ -187,9 +186,11 @@ function slide(wrapper, items) {
   function makeItWork() {
     console.log('do smtng');
 
-    // stop carousel do be able to write a note
-    // items.removeEventListener('mousedown', dragStart);
-    // items.removeEventListener('touchstart', dragStart);
+    // stop carousel do be able to write a note (works but not on last slide :/)
+    items.removeEventListener('mousedown', dragStart);
+    items.removeEventListener('touchstart', dragStart);
+    items.removeEventListener('touchend', dragEnd);
+    items.removeEventListener('touchmove', dragAction);
 
    // *make it run again on submit
 

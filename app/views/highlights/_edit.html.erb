@@ -22,10 +22,14 @@
 
 function moveCarousel() {
   const location = window.location.href; //change location for production
-  console.log(location)
-  if (location  == `http://localhost:3000/highlights/flashcards`) {
+  const regexp = /#[0-9]+/
+  const myLocation = location.replace(regexp, '');
+  console.log(myLocation);
+  if (myLocation  == `http://localhost:3000/highlights/flashcards`) {
     const items = document.getElementById('items');
-        // run carousel again
+    // run carousel again
+    // overwrite initCarousel...
+
    } else {
      // do nothing
   }
