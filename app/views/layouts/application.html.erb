@@ -44,8 +44,11 @@
 
   <body style='<%#= "height: unset;" if current_user && current_page?(controller: 'highlights', action: 'flashcards') %>'>
     <% unless request.fullpath == "/" || request.fullpath == "/highlights/flashcards"%>
-      <%= render 'shared/navbar' %>
+      <% if current_user %>
+        <%= render 'shared/navbar' %>
+      <% end %>
     <% end %>
+
     <%= render 'shared/flashes' %>
 
     <%= yield %>

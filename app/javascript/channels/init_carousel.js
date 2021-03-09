@@ -1,57 +1,12 @@
-<div class="card" style="width: 86%;">
-  <%= simple_form_for([@highlight], remote: true) do |f| %>
- <!-- trigger on enter: <#%= hidden_field_tag :authenticity_token, form_authenticity_token %> -->
-    <%= f.input :my_note, label: false %>
-    <%= f.submit "Save", style: "font-size:12px;background-color:rgba(76,68,255,.8); border:none; font-weight:bold; padding:4px 8px; color: white; border-radius: 16px;" %>
-  <% end %>
-</div>
+const initCarousel = () => {
+  const myCarousel = document.getElementById('slider');
+  const sliderItems= document.getElementById('items');
 
-<script>
-// trigger on enter => works with redirect_back in cntrl but! no remote
-/*
-  document.getElementById('highlight_my_note').addEventListener('keyup', triggerSubmit);
-  function triggerSubmit(event) {
-    if (event.keyCode === 13) {
-      event.preventDefault();
-      document.querySelector('.simple_form.edit_highlight').submit();
-    }
-  }
-*/
-
-document.querySelector('.simple_form.edit_highlight').addEventListener('submit', moveCarousel);
-
-function moveCarousel() {
-  const location = window.location.href; //change location for production
-  const regexp = /#[0-9]+/
-  const myLocation = location.replace(regexp, '');
-  console.log(myLocation);
-  if (myLocation  == `http://localhost:3000/highlights/flashcards`) {
-    const items = document.getElementById('items');
-    const myCarousel = document.getElementById('slider');
-
-    const lastInx = document.getElementById('lastInx');
-    const index = parseInt(lastInx.innerText, 10);
-
-    const lastBools = document.getElementById('lastBools');
-    const boolArr = lastBools.innerText.replace(/,+/g, ' ').split(' ');
-
-    console.log(boolArr);
-    console.log('edit: ' + index);
-
-    let myBool = Array.prototype.map.call(boolArr, function(a) { return JSON.parse(a) });
-
-    // run carousel again
-    // overwrite initCarousel...
-    runCarousel(myCarousel, items, 0, myBool);
-
-   } else {
-     // do nothing
-  }
+  slide(myCarousel, sliderItems);
 }
 
-// wip
 
-function runCarousel(wrapper, items, index, myBool) {
+function slide(wrapper, items) {
   var posX1 = 0,
       posX2 = 0,
       posInitial,
@@ -62,10 +17,14 @@ function runCarousel(wrapper, items, index, myBool) {
       slideSize = items.getElementsByClassName('carousel-card')[0].offsetWidth,
       firstSlide = slides[0],
       lastSlide = slides[slidesLength - 1],
-      lastSlide = slides[slidesLength - 1],
+      cloneFirst = firstSlide.cloneNode(true),
+      cloneLast = lastSlide.cloneNode(true),
+      index = 0,
       allowShift = true;
 
-
+  // Clone first and last slide
+  items.appendChild(cloneFirst);
+  items.insertBefore(cloneLast, firstSlide);
   wrapper.classList.add('loaded');
 
   // Mouse and Touch events
@@ -81,8 +40,13 @@ function runCarousel(wrapper, items, index, myBool) {
   let ids = Array.prototype.map.call(slides, function(a) { return a.id.replace(/(false|true)-/, '') });
   ids.shift();
   console.log(ids)
+  let myBool = Array.prototype.map.call(slides, function(a) { return JSON.parse(a.id.replace(/-[0-9]+/, '')) });
+  myBool.shift();
+  console.log(myBool);
 
-  console.log(myBool)
+  const lastBools = document.getElementById('lastBools');
+  lastBools.innerText = myBool;
+  lastInx.innerText = index;
 
   const favLink = document.getElementById('fav');
   const unfavLink = document.getElementById('unfav');
@@ -137,6 +101,9 @@ function runCarousel(wrapper, items, index, myBool) {
   }
 
   function dragEnd (e) {
+
+    lastInx.innerText = index;
+
     posFinal = items.offsetLeft;
     if (posFinal - posInitial < -threshold) {
       shiftSlide(1, 'drag');
@@ -168,12 +135,12 @@ function runCarousel(wrapper, items, index, myBool) {
     allowShift = false;
   }
 
-  function checkIndex() {  // do smtng here
+  function checkIndex (){
     items.classList.remove('shifting');
     console.log(myBool);
     console.log(ids);
     console.log(index);
-    //console.log(ids[index]);
+    console.log(ids[index]);
 
 
     if (index == -1) {
@@ -219,6 +186,7 @@ function runCarousel(wrapper, items, index, myBool) {
       unfavLink.style.display = 'inherit';
     }
     console.log(myBool);
+    lastBools.innerText = myBool;
   }
 
   editLink.addEventListener('click', makeItWork);
@@ -231,6 +199,7 @@ function runCarousel(wrapper, items, index, myBool) {
     items.removeEventListener('touchstart', dragStart);
     items.removeEventListener('touchend', dragEnd);
     items.removeEventListener('touchmove', dragAction);
+    items.removeEventListener('transitionend', checkIndex);
 
    // *make it run again on submit
 
@@ -253,7 +222,6 @@ function runCarousel(wrapper, items, index, myBool) {
   function closeIt() {
     document.getElementById('myAlert').style.display = 'none';
   }
-
 }
 
-</script>
+export { initCarousel };

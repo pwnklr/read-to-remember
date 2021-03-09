@@ -1,43 +1,34 @@
 <div class="container" style="margin: 15px;">
   <div class="row">
     <% highlights.each do |h| %>
-      <div class="card card-adjusted" id='<%= "note-#{h.id}" %>'>
+      <div class="card card-adjusted" id='card-<%= h.id %>'>
         <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan"><%= link_to h.source.title, source_path(h.source) %></h3>
         <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
-        <p><%= h.content %></p>
-        <p class="page">Page <%= h.page %></p>
-        <!-- -->
-        <% if h.my_note.present? %>
-          <div class="card-note" style="width: 100%; padding-bottom: 12px;">
-            <p style="font-weight: 600; color: #898AA6; font-size:12px; margin: 0;">Notes</p>
-            <div style="display: flex; flex-wrap: wrap;">
-            <p style="">
-              <% h.my_note.split(' ').each do |w| %>
-                <% if h.tag_list.include?(w) %>
-                <span>
-                  <%= link_to "#{w}", tags_highlights_path(w), style: "margin: 0, 2px; font-family: Roboto; font-size: 16px; font-weight: 300; font-height:0; color:#25265B;"%>
-                </span>
-                <% else %>
-                  <span style="font-weight: 300; font-size:14px; color: #13154E; margin: 0; font-family: Roboto;"><%= w %> </span>
-                <% end %>
-
-
-             <!--
-              <p style="font-size: 12px; font-weight: 300; font-height:0; color: #13154E; font-family: Roboto;"><#% h.tag_list.each do |t| %></p>
-                <p style="font-weight: 300; padding-left: .5vw; font-size:12px; margin:0;"><#%= link_to "#{t}", tags_highlights_path(t), style: "color:#25265B;"%></p>
-              <#% end %> -->
-<% end %>
-</p>
-
-
+        <!-- render part -->
+        <div id='<%= "note-#{h.id}" %>'>
+          <p><%= h.content %></p>
+          <p class="page">Page <%= h.page %></p>
+          <% if h.my_note.present? %>
+            <div class="card-note" style="width: 100%; padding-bottom: 12px;">
+              <p style="font-weight: 600; color: #898AA6; font-size:12px; margin: 0;">Notes</p>
+              <div style="display: flex; flex-wrap: wrap;">
+                <p style="">
+                  <% h.my_note.split(' ').each do |w| %>
+                    <% if h.tag_list.include?(w) %>
+                      <span>
+                        <%= link_to "#{w}", tags_highlights_path(w), style: "margin: 0, 2px; font-family: Roboto; font-size: 16px; font-weight: 300; font-height:0; color:#25265B;"%>
+                      </span>
+                    <% else %>
+                      <span style="font-weight: 300; font-size:14px; color: #13154E; margin: 0; font-family: Roboto;"><%= w %> </span>
+                    <% end %>
+                  <% end %>
+                </p>
+              </div>
             </div>
-          </div>
-        <% end %>
-
-       <div id="<%= h.id %>" style="display: none;"></div>
-
-      <%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "#{h.source.title.gsub(' ', '_')}_#{h.page}.md", id: 'dwnld', style: 'display: none;' %>
-
+          <% end %>
+          <div id="<%= h.id %>" style="display: none;"></div>
+        </div>
+        <%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "#{h.source.title.gsub(' ', '_')}_#{h.page}.md", id: 'dwnld', style: 'display: none;' %>
         <div class="icons">
           <div class="sent">
             <% if current_user.favorited?(h) %>
@@ -45,7 +36,6 @@
                 <%= link_to unfav_highlight_path(h), method: :put, remote: true do %>
                   <i id='f-<%= h.id %>' onclick=changeHeart(this) title='Unfavorite' class="fas fa-heart" style="font-size:16px;color:#555555;" ></i>
                 <% end %>
-
               </p>
             <% else %>
               <p>
@@ -54,7 +44,6 @@
                 <% end %>
               </p>
             <% end %>
-          <!-- render form -->
             <p>
               <%= link_to edit_highlight_path(h), remote: true do %>
                 <i class="fas fa-pen edit-icon" title='Write/update note' data-id="<%= h.id %>" style="font-size:16px;color:#AAAAAA;"></i>
@@ -89,7 +78,7 @@
     const location = window.location.href; //change location for production => https://www.readtoremember.xyz/highlights/favorites
     if (location == 'http://localhost:3000/highlights/favorites') {
       const id = _this.id.replace('f-', '');
-      document.getElementById('note-' + id).remove();
+      document.getElementById('card-' + id).remove();
     } else {
       if (_this.classList.contains('far')) {
         _this.classList.remove('far');

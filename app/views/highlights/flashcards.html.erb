@@ -1,37 +1,91 @@
 <%= render 'exit'%>
+
+<!-- vanilla -->
 <% if @flashcards.present? %>
-  <div class="carousel" data-initial-card="<%= @highlight.id if @highlight %>">
-    <% @flashcards.each do |h| %>
-        <div class="flashcard transparent-container carousel-cell" id="carousel-cell<%= @flashcards.index(h) + 1 %>" data-card-id="<%= h.id %>">
-        <div class="" id='<%= "note-#{h.id}" %>'> <!--id="card-<%#= h.id %>">-->
-          <div class="flashcard-text">
-            <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan"><%= link_to h.source.title, source_path(h.source) %></h3>
-            <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
-              <p style="margin-bottom:20px;"><%= h.content %></p>
+  <div id="slider" class="slider"style='position:absolute; left:50%; transform:translateX(-50%); background: transparent; padding: 4px; height: 500px; width: 300px;'>
+    <div class="wrapper" style='background: #fff; border-radius: 16px; overflow: hidden; position: relative;box-shadow: 0px 2px 8px 4px rgba(8, 13, 60, 0.3);'>
+      <div id='items' class="items" style='width: 10000px;position: relative;top:0; left: -300px;'>
+        <% @flashcards.each do |h| %>
+          <div class="carousel-card" id='<%= current_user.favorited?(h) %>-<%= h.id %>'> <!--id="card-<%#= h.id %>">-->
+            <div style="float: left;"><%= @flashcards.index(h) + 1 %></div>
+              <div class="flashcard-text">
+                <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan; padding-top: 24px;"><%= h.source.title %></h3>
+                <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
+              </div>
+              <div id='<%= "note-#{h.id}" %>'>
+                <p style="margin-bottom: 20px;"><%= h.content %></p>
+                <p class="page">Page <%= h.page %></p>
+                <% if h.my_note.present? %>
+                  <div class="card-note" style="width: 100%; padding-bottom: 12px;">
+                    <p style="font-weight: 600; color: #898AA6; font-size:12px; margin: 0;">Notes</p>
+                    <p style="">
+                      <% h.my_note.split(' ').each do |w| %>
+                        <% if h.tag_list.include?(w) %>
+                          <span>
+                            <%= link_to "#{w}", tags_highlights_path(w), style: "margin: 0, 2px; font-family: Roboto; font-size: 16px; font-weight: 300; font-height:0; color:#25265B;"%>
+                          </span>
+                        <% else %>
+                          <span style="font-weight: 300; font-size:14px; color: #13154E; margin: 0; font-family: Roboto;"><%= w %> </span>
+                        <% end %>
+                      <% end %>
+                    </p>
+                  </div>
+                <% end %>
+               <div id="<%= h.id %>" style="display: none;"></div>
+              </div>
+            <%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "#{h.source.title.gsub(' ', '_')}_#{h.page}.md", id: "dwnld-#{h.id}", style: 'display: none;' %>
           </div>
-          <!-- note and tags in one line! -->
-          <% if h.my_note.present? %>
+        <% end %>
+      </div>
+    </div>
+    <div id='lastInx' style='display: none;'></div>
+    <div id='lastBools' style='display: none;'></div>
+
+  </div>
+
+  <%= render 'icons', h: @flashcards.first %>
+<% end %>
+<!-- end of vanilla -->
+
+<!-- flickity -->
+<!--
+<#% if @flashcards.present? %>
+  <div class="carousel" id='myCarousel' data-initial-card="<#%= @highlight.id if @highlight %>">
+    <#% @flashcards.each do |h| %>
+      <div class="flashcard transparent-container carousel-cell" id="carousel-cell<#%= @flashcards.index(h) + 1 %>" data-card-id="<#%= @flashcards.index(h) + 1 %>-<#%= current_user.favorited?(h) %>-<#%= h.id %>">
+        <div class="flashcard-text">
+          <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan"><#%= link_to h.source.title, source_path(h.source) %></h3>
+          <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><#%= h.source.author.name %></h5>
+        </div>
+        <!- render part --> <!--
+        <div id='<#%= "note-#{h.id}" %>'>
+          <p><#%= h.content %></p>
+          <p class="page">Page <#%= h.page %></p>
+          <!- note and tags in one line! --> <!--
+          <#% if h.my_note.present? %>
             <div class="card-note" style="width: 100%; padding-bottom: 12px;">
               <p style="font-weight: 600; color: #898AA6; font-size:12px; margin: 0;">Notes</p>
               <div style="display: flex; flex-wrap: wrap;">
-              <p style="">
-                <% h.my_note.split(' ').each do |w| %>
-                  <% if h.tag_list.include?(w) %>
-                    <span>
-                      <%= link_to "#{w}", tags_highlights_path(w), style: "margin: 0, 2px; font-family: Roboto; font-size: 16px; font-weight: 300; font-height:0; color:#25265B;"%>
-                    </span>
-                  <% else %>
-                    <span style="font-weight: 300; font-size:14px; color: #13154E; margin: 0; font-family: Roboto;"><%= w %> </span>
-                  <% end %>
-                <% end %>
-              </p>
+                <p style="">
+                  <#% h.my_note.split(' ').each do |w| %>
+                    <#% if h.tag_list.include?(w) %>
+                      <span>
+                        <#%= link_to "#{w}", tags_highlights_path(w), style: "margin: 0, 2px; font-family: Roboto; font-size: 16px; font-weight: 300; font-height:0; color:#25265B;"%>
+                      </span>
+                    <#% else %>
+                      <span style="font-weight: 300; font-size:14px; color: #13154E; margin: 0; font-family: Roboto;"><#%= w %> </span>
+                    <#% end %>
+                  <#% end %>
+                </p>
               </div>
             </div>
-          <% end %>
-          <div id="<%= h.id %>" style="display: none;"></div>
+          <#% end %>
+          <div id="<#%= h.id %>" style="display: none;"></div>
         </div>
+        <#%= link_to "download", asset_path("/data/read_to_remember_#{current_user.id}.md"), id: "dwnld", style: 'display: none;' %>
       </div>
-    <% end %>
+    <#% end %>
   </div>
-<%= render 'icons', h: @flashcards.first %>
-<% end %>
+<#%= render 'icons', h: @flashcards.first %>
+<#% end %>
+-->
