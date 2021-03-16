@@ -1,7 +1,7 @@
 <div class="container" style="margin: 15px;">
   <div class="row">
     <% highlights.each do |h| %>
-      <div class="card card-adjusted" id='card-<%= h.id %>'>
+      <div class="card card-adjusted" id='card-<%= h.id %>' onclick=console.log(this.offsetWidth)>
         <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan"><%= link_to h.source.title, source_path(h.source) %></h3>
         <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
         <!-- render part -->
@@ -28,7 +28,7 @@
           <% end %>
           <div id="<%= h.id %>" style="display: none;"></div>
         </div>
-        <%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "#{h.source.title.gsub(' ', '_')}_#{h.page}.md", id: 'dwnld', style: 'display: none;' %>
+        <%= link_to "download", asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "#{h.source.title.gsub(' ', '_')}_#{h.page}.md", id: 'dwnld', style: 'display: none;' %>
         <div class="icons">
           <div class="sent">
             <% if current_user.favorited?(h) %>
@@ -104,4 +104,5 @@
   function closeIt() {
     document.getElementById('myAlert').style.display = 'none';
   }
+
 </script>
