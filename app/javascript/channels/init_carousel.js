@@ -52,7 +52,7 @@ function slide(wrapper, items) {
   const unfavLink = document.getElementById('unfav');
   const editLink = document.getElementById('edit');
   const exportLink = document.getElementById('export');
-  const delLink = document.getElementById('del');
+  //const delLink = document.getElementById('del');
 
   // init links
   if (myBool[index]) {
@@ -68,7 +68,7 @@ function slide(wrapper, items) {
 
   editLink.href = `${ids[index]}/edit`;
   exportLink.href = `${ids[index]}/export`;
-  delLink.href = `${ids[index]}/`;
+  //delLink.href = `${ids[index]}/`;
 
 
   function dragStart (e) {
@@ -168,7 +168,7 @@ function slide(wrapper, items) {
 
       editLink.href = `${ids[index]}/edit`;
       exportLink.href = `${ids[index]}/export`;
-      delLink.href = `${ids[index]}/`;
+      //delLink.href = `${ids[index]}/`;
   }
 
   favLink.addEventListener('click', changeHeart);
