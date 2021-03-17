@@ -52,6 +52,8 @@ function slide(wrapper, items) {
   const unfavLink = document.getElementById('unfav');
   const editLink = document.getElementById('edit');
   const exportLink = document.getElementById('export');
+  const imageLink = document.getElementById('img-btn');
+
   //const delLink = document.getElementById('del');
 
   // init links
@@ -68,6 +70,7 @@ function slide(wrapper, items) {
 
   editLink.href = `${ids[index]}/edit`;
   exportLink.href = `${ids[index]}/export`;
+  imageLink.addEventListener('click', getImage);
   //delLink.href = `${ids[index]}/`;
 
 
@@ -168,6 +171,7 @@ function slide(wrapper, items) {
 
       editLink.href = `${ids[index]}/edit`;
       exportLink.href = `${ids[index]}/export`;
+      imageLink.addEventListener('click', getImage);
       //delLink.href = `${ids[index]}/`;
   }
 
@@ -221,6 +225,45 @@ function slide(wrapper, items) {
 
   function closeIt() {
     document.getElementById('myAlert').style.display = 'none';
+  }
+
+  function getImage() {
+    const icons = document.querySelectorAll('.icons p a');
+    console.log(icons)
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const cardW = document.getElementsByClassName(`carousel-card`);
+    const card = document.getElementById(`image-f-${ids[index]}`);
+    const node = document.getElementById(`node`);
+    canvas.width = cardW[0].offsetWidth;
+    canvas.height = cardW[0].offsetHeight;
+
+    const tempImg = document.createElement('img');
+    tempImg.addEventListener('load', onTempImageLoad);
+    tempImg.src = 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg"><foreignObject width="100%" height="100%"><div xmlns="http://www.w3.org/1999/xhtml"><style>#d {padding: 12px 24px;}</style><div id='d'>${card.innerHTML}</div></div></foreignObject></svg>`)
+    const targetImg = document.createElement('img');
+    node.style.display = 'inherit';
+
+    icons.forEach(icon => icon.classList.add('disabled'))
+
+    function onTempImageLoad(e) {
+      ctx.fillStyle = "white";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(e.target, 0, 0)
+      targetImg.src = canvas.toDataURL();
+      // make sharing btns + functionality + add some style
+      // download functionality => done
+      if(!node.hasChildNodes()) {
+        node.appendChild(targetImg);
+        node.insertAdjacentHTML('beforeend', `<ul style="margin: 0; padding: 12px;background-color: #F7E5AC;"><i class="fab fa-facebook-square"></i><i class="fab fa-twitter-square"></i><a href="${canvas.toDataURL()}" download><i style="color: #000 !important;" class="fas fa-file-download"></i></a></ul>`);
+        targetImg.addEventListener('click', function() {
+          node.removeChild(node.childNodes[0]);
+          node.removeChild(node.childNodes[0]);
+          node.style.display = 'none';
+          icons.forEach(icon => icon.classList.remove('disabled'))
+        })
+      }
+    }
   }
 }
 
