@@ -47,6 +47,4 @@ const initDomImage = () => {
   }
 }
 
-
-// adjust for flashcards
 export { initDomImage };
