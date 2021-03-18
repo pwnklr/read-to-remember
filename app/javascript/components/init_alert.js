@@ -4,9 +4,20 @@ const initAlert = () => {
   if(exportLinks) {
     for(let i = 0; i < exportLinks.length; i++) {
       exportLinks[i].addEventListener('click', function() {
-        console.log('click')
-        setTimeout(function(){
-          document.getElementById('dwnld').click();
+        // set file name
+        const myDownload = document.getElementById('dwnld');
+        const id = exportLinks[i].id.replace('e-', '');
+        const card = document.getElementById('card-' + id);
+        const title = card.querySelector('h3 a');
+        if(title) {
+          myDownload.download = `${title.innerHTML.replace(/\s+/g, '_')}_${id}.md`;
+        } else {
+          const title2 = document.querySelector('body > div:nth-child(2) > div > div > div.text-s > h6');
+          myDownload.download = `${title2.innerHTML.replace(/\s+/g, '_')}_${id}.md`;
+        }
+        // download and show alert
+        setTimeout(function() {
+          myDownload.click();
           document.getElementById('myAlert').style.display = 'inherit';
         }, 900 )
       });

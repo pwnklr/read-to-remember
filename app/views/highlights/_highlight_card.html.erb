@@ -30,8 +30,8 @@
             <% end %>
             <div id="<%= h.id %>" style="display: none;"></div>
           </div>
-        </div> <!-- title: #{h.source.title.gsub(' ', '_')}_#{h.page}.md not working correct -->
-        <%= link_to "download", asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "#{h.source.title.gsub(' ', '_')}_#{h.page}.md", id: 'dwnld', style: 'display: none;' %>
+        </div>
+        <%= link_to "download", asset_path("/data/read_to_remember_#{current_user.id}.md"), id: 'dwnld', style: 'display: none;' %>
         <div class="icons">
           <div class="sent">
             <% if current_user.favorited?(h) %>
@@ -54,7 +54,7 @@
             </p>
             <p>
               <%= link_to export_highlight_path(h), remote: true do %> <!-- improve this one :export -->
-                <i class="fas fa-paper-plane" title='Export' style="font-size:16px;color:#AAAAAA;"></i>
+                <i id='e-<%= h.id %>' class="fas fa-paper-plane" title='Export' style="font-size:16px;color:#AAAAAA;"></i>
               <% end %>
             </p>
             <p class='my-btns' data-card-id='<%= h.id %>'>

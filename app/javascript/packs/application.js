@@ -41,17 +41,14 @@ import { initFavs } from '../components/init_favs';
 import { initAlert, closeAlert } from '../components/init_alert';
 
 
-
-
-
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 
-   initDomImage();
-   initFavs();
-   initAlert();
-   closeAlert();
+  initDomImage();
+  initFavs();
+  initAlert();
+  closeAlert();
 
   // vanilla
   const slider = document.getElementById('slider');
