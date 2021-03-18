@@ -1,8 +1,9 @@
 const initCarousel = () => {
   const myCarousel = document.getElementById('slider');
-  const sliderItems= document.getElementById('items');
-
-  slide(myCarousel, sliderItems);
+  if(myCarousel) {
+    const sliderItems= document.getElementById('items');
+    slide(myCarousel, sliderItems);
+  }
 }
 
 

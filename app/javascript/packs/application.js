@@ -28,15 +28,14 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
-// vanilla
-import { initCarousel } from '../channels/init_carousel';
-
 // flickity
 // import { initFlickity } from '../channels/init_flickity';
 
-import { initActiveNavbar } from '../channels/init_active_navbar';
-import { initActiveSourceNavigation } from '../channels/init_active_source_navigation';
-import { initDomImage } from '../channels/init_dom_image';
+// vanilla
+import { initCarousel } from '../components/init_carousel';
+import { initActiveNavbar } from '../components/init_active_navbar';
+import { initActiveSourceNavigation } from '../components/init_active_source_navigation';
+import { initDomImage } from '../components/init_dom_image';
 import { initFavs } from '../components/init_favs';
 import { initAlert, closeAlert } from '../components/init_alert';
 
@@ -45,16 +44,15 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 
+  initActiveNavbar();
+  initActiveSourceNavigation();
   initDomImage();
   initFavs();
   initAlert();
   closeAlert();
 
   // vanilla
-  const slider = document.getElementById('slider');
-  if (slider) {
-    initCarousel();
-  }
+  initCarousel();
 
   // flickity
   /*
@@ -62,10 +60,4 @@ document.addEventListener('turbolinks:load', () => {
   if (carousel) {
     initFlickity();
   }  */
-
-  const navbar = document.getElementById("myNavbar");
-  if (navbar) {
-    initActiveNavbar();
-  }
-  initActiveSourceNavigation();
 });
