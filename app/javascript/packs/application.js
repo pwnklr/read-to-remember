@@ -38,6 +38,8 @@ import { initActiveNavbar } from '../channels/init_active_navbar';
 import { initActiveSourceNavigation } from '../channels/init_active_source_navigation';
 import { initDomImage } from '../channels/init_dom_image';
 import { initFavs } from '../components/init_favs';
+import { initAlert, closeAlert } from '../components/init_alert';
+
 
 
 
@@ -48,6 +50,9 @@ document.addEventListener('turbolinks:load', () => {
 
    initDomImage();
    initFavs();
+   initAlert();
+   closeAlert();
+
   // vanilla
   const slider = document.getElementById('slider');
   if (slider) {

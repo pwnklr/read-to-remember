@@ -30,7 +30,7 @@
             <% end %>
             <div id="<%= h.id %>" style="display: none;"></div>
           </div>
-        </div>
+        </div> <!-- title: #{h.source.title.gsub(' ', '_')}_#{h.page}.md not working correct -->
         <%= link_to "download", asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "#{h.source.title.gsub(' ', '_')}_#{h.page}.md", id: 'dwnld', style: 'display: none;' %>
         <div class="icons">
           <div class="sent">
@@ -54,7 +54,7 @@
             </p>
             <p>
               <%= link_to export_highlight_path(h), remote: true do %> <!-- improve this one :export -->
-                <i onclick=showAlert() class="fas fa-paper-plane" title='Export' style="font-size:16px;color:#AAAAAA;"></i>
+                <i class="fas fa-paper-plane" title='Export' style="font-size:16px;color:#AAAAAA;"></i>
               <% end %>
             </p>
             <p class='my-btns' data-card-id='<%= h.id %>'>
@@ -75,23 +75,7 @@
 
 <div id='myAlert' class="alert alert-warning alert-dismissible fade show m-1" style='display:none;'>
   Yay! Highlight was succsesfully exported!
-  <button type="button" class="close" onclick=closeIt()>
+  <button type="button" class="close" id='closeBtn'>
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-
-<script>
-
-
-  function showAlert() {
-    setTimeout(function(){
-      document.getElementById('dwnld').click();
-      document.getElementById('myAlert').style.display = 'inherit';
-    }, 900 )
-  }
-
-  function closeIt() {
-    document.getElementById('myAlert').style.display = 'none';
-  }
-
-</script>
