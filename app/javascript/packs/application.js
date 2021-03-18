@@ -36,12 +36,16 @@ import { initCarousel } from '../channels/init_carousel';
 
 import { initActiveNavbar } from '../channels/init_active_navbar';
 import { initActiveSourceNavigation } from '../channels/init_active_source_navigation';
+import { initDomImage } from '../channels/init_dom_image';
+
 
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 
+
+   initDomImage();
   // vanilla
   const slider = document.getElementById('slider');
   if (slider) {

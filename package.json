@@ -7,6 +7,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
     "bootstrap": "^4.5.0",
+    "dom-to-image": "^2.6.0",
     "flickity": "^2.2.1",
     "flickity-hash": "^1.0.3",
     "jquery": "^3.5.1",

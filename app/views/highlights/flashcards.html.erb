@@ -1,5 +1,5 @@
 <%= render 'exit'%>
-
+<div id='node' class='my-nodes'></div>
 <!-- vanilla -->
 <% if @flashcards.present? %>
   <div id="slider" class="slider"style='position:absolute; left:50%; transform:translateX(-50%); background: transparent; padding: 4px; height: 500px; width: 300px;'>
@@ -8,6 +8,7 @@
         <% @flashcards.each do |h| %>
           <div class="carousel-card" id='<%= current_user.favorited?(h) %>-<%= h.id %>'> <!--id="card-<%#= h.id %>">-->
             <div style="float: left;"><%= @flashcards.index(h) + 1 %></div>
+             <div id='image-f-<%= h.id %>'>
               <div class="flashcard-text">
                 <h3 style="font-size: 12px; font-weight: bold; font-family: Spartan; padding-top: 24px;"><%= h.source.title %></h3>
                 <h5 style="color: #797C80; margin-bottom:25px; font-size: 12px; font-weight: 400;"><%= h.source.author.name %></h5>
@@ -33,6 +34,7 @@
                 <% end %>
                <div id="<%= h.id %>" style="display: none;"></div>
               </div>
+            </div>
             <%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "#{h.source.title.gsub(' ', '_')}_#{h.page}.md", id: "dwnld-#{h.id}", style: 'display: none;' %>
           </div>
         <% end %>
