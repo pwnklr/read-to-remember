@@ -8,7 +8,7 @@ class HighlightsController < ApplicationController
   def index
     if params[:query].present?
       @query = params[:query]
-      @highlights = current_user.highlights.includes(:source).global_search(@query)
+      @highlights = current_user.highlights.includes(:source, :taggings,  source: :author).global_search(@query)
       @count = @highlights.size
     else
       @highlights = []
