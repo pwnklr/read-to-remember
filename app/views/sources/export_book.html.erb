@@ -12,14 +12,14 @@
           <span style="color: #B6B4B5;font-size: 12px;"><%= @source.author.name %></span>
           <br>
           <span><%= link_to 'Cancel', :back, style: "color: #fff; font-size: 16px;"%> | </span>
-          <span onclick=downloadIt();><%= link_to 'Export all', export_all_source_path, style: "color: #fff; font-size: 16px;" %></span>
+          <span><%= link_to 'Export all', export_all_source_path, id: 'ex-all', style: "color: #fff; font-size: 16px;" %></span>
         </div>
       </div>
     </div>
 
 </div>
 
-<%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "#{@source.title.gsub(' ', '_')}.md", id: 'dwnld', style: 'display: none;' %>
+<%= link_to "download",  asset_path("/data/read_to_remember_#{current_user.id}.md"), download: "#{@source.title.gsub(' ', '_')}.md", id: 'dwnld-all', style: 'display: none;' %>
 
 <div class="container" style="padding-top:16vh; min-height:100vh;">
 
@@ -90,15 +90,3 @@
     <%= submit_tag "Submit", class: 'btn btn-primary download' %>
     <% end %>
 </div>
-
-
-<script>
-  document.querySelector(".btn.btn-primary.download").addEventListener('click', downloadIt);
-
-  function downloadIt() {
-    setTimeout(function(){
-      document.getElementById('dwnld').click();
-    }, 800 );
-  }
-</script>
-

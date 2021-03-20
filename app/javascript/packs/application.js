@@ -38,6 +38,8 @@ import { initActiveSourceNavigation } from '../components/init_active_source_nav
 import { initDomImage } from '../components/init_dom_image';
 import { initFavs } from '../components/init_favs';
 import { initAlert, closeAlert } from '../components/init_alert';
+import { initDownloadBookAll, initDownloadBookSelect } from '../components/init_download_book';
+
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -50,6 +52,8 @@ document.addEventListener('turbolinks:load', () => {
   initFavs();
   initAlert();
   closeAlert();
+  initDownloadBookAll();
+  initDownloadBookSelect();
 
   // vanilla
   initCarousel();
