@@ -9,7 +9,9 @@
       <div class="text-s">
         <h6 style="margin-top:7px;"><%= @source.title %></h6>
         <span style="color: #B6B4B5;font-size: 12px;"><%= @source.author.name %></span>
-        <p><%= link_to 'Export', export_book_source_path, style: "color: #fff; font-size: 16px;"%></p>
+        <% if @source.highlights.present? %>
+          <p><%= link_to 'Export', export_book_source_path, style: "color: #fff; font-size: 16px;"%></p>
+        <% end %>
       </div>
     </div>
   </div>

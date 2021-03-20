@@ -24,7 +24,7 @@ class HighlightsController < ApplicationController
     end
   end
 
-  def destroy # works, except: carousel
+  def destroy # works (except: carousel)
     @highlight.destroy
     # respond_to :js
     # flash[:notice] = 'Highlight was succsesfully removed!'
@@ -46,7 +46,7 @@ class HighlightsController < ApplicationController
     # end
   end
 
-  def export
+  def export # works!
     # generate file:
     directory_name = "public/data"
     Dir.mkdir(directory_name) unless File.exists?(directory_name)
@@ -56,7 +56,9 @@ class HighlightsController < ApplicationController
       file << "## #{@highlight.source.author.name}\n\n"
       file << "#{@highlight.content}\n\n"
       file << "page: #{@highlight.page}\n\n"
-      file << "note: #{@highlight.my_note.strip}" if @highlight.my_note.match(/[^\s]/)
+      if !@highlight.my_note.nil? && @highlight.my_note.match(/[^\s]/)
+        file << "note: #{@highlight.my_note}"
+      end
     end
     # destroy file
     sleep(2)
