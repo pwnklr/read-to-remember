@@ -2,13 +2,12 @@ class HighlightsController < ApplicationController
   before_action :set_highlight, only: [:edit, :update, :destroy, :fav, :unfav, :export]
   before_action :set_tag, only: :tags
   respond_to :html, :js
-  after_action :destroy_file, only: :export
 
   # search here
   def index
     if params[:query].present?
       @query = params[:query]
-      @highlights = current_user.highlights.includes(:source).global_search(@query)
+      @highlights = current_user.highlights.includes(:source, :taggings,  source: :author).global_search(@query)
       @count = @highlights.size
     else
       @highlights = []
@@ -24,13 +23,13 @@ class HighlightsController < ApplicationController
     end
   end
 
-  def destroy # works, except: carousel
+  def destroy # works (except: carousel)
     @highlight.destroy
     # respond_to :js
     # flash[:notice] = 'Highlight was succsesfully removed!'
   end
 
-  def fav # works! except: carousel
+  def fav # works!
     current_user.favorite(@highlight)
     #redirect_back(fallback_location: 'pages#home')
     # respond_to do |format|
@@ -38,7 +37,7 @@ class HighlightsController < ApplicationController
     # end
   end
 
-  def unfav # works! except: carousel
+  def unfav # works!
     current_user.unfavorite(@highlight)
     #redirect_back(fallback_location: 'pages#home')
     # respond_to do |format|
@@ -46,7 +45,7 @@ class HighlightsController < ApplicationController
     # end
   end
 
-  def export
+  def export # works!
     # generate file:
     directory_name = "public/data"
     Dir.mkdir(directory_name) unless File.exists?(directory_name)
@@ -56,12 +55,19 @@ class HighlightsController < ApplicationController
       file << "## #{@highlight.source.author.name}\n\n"
       file << "#{@highlight.content}\n\n"
       file << "page: #{@highlight.page}\n\n"
-      file << "note: #{@highlight.my_note.strip}" if @highlight.my_note.match(/[^\s]/)
+      if !@highlight.my_note.nil? && @highlight.my_note.match(/[^\s]/)
+        file << "note: #{@highlight.my_note}"
+      end
+    end
+    # destroy file
+    sleep(2)
+    File.open(file_path, "w+") do |file|
+      file << ""
     end
   end
 
   def flashcards
-    @flashcards = current_user.flashcards
+    @flashcards = current_user.flashcards.includes(:taggings, source: :author)
   end
 
   def favorites
@@ -100,15 +106,5 @@ class HighlightsController < ApplicationController
 
   def note_tag_param
     params.require(:highlight).permit(:h_note, :my_note, :tag_list)
-  end
-
-  def destroy_file
-    sleep(2)
-    directory_name = "public/data"
-    Dir.mkdir(directory_name) unless File.exists?(directory_name)
-    file_path = "#{directory_name}/read_to_remember_#{current_user.id}.md"
-    File.open(file_path, "w+") do |file|
-      file << ""
-    end
   end
 end

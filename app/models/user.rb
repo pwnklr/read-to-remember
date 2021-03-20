@@ -47,6 +47,6 @@ class User < ApplicationRecord
   end
 
   def flashcards
-    highlights.where(display_on: Date.today).order(:id)
+    highlights.where(display_on: Date.today).includes(:source).order(:id)
   end
 end

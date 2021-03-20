@@ -10,29 +10,29 @@
 
 <!--<small style="color:white;">My Books(<%#= books.count %>)</small>-->
 <div class="container" style="padding-bottom: 10px; padding-top: 19vh;min-height: 100vh;">
-<div class="row justify-content-sm-center;">
-  <% books.each do |book| %>
-    <div class="card-source">
-      <div style="display:flex; justify-content: space-between; width: 308px;">
-        <% if book.photo.present? %>
-          <div>
-            <%= link_to source_path(book) do %>
-              <%= cl_image_tag book.photo.key, height: 108, width: 80, crop: :fill, class: "cover" %>
-            <% end %>
+  <div class="row justify-content-sm-center;">
+    <% books.each do |book| %>
+      <div class="card-source">
+        <div style="display:flex; justify-content: space-between; width: 308px;">
+          <% if book.photo.present? %>
+            <div>
+              <%= link_to source_path(book) do %>
+                <%= cl_image_tag book.photo.key, height: 108, width: 80, crop: :fill, class: "cover" %>
+              <% end %>
+            </div>
+          <% end %>
+          <div class="text">
+            <p><strong><%= link_to book.title, source_path(book) %></strong></p>
+            <h6 style="color: #797C80;"><%= book.author.name %></h6>
+            <p><%= pluralize book.highlights.size, "highlight" %></p>
+            <!--
+            <div class="export-main">
+              <p class="export"><i class="fas fa-file-export"></i></p>
+            </div>
+          -->
           </div>
-        <% end %>
-        <div class="text">
-          <p><strong><%= link_to book.title, source_path(book) %></strong></p>
-          <h6 style="color: #797C80;"><%= book.author.name %></h6>
-          <p><%= pluralize book.highlights.size, "highlight" %></p>
-          <!--
-          <div class="export-main">
-            <p class="export"><i class="fas fa-file-export"></i></p>
-          </div>
-        -->
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 </div>
