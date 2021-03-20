@@ -1,7 +1,9 @@
 function downloadIt() {
   setTimeout(function() {
     document.getElementById('dwnld-all').click();
+    document.getElementById('loadDiv').style.display = 'inherit';
   }, 800 );
+
 }
 
 const initDownloadBookAll = () => {
@@ -17,5 +19,6 @@ const initDownloadBookSelect = () => {
     exportSelect.addEventListener('click', downloadIt);
   }
 }
+
 
 export { initDownloadBookAll, initDownloadBookSelect };

@@ -38,6 +38,7 @@ const closeAlert = () => {
   }
 }
 
+//init_alert.js:46 Uncaught TypeError: Cannot read property 'style' of undefined
 const closeEveryAlert = () => {
   const alerts = document.getElementsByClassName('alert');
   if(alerts) {

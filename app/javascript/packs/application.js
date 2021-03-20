@@ -52,7 +52,7 @@ document.addEventListener('turbolinks:load', () => {
   initFavs();
   initAlert();
   closeAlert();
-  closeEveryAlert();
+  //closeEveryAlert();
   initDownloadBookAll();
   initDownloadBookSelect();
 
