@@ -19,7 +19,7 @@
 <div class="container" style="padding-top:16vh; min-height:100vh; margin-bottom: 72px;">
   <div class="container" style="margin: 15px;">
   <div class="row">
-    <% @source.highlights.order(page: :asc).each do |h| %>
+    <% @source.highlights.includes(:taggings).order(page: :asc).each do |h| %>
       <div class="card card-adjusted" id='card-<%= h.id %>'>
         <div class='my-nodes'></div>
 

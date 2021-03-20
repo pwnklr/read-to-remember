@@ -2,7 +2,6 @@ class HighlightsController < ApplicationController
   before_action :set_highlight, only: [:edit, :update, :destroy, :fav, :unfav, :export]
   before_action :set_tag, only: :tags
   respond_to :html, :js
-  #after_action :destroy_file, only: :export
 
   # search here
   def index
@@ -68,7 +67,7 @@ class HighlightsController < ApplicationController
   end
 
   def flashcards
-    @flashcards = current_user.flashcards
+    @flashcards = current_user.flashcards.includes(:taggings, source: :author)
   end
 
   def favorites
