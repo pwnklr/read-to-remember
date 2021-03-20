@@ -221,7 +221,7 @@ function slide(wrapper, items) {
 
     setTimeout(function(){
       document.getElementById('myAlert').style.display = 'none';
-    }, 4000);
+    }, 3000);
   }
 
   function closeIt() {

@@ -20,6 +20,10 @@ const initAlert = () => {
           myDownload.click();
           document.getElementById('myAlert').style.display = 'inherit';
         }, 900 )
+
+        setTimeout(function() {
+          document.getElementById('myAlert').style.display = 'none';
+        }, 3000);
       });
     }
   }
@@ -34,4 +38,15 @@ const closeAlert = () => {
   }
 }
 
-export { initAlert, closeAlert };
+const closeEveryAlert = () => {
+  const alerts = document.getElementsByClassName('alert');
+  if(alerts) {
+    for(let i = 0; i < alerts.length; i++) {
+      setTimeout(function(){
+        alerts[i].style.display = 'none';
+      }, 3000);
+    }
+  }
+}
+
+export { initAlert, closeAlert, closeEveryAlert };
