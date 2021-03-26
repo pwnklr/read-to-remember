@@ -4,19 +4,9 @@ class PagesController < ApplicationController
   def home
     if current_user
       if current_user.flashcards.present?
-        flashcards = current_user.flashcards
-        @book_covers = []
-        covers = []
-        books = []
-        flashcards.each do |f|
-          covers << f.source
-        end
+        covers = current_user.flashcards.map { |f| f.source }
         books = covers.uniq!
-        if books.length >= 4
-          @book_covers = books.first(4)
-        else
-          @book_covers = covers.first(4)
-        end
+        @book_covers = books.length >= 4 ? books.first(4) : covers.first(4)
       end
     end
   end

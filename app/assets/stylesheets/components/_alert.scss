@@ -12,36 +12,39 @@
 
 // loading => export book
 #loadDiv {
-  background-color: #eee;
-  display: flex;
+
   justify-content: center;
-  position: fixed;
-  top: 25%;
-  left:50%;
+
+
   padding: 24px;
-  transform:translate(-50%, 0);
-  border-radius: 12px;
-  box-shadow: 0px 1px 12px 1px rgba(0,0,0,0.3);
+
   padding: 24px 56px 8px 56px;
-  z-index: 3000;
+
+
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  background: #24265C;
+  border-radius: 16px;
+  opacity: .9;
+  color: #fff;
 }
 
-.line-load, .progress-load {
-  position: absolute;
-}
 
 .line-load {
   width: 120px;
-  border-top: 8px solid rgba(0, 145, 125, 0.4);
-  z-index: 1;
+  border-top: 8px solid rgba(0,0,0, 0);
+  z-index: 0;
 }
 
 
 .progress-load {
   width: 0px;
-  border-top: 8px solid rgba(0, 145, 125, 0.8);
+  border-top: 8px solid #efefefef;
   z-index: 2;
-  animation: run 2.2s linear;
+  animation: run 1.8s linear;
   animation-fill-mode: forwards;
 }
 
