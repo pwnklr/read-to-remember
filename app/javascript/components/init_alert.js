@@ -38,16 +38,14 @@ const closeAlert = () => {
   }
 }
 
-//init_alert.js:46 Uncaught TypeError: Cannot read property 'style' of undefined
 const closeEveryAlert = () => {
-  const alerts = document.getElementsByClassName('alert');
-  if(alerts) {
-    for(let i = 0; i < alerts.length; i++) {
-      setTimeout(function(){
-        alerts[i].style.display = 'none';
-      }, 3000);
-    }
+  const alert = document.querySelector('body > div.alert.alert-info.alert-dismissible.fade.show.m-1');
+  if(alert) {
+    setTimeout(function(){
+      alert.style.display = 'none';
+    }, 3000);
   }
 }
+
 
 export { initAlert, closeAlert, closeEveryAlert };
