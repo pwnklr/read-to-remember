@@ -61,9 +61,7 @@ class HighlightsController < ApplicationController
     end
     # destroy file
     sleep(2)
-    File.open(file_path, "w+") do |file|
-      file << ""
-    end
+    File.open(file_path, "w+") { |file| file << "" }
   end
 
   def flashcards

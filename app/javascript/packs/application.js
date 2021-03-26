@@ -37,7 +37,7 @@ import { initActiveNavbar } from '../components/init_active_navbar';
 import { initActiveSourceNavigation } from '../components/init_active_source_navigation';
 import { initDomImage } from '../components/init_dom_image';
 import { initFavs } from '../components/init_favs';
-import { initAlert, closeAlert } from '../components/init_alert';
+import { initAlert, closeAlert, closeEveryAlert } from '../components/init_alert';
 import { initDownloadBookAll, initDownloadBookSelect } from '../components/init_download_book';
 
 
@@ -52,6 +52,7 @@ document.addEventListener('turbolinks:load', () => {
   initFavs();
   initAlert();
   closeAlert();
+  closeEveryAlert();
   initDownloadBookAll();
   initDownloadBookSelect();
 

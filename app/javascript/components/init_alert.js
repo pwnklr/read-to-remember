@@ -20,6 +20,10 @@ const initAlert = () => {
           myDownload.click();
           document.getElementById('myAlert').style.display = 'inherit';
         }, 900 )
+
+        setTimeout(function() {
+          document.getElementById('myAlert').style.display = 'none';
+        }, 3000);
       });
     }
   }
@@ -34,4 +38,14 @@ const closeAlert = () => {
   }
 }
 
-export { initAlert, closeAlert };
+const closeEveryAlert = () => {
+  const alert = document.querySelector('body > div.alert.alert-info.alert-dismissible.fade.show.m-1');
+  if(alert) {
+    setTimeout(function(){
+      alert.style.display = 'none';
+    }, 3000);
+  }
+}
+
+
+export { initAlert, closeAlert, closeEveryAlert };

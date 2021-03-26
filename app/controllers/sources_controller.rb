@@ -85,18 +85,14 @@ class SourcesController < ApplicationController
         end
       end
     end
-    sleep(2)
+    sleep(1.8)
     flash[:notice] = 'Yay! Highlights were succsesfully exported!'
     redirect_to source_path(source)
   end
 
   def destroy_file
     sleep(3)
-    directory_name = "public/data"
-    Dir.mkdir(directory_name) unless File.exists?(directory_name)
-    file_path = "#{directory_name}/read_to_remember_#{current_user.id}.md"
-    File.open(file_path, "w+") do |file|
-      file << ""
-    end
+    file_path = "public/data/read_to_remember_#{current_user.id}.md"
+    File.open(file_path, "w+") { |file| file << "" }
   end
 end
