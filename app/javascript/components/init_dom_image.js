@@ -34,21 +34,35 @@ const initDomImage = () => {
           targetImg.src = canvas.toDataURL();
 
 
-          // decode base64
+          // decode base64 => decode on backend
           var src = targetImg.src;
-          console.log('src ' + typeof(src) + ' srce ' + src)
           var encodedString = src.replace('data:image/png;base64,', '');
-          var decodedString = atob(encodedString);
-          console.log(decodedString);
 
-          //send encodedString in chunks
-          //encodedString => too big file to upload :/ cca 19,640 chars
-          //connect chunks and decode on backend, write file
           //(as in highlights cntrl 'share', path to img: /my_images/image_to_remember_60.png)
+
+          //ajax for creating image
+          var params = { highlight_id: id, content: encodedString }
+          var result = $.ajax({
+            url: `/highlights/${id}/images`,
+            type: 'post',
+            dataType: "script",
+            data: params
+          })
+
+          // ajax for generate img
+
+          /*
+          $.ajax({
+            url: `/images/${id}/share`,
+            type: 'get',
+            dataType: 'script'
+          }) */
+
+          //<a id="fb-share" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:3000/my_images/image_to_remember_${id}.png" target="_blank" rel="noopener noreferrer"></a>
 
           if(!nodes[i].hasChildNodes()) {
             nodes[i].appendChild(targetImg);
-            nodes[i].insertAdjacentHTML('beforeend', `<ul style="margin: 0; padding: 12px;background-color: #F7E5AC;"><a rel="nofollow" data-method="post" href="/highlights/${id}/images?content=${encodedString.slice(0, 10000)}"><i class="fab fa-facebook-square"></i></a><i class="fab fa-twitter-square"></i><a href="${canvas.toDataURL()}" download><i style="color: #000 !important;" class="fas fa-file-download"></i></a></ul>`);
+            nodes[i].insertAdjacentHTML('beforeend', `<ul style="margin: 0; padding: 12px;background-color: #F7E5AC;"><a id="fb" rel="nofollow" data-remote="true" data-method="get" href="/images/${id}/share"><i class="fab fa-facebook-square"></i></a><i class="fab fa-twitter-square"></i><a href="${canvas.toDataURL()}" download><i style="color: #000 !important;" class="fas fa-file-download"></i></a></ul>`);
             targetImg.addEventListener('click', function() {
               nodes[i].style.display = 'none';
             })
