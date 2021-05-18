@@ -42,14 +42,6 @@ ActiveRecord::Schema.define(version: 2021_05_18_103254) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "counters", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.integer "day"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_counters_on_user_id"
-  end
-
   create_table "favorites", force: :cascade do |t|
     t.string "favoritable_type", null: false
     t.bigint "favoritable_id", null: false
@@ -153,7 +145,6 @@ ActiveRecord::Schema.define(version: 2021_05_18_103254) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "counters", "users"
   add_foreign_key "highlights", "sources"
   add_foreign_key "highlights", "users"
   add_foreign_key "images", "highlights"

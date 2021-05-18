@@ -3,7 +3,7 @@ class ImagesController < ApplicationController
     highlight = Highlight.find(params[:highlight_id])
     # image = Image.find(params[:highlight_id])
     # if !image
-    @image = Image.create(id: params[:highlight_id], highlight: highlight, content: params[:content])
+    Image.create(id: params[:highlight_id], highlight: highlight, content: params[:content])
     # end
   end
 

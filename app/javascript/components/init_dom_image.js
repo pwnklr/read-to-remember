@@ -25,29 +25,24 @@ const initDomImage = () => {
         const targetImg = document.createElement('img');
         nodes[i].style.display = 'inherit';
 
-
-
         function onTempImageLoad(e) {
           ctx.fillStyle = "white";
           ctx.fillRect(0, 0, canvas.width, canvas.height);
           ctx.drawImage(e.target, 0, 0)
           targetImg.src = canvas.toDataURL();
 
-
           // decode base64 => decode on backend
           var src = targetImg.src;
           var encodedString = src.replace('data:image/png;base64,', '');
 
-          //(as in highlights cntrl 'share', path to img: /my_images/image_to_remember_:id.png)
-
-          //ajax for creating image
+          //ajax for creating image & generating img
           var params = { highlight_id: id, content: encodedString }
           var result = $.ajax({
             url: `/highlights/${id}/images`,
             type: 'post',
             dataType: "script",
             data: params,
-            success: function(){  // or complete:
+            success: function(){  // || complete:
               $.ajax({
                 url: `/images/${id}/share`,
                 type: 'get',
@@ -55,17 +50,6 @@ const initDomImage = () => {
               })
              },
           })
-
-          // ajax for generate img
-
-          /*
-          $.ajax({
-            url: `/images/${id}/share`,
-            type: 'get',
-            dataType: 'script'
-          }) */
-
-          //<a id="fb-share" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:3000/my_images/image_to_remember_${id}.png" target="_blank" rel="noopener noreferrer"></a>
 
           if(!nodes[i].hasChildNodes()) {
             nodes[i].appendChild(targetImg);
