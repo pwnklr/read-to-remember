@@ -3,7 +3,13 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :kindles, only: [:new, :create, :edit, :update]
+  resources :images do
+    member do
+      get :share # ie. generate image
+    end
+  end
   resources :highlights, only: [:index, :edit, :update, :destroy] do
+    resources :images, only: [:create]
     collection do
       # get 'flashcards:id', to: 'highlights#flashcards', as: :flashcards
       get :flashcards
