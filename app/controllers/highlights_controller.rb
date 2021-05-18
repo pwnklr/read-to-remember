@@ -69,7 +69,6 @@ class HighlightsController < ApplicationController
   end
 
   def favorites
-     @image = Image.new
     @highlights = current_user.highlights.includes(:taggings, source: :author).joins('INNER JOIN favorites on highlights.id = favorites.favoritable_id').order('favorites.created_at desc')
   end
 
