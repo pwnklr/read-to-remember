@@ -32,11 +32,23 @@ const initDomImage = () => {
           ctx.fillRect(0, 0, canvas.width, canvas.height);
           ctx.drawImage(e.target, 0, 0)
           targetImg.src = canvas.toDataURL();
-          // make sharing btns + functionality + add some style
-          // download functionality => done
+
+
+          // decode base64
+          var src = targetImg.src;
+          console.log('src ' + typeof(src) + ' srce ' + src)
+          var encodedString = src.replace('data:image/png;base64,', '');
+          var decodedString = atob(encodedString);
+          console.log(decodedString);
+
+          //send encodedString in chunks
+          //encodedString => too big file to upload :/ cca 19,640 chars
+          //connect chunks and decode on backend, write file
+          //(as in highlights cntrl 'share', path to img: /my_images/image_to_remember_60.png)
+
           if(!nodes[i].hasChildNodes()) {
             nodes[i].appendChild(targetImg);
-            nodes[i].insertAdjacentHTML('beforeend', `<ul style="margin: 0; padding: 12px;background-color: #F7E5AC;"><i class="fab fa-facebook-square"></i><i class="fab fa-twitter-square"></i><a href="${canvas.toDataURL()}" download><i style="color: #000 !important;" class="fas fa-file-download"></i></a></ul>`);
+            nodes[i].insertAdjacentHTML('beforeend', `<ul style="margin: 0; padding: 12px;background-color: #F7E5AC;"><a rel="nofollow" data-method="post" href="/highlights/${id}/images?content=${encodedString.slice(0, 10000)}"><i class="fab fa-facebook-square"></i></a><i class="fab fa-twitter-square"></i><a href="${canvas.toDataURL()}" download><i style="color: #000 !important;" class="fas fa-file-download"></i></a></ul>`);
             targetImg.addEventListener('click', function() {
               nodes[i].style.display = 'none';
             })

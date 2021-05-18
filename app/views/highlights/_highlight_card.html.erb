@@ -52,7 +52,13 @@
                 <i class="fas fa-pen edit-icon" title='Write/update note' data-id="<%= h.id %>" style="font-size:16px;color:#AAAAAA;"></i>
               <% end %>
             </p>
+
+            <!-- atm -->
             <p>
+              <%= link_to "create", highlight_images_path(highlight_id: h, content: h.id ), method: :post %>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:3000/my_images/image_to_remember_60.png" target="_blank" rel="noopener noreferrer">FB share</a>
+            <p>
+              <!-- end -->
               <%= link_to export_highlight_path(h), remote: true do %> <!-- improve this one :export -->
                 <i id='e-<%= h.id %>' class="fas fa-paper-plane" title='Export' style="font-size:16px;color:#AAAAAA;"></i>
               <% end %>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :kindles, only: [:new, :create, :edit, :update]
   resources :highlights, only: [:index, :edit, :update, :destroy] do
+    resources :images, only: [:create, :show]
     collection do
       # get 'flashcards:id', to: 'highlights#flashcards', as: :flashcards
       get :flashcards
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
       put :unfav
       get :export
       get :destroy_file
+      get :share
     end
   end
   resources :sources, only: [:show] do

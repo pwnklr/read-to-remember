@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_27_195657) do
+ActiveRecord::Schema.define(version: 2021_05_18_103254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(version: 2020_09_27_195657) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "counters", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "day"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_counters_on_user_id"
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.string "favoritable_type", null: false
     t.bigint "favoritable_id", null: false
@@ -71,6 +79,14 @@ ActiveRecord::Schema.define(version: 2020_09_27_195657) do
     t.date "display_on"
     t.index ["source_id"], name: "index_highlights_on_source_id"
     t.index ["user_id"], name: "index_highlights_on_user_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.bigint "highlight_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "content"
+    t.index ["highlight_id"], name: "index_images_on_highlight_id"
   end
 
   create_table "kindles", force: :cascade do |t|
@@ -131,13 +147,16 @@ ActiveRecord::Schema.define(version: 2020_09_27_195657) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "provider"
     t.string "uid"
+    t.string "token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "counters", "users"
   add_foreign_key "highlights", "sources"
   add_foreign_key "highlights", "users"
+  add_foreign_key "images", "highlights"
   add_foreign_key "kindles", "users"
   add_foreign_key "sources", "authors"
   add_foreign_key "sources", "users"
