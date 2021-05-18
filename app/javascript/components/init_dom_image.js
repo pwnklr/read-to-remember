@@ -38,7 +38,7 @@ const initDomImage = () => {
           var src = targetImg.src;
           var encodedString = src.replace('data:image/png;base64,', '');
 
-          //(as in highlights cntrl 'share', path to img: /my_images/image_to_remember_60.png)
+          //(as in highlights cntrl 'share', path to img: /my_images/image_to_remember_:id.png)
 
           //ajax for creating image
           var params = { highlight_id: id, content: encodedString }
@@ -46,7 +46,14 @@ const initDomImage = () => {
             url: `/highlights/${id}/images`,
             type: 'post',
             dataType: "script",
-            data: params
+            data: params,
+            success: function(){  // or complete:
+              $.ajax({
+                url: `/images/${id}/share`,
+                type: 'get',
+                dataType: 'script'
+              })
+             },
           })
 
           // ajax for generate img
@@ -62,7 +69,10 @@ const initDomImage = () => {
 
           if(!nodes[i].hasChildNodes()) {
             nodes[i].appendChild(targetImg);
-            nodes[i].insertAdjacentHTML('beforeend', `<ul style="margin: 0; padding: 12px;background-color: #F7E5AC;"><a id="fb" rel="nofollow" data-remote="true" data-method="get" href="/images/${id}/share"><i class="fab fa-facebook-square"></i></a><i class="fab fa-twitter-square"></i><a href="${canvas.toDataURL()}" download><i style="color: #000 !important;" class="fas fa-file-download"></i></a></ul>`);
+            nodes[i].insertAdjacentHTML('beforeend', `<div style="margin: 0; padding: 12px;background-color: #F7E5AC;">
+              <p><a id="fb-share" href="https://www.facebook.com/sharer/sharer.php?u=https://www.readtoremember.xyz/my_images/image_to_remember_${id}.png" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-square"></i></a></p>
+              <p><a href="http://twitter.com/share?url=https://www.readtoremember.xyz/my_images/image_to_remember_${id}.png" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter-square"></i></a></p>
+              <p><a href="${canvas.toDataURL()}" download><i style="color: #000 !important;" class="fas fa-file-download"></i></a></p></div>`);
             targetImg.addEventListener('click', function() {
               nodes[i].style.display = 'none';
             })
