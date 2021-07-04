@@ -51,11 +51,16 @@ const initDomImage = () => {
              },
           })
 
+
+//           <p><a id="fb-share" href="https://www.facebook.com/sharer/sharer.php?u=https://www.readtoremember.xyz/my_images/image_to_remember_${id}.png" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-square"></i></a></p>
+//           <p><a href="http://twitter.com/share?url=https://www.readtoremember.xyz/my_images/image_to_remember_${id}.png" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter-square"></i></a></p>
+
+
           if(!nodes[i].hasChildNodes()) {
             nodes[i].appendChild(targetImg);
             nodes[i].insertAdjacentHTML('beforeend', `<div style="margin: 0; padding: 12px;background-color: #F7E5AC;">
-              <p><a id="fb-share" href="https://www.facebook.com/sharer/sharer.php?u=https://www.readtoremember.xyz/my_images/image_to_remember_${id}.png" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-square"></i></a></p>
-              <p><a href="http://twitter.com/share?url=https://www.readtoremember.xyz/my_images/image_to_remember_${id}.png" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter-square"></i></a></p>
+              <p><a id="fb-share" href="https://www.facebook.com/sharer/sharer.php?u=https://www.readtoremember.xyz/images/${id}/image" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-square"></i></a></p>
+              <p><a href="http://twitter.com/share?url=https://www.readtoremember.xyz/images/${id}/image" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter-square"></i></a></p>
               <p><a href="${canvas.toDataURL()}" download><i style="color: #000 !important;" class="fas fa-file-download"></i></a></p></div>`);
             targetImg.addEventListener('click', function() {
               nodes[i].style.display = 'none';

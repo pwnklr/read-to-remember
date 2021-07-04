@@ -71,6 +71,7 @@ function slide(wrapper, items) {
 
   editLink.href = `${ids[index]}/edit`;
   exportLink.href = `${ids[index]}/export`;
+
   imageLink.addEventListener('click', getImage);
   //delLink.href = `${ids[index]}/`;
 
@@ -252,11 +253,35 @@ function slide(wrapper, items) {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(e.target, 0, 0)
       targetImg.src = canvas.toDataURL();
-      // make sharing btns + functionality + add some style
-      // download functionality => done
+
+      // decode base64 => decode on backend
+      var src = targetImg.src;
+      var encodedString = src.replace('data:image/png;base64,', '');
+
+      var id = ids[index];
+
+      //ajax for creating image & generating img
+      var params = { highlight_id: id, content: encodedString }
+      var result = $.ajax({
+        url: `/highlights/${id}/images`,
+        type: 'post',
+        dataType: "script",
+        data: params,
+        success: function(){  // || complete:
+          $.ajax({
+            url: `/images/${id}/share`,
+            type: 'get',
+            dataType: 'script'
+          })
+        },
+      })
+
       if(!node.hasChildNodes()) {
         node.appendChild(targetImg);
-        node.insertAdjacentHTML('beforeend', `<ul style="margin: 0; padding: 12px;background-color: #F7E5AC;"><i class="fab fa-facebook-square"></i><i class="fab fa-twitter-square"></i><a href="${canvas.toDataURL()}" download><i style="color: #000 !important;" class="fas fa-file-download"></i></a></ul>`);
+        node.insertAdjacentHTML('beforeend', `<div style="margin: 0; padding: 12px;background-color: #F7E5AC;">
+          <p><a id="fb-share" href="https://www.facebook.com/sharer/sharer.php?u=https://www.readtoremember.xyz/images/${id}/image" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-square"></i></a></p>
+          <p><a href="http://twitter.com/share?url=https://www.readtoremember.xyz/images/${id}/image" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter-square"></i></a></p>
+          <p><a href="${canvas.toDataURL()}" download><i style="color: #000 !important;" class="fas fa-file-download"></i></a></p></div>`);
         targetImg.addEventListener('click', function() {
           node.removeChild(node.childNodes[0]);
           node.removeChild(node.childNodes[0]);
