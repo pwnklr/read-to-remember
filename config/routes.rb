@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   resources :images do
     member do
       get :share # ie. generate image
+      get :image # i.e. show page for img
     end
   end
   resources :highlights, only: [:index, :edit, :update, :destroy] do
-    resources :images, only: [:create]
+    resources :images, only: :create
     collection do
       # get 'flashcards:id', to: 'highlights#flashcards', as: :flashcards
       get :flashcards
